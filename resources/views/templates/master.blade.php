@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("titulo")</title>
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <script src="{{ asset('js/jquery-.3.1.min.jss') }}"></script>
-    <script src="{{ asset('js/popper.min.jss') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.jss') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap.min.css') }}">
+    <script src="{{ asset('js/libraries/jquery-.3.1.min.jss') }}"></script>
+    <script src="{{ asset('js/libraries/popper.min.jss') }}"></script>
+    <script src="{{ asset('js/libraries/bootstrap.min.jss') }}"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
