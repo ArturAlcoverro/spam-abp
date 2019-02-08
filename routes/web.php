@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 })->name("wlcm");
+
+Route::get('/login', function () {
+    return view('login');
+})->name("login");
