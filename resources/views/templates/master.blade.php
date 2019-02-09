@@ -7,9 +7,9 @@
     <title>@yield("titulo")</title>
 
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap.min.css') }}">
-    <script src="{{ asset('js/libraries/jquery-.3.1.min.jss') }}"></script>
-    <script src="{{ asset('js/libraries/popper.min.jss') }}"></script>
-    <script src="{{ asset('js/libraries/bootstrap.min.jss') }}"></script>
+    <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
+    <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
