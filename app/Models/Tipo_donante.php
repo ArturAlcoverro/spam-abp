@@ -13,8 +13,8 @@ class Tipo_donante extends Model
 
     public $timestamps = false;
 
-    public function tipo_donante()
+    public function donante()
     {
-        return $this->hasMany('App\Models\Tipo_donante', 'tipos_donante_id');
+        return $this->hasMany('App\Models\Donante', 'tipos_donante_id');
     }
 }
