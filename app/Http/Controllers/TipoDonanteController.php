@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tipus;
+use App\Models\Tipo_donante;
 use Illuminate\Http\Request;
 
-class TipusController extends Controller
+class TipoDonanteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TipusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tipus  $tipus
+     * @param  \App\Models\Tipo_donante  $tipo_donante
      * @return \Illuminate\Http\Response
      */
-    public function show(Tipus $tipus)
+    public function show(Tipo_donante $tipo_donante)
     {
         //
     }
@@ -52,10 +52,10 @@ class TipusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tipus  $tipus
+     * @param  \App\Models\Tipo_donante  $tipo_donante
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipus $tipus)
+    public function edit(Tipo_donante $tipo_donante)
     {
         //
     }
@@ -64,10 +64,10 @@ class TipusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tipus  $tipus
+     * @param  \App\Models\Tipo_donante  $tipo_donante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipus $tipus)
+    public function update(Request $request, Tipo_donante $tipo_donante)
     {
         //
     }
@@ -75,10 +75,10 @@ class TipusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tipus  $tipus
+     * @param  \App\Models\Tipo_donante  $tipo_donante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipus $tipus)
+    public function destroy(Tipo_donante $tipo_donante)
     {
         //
     }

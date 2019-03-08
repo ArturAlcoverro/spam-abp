@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subtipus;
+use App\Models\Subtipo;
 use Illuminate\Http\Request;
 
-class SubtipusController extends Controller
+class SubtipoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SubtipusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subtipus  $subtipus
+     * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function show(Subtipus $subtipus)
+    public function show(Subtipo $subtipo)
     {
         //
     }
@@ -52,10 +52,10 @@ class SubtipusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subtipus  $subtipus
+     * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subtipus $subtipus)
+    public function edit(Subtipo $subtipo)
     {
         //
     }
@@ -64,10 +64,10 @@ class SubtipusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subtipus  $subtipus
+     * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subtipus $subtipus)
+    public function update(Request $request, Subtipo $subtipo)
     {
         //
     }
@@ -75,10 +75,10 @@ class SubtipusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subtipus  $subtipus
+     * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subtipus $subtipus)
+    public function destroy(Subtipo $subtipo)
     {
         //
     }
