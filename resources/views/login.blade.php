@@ -11,15 +11,16 @@
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
     <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/eventsLogin.js') }}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 </head>
 <body>
     <div class="loginBox">
-        <h3>Inicia sesión</h3>
+        <h2>Iniciar sesión</h2>
         <form>
                 <div class="form-group">
-                    <p id="EmailLabel">Correo electronico</p>
+                    <p id="EmailLabel">Correo electrónico</p>
                     <input type="email" class="fill" id="Email">
                 </div>
                 <div class="form-group">
@@ -34,44 +35,5 @@
     </div>
 </body>
 
-<script>
-    var hide = true;
-    $(".fill").on('focus',function(){
-        var $label = $("#" + $(this).attr("id") + "Label");
-        $label.css({color: "var(--primary-color-dark)"});
-        $label.animate({"top":"4px",
-                        "font-size":"13px",
-                        "z-index":"0"}, 120);
-    });
-    $(".fill").on('blur',function(){
-        var $label = $("#" + $(this).attr("id") + "Label");
-        if(!$("#Password").is(":focus")){
-        if($(this).val() == ""){
-            $label.animate({"top":"15px",
-                            "font-size":"17px",
-                            "z-index":"-1"},120);
-        }
-        $label.css({color: "#8a8a8a"});
-        }
-    });
-
-    $("#hideShow").click(function(e){
-        var $this = $(this);
-        var $input = $("#Password");
-
-        if(hide){
-            hide=false;
-            $this.text("visibility");
-            $this.css("color", "var(--primary-color-dark)")
-            $input.attr("type", "text");
-        }else{
-            hide=true;
-            $this.text("visibility_off");
-            $this.css("color", "#8a8a8a6e")
-            $input.attr("type", "password");
-        }
-
-    });
-        </script>
 </html>
 
