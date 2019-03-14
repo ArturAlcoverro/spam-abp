@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: rgb(240, 240, 240) !important;
+    background: #eee !important;
 }
 
 .loginBox {
@@ -19,33 +19,41 @@ body {
 }
 
 .fill {
+    overflow: hidden;
+    box-sizing: border-box;
     display: block;
     border: none;
-    padding: 18px 15px 12px 15px;
+    padding: 21px 15px 9px 15px;
     background: transparent;
-    border: 1px #bdbdbd solid;
+    border: 1px #8a8a8a solid;
     border-radius: 5px;
     width: 300px;
-    border: 1px #bdbdbd solid;
-    transition: border 0.2s
+    transition: border-color 0.2s
 }
 
 .fill:focus {
     outline-width: 0;
-    border: 1px var(--primary-color-dark) solid;
+    border: 2px solid;
+    padding: 20px 15px 8px 15px;
+    border-color: var(--primary-color);
 }
 
-h4 {
+h3 {
     margin: 20px 0 35px 0 !important;
 }
 
-label {
-    color: #8b8b8b;
+p {
+    font-size: 17px;
+    color: #8a8a8a;
     position: absolute;
-    top: -12px;
-    left: 15px;
-    background: white;
+    top: 15px;
+    left: 5px;
     padding: 0 10px;
+    z-index: -1;
+}
+
+.focus-color {
+    color: var(--primary-color);
 }
 
 .button {
@@ -63,6 +71,31 @@ label {
     outline-width: 0;
 }
 
+#hideShow {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 93%;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: transparent;
+    font-family: 'Material Icons';
+    font-size: 21px;
+    color: #8a8a8a6e;
+    transform: translate(-50%, -50%);
+    cursor: (auto);
+}
+
+#hideShow:focus {
+    outline: 0;
+}
+
 .loginBox {
     border-top: 3px solid var(--primary-color);
     padding: 25px;
@@ -71,6 +104,6 @@ label {
 
 @media (max-width: 400px) {
     .fill {
-        width: 80vw;
+        width: 8avw;
     }
 }
