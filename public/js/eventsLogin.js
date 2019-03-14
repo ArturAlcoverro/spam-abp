@@ -34,7 +34,7 @@ $(document).ready(function () {
             $this.addClass("pulse")
             hide = false;
             $this.text("visibility");
-            $this.css("color", "var(--primary-color-dark)")
+            $this.css("color", "var(--primary-color)")
             $input.attr("type", "text");
         } else {
             $this.removeClass("pulse");
