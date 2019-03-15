@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/login.css')}}" />
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/master.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/root.css') }}">
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
     <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>

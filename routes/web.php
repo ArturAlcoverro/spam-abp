@@ -16,5 +16,9 @@ Route::get('/', function () {
 })->name("wlcm");
 
 Route::get('/login', function () {
-    return view('login');
+    return view('publica.login');
 })->name("login");
+
+Route::get('/index', function () {
+    return view('privada.index');
+})->name("");

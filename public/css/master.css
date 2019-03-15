@@ -1,42 +1,69 @@
-:root {
-    --primary-color: #99cc33;
-    --primary-color-dark: #79b61e;
+:root{
+    --nav-height: 90px;
+    --nav-width: 140px;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color)
+nav{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.514);
 }
 
-.btn-primary:hover {
-    color: #fff;
-    background-color: var(--primary-color-dark);
-    border-color: var(--primary-color-dark)
+body{
+    margin: 0;
+    background: #eee;
 }
 
-.btn-primary.focus,
-.btn-primary:focus {
-    box-shadow: none;
+#menuSuperior{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    background: white;
+    height: var(--nav-height);
+    padding-left: calc(var(--nav-width) + 25px);
 }
 
-.btn-primary.disabled,
-.btn-primary:disabled {
-    color: #fff;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+#menuLateral{
+    position: fixed;
+    height: calc(100% - var(--nav-height));
+    width: var(--nav-width);
+    top: var(--nav-height);
+    background: #2b2c2a;
+    z-index: -1;
 }
 
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: var(--primary-color-dark);
-    border-color: var(--primary-color-dark);
+#logo{
+    position: fixed;
+    height: var(--nav-height);
+    width: var(--nav-width);
+    background: var(--primary-color)
 }
 
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: none;
+#opcionsMenuLateral{
+    display: flex;
+    flex-direction:column;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+#opcionsMenuLateral li{
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    height: calc((100vh - var(--nav-height)) / 4);
+    width: 100%;
+    background:transparent;
+    list-style-type:none;
+}
+
+#opcionsMenuLateral li:hover{
+    background-color:#383837;
+}
+
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
