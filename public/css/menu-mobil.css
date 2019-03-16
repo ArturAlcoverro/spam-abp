@@ -1,0 +1,130 @@
+:root {
+    --text-color: white;
+}
+
+.menu-btn {
+    display: none;
+    position: absolute;
+    height: 50px;
+    width: 55px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.menu-btn-animation:nth-child(1) {
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    background: white;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+.menu-btn-animation:nth-child(2) {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    background: white;
+    top: 75%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+.menu-btn-animation:nth-child(3) {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    background: white;
+    top: 25%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+.menu-btn-active {
+    background: transparent;
+}
+
+.menu-btn-1-active {
+    background: transparent !important;
+}
+
+.menu-btn-2-active {
+    -webkit-transform: rotate(-135deg) translate(50%, -50%) !important;
+    -moz-transform: rotate(-135deg) translate(50%, -50%) !important;
+    -ms-transform: rotate(-135deg) translate(50%, -50%) !important;
+    -o-transform: rotate(-135deg) translate(50%, -50%) !important;
+    transform: rotate(-135deg) translate(50%, -50%) !important;
+}
+
+.menu-btn-3-active {
+    -webkit-transform: rotate(135deg) translate(50%, 50%) !important;
+    -moz-transform: rotate(135deg) translate(50%, 50%) !important;
+    -ms-transform: rotate(135deg) translate(50%, 50%) !important;
+    -o-transform: rotate(135deg) translate(50%, 50%) !important;
+    transform: rotate(135deg) translate(50%, 50%) !important;
+}
+
+.menu ul {
+    padding: 0;
+    overflow: hidden;
+    flex-direction: column;
+    display: flex;
+    margin-top: 100px;
+    list-style: none;
+}
+
+.menu ul p {
+    margin: 0;
+}
+
+.menu li {
+    margin: 5px 0px;
+    padding-left: 20px;
+}
+
+.menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.menu {
+    position: fixed;
+    display: none;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    z-index: 2;
+}
+
+.menu-list {
+    width: 80%;
+    height: 100vh;
+    background: #2b2c2a;
+}
+
+.menu-close-space {
+    width: 20%;
+    height: 100vh;
+}

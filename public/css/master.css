@@ -1,18 +1,14 @@
-:root{
+:root {
     --nav-height: 90px;
     --nav-width: 140px;
 }
 
-nav{
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.514);
-}
-
-body{
+body {
     margin: 0;
     background: #eee;
 }
 
-#menuSuperior{
+#menuSuperior {
     display: flex;
     align-items: center;
     position: fixed;
@@ -20,50 +16,104 @@ body{
     background: white;
     height: var(--nav-height);
     padding-left: calc(var(--nav-width) + 25px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.514);
 }
 
-#menuLateral{
+#menuLateral {
     position: fixed;
     height: calc(100% - var(--nav-height));
+    min-height: 550px;
     width: var(--nav-width);
     top: var(--nav-height);
     background: #2b2c2a;
     z-index: -1;
 }
 
-#logo{
+#logo {
     position: fixed;
     height: var(--nav-height);
     width: var(--nav-width);
     background: var(--primary-color)
 }
 
-#opcionsMenuLateral{
+#opcionsMenuLateral {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     color: white;
     margin: 0;
     padding: 0;
     font-size: 13px;
 }
 
-#opcionsMenuLateral li{
+#opcionsMenuLateral li {
+    position: relative;
+}
+
+#opcionsMenuLateral li a {
     display: flex;
     justify-content: center;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
     height: calc((100vh - var(--nav-height)) / 4);
     width: 100%;
-    background:transparent;
-    list-style-type:none;
+    background: transparent;
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
 }
 
-#opcionsMenuLateral li:hover{
-    background-color:#383837;
+#opcionsMenuLateral li:hover {
+    background-color: #383837;
 }
 
-#logo{
+.active::before {
+    --size: 13px;
+    content: '';
+    position: absolute;
+    top: calc(50% - var(--size));
+    left: calc(100% - var(--size));
+    width: 0px;
+    height: 0px;
+    border-top: var(--size) solid transparent;
+    border-bottom: var(--size) solid transparent;
+    border-right: var(--size) solid #eee;
+    z-index: 100;
+}
+
+#logo {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    #menuLateral {
+        display: none;
+    }
+    #menuSuperior {
+        height: 20vw;
+        width: 100%;
+        justify-content: center;
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+    #menuSuperior img {
+        width: calc(100% - 20px);
+        height: auto;
+    }
+    #logo {
+        height: 20vw;
+        width: 20vw;
+        ;
+    }
+    #logo img {
+        display: none;
+    }
+    .menu-btn {
+        display: inline;
+    }
+    .menu {
+        display: flex;
+    }
 }
