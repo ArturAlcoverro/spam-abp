@@ -19,16 +19,16 @@
 </head>
 
 <body>
+    <div class="menu-btn">
+        <div class="menu-btn-animation"></div>
+        <div class="menu-btn-animation"></div>
+        <div class="menu-btn-animation"></div>
+    </div>
     <nav id="menuSuperior">
         <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
     </nav>
     <div id="logo">
         <img height="70%" src="{{ asset('media/img/artio.png') }}" alt="">
-        <div class="menu-btn">
-            <div class="menu-btn-animation"></div>
-            <div class="menu-btn-animation"></div>
-            <div class="menu-btn-animation"></div>
-        </div>
     </div>
     <div class="menu">
         <div class="menu-list">

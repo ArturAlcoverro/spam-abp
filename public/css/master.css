@@ -9,7 +9,7 @@ body {
 }
 
 .body {
-    padding: 0 0 0 var(--nav-width)
+    padding: var(--nav-height) 0 0 var(--nav-width)
 }
 
 #menuSuperior {
@@ -21,6 +21,7 @@ body {
     height: var(--nav-height);
     padding-left: calc(var(--nav-width) + 25px);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.514);
+    z-index: 3;
 }
 
 #menuLateral {
@@ -37,7 +38,11 @@ body {
     position: fixed;
     height: var(--nav-height);
     width: var(--nav-width);
-    background: var(--primary-color)
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
 }
 
 #opcionsMenuLateral {
@@ -84,13 +89,6 @@ body {
     z-index: 100;
 }
 
-#logo {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 @media only screen and (max-width: 600px) {
     #menuLateral {
         display: none;
@@ -121,6 +119,6 @@ body {
         display: flex;
     }
     .body {
-        padding: 0;
+        padding: 20vw 0 0 0;
     }
 }
