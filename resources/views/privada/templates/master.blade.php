@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/root.css') }}">
     <link rel="stylesheet" href="{{ asset('css/menu-mobil.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
     <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/eventsMasterPrivada.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
 </head>
 
 <body>
-
-
     <nav id="menuSuperior">
         <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
     </nav>
@@ -84,7 +84,12 @@
             </li>
         </ul>
     </nav>
-    @yield('body')
+
+    <div class="body">
+        @yield('body')
+    </div>
+
+
 </body>
 
 </html>

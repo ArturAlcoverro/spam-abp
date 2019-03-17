@@ -8,6 +8,10 @@ body {
     background: #eee;
 }
 
+.body {
+    padding: 0 0 0 var(--nav-width)
+}
+
 #menuSuperior {
     display: flex;
     align-items: center;
@@ -26,7 +30,7 @@ body {
     width: var(--nav-width);
     top: var(--nav-height);
     background: #2b2c2a;
-    z-index: -1;
+    z-index: 3;
 }
 
 #logo {
@@ -115,5 +119,8 @@ body {
     }
     .menu {
         display: flex;
+    }
+    .body {
+        padding: 0;
     }
 }
