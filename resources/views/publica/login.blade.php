@@ -18,20 +18,21 @@
 <body>
     <div class="loginBox">
         <h2>Iniciar sesión</h2>
-        <form>
-                <div class="form-group">
-                    <p id="EmailLabel">Correo electrónico</p>
-                    <input type="email" class="fill" id="Email">
-                </div>
-                <div class="form-group">
-                    <p id="PasswordLabel">Contraseña</p>
-                    <input type="password" class="fill" id="Password" >
-                    <div id="hideShow">visibility_off</div>
-                </div>
-                <div class="form-group d-flex" style="justify-content:flex-end">
-                    <button type="submit" class="btn-primary button">Entrar</button>
-                </div>
-              </form>
+        <form action="{{ action('Auth\LoginController@login') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <p id="EmailLabel">Correo electrónico</p>
+                <input type="text" class="fill" id="Email" name="Email">
+            </div>
+            <div class="form-group">
+                <p id="PasswordLabel">Contraseña</p>
+                <input type="password" class="fill" id="Password" name="Password" >
+                <div id="hideShow">visibility_off</div>
+            </div>
+            <div class="form-group d-flex" style="justify-content:flex-end">
+                <button type="submit" class="btn-primary button">Entrar</button>
+            </div>
+        </form>
     </div>
 </body>
 

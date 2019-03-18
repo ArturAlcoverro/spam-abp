@@ -12,13 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name("wlcm");
+    return view('publica.home');
+});
 
-Route::get('/login', function () {
-    return view('publica.login');
-})->name("login");
+Route::get('/login', 'Auth\LoginController@showLogin');
+Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('/index', function () {
     return view('privada.index');
 })->name("");
+
+
