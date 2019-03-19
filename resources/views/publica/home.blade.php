@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="\">LOGIN</a>
+    <a href="{{ route('showLogin') }}">LOGIN</a>
 </body>
 </html>

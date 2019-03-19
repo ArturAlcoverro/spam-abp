@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         if($user != null && Hash::check($contrasenya, $user->password)){
             Auth::login($user);
-            return view('privada.index');
+            return redirect('index');
         }
         else{
             return redirect('login')->withInput();
@@ -65,6 +65,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/home');
+        return redirect('/');
     }
 }
