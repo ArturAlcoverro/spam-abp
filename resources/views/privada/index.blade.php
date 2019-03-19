@@ -2,7 +2,14 @@
 
 @section('body')
 
-<table class="table">
+<div class="p-5">
+    <ul class="toolbar">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <table class="table table-hover table-striped dt-responsive">
     <thead>
         <tr>
             <th>edad</th>
@@ -73,8 +80,16 @@
         </tr>
     </tbody>
 </table>
+</div>
 
 <script>$(document).ready(function () {
-        $('.table').DataTable();
+        $('.table').DataTable({
+            select:{
+                items: 'row'
+            },
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ]
+        });
     });</script>
 @endsection
