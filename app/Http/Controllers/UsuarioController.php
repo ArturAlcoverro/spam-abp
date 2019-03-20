@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
+use App\Models\Rol;
+
 class UsuarioController extends Controller
 {
     /**
@@ -24,7 +26,11 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Rol::all();
+
+        $data['roles'] = $roles;
+
+        return view('privada.createUser', $data);
     }
 
     /**
