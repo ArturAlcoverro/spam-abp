@@ -28,9 +28,9 @@
     <nav id="menuSuperior">
         <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
     </nav>
-    <div id="logo">
+    <a id="logo" href="{{ route('index') }}">
         <img height="70%" src="{{ asset('media/img/artio.png') }}" alt="">
-    </div>
+    </a>
     <div class="menu">
         <div class="menu-list">
             <ul>
@@ -44,11 +44,13 @@
                         <p>Donants</p>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <p>Usuaris</p>
-                    </a>
-                </li>
+                @if(Auth::user()->rol->id == 1)
+                    <li>
+                        <a href="">
+                            <p>Usuaris</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="mt-5">
                     <a href="{{ url('/logout') }}">
                         Sortir
@@ -63,25 +65,29 @@
     <nav id="menuLateral">
         <ul id="opcionsMenuLateral">
             <li class="active">
-                <a href="">
+                <a href="{{ route('donations') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
                     Donacions
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('donants') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
                     Donants
                 </a>
             </li>
-            <li>
-                <a href="">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
-                    Usuaris
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/logout') }}">
+            @if(Auth::user()->rol->id == 1)
+                <li>
+                    <div>
+                        <a href="{{ route('users') }}">
+                            <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
+                            Usuaris
+                        </a>
+                    </div>
+                </li>
+            @endif
+            <li id="logout">
+                <a href="{{ route('logout') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/exit.png') }}" alt="">
                     Sortir
                 </a>
@@ -92,8 +98,5 @@
     <div class="body">
         @yield('body')
     </div>
-
-
 </body>
-
 </html>

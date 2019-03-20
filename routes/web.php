@@ -19,8 +19,26 @@ Route::get('/login', 'Auth\LoginController@showLogin')->name("showLogin");
 Route::post('/login', 'Auth\LoginController@login')->name("login");
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 
+Route::get('locale/{locale}', function($locale){
+    $request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::group(['middleware' => ['auth']], function () {
+
     Route::get('/index', function () {
         return view('privada.index');
     })->name("index");
+
+    Route::get('/users', function(){
+        return view('privada.users');
+    })->name("users");
+
+    Route::get('/donants', function(){
+        return view('privada.donants');
+    })->name("donants");
+
+    Route::get('/donations', function(){
+        return view('privada.donations');
+    })->name("donations");
 });
