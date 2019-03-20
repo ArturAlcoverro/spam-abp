@@ -13,13 +13,14 @@
 
 Route::get('/', function () {
     return view('publica.home');
+})->name("home");
+
+Route::get('/login', 'Auth\LoginController@showLogin')->name("showLogin");
+Route::post('/login', 'Auth\LoginController@login')->name("login");
+Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/index', function () {
+        return view('privada.index');
+    })->name("index");
 });
-
-Route::get('/login', 'Auth\LoginController@showLogin');
-Route::post('/login', 'Auth\LoginController@login');
-
-Route::get('/index', function () {
-    return view('privada.index');
-})->name("");
-
-

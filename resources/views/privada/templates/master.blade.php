@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,8 +48,8 @@
                     </a>
                 </li>
                 <li class="mt-5">
-                    <a href="">
-                        <p>Sortir</p>
+                    <a href="{{ url('/logout') }}">
+                        Sortir
                     </a>
                 </li>
             </ul>
@@ -67,17 +66,20 @@
                     Donacions
                 </a>
             </li>
-            <li><a href="">
+            <li>
+                <a href="">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
                     Donants
                 </a>
             </li>
-            <li><a href="">
+            <li>
+                <a href="">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
                     Usuaris
                 </a>
             </li>
-            <li><a href="">
+            <li>
+                <a href="{{ url('/logout') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/exit.png') }}" alt="">
                     Sortir
                 </a>
