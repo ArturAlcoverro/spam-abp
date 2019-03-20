@@ -1,0 +1,22 @@
+.toolbar{
+    display: flex;
+}
+.toolbar li{
+    list-style-type: none;
+    height: 50px;
+    width: 50px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #a7a7a7;
+    margin-right: 3px
+}
+
+.toolbar img{
+    height: 35px;
+}
+
+.toolbar li:hover{
+    border: 1px solid #3ca1ff;
+}
