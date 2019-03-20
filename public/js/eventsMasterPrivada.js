@@ -42,3 +42,9 @@ function hideMenu() {
 
     menu = false;
 }
+
+//switch idioma
+$("#idiomaSwitch").change(function(){
+    window.location = "locale/" + $(this).data('leng');
+    //window.location = '{{ url("shop/" + ui.item.value) }}';
+  });

@@ -19,6 +19,11 @@ Route::get('/login', 'Auth\LoginController@showLogin')->name("showLogin");
 Route::post('/login', 'Auth\LoginController@login')->name("login");
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 
+Route::get('locale/{locale}', function($locale){
+    $request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/index', function () {
         return view('privada.index');
