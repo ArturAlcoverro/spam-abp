@@ -668,13 +668,27 @@
             dom: 'Bfrtip',
             buttons: [
                 {
-
+                    extend: 'copy',
+                    //text:"",
+                    title:"Donacions"
                 },
-                'copy', 'excel', 'pdf', 'print'
+                {
+                    extend: 'excel',
+                    text:"",
+                    title:"Donacions"
+                },
+                {
+                    extend: 'pdf',
+                    text:"",
+                    title:"Donacions"
+                },
+                {
+                    extend: 'print',
+                    text:"",
+                    title:"Donacions"
+                },
             ],
-            select: {
-                items: 'row'
-            },
+            select: true,
 
         });
     });</script> @endsection
