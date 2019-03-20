@@ -20,7 +20,8 @@ Route::post('/login', 'Auth\LoginController@login')->name("login");
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 
 Route::get('locale/{locale}', function($locale){
-    $request->session()->put('locale', $locale);
+    Session::put('locale', $locale);
+    // $request->session()->put('locale', $locale);
     return redirect()->back();
 });
 

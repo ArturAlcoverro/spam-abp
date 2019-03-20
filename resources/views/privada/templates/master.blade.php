@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{app()->getLocale()}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,33 +27,48 @@
     </div>
     <nav id="menuSuperior">
         <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
+ 
+        <!-- <div class="form-group float-right">
+            <select class="form-control" id="idiomaSwitch">
+                <option data-leng='cat' value="cat">Català    </option>
+                <option data-leng='es'  value="es" >Castellano</option>
+            </select>
+        </div> -->
+        
+        <ul class='navbar-nav mr-auto'>
+            <li class='nav-item'>
+                <a class = 'nav-link' href="locale/cat">Català</a>
+            </li>
+            <li class='nav-item'>
+                <a class = 'nav-link' href="locale/es">Castellano</a>
+            </li>
+        </ul>
+        
     </nav>
-    <a id="logo" href="{{ route('index') }}">
+    <div id="logo">
         <img height="70%" src="{{ asset('media/img/artio.png') }}" alt="">
-    </a>
+    </div>
     <div class="menu">
         <div class="menu-list">
             <ul>
                 <li>
                     <a href="">
-                        <p>Donacions</p>
+                        <p>@lang('master.donacions_nav')</p>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <p>Donants</p>
+                        <p>@lang('master.donants_nav')</p>
                     </a>
                 </li>
-                @if(Auth::user()->rol->id == 1)
-                    <li>
-                        <a href="">
-                            <p>Usuaris</p>
-                        </a>
-                    </li>
-                @endif
+                <li>
+                    <a href="">
+                        <p>@lang('master.donants_nav')</p>
+                    </a>
+                </li>
                 <li class="mt-5">
                     <a href="{{ url('/logout') }}">
-                        Sortir
+                        @lang('master.sortir_nav')
                     </a>
                 </li>
             </ul>
@@ -65,38 +80,38 @@
     <nav id="menuLateral">
         <ul id="opcionsMenuLateral">
             <li class="active">
-                <a href="{{ route('donations') }}">
+                <a href="">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
-                    Donacions
+                    @lang('master.donacions_nav')
                 </a>
             </li>
             <li>
-                <a href="{{ route('donants') }}">
+                <a href="">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
-                    Donants
+                    @lang('master.donants_nav')
                 </a>
             </li>
-            @if(Auth::user()->rol->id == 1)
-                <li>
-                    <div>
-                        <a href="{{ route('users') }}">
-                            <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
-                            Usuaris
-                        </a>
-                    </div>
-                </li>
-            @endif
-            <li id="logout">
-                <a href="{{ route('logout') }}">
+            <li>
+                <a href="">
+                    <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
+                    @lang('master.donants_nav')
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/logout') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/exit.png') }}" alt="">
-                    Sortir
+                    @lang('master.sortir_nav')
                 </a>
             </li>
+
         </ul>
     </nav>
 
     <div class="body">
         @yield('body')
     </div>
+
+
 </body>
+
 </html>
