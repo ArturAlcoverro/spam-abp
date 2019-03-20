@@ -42,4 +42,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/donations', function(){
         return view('privada.donations');
     })->name("donations");
+
+    Route::get('/users/create', 'UsuarioController@create')->name("createUser");
 });
