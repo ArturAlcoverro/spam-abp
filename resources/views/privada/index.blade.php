@@ -1,22 +1,26 @@
 @extends('privada.templates.master') @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}"> @endsection @section('body')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
+@endsection
+
+@section('body')
 
 
 <div class="p-5">
-    <ul class="toolbar">
-        <li title="Añadir">
+    <div class="toolbar">
+        <button title="Añadir" class="btn btn-secondary buttons-html5">
             <img src="{{ asset('media/img/add.png') }}" alt="">
-        </li>
-        <li title="Modificar">
-                <img src="{{ asset('media/img/edit.png') }}" alt="">
-            </li>
-        <li title="Eliminar">
-                <img src="{{ asset('media/img/delete.png') }}" alt="">
-            </li>
-        <li title="Consultar">
-                <img src="{{ asset('media/img/save.png') }}" alt="">
-        </li>
-    </ul>
+        </button>
+        <button title="Modificar" class="btn btn-secondary buttons-html5">
+            <img src="{{ asset('media/img/edit.png') }}" alt="">
+        </button>
+        <button title="Eliminar" class="btn btn-secondary buttons-html5">
+            <img src="{{ asset('media/img/delete.png') }}" alt="">
+        </button>
+        <button title="Consultar" class="btn btn-secondary buttons-html5">
+            <img src="{{ asset('media/img/save.png') }}" alt="">
+        </button>
+    </div>
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
@@ -663,32 +667,4 @@
         </table>
 </div>
 
-<script>$(document).ready(function () {
-        $('#table').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'copy',
-                    //text:"",
-                    title:"Donacions"
-                },
-                {
-                    extend: 'excel',
-                    text:"",
-                    title:"Donacions"
-                },
-                {
-                    extend: 'pdf',
-                    text:"",
-                    title:"Donacions"
-                },
-                {
-                    extend: 'print',
-                    text:"",
-                    title:"Donacions"
-                },
-            ],
-            select: true,
-
-        });
-    });</script> @endsection
+@endsection

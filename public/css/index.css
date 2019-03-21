@@ -1,22 +1,51 @@
-.toolbar{
-    padding: 0;
-    display: flex;
+.dt-buttons{
+ display: flex;
 }
-.toolbar li{
-    list-style-type: none;
-    height: 50px;
-    width: 50px;
-    background: white;
+
+.dt-buttons .btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #a7a7a7;
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    background: white;
+    border: 1px solid #ccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 35px;
 }
 
-.toolbar img{
+.dt-buttons .btn:hover{
+    border: 1px solid rgb(112, 169, 255);
+
+}
+
+.dt-buttons .btn:click{
+    box-shadow: none;
+    background-color: rgb(77, 77, 77);
+}
+
+.dt-buttons .btn:focus{
+    box-shadow: none;}
+
+.dt-buttons .btn img{
     height: 35px;
 }
 
-.toolbar li:hover{
-    border: 1px solid #3ca1ff;
+.dt-buttons .buttons-copy{
+    background-image: url("../media/img/copy.png");
 }
+
+.dt-buttons .buttons-excel{
+    background-image: url("../media/img/xls.png");
+}
+
+.dt-buttons .buttons-pdf{
+    background-image: url("../media/img/pdf.png");
+}
+
+.dt-buttons .buttons-print{
+    background-image: url("../media/img/print.png");
+}
+
