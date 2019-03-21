@@ -21,7 +21,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 
 Route::get('locale/{locale}', function($locale){
     Session::put('locale', $locale);
-    // $request->session()->put('locale', $locale);
+    //$request->session()->put('locale', $locale);
     return redirect()->back();
 });
 

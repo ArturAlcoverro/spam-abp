@@ -52,17 +52,17 @@
         <div class="menu-list">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="{{ route('donations') }}">
                         <p>@lang('master.donacions_nav')</p>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('donants') }}">
                         <p>@lang('master.donants_nav')</p>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ action('UsuarioController@index') }}">
                         <p>@lang('master.usuaris_nav')</p>
                     </a>
                 </li>
