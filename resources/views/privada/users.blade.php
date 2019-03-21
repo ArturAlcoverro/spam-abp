@@ -6,6 +6,14 @@
 @endsection
 
 @section('body')
+    <script>
+        $(document).ready(function(){
+            $('.buttons-copy').attr('title',"{{ __('master.copy_crud') }}");
+            $('.buttons-excel').attr('title',"{{ __('master.copy_crud') }}");
+            $('.buttons-pdf').attr('title',"{{ __('master.copy_crud') }}");
+            $('.buttons-print').attr('title',"{{ __('master.print_crud') }}");
+        });
+    </script>
     <div class="p-5">
         <div class="toolbar">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
