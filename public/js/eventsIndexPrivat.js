@@ -7,11 +7,11 @@
                     text:"",
                     title:"Donacions"
                 },
-                // {
-                //     extend: 'excel',
-                //     text:"",
-                //     title:"Donacions"
-                // },
+                {
+                    extend: 'excel',
+                    text:"",
+                    title:"Donacions"
+                },
                 {
                     extend: 'pdf',
                     text:"",
