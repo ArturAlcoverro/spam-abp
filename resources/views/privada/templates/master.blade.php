@@ -80,13 +80,13 @@
     <nav id="menuLateral">
         <ul id="opcionsMenuLateral">
             <li class="active">
-                <a href="">
+                <a href="{{ route('donations') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
                     @lang('master.donacions_nav')
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('donants') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
                     @lang('master.donants_nav')
                 </a>
@@ -107,7 +107,7 @@
         </ul>
     </nav>
 
-    <div class="body">
+    <div class="body d-none">
         @yield('body')
     </div>
 

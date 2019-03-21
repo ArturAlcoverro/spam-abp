@@ -31,10 +31,6 @@ Route::group(['middleware' => ['auth']], function () {
         return view('privada.index');
     })->name("index");
 
-    //Route::get('/users', function(){
-      //  return view('privada.users');
-    //})->name("users");
-
     Route::get('/donants', function(){
         return view('privada.donants');
     })->name("donants");
@@ -42,8 +38,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/donations', function(){
         return view('privada.donations');
     })->name("donations");
-
-    //Route::get('/users/create', 'UsuarioController@create')->name("createUser");
 
     Route::resource('/user', 'UsuarioController');
 });
