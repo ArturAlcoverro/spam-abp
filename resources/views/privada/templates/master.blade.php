@@ -107,7 +107,7 @@
         </ul>
     </nav>
 
-    <div class="body d-none">
+    <div class="body">
         @yield('body')
     </div>
 

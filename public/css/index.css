@@ -49,3 +49,9 @@
     background-image: url("../media/img/print.png");
 }
 
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+     border-radius: 0;
+     border: 1px solid #ccc;
+     background-color: var(--primary-color-dark)
+ }

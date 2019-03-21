@@ -3,7 +3,16 @@ return[
     'donacions_nav'=>'Donaciones',
     'donants_nav'  =>'Donantes',
     'usuaris_nav'  =>'Usuarios',
-    'sortir_nav'   =>'Salir'
+    'sortir_nav'   =>'Salir',
+    'add_crud'   =>'Añadir',
+    'edit_crud'   =>'Editar',
+    'delete_crud'   =>'Eliminar',
+    'save_crud'   =>'Guardar',
+    'copy_crud'   =>'Copiar',
+    'xls_crud'   =>'Exportar XLS',
+    'pdf_crud'   =>'Exportar PDF',
+    'print_crud'   =>'Imprimir',
+
 ];
 
 ?>

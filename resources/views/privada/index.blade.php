@@ -4,21 +4,27 @@
 @endsection
 
 @section('body')
-
-
+<script>
+    $(document).ready(function(){
+        $('.buttons-copy').attr('title',"{{ __('master.copy_crud') }}");
+        $('.buttons-excel').attr('title',"{{ __('master.copy_crud') }}");
+        $('.buttons-pdf').attr('title',"{{ __('master.copy_crud') }}");
+        $('.buttons-print').attr('title',"{{ __('master.print_crud') }}");
+    });
+</script>
 <div class="p-5">
     <div class="toolbar">
-        <button title="Añadir" class="btn btn-secondary buttons-html5">
-            <img src="{{ asset('media/img/add.png') }}" alt="">
+        <button title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </button>
-        <button title="Modificar" class="btn btn-secondary buttons-html5">
-            <img src="{{ asset('media/img/edit.png') }}" alt="">
+        <button title="@lang('master.add_edit')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
         </button>
-        <button title="Eliminar" class="btn btn-secondary buttons-html5">
-            <img src="{{ asset('media/img/delete.png') }}" alt="">
+        <button title="@lang('master.add_delete')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
-        <button title="Consultar" class="btn btn-secondary buttons-html5">
-            <img src="{{ asset('media/img/save.png') }}" alt="">
+        <button title="@lang('master.add_save')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/save.png') }}" alt="">
         </button>
     </div>
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
@@ -666,5 +672,4 @@
             </tbody>
         </table>
 </div>
-
 @endsection

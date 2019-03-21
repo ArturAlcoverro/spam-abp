@@ -1,4 +1,3 @@
-$(document).ready(function(){
     $(document).ready(function () {
         $('#table').DataTable({
             dom: 'Blrtip',
@@ -28,6 +27,6 @@ $(document).ready(function(){
         });
 
         $(".toolbar .btn").prependTo(".dt-buttons");
-        $('.buttons-copy').attr('title',"Copiar")
+
     });
-});
+
