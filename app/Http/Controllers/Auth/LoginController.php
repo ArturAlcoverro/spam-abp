@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         if($user != null && Hash::check($contrasenya, $user->password)){
             Auth::login($user);
-            return redirect('index');
+            return redirect('donations');
         }
         else{
             return redirect('login')->withInput();

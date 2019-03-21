@@ -80,7 +80,12 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        $roles = Rol::all();
+
+        $data['roles'] = $roles;
+        $data['user'] = $usuario;
+
+        return view('privada.createUser', $data);
     }
 
     /**

@@ -27,17 +27,13 @@ Route::get('locale/{locale}', function($locale){
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/index', function () {
+    Route::get('/donations', function () {
         return view('privada.index');
-    })->name("index");
+    })->name("donations");
 
     Route::get('/donants', function(){
         return view('privada.donants');
     })->name("donants");
-
-    Route::get('/donations', function(){
-        return view('privada.donations');
-    })->name("donations");
 
     Route::resource('/user', 'UsuarioController');
 });

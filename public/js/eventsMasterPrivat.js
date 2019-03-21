@@ -16,8 +16,6 @@ $(document).ready(function () {
     $(".menu-close-space").click(function () {
         hideMenu();
     });
-
-    $(".body").removeClass("d-none");
 });
 
 function showMenu() {
