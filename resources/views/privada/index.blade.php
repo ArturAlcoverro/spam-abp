@@ -4,6 +4,7 @@
 @endsection
 
 @section('body')
+
 <script>
     $(document).ready(function(){
         $('.buttons-copy').attr('title',"{{ __('master.copy_crud') }}");

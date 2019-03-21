@@ -19,7 +19,7 @@
     @yield('css')
 </head>
 
-<body>
+<body class="d-none">
     <div class="menu-btn">
         <div class="menu-btn-animation"></div>
         <div class="menu-btn-animation"></div>
@@ -79,19 +79,19 @@
     </div>
     <nav id="menuLateral">
         <ul id="opcionsMenuLateral">
-            <li class="active">
+            <li id="donacionsTab">
                 <a href="{{ route('donations') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
                     @lang('master.donacions_nav')
                 </a>
             </li>
-            <li>
+            <li id="donantsTab">
                 <a href="{{ route('donants') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
                     @lang('master.donants_nav')
                 </a>
             </li>
-            <li>
+            <li id="usuarisTab">
                 <a href="{{ action('UsuarioController@index') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
                     @lang('master.usuaris_nav')

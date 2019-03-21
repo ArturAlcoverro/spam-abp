@@ -1,6 +1,20 @@
 var menu = false;
 
 $(document).ready(function () {
+    var tab = window.location.href.split("/")[5];
+    switch (tab) {
+        case 'donations':
+            $('#donacionsTab').addClass('active');
+            break;
+        case 'donants':
+            $('#donantsTab').addClass('active');
+            break;
+        case 'user':
+            $('#usuarisTab').addClass('active');
+            break;
+        default: alert(tab); break;
+
+    }
     $(".menu-btn").click(function () {
         if (menu) {
             hideMenu();
@@ -16,6 +30,9 @@ $(document).ready(function () {
     $(".menu-close-space").click(function () {
         hideMenu();
     });
+
+    $('body').removeClass('d-none');
+
 });
 
 function showMenu() {
@@ -44,7 +61,7 @@ function hideMenu() {
 }
 
 //switch idioma
-$("#idiomaSwitch").change(function(){
+$("#idiomaSwitch").change(function () {
     window.location = "locale/" + $("#idiomaSwitch option:selected").val();
     //window.location = '{{ url("locale/" ) }}';
-  });
+});

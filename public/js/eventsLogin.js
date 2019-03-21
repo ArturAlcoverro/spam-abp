@@ -1,6 +1,17 @@
 var hide = true;
 
 $(document).ready(function () {
+    $(".fill").each(function () {
+        var $label = $("#" + $(this).attr("id") + "Label");
+        if ($(this).val() != "") {
+            $label.css({
+                "top": "4px",
+                "font-size": "13px",
+                "z-index": "0"
+            });
+        }
+    });
+
     $(".fill").on('focus', function () {
         var $label = $("#" + $(this).attr("id") + "Label");
         $label.css({ color: "var(--primary-color-dark)" });
@@ -10,6 +21,7 @@ $(document).ready(function () {
             "z-index": "0"
         }, 120);
     });
+
     $(".fill").on('blur', function () {
         var $label = $("#" + $(this).attr("id") + "Label");
         if (!$("#Password").is(":focus")) {

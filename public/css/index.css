@@ -1,8 +1,9 @@
-.dt-buttons{
- display: flex;
+.dt-buttons {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.dt-buttons .btn{
+.dt-buttons .btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,43 +17,64 @@
     background-size: 35px;
 }
 
-.dt-buttons .btn:hover{
+.dt-buttons .btn:hover {
     border: 1px solid rgb(112, 169, 255);
-
 }
 
-.dt-buttons .btn:click{
+.dt-buttons .btn:click {
     box-shadow: none;
     background-color: rgb(77, 77, 77);
 }
 
-.dt-buttons .btn:focus{
-    box-shadow: none;}
+.dt-buttons .btn:focus {
+    box-shadow: none;
+}
 
-.dt-buttons .btn img{
+.dt-buttons .btn img {
     height: 35px;
 }
 
-.dt-buttons .buttons-copy{
+.dt-buttons .buttons-copy {
     background-image: url("../media/img/copy.png");
 }
 
-.dt-buttons .buttons-excel{
+.dt-buttons .buttons-excel {
     background-image: url("../media/img/xls.png");
 }
 
-.dt-buttons .buttons-pdf{
+.dt-buttons .buttons-pdf {
     background-image: url("../media/img/pdf.png");
 }
 
-.dt-buttons .buttons-print{
+.dt-buttons .buttons-print {
     background-image: url("../media/img/print.png");
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
- table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    top: 50%;
+    border-radius: 0;
+    border: 1px solid white;
+    content: '';
+    background-image: url("../media/img/plus.png");
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    transform: translate(-0%, -50%);
+}
 
-     border-radius: 0;
-     border:1px solid white;
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    background-image: url("../media/img/minus.png");
+}
 
- }
+.selected {
+    background-color: var(--primary-color-dark) !important
+}
+
+table.dataTable.display tbody>tr.even.selected>.sorting_1,
+table.dataTable.order-column.stripe tbody>tr.even.selected>.sorting_1,
+table.dataTable.display tbody>tr.odd.selected>.sorting_1,
+table.dataTable.order-column.stripe tbody>tr.odd.selected>.sorting_1 {
+    background-color: var(--primary-color-dark) !important
+}
