@@ -1,24 +1,35 @@
-@extends('privada.templates.master') @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}"> @endsection @section('body')
+@extends('privada.templates.master')
 
-<div class="p-5">
-    <ul class="toolbar">
-        <li title="Añadir">
-            <a href="{{ route('createUser') }}">
-                <img src="{{ asset('media/img/add.png') }}" alt="">
-            </a>
-        </li>
-        <li title="Modificar">
-                <img src="{{ asset('media/img/edit.png') }}" alt="">
-            </li>
-        <li title="Eliminar">
-                <img src="{{ asset('media/img/delete.png') }}" alt="">
-            </li>
-        <li title="Consultar">
-                <img src="{{ asset('media/img/save.png') }}" alt="">
-        </li>
-    </ul>
-    <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/users.css') }}">
+    <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
+@endsection
+
+@section('body')
+    <div class="p-5">
+        <div class="toolbar">
+            <button title="Añadir" class="btn btn-secondary buttons-html5">
+                <a href="{{ action('UsuarioController@create') }}">
+                    <img src="{{ asset('media/img/add.png') }}" alt="">
+                </a>
+            </button>
+            <button title="Modificar" class="btn btn-secondary buttons-html5">
+                <a href="">
+                    <img src="{{ asset('media/img/edit.png') }}" alt="">
+                </a>
+            </button>
+            <button title="Eliminar" class="btn btn-secondary buttons-html5">
+                <a href="">
+                    <img src="{{ asset('media/img/delete.png') }}" alt="">
+                </a>
+            </button>
+            <button title="Consultar" class="btn btn-secondary buttons-html5">
+                <a href="">
+                    <img src="{{ asset('media/img/save.png') }}" alt="">
+                </a>
+            </button>
+        </div>
+        <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>Username</th>
@@ -28,21 +39,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>dcorredera</td>
-                    <td>temp@gmail.com</td>
-                    <td>David</td>
-                    <td>Admin</td>
-                </tr>
+                @foreach ($usuarios as $user)
+                    <tr>
+                        <td>{{ $user->nombre_usuario }}</td>
+                        <td>{{ $user->correo }}</td>
+                        <td>{{ $user->nombre }}</td>
+                        <td>{{ $user->rol->rol }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
-</div>
-
-<script>$(document).ready(function () {
-        $('#table').DataTable({
-            select: {
-                items: 'row'
-            },
-
-        });
-    });</script> @endsection
+    </div>
+@endsection

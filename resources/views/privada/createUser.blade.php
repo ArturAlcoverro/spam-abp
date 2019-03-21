@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="p-4">
-        <form action="" method="POST">
+        <form action="{{ action('UsuarioController@store') }}" method="POST">
             @csrf
             <div class="form-group row">
                 <label for="correo" class="col-2 col-form-label">Correo electronico</label>

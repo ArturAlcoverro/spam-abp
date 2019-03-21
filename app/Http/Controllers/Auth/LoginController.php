@@ -67,18 +67,4 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
-
-    public function register(Request $request)
-    {
-        $newUser = new Usuario();
-
-        $newUser->nombre_usuario= $request->input('correo');
-        $newUser->correo = $request->input('contrasenya');
-        $newUser->rol = $request->input('nombre');
-        $newUser->nombre = $request->input('direccion');
-
-        $newUser->save();
-
-        return redirect('users');
-    }
 }

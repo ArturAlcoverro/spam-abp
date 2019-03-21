@@ -63,7 +63,7 @@
                 </li>
                 <li>
                     <a href="">
-                        <p>@lang('master.donants_nav')</p>
+                        <p>@lang('master.usuaris_nav')</p>
                     </a>
                 </li>
                 <li class="mt-5">
@@ -92,9 +92,9 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ action('UsuarioController@index') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
-                    @lang('master.donants_nav')
+                    @lang('master.usuaris_nav')
                 </a>
             </li>
             <li>
