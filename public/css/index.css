@@ -19,7 +19,8 @@
 }
 
 .dt-buttons .btn:hover {
-    border: 1px solid rgb(112, 169, 255);
+    border: 1px solid rgb(132, 175, 238);
+    background-color: rgba(174, 206, 255, 0.233)
 }
 
 .dt-buttons .btn:click {
