@@ -25,6 +25,15 @@ body {
     justify-content: space-between;
 }
 
+.dropdown-lenguage{
+    background: transparent;
+    border: 0px;
+    color:grey;
+}
+.dropdown-lenguage::after{
+    display: none !important;
+}
+
 #menuLateral {
     position: fixed;
     height: calc(100% - var(--nav-height));

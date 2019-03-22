@@ -31,7 +31,7 @@
         <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
 
         <div class="dropdown mr-2">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class= "dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">
                     language
                 </i>
