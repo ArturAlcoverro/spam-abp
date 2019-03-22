@@ -26,7 +26,8 @@
             select: true,
         });
 
-        $(".toolbar .btn").prependTo(".dt-buttons");
+        $(".toolbar-prepend .btn").prependTo(".dt-buttons");
+        $(".toolbar-append .btn").appendTo(".dt-buttons");
 
     });
 

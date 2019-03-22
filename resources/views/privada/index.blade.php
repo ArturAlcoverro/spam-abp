@@ -8,26 +8,41 @@
 <script>
     $(document).ready(function(){
         $('.buttons-copy').attr('title',"{{ __('master.copy_crud') }}");
-        $('.buttons-excel').attr('title',"{{ __('master.copy_crud') }}");
-        $('.buttons-pdf').attr('title',"{{ __('master.copy_crud') }}");
+        $('.buttons-excel').attr('title',"{{ __('master.xls_crud') }}");
+        $('.buttons-pdf').attr('title',"{{ __('master.pdf_crud') }}");
         $('.buttons-print').attr('title',"{{ __('master.print_crud') }}");
     });
 </script>
 <div class="p-5">
-    <div class="toolbar">
+    <div class="toolbar-prepend">
         <button title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </button>
-        <button title="@lang('master.add_edit')" class="btn btn-secondary buttons-html5">
+        <button title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
         </button>
-        <button title="@lang('master.add_delete')" class="btn btn-secondary buttons-html5">
+        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
-        <button title="@lang('master.add_save')" class="btn btn-secondary buttons-html5">
+        <button title="@lang('master.save_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/save.png') }}" alt="">
         </button>
+        <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
+        </button>
+        <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/pie.png') }}" alt="">
+        </button>
+        <button title="@lang('master.update_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/update.png') }}" alt="">
+        </button>
+
     </div>
+
+    <div class="toolbar-append">
+
+    </div>
+
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
