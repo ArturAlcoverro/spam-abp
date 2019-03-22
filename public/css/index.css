@@ -15,6 +15,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 35px;
+    border-radius: 0;
 }
 
 .dt-buttons .btn:hover {
@@ -54,13 +55,14 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     top: 50%;
     border-radius: 0;
-    border: 1px solid white;
+    border:none;
     content: '';
     background-image: url("../media/img/plus.png");
     background-position: center;
     background-size: 40%;
     background-repeat: no-repeat;
     transform: translate(-0%, -50%);
+    box-shadow: none !important;
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,

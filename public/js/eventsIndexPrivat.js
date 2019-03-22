@@ -26,8 +26,10 @@
             select: true,
         });
 
-        $(".toolbar-prepend .btn").prependTo(".dt-buttons");
+        $(".toolbar .btn").prependTo(".dt-buttons");
         $(".toolbar-append .btn").appendTo(".dt-buttons");
+
+        $(".dataTables_length label").text
 
     });
 

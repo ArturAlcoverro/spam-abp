@@ -14,7 +14,7 @@
     });
 </script>
 <div class="p-5">
-    <div class="toolbar-prepend">
+    <div class="toolbar">
         <button title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </button>
