@@ -21,7 +21,7 @@
     @yield('css')
 </head>
 
-<body class="d-none">
+<body class="">
     <div class="menu-btn">
         <div class="menu-btn-animation"></div>
         <div class="menu-btn-animation"></div>
@@ -107,11 +107,11 @@
 
         </ul>
     </nav>
-
-    <div class="body">
-        @yield('body')
+    <div id="body" class="d-none">
+        <div class="body">
+            @yield('body')
+        </div>
     </div>
-
 </body>
 
 </html>
