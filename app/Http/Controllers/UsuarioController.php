@@ -78,14 +78,16 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit($id_user)
     {
+        $usuario = Usuario::find($id_user);
+
         $roles = Rol::all();
 
         $data['roles'] = $roles;
         $data['user'] = $usuario;
 
-        return view('privada.createUser', $data);
+        return view('privada.editUser', $data);
     }
 
     /**
@@ -95,9 +97,20 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id_usuario)
     {
-        //
+        $usuario = Usuario::find($id_usuario);
+
+        $usuario->nombre_usuario= $request->input('username');
+        $usuario->correo = $request->input('correo');
+        $usuario->roles_id = $request->input('rol');
+        $usuario->nombre = $request->input('nombre');
+
+        $usuario->password = Hash::make($request->input('password'));
+
+        $usuario->save();
+
+        return redirect()->action('UsuarioController@index');
     }
 
     /**
@@ -106,10 +119,12 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id_user)
     {
-        $actor->delete();
+        $usuario = Usuario::find($id_user);
 
-        return redirect()->action('ActorController@index');
+        $usuario->delete();
+
+        return redirect()->action('UsuarioController@index');
     }
 }

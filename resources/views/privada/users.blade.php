@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/users.css') }}">
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
+    <script src="{{ asset('js/eventsUsers.js') }}"></script>
 @endsection
 
 @section('body')
@@ -22,14 +23,21 @@
                 </a>
             </button>
             <button title="Modificar" class="btn btn-secondary buttons-html5">
-                <a href="">
+                <div onclick="editUser()">
                     <img src="{{ asset('media/img/edit.png') }}" alt="">
-                </a>
+                    <form id="form_edit" action="" method="get">
+                        @csrf
+                    </form>
+                </div>
             </button>
             <button title="Eliminar" class="btn btn-secondary buttons-html5">
-                <a href="">
+                <div onclick="deleteUser()">
                     <img src="{{ asset('media/img/delete.png') }}" alt="">
-                </a>
+                    <form id="form_delete" action="" method="post">
+                        @method('delete')
+                        @csrf
+                    </form>
+                </div>
             </button>
             <button title="Consultar" class="btn btn-secondary buttons-html5">
                 <a href="">
@@ -40,6 +48,7 @@
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Name</th>
@@ -49,6 +58,7 @@
             <tbody>
                 @foreach ($usuarios as $user)
                     <tr>
+                        <td>{{ $user->id }}</td>
                         <td>{{ $user->nombre_usuario }}</td>
                         <td>{{ $user->correo }}</td>
                         <td>{{ $user->nombre }}</td>
