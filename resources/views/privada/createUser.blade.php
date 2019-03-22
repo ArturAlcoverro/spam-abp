@@ -1,6 +1,9 @@
 @extends('privada.templates.master')
 
 @section('body')
+
+    @include('partial.errores')
+
     <div class="p-4">
         <form action="{{ action('UsuarioController@store') }}" method="POST">
             @csrf

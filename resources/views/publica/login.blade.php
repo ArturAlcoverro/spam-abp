@@ -22,12 +22,23 @@
             @csrf
             <div class="form-group">
                 <p id="EmailLabel">Correo electrónico</p>
-                <input type="text" class="fill" id="Email" name="Email">
+                @if(Session::has('error'))
+                    <input type="text" class="form-control is-invalid" id="Email" name="Email" placeholder="Email" value="{{ old('Email') }}">
+                    <div class="invalid-feedback">Correo incorrecto</div>
+                @else
+                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
+                @endif
             </div>
             <div class="form-group">
                 <p id="PasswordLabel">Contraseña</p>
-                <input type="password" class="fill" id="Password" name="Password" >
-                <div id="hideShow">visibility_off</div>
+                @if(Session::has('error'))
+                    <input type="text" class="form-control is-invalid" id="Password" name="Password" placeholder="Password" value="{{ old('Password') }}">
+                    <div id="hideShow">visibility_off</div>
+                    <div class="invalid-feedback">Password incorrecto</div>
+                @else
+                    <input type="text" class="form-control" id="Password" name="Password" placeholder="Password">
+                    <div id="hideShow">visibility_off</div>
+                @endif
             </div>
             <div class="form-group d-flex" style="justify-content:flex-end">
                 <button type="submit" class="btn-primary button">Entrar</button>

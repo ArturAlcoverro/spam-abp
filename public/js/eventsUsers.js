@@ -17,3 +17,7 @@ function deleteUser() {
     $('#form_delete').attr('action', "http://localhost:8080/spam-abp/public/user/" + id);
     $('#form_delete').submit();
 }
+
+function changePassword() {
+    $("#password").removeAttr('readonly');
+}

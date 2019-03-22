@@ -51,6 +51,7 @@ class LoginController extends Controller
     {
         $correo= $request->input('Email');
         $contrasenya = $request->input('Password');
+
         $user = Usuario::where('correo', $correo)->first();
 
         if($user != null && Hash::check($contrasenya, $user->password)){
@@ -58,6 +59,7 @@ class LoginController extends Controller
             return redirect('donations');
         }
         else{
+            $request->session()->flash('error', "xd");
             return redirect('login')->withInput();
         }
     }

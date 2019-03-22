@@ -23,7 +23,7 @@
                 </a>
             </button>
             <button title="Modificar" class="btn btn-secondary buttons-html5">
-                <div onclick="editUser()">
+                <div onclick="editDonant()">
                     <img src="{{ asset('media/img/edit.png') }}" alt="">
                     <form id="form_edit" action="" method="get">
                         @csrf
@@ -31,7 +31,7 @@
                 </div>
             </button>
             <button title="Eliminar" class="btn btn-secondary buttons-html5">
-                <div onclick="deleteUser()">
+                <div onclick="deleteDonant()">
                     <img src="{{ asset('media/img/delete.png') }}" alt="">
                     <form id="form_delete" action="" method="post">
                         @method('delete')
@@ -49,20 +49,22 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Name</th>
-                    <th>Rol</th>
+                    <th>Nombre</th>
+                    <th>CIF</th>
+                    <th>Tipo</th>
+                    <th>Correo</th>
+                    <th>Pais</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($donantes as $donante)
                     <tr>
-                        <td>{{ $donante->tipos_donante_id }}</td>
-                        <td>{{ $donante->nombre_usuario }}</td>
-                        <td>{{ $donante->correo }}</td>
+                        <td>{{ $donante->id }}</td>
                         <td>{{ $donante->nombre }}</td>
-                        <td>{{ $donante->rol->rol }}</td>
+                        <td>{{ $donante->cif }}</td>
+                        <td>{{ $donante->tipo_donante_id->tipo }}</td>
+                        <td>{{ $donante->correo }}</td>
+                        <td>{{ $donante->pais }}</td>
                     </tr>
                 @endforeach
             </tbody>

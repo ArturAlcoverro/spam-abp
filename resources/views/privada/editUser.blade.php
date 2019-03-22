@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('css')
+    <script src="{{ asset('js/eventsUsers.js') }}"></script>
+@endsection
+
 @section('body')
     <div class="p-4">
         <form action="{{ action('UsuarioController@update', [$user->id]) }}" method="POST">
@@ -12,9 +16,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="password" class="col-2 col-form-label">Password</label>
+                <label for="lblpassword" class="col-2 col-form-label">Password</label>
                 <div class="col-10">
-                    <input type="text" name="password" id="password" class="form-control" placeholder="Password" value="{{ $user->password }}">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Nueva contraseña" readonly>
                 </div>
             </div>
             <div class="form-group row">
@@ -44,6 +48,7 @@
                 </div>
             </div>
             <div class="form-group float-right">
+                <button type="button" name="pass" class="btn btn-primary boton-amplada" onclick="changePassword()">Cambiar contraseña</button>
                 <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
             </div>
         </form>

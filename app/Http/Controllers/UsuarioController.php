@@ -9,6 +9,10 @@ use App\Models\Rol;
 
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Database\QueryException;
+
+use App\Clases\Utilitat;
+
 class UsuarioController extends Controller
 {
     /**
@@ -56,9 +60,18 @@ class UsuarioController extends Controller
 
         $newUser->password = Hash::make($request->input('password'));
 
-        $newUser->save();
+        try
+        {
+            $newUser->save();
+        }
+        catch(QueryException $e){
 
-        return redirect('users');
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('UsuarioController@create')->withInput();
+        }
+
+        return redirect('user');
     }
 
     /**
@@ -106,7 +119,7 @@ class UsuarioController extends Controller
         $usuario->roles_id = $request->input('rol');
         $usuario->nombre = $request->input('nombre');
 
-        $usuario->password = Hash::make($request->input('password'));
+    // $usuario->password = Hash::make($request->input('password'));
 
         $usuario->save();
 
