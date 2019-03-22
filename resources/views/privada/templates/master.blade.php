@@ -16,6 +16,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     @yield('css')
 </head>
 
@@ -28,21 +30,20 @@
     <nav id="menuSuperior">
         <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
 
-        <!-- <div class="form-group float-right">
-            <select class="form-control" id="idiomaSwitch">
-                <option data-leng='cat' value="cat">Català    </option>
-                <option data-leng='es'  value="es" >Castellano</option>
-            </select>
-        </div> -->
+        <div class="dropdown mr-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">
+                    language
+                </i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="locale/cat">Català</a>
+              <a class="dropdown-item" href="locale/es">Castellano</a>
 
-        <ul class='navbar-nav mr-auto'>
-            <li class='nav-item'>
-                <a class = 'nav-link' href="locale/cat">Català</a>
-            </li>
-            <li class='nav-item'>
-                <a class = 'nav-link' href="locale/es">Castellano</a>
-            </li>
-        </ul>
+            </div>
+          </div>
+
+
 
     </nav>
     <div id="logo">
