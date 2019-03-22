@@ -31,7 +31,7 @@ $(document).ready(function () {
         hideMenu();
     });
 
-    $('body').removeClass('d-none');
+    $('#body').removeClass('d-none');
 
 });
 
