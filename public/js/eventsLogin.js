@@ -13,12 +13,13 @@ $(document).ready(function () {
     });
 
     $(".fill").on('focus', function () {
+        $(this).removeClass("invalid");
         var $label = $("#" + $(this).attr("id") + "Label");
         $label.css({ color: "var(--primary-color-dark)" });
         $label.animate({
             "top": "4px",
             "font-size": "13px",
-            "z-index": "0"
+            "z-index": "1"
         }, 120);
     });
 
@@ -29,7 +30,7 @@ $(document).ready(function () {
                 $label.animate({
                     "top": "15px",
                     "font-size": "17px",
-                    "z-index": "-1"
+                    "z-index": "0"
                 }, 120);
             }
             $label.css({ color: "#8a8a8a" });

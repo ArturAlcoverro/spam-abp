@@ -20,6 +20,7 @@ body {
 }
 
 .fill {
+    position: relative;
     overflow: hidden;
     box-sizing: border-box;
     display: block;
@@ -40,11 +41,18 @@ body {
 }
 
 fill:required {
-    border-color: red
+    border-color: var(--error-color)
 }
 
-.fill:invalid {
-    box-shadow: none !important;
+.invalid {
+    outline-width: 0;
+    padding: 20px 15px 8px 15px;
+    border: 2px solid;
+    border-color: var(--error-color)
+}
+
+.feedback {
+    color: var(--error-color)
 }
 
 h2 {

@@ -23,23 +23,29 @@
             <div class="form-group">
                 <p id="EmailLabel">Correo electrónico</p>
                 @if(Session::has('error'))
-                    <input type="text" class="form-control is-invalid" id="Email" name="Email" placeholder="Email" value="{{ old('Email') }}">
-                    <div class="invalid-feedback">Correo incorrecto</div>
+                    <input type="text" class="fill invalid" id="Email" name="Email" value="{{ old('Email') }}">
+                    <div class="feedback ml-2">*Correo incorrecto</div>
                 @else
-                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
+                    <input type="text" class="fill" id="Email" name="Email">
                 @endif
             </div>
-            <div class="form-group">
-                <p id="PasswordLabel">Contraseña</p>
+
                 @if(Session::has('error'))
-                    <input type="text" class="form-control is-invalid" id="Password" name="Password" placeholder="Password" value="{{ old('Password') }}">
+                <div class="form-group m-0">
+                    <p id="PasswordLabel">Contraseña</p>
+                    <input type="password" class="fill invalid" id="Password" name="Password" value="{{ old('Password') }}">
                     <div id="hideShow">visibility_off</div>
-                    <div class="invalid-feedback">Password incorrecto</div>
+                </div>
+                <div class="feedback ml-2">*Password incorrecto</div>
+
                 @else
-                    <input type="text" class="form-control" id="Password" name="Password" placeholder="Password">
+                <div class="form-group">
+                    <p id="PasswordLabel">Contraseña</p>
+                    <input type="password" class="fill" id="Password" name="Password">
                     <div id="hideShow">visibility_off</div>
+                </div>
+
                 @endif
-            </div>
             <div class="form-group d-flex" style="justify-content:flex-end">
                 <button type="submit" class="btn-primary button">Entrar</button>
             </div>
