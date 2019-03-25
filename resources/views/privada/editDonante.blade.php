@@ -9,7 +9,8 @@
     @include('partial.errores')
 
     <div class="p-4">
-        <form action="{{ action('DonanteController@store') }}" method="POST">
+        <form action="{{ action('DonanteController@update', [$donante->id]) }}" method="POST">
+            @method('put')
             @csrf
             <div class="form-group row">
                 <label for="lbltipos_donante" class="col-2 col-form-label">Tipo de donante</label>
@@ -34,7 +35,13 @@
             <div class="form-group row" id="row-cif">
                 <label for="lblcif" class="col-2 col-form-label">CIF/DNI</label>
                 <div class="col-10">
-                    <input type="text" name="cif" id="cif" class="form-control" placeholder="CIF" value="{{ $donante->cif }}">
+                    <input type="text" name="cif" id="cif" class="form-control" placeholder="CIF/DNI" value="{{ $donante->cif }}">
+                </div>
+            </div>
+            <div class="form-group row" id="row-vinculo">
+                <label for="lblvinculo" class="col-2 col-form-label">Vinculo de entidad</label>
+                <div class="col-10">
+                    <input type="text" name="vinculo" id="vinculo" class="form-control" placeholder="Vinculo de entidad" value="{{ $donante->vinculo_entidad }}">
                 </div>
             </div>
             <div class="form-group row" id="row-sexo">
@@ -42,10 +49,14 @@
                 <div class="col-10">
                     <select name="sexos" id="sexos" class="form-control">
                         @foreach ($sexos as $sexo)
-                            @if($sexo->id == $donante->sexo->id)
-                                <option value="{{ $sexo->id }}" selected>{{ $sexo->tipo }}</option>
+                            @if($donante->sexo != null)
+                                @if($sexo->id == $donante->sexo->id)
+                                    <option value="{{ $sexo->id }}" selected>{{ $sexo->sexo }}</option>
+                                @else
+                                    <option value="{{ $sexo->id }}">{{ $sexo->sexo }}</option>
+                                @endif
                             @else
-                                <option value="{{ $sexo->id }}">{{ $sexo->tipo }}</option>
+                                <option value="{{ $sexo->id }}">{{ $sexo->sexo }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -81,13 +92,22 @@
                     <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais" value="{{ $donante->pais }}">
                 </div>
             </div>
-            <div class="form-group row" id="row-sexo">
-                <label for="animales" class="col-2 col-form-label">Animales</label>
-                <div class="col-10">
-                    <select name="animales" id="animales" class="form-control">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
+            <div class="form-group row">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
+                </div>
+                <div class="col-3">
+                    <input type="checkbox" name="colaborador" id="colaborador" class="form-check-input">Es colaborador</input>
+                </div>
+                <div class="col-3">
+                    <input type="checkbox" name="animales" id="animales" class="form-check-input">Tiene animales</input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="checkbox" name="spam" id="spam" class="form-check-input">Quiero recibir correos</input>
                 </div>
             </div>
             <div class="form-group float-right">
@@ -100,6 +120,6 @@
 
 @section('js')
 
-    <script src="{{ asset('js/eventsDonants.js') }}"></script>
+    <script src="{{ asset('js/eventsEditDonant.js') }}"></script>
 
 @endsection

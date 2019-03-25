@@ -1,3 +1,8 @@
+$(document).ready(function () {
+
+    $('#row-sexo').hide();
+});
+
 function editDonant() {
 
     var row = $("#table").DataTable().row('.selected').data();
@@ -26,18 +31,16 @@ $('#tipos_donante').change(function () {
 
         case "1":
 
-            $('#row-cif').show();
+            $('#row-vinculo').show();
             $('#row-sexo').hide();
 
         break;
 
         case "2":
 
-            $('#row-cif').hide();
+            $('#row-vinculo').hide();
             $('#row-sexo').show();
 
         break;
     }
 });
-
-$('#row-sexo').hide();

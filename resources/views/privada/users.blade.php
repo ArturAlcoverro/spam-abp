@@ -48,7 +48,7 @@
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th hidden>Id</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Name</th>
@@ -58,7 +58,7 @@
             <tbody>
                 @foreach ($usuarios as $user)
                     <tr>
-                        <td>{{ $user->id }}</td>
+                        <td hidden>{{ $user->id }}</td>
                         <td>{{ $user->nombre_usuario }}</td>
                         <td>{{ $user->correo }}</td>
                         <td>{{ $user->nombre }}</td>

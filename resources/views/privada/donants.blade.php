@@ -48,7 +48,7 @@
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th hidden>Id</th>
                     <th>Nombre</th>
                     <th>CIF</th>
                     <th>Tipo</th>
@@ -59,7 +59,7 @@
             <tbody>
                 @foreach ($donantes as $donante)
                     <tr>
-                        <td>{{ $donante->id }}</td>
+                        <td hidden>{{ $donante->id }}</td>
                         <td>{{ $donante->nombre }}</td>
                         <td>{{ $donante->cif }}</td>
                         <td>{{ $donante->tipo_donante->tipo }}</td>

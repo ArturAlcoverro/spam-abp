@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('css')
-
+    <link rel="stylesheet" href="{{ asset('css/donantes.css') }}">
 @endsection
 
 @section('body')
@@ -30,7 +30,13 @@
             <div class="form-group row" id="row-cif">
                 <label for="lblcif" class="col-2 col-form-label">CIF/DNI</label>
                 <div class="col-10">
-                    <input type="text" name="cif" id="cif" class="form-control" placeholder="CIF">
+                    <input type="text" name="cif" id="cif" class="form-control" placeholder="CIF/DNI">
+                </div>
+            </div>
+            <div class="form-group row" id="row-vinculo">
+                <label for="lblvinculo" class="col-2 col-form-label">Vinculo de entidad</label>
+                <div class="col-10">
+                    <input type="text" name="vinculo" id="vinculo" class="form-control" placeholder="Vinculo de entidad">
                 </div>
             </div>
             <div class="form-group row" id="row-sexo">
@@ -73,13 +79,22 @@
                     <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais">
                 </div>
             </div>
-            <div class="form-group row" id="row-sexo">
-                <label for="animales" class="col-2 col-form-label">Animales</label>
-                <div class="col-10">
-                    <select name="animales" id="animales" class="form-control">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
+            <div class="form-group row">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
+                </div>
+                <div class="col-3">
+                    <input type="checkbox" name="colaborador" id="colaborador" class="form-check-input">Es colaborador</input>
+                </div>
+                <div class="col-3">
+                    <input type="checkbox" name="animales" id="animales" class="form-check-input">Tiene animales</input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="checkbox" name="spam" id="spam" class="form-check-input">Quiero recibir correos</input>
                 </div>
             </div>
             <div class="form-group float-right">
