@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donante;
+use App\Models\Animal;
+use App\Models\Tipo_donante;
+use App\Models\Sexo;
+use App\Models\Donativo;
+
 use Illuminate\Http\Request;
 
 class DonanteController extends Controller
@@ -28,7 +33,17 @@ class DonanteController extends Controller
      */
     public function create()
     {
-        //
+        $animales = Animal::all();
+        $tipos_donantes = Tipo_donante::all();
+        $sexos = Sexo::all();
+        $donativos = Donativo::all();
+
+        $data['animales'] = $animales;
+        $data['tipos_donante'] = $tipos_donantes;
+        $data['sexos'] = $sexos;
+        $data['donativos'] = $donativos;
+
+        return view('privada.createDonante', $data);
     }
 
     /**
@@ -39,7 +54,32 @@ class DonanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $donante = new Donante();
+
+        $donante->tipos_donantes_id = $request->input('tipos_donante');
+        $donante->cif = $request->input('cif');
+        $donante->sexos_id = $request->input('sexos');
+        $donante->telefono = $request->input('telefono');
+        $donante->correo = $request->input('correo');
+        $donante->direccion = $request->input('direccion');
+        $donante->poblacion = $request->input('poblacion');
+        $donante->pais = $request->input('pais');
+        $donante->nombre = $request->input('nombre');
+
+        $donante->es_habitual = true;
+
+        try
+        {
+            $donante->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('DonanteController@create')->withInput();
+        }
+
+        return redirect('donants');
     }
 
     /**
@@ -59,9 +99,21 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donante $donante)
+    public function edit($id_donante)
     {
-        //
+        $donante = Donante::find($id_donante);
+        $animales = Animal::all();
+        $tipos_donantes = Tipo_donante::all();
+        $sexos = Sexo::all();
+        $donativos = Donativo::all();
+
+        $data['animales'] = $animales;
+        $data['tipos_donante'] = $tipos_donantes;
+        $data['sexos'] = $sexos;
+        $data['donativos'] = $donativos;
+        $data['donante'] = $donante;
+
+        return view('privada.editDonante', $data);
     }
 
     /**
@@ -71,9 +123,32 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donante $donante)
+    public function update(Request $request, $id_donante)
     {
-        //
+        $donante = Donante::find($id_donante);
+
+        $donante->tipos_donantes_id= $request->input('tipos_donante');
+        $donante->cif = $request->input('cif');
+        $donante->sexos_id = $request->input('sexos');
+        $donante->telefono = $request->input('telefono');
+        $donante->correo = $request->input('correo');
+        $donante->direccion = $request->input('direccion');
+        $donante->poblacion = $request->input('poblacion');
+        $donante->pais = $request->input('pais');
+        $donante->nombre = $request->input('nombre');
+
+        try
+        {
+            $donante->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('DonanteController@edit')->withInput();
+        }
+
+        return redirect()->action('DonanteController@index');
     }
 
     /**
@@ -82,8 +157,12 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donante $donante)
+    public function destroy($id_donante)
     {
-        //
+        $donante = Donante::find($id_donante);
+
+        $donante->delete();
+
+        return redirect()->action('DonanteController@index');
     }
 }

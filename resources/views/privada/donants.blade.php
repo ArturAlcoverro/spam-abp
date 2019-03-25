@@ -18,7 +18,7 @@
     <div class="p-5">
         <div class="toolbar">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
-                <a href="{{ action('UsuarioController@create') }}">
+                <a href="{{ action('DonanteController@create') }}">
                     <img src="{{ asset('media/img/add.png') }}" alt="">
                 </a>
             </button>
@@ -62,7 +62,7 @@
                         <td>{{ $donante->id }}</td>
                         <td>{{ $donante->nombre }}</td>
                         <td>{{ $donante->cif }}</td>
-                        <td>{{ $donante->tipo_donante_id->tipo }}</td>
+                        <td>{{ $donante->tipo_donante->tipo }}</td>
                         <td>{{ $donante->correo }}</td>
                         <td>{{ $donante->pais }}</td>
                     </tr>
