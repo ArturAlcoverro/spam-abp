@@ -18,9 +18,12 @@
     border-radius: 0;
 }
 
+.p-5 {
+    padding: 2rem 3rem 3rem 3rem !important;
+}
+
 .dt-buttons .btn:hover {
     border: 1px solid rgb(132, 175, 238);
-    background-color: rgba(174, 206, 255, 0.233)
 }
 
 .dt-buttons .btn:click {
@@ -56,7 +59,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     top: 50%;
     border-radius: 0;
-    border:none;
+    border: none;
     content: '';
     background-image: url("../media/img/plus.png");
     background-position: center;
@@ -82,11 +85,50 @@ table.dataTable.order-column.stripe tbody>tr.odd.selected>.sorting_1 {
     background-color: var(--primary-color-dark) !important
 }
 
-.dataTables_paginate{
-    display: flex;
-    justify-content: space-between;
+#table_length {
+    display: inline-block;
 }
 
-select[name=table_length]{
+#table_length>label {
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+.dataTables_paginate {
+    margin-top: .5rem !important;
+    display: inline-block;
+    float: right;
+}
+
+.dataTables_info {
+    display: inline-block;
+}
+
+/* .dataTables_paginate {
+    display: flex;
+    justify-content: space-between;
+} */
+.page-item.active .page-link {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+
+.page-link {
+    color: #6c757d;
+}
+
+.page-link:hover {
+    color: var(--secondary-color);
+}
+
+.page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(122, 184, 29, 0.514);
+}
+
+.custom-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(122, 184, 29, 0.514);
+}
+
+select[name=table_length] {
     width: 70px
 }

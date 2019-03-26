@@ -14,7 +14,10 @@
     });
 </script>
 <div class="p-5">
-    <div class="toolbar">
+
+    <h1>Donacions</h1>
+
+    <div class="toolbar mt-3">
         <button title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </button>
@@ -23,9 +26,6 @@
         </button>
         <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
-        </button>
-        <button title="@lang('master.save_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/save.png') }}" alt="">
         </button>
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">

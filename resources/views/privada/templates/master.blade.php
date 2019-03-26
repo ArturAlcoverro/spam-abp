@@ -23,6 +23,9 @@
 </head>
 
 <body class="">
+    <div class="toast">
+        <p>ERROR</p>
+    </div>
     <div class="menu-btn">
         <div class="menu-btn-animation"></div>
         <div class="menu-btn-animation"></div>

@@ -1,51 +1,47 @@
-    $(document).ready(function () {
-        cargarTabla(10);
-
-        $(".toolbar .btn").prependTo(".dt-buttons");
-        // $(".toolbar-append .btn").appendTo(".dt-buttons");
-
-        // $(".dataTables_length label").prependTo(".dataTables_paginate");
-        $(".dataTables_length select").change(function(){
-            $(this).parent().prependTo(".dataTables_paginate");
-        });
-
+$(document).ready(function () {
+    $('#table').DataTable({
+        dom: 'Blprtip',
+        select: true,
+        buttons: [
+            {
+                title: 'Donacions',
+                extend: 'copy',
+                text: "",
+            },
+            {
+                title: 'Donacions',
+                extend: 'excel',
+                text: "",
+            },
+            {
+                title: 'Donacions',
+                extend: 'pdf',
+                text: "",
+            },
+            {
+                title: 'Donacions',
+                extend: 'print',
+                text: "",
+            },
+        ],
+        language: {
+            lengthMenu: "Muestra _MENU_ registros",
+            info: "Mostrando _START_ al _END_ de _TOTAL_ registros",
+            paginate: {
+                first: "Primero",
+                last: "Ultimo",
+                next: "Siguiente",
+                previous: "Anterior"
+            },
+        }
     });
 
-    function cargarTabla(len){
-        $('#table').DataTable({
-            pageLength: len,
-            dom: 'Bprtip',
-            buttons: [
-                {
-                    extend: 'copy',
-                    text:"",
-                },
-                {
-                    extend: 'excel',
-                    text:"",
-                },
-                {
-                    extend: 'pdf',
-                    text:"",
-                },
-                {
-                    extend: 'print',
-                    text:"",
-                },
-            ],
-            select: true,
-        });
+    $(".toolbar .btn").prependTo(".dt-buttons");
+    // $(".toolbar-append .btn").appendTo(".dt-buttons");
 
-        $select = $("<select>");
-        $select.attr('id', 'table-length');
-        $select.append($('<option value="10">10</option>'));
-        $select.append($('<option value="25">25</option>'));
-        $select.append($('<option value="50">50</option>'));
-        $select.append($('<option value="100">100</option>'));
-        $(".dataTables_paginate").prepend($select);
-        $('#table-length').change(function(){
-            len = parseInt($(this).val());
-            cargarTabla(len);
-        });
-    }
+});
+
+
+
+
 
