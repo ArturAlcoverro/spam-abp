@@ -81,3 +81,12 @@ table.dataTable.display tbody>tr.odd.selected>.sorting_1,
 table.dataTable.order-column.stripe tbody>tr.odd.selected>.sorting_1 {
     background-color: var(--primary-color-dark) !important
 }
+
+.dataTables_paginate{
+    display: flex;
+    justify-content: space-between;
+}
+
+select[name=table_length]{
+    width: 70px
+}

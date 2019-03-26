@@ -1,35 +1,51 @@
     $(document).ready(function () {
+        cargarTabla(10);
+
+        $(".toolbar .btn").prependTo(".dt-buttons");
+        // $(".toolbar-append .btn").appendTo(".dt-buttons");
+
+        // $(".dataTables_length label").prependTo(".dataTables_paginate");
+        $(".dataTables_length select").change(function(){
+            $(this).parent().prependTo(".dataTables_paginate");
+        });
+
+    });
+
+    function cargarTabla(len){
         $('#table').DataTable({
-            dom: 'Blrtip',
+            pageLength: len,
+            dom: 'Bprtip',
             buttons: [
                 {
                     extend: 'copy',
                     text:"",
-                    title:"Donacions"
                 },
                 {
                     extend: 'excel',
                     text:"",
-                    title:"Donacions"
                 },
                 {
                     extend: 'pdf',
                     text:"",
-                    title:"Donacions"
                 },
                 {
                     extend: 'print',
                     text:"",
-                    title:"Donacions"
                 },
             ],
             select: true,
         });
 
-        $(".toolbar .btn").prependTo(".dt-buttons");
-        $(".toolbar-append .btn").appendTo(".dt-buttons");
-
-        $(".dataTables_length label").text
-
-    });
+        $select = $("<select>");
+        $select.attr('id', 'table-length');
+        $select.append($('<option value="10">10</option>'));
+        $select.append($('<option value="25">25</option>'));
+        $select.append($('<option value="50">50</option>'));
+        $select.append($('<option value="100">100</option>'));
+        $(".dataTables_paginate").prepend($select);
+        $('#table-length').change(function(){
+            len = parseInt($(this).val());
+            cargarTabla(len);
+        });
+    }
 

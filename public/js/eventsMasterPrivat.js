@@ -4,13 +4,13 @@ $(document).ready(function () {
     var tab = window.location.href.split("/")[5];
     switch (tab) {
         case 'donations':
-            $('#donacionsTab').addClass('active');
+            $('#donacionsTab').addClass('active-tab');
             break;
         case 'donants':
-            $('#donantsTab').addClass('active');
+            $('#donantsTab').addClass('active-tab');
             break;
         case 'user':
-            $('#usuarisTab').addClass('active');
+            $('#usuarisTab').addClass('active-tab');
             break;
         default: alert(tab); break;
 
