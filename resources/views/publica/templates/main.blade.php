@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/estadistiques')}}">Estadísticas</a>
+                    <a class="nav-link" href="{{url('/charts')}}">Estadísticas</a>
                 </li>
             </ul>
         </div>
@@ -36,7 +36,7 @@
 
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
-    <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>    
     <script src="{{ asset('js/changingNavBg.js') }}"></script>
 
     @yield('scripts')

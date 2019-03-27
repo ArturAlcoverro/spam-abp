@@ -35,3 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/user', 'UsuarioController');
 });
+
+
+//ruta provisional a estadistiques publiques
+Route::get('/charts', function(){
+    return view('publica.charts');
+})->name('charts');
