@@ -12,6 +12,10 @@ body {
     padding: var(--nav-height) 0 0 var(--nav-width)
 }
 
+.p-5 {
+    padding: 2rem 3rem 3rem 3rem !important;
+}
+
 #menuSuperior {
     display: flex;
     align-items: center;
@@ -120,7 +124,7 @@ body {
 }
 
 .toast {
-    /* display: none; */
+    display: none;
     position: fixed;
     top: 90%;
     left: 50%;

@@ -1,0 +1,64 @@
+.btn-donant{
+    position: relative;
+    font-size: 14px;
+    width: 125px;
+    height: 125px;
+    border: 2px rgba(255, 255, 255, 0.219) solid;
+    margin: 10px;
+    transition: box-shadow 0.3s ,background-color 0.1s;
+}
+
+.btn-donant:hover{
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.507);
+}
+
+.btn-donant:nth-child(3){
+    background-color: #cc3366e5;
+}
+
+.btn-donant:nth-child(3):hover{
+    background-color: #cc3366;
+}
+
+.btn-donant:nth-child(2){
+    background-color: #663366f6;
+}
+
+.btn-donant:nth-child(2):hover{
+    background-color: #663366;
+}
+
+.btn-donant:nth-child(1){
+    background-color: #ff6600e5;
+}
+
+.btn-donant:nth-child(1):hover{
+    background-color: #ff6600;
+}
+
+.btn-donant:nth-child(4){
+    background-color: var(--primary-color-dark);
+}
+
+.btn-donant img{
+    height: 50px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-donant p{
+    display: inline;
+    color: white;
+    height: 50px;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap
+}

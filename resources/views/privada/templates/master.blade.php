@@ -57,7 +57,7 @@
         <div class="menu-list">
             <ul>
                 <li>
-                    <a href="{{ route('donations') }}">
+                    <a href="{{ action('DonativoController@index') }}">
                         <p>@lang('master.donacions_nav')</p>
                     </a>
                 </li>
@@ -85,7 +85,7 @@
     <nav id="menuLateral">
         <ul id="opcionsMenuLateral">
             <li id="donacionsTab">
-                <a href="{{ route('donations') }}">
+                <a href="{{ action('DonativoController@index') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
                     @lang('master.donacions_nav')
                 </a>

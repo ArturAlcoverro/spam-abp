@@ -27,9 +27,7 @@ Route::get('locale/{locale}', function($locale){
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/donations', function () {
-        return view('privada.index');
-    })->name("donations");
+    Route::resource('/donations', 'DonativoController');
 
     Route::resource('/donants', 'DonanteController');
 
