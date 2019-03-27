@@ -52,6 +52,13 @@ class DonanteController extends Controller
             "Tarragona",
             "Girona"
         );
+        $data['colaboraciones'] = array(
+            "Padrino",
+            "Adoptante",
+            "Voluntario",
+            "Patrocinador",
+            "RRSS"
+        );
 
         return view('privada.createDonante', $data);
     }
@@ -176,6 +183,13 @@ class DonanteController extends Controller
             "Lleida",
             "Tarragona",
             "Girona"
+        );
+        $data['colaboraciones'] = array(
+            "Padrino",
+            "Adoptante",
+            "Voluntario",
+            "Patrocinador",
+            "RRSS"
         );
 
         return view('privada.editDonante', $data);
