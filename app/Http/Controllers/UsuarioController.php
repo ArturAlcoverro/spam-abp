@@ -119,9 +119,21 @@ class UsuarioController extends Controller
         $usuario->roles_id = $request->input('rol');
         $usuario->nombre = $request->input('nombre');
 
-    // $usuario->password = Hash::make($request->input('password'));
+        if($request->input('password') != "")
+        {
+            $usuario->password = Hash::make($request->input('password'));
+        }
 
-        $usuario->save();
+        try
+        {
+            $usuario->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('UsuarioController@edit')->withInput();
+        }
 
         return redirect()->action('UsuarioController@index');
     }
@@ -136,7 +148,16 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id_user);
 
-        $usuario->delete();
+        try
+        {
+            $usuario->delete();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('UsuarioController@index')->withInput();
+        }
 
         return redirect()->action('UsuarioController@index');
     }

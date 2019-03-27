@@ -15,6 +15,9 @@
             $('.buttons-print').attr('title',"{{ __('master.print_crud') }}");
         });
     </script>
+
+    @include('partial.errores')
+
     <div class="p-5">
         <div class="toolbar">
             <button title="Añadir" class="btn btn-secondary buttons-html5">

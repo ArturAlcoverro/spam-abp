@@ -81,15 +81,47 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="poblacion" class="col-2 col-form-label">Poblacion</label>
+                <label for="pais" class="col-2 col-form-label">Pais</label>
                 <div class="col-10">
-                    <input type="text" name="poblacion" id="poblacion" class="form-control" placeholder="Poblacion" value="{{ $donante->poblacion }}">
+                    <input list="paises" name="pais" class="form-control" placeholder="Pais" value="{{ $donante->pais }}">
+                    <datalist id="paises">
+                        @foreach ($paises as $pais)
+                            <option value="{{ $pais }}">{{ $pais }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="pais" class="col-2 col-form-label">Pais</label>
+                <label for="poblacion" class="col-2 col-form-label">Poblacion</label>
                 <div class="col-10">
-                    <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais" value="{{ $donante->pais }}">
+                    <input list="poblaciones" name="poblacion" class="form-control" placeholder="Poblacion" value="{{ $donante->poblacion }}">
+                    <datalist id="poblaciones">
+                        @foreach ($poblaciones as $poblacion)
+                            <option value="{{ $poblacion }}">{{ $poblacion }}</option>
+                        @endforeach
+                    </datalist>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colaboraciones" class="col-2 col-form-label">Colaboracion</label>
+                <div class="col-10">
+                <input list="colaboraciones" name="colaboracion" class="form-control" placeholder="Colaboracion" value="{{ $donante->tipo_colaboracion }}">
+                    <datalist id="colaboraciones">
+                        @foreach ($colaboraciones as $colaboracion)
+                            <option value="{{ $colaboracion }}">{{ $colaboracion }}</option>
+                        @endforeach
+                    </datalist>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="animales" class="col-2 col-form-label">Animal</label>
+                <div class="col-10">
+                    <input list="animales" name="animal" class="form-control" placeholder="Animal" value="{{ $donante->tiene_aninales }}">
+                    <datalist id="animales">
+                        @foreach ($animales as $animal)
+                            <option value="{{ $animal }}">{{ $animal }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">
@@ -97,15 +129,6 @@
                 <div class="col-3">
                     <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
                 </div>
-                <div class="col-3">
-                    <input type="checkbox" name="colaborador" id="colaborador" class="form-check-input">Es colaborador</input>
-                </div>
-                <div class="col-3">
-                    <input type="checkbox" name="animales" id="animales" class="form-check-input">Tiene animales</input>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-3"></div>
                 <div class="col-3">
                     <input type="checkbox" name="spam" id="spam" class="form-check-input">Quiero recibir correos</input>
                 </div>
