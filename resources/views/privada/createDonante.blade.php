@@ -90,19 +90,31 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-3"></div>
-                <div class="col-3">
-                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
+                <label for="colaboraciones" class="col-2 col-form-label">Colaboracion</label>
+                <div class="col-10">
+                    <input list="colaboraciones" name="colaboracion" class="form-control" placeholder="Colaboracion">
+                    <datalist id="colaboraciones">
+                        @foreach ($colaboraciones as $colaboracion)
+                            <option value="{{ $colaboracion }}">{{ $colaboracion }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
-                <div class="col-3">
-                    <input type="checkbox" name="colaborador" id="colaborador" class="form-check-input">Es colaborador</input>
-                </div>
-                <div class="col-3">
-                    <input type="checkbox" name="animales" id="animales" class="form-check-input">Tiene animales</input>
+            </div>
+            <div class="form-group row">
+                <label for="animales" class="col-2 col-form-label">Animal</label>
+                <div class="col-10">
+                    <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select">
+                        @foreach($animales as $animal)
+                            <option value="{{ $animal->id }}">{{ $animal->nombre }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
+                </div>
                 <div class="col-3">
                     <input type="checkbox" name="spam" id="spam" class="form-check-input">Quiero recibir correos</input>
                 </div>

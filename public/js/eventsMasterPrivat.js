@@ -65,3 +65,13 @@ $("#idiomaSwitch").change(function () {
     window.location = "locale/" + $("#idiomaSwitch option:selected").val();
     //window.location = '{{ url("locale/" ) }}';
 });
+
+function toast(msg, time){
+    $('.toast').text(msg);
+    $('.toast').fadeIn(500);
+    setTimeout(function(){
+        $('.toast').fadeOut(500);
+    }, time);
+}
+
+

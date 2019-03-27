@@ -1,4 +1,6 @@
-@extends('privada.templates.master') @section('css')
+@extends('privada.templates.master')
+
+@section('css')
 <link rel="stylesheet" href="{{ asset('css/table.css') }}">
 <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
 @endsection
@@ -18,10 +20,10 @@
     <h1>Donacions</h1>
 
     <div class="toolbar mt-3">
-        <button title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
+        <a href="{{ action('DonativoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
-        </button>
-        <button title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
+        </a>
+        <button onclick="" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
         </button>
         <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">

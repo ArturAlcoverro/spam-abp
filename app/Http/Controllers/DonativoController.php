@@ -14,7 +14,7 @@ class DonativoController extends Controller
      */
     public function index()
     {
-        //
+        return view('privada.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class DonativoController extends Controller
      */
     public function create()
     {
-        //
+        return view('privada.crearDonacion');
     }
 
     /**

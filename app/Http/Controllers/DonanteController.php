@@ -10,6 +10,10 @@ use App\Models\Donativo;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Database\QueryException;
+
+use App\Clases\Utilitat;
+
 class DonanteController extends Controller
 {
     /**
@@ -52,6 +56,13 @@ class DonanteController extends Controller
             "Tarragona",
             "Girona"
         );
+        $data['colaboraciones'] = array(
+            "Padrino",
+            "Adoptante",
+            "Voluntario",
+            "Patrocinador",
+            "RRSS"
+        );
 
         return view('privada.createDonante', $data);
     }
@@ -64,77 +75,72 @@ class DonanteController extends Controller
      */
     public function store(Request $request)
     {
-        // if($request->input('cif')!= "" && $request->input('nombre')!="" && $request->input('correo')!="") {
+        $donante = new Donante();
 
-            $donante = new Donante();
+        $donante->tipos_donantes_id = $request->input('tipos_donante');
+        $donante->cif = $request->input('cif');
+        $donante->telefono = $request->input('telefono');
+        $donante->correo = $request->input('correo');
+        $donante->direccion = $request->input('direccion');
+        $donante->poblacion = $request->input('poblacion');
+        $donante->pais = $request->input('pais');
+        $donante->nombre = $request->input('nombre');
+        $donante->fecha_alta = date('Y-m-d H:i:s');
+        $donante->tipo_colaboracion = $request->input('colaboracion');
 
-            $donante->tipos_donantes_id = $request->input('tipos_donante');
-            $donante->cif = $request->input('cif');
-            $donante->telefono = $request->input('telefono');
-            $donante->correo = $request->input('correo');
-            $donante->direccion = $request->input('direccion');
-            $donante->poblacion = $request->input('poblacion');
-            $donante->pais = $request->input('pais');
-            $donante->nombre = $request->input('nombre');
-            $donante->fecha_alta = date('Y-m-d H:i:s');
+        if($request->input('animales') == ""){
+            $donante->tiene_aninales = 0;
+        }
+        else{
+            $donante->tiene_aninales = 1;
+        }
 
-            if($request->input('tipos_donante') == 2){
-                $donante->sexos_id = $request->input('sexos');
-            }
-            elseif($request->input('tipos_donante') == 1){
-                $donante->vinculo_entidad = $request->input('vinculo');
-            }
+        if($request->input('colaboracion') == ""){
+            $donante->es_colaborador = 0;
+        }
+        else{
+            $donante->es_colaborador = 1;
+        }
 
-            if($request->input('habitual')=="on"){
+        if($request->input('tipos_donante') == 2){
+            $donante->sexos_id = $request->input('sexos');
+        }
+        elseif($request->input('tipos_donante') == 1){
+            $donante->vinculo_entidad = $request->input('vinculo');
+        }
 
-                $donante->es_habitual = 1;
-            }
-            else{
-                $donante->es_habitual = 0;
-            }
+        if($request->input('habitual')=="on"){
 
-            if($request->input('animales')=="on"){
+            $donante->es_habitual = 1;
+        }
+        else{
+            $donante->es_habitual = 0;
+        }
 
-                $donante->tiene_aninales = 1;
-            }
-            else{
-                $donante->tiene_aninales = 0;
-            }
+        if($request->input('spam')=="on"){
 
-            if($request->input('spam')=="on"){
+            $donante->spam = 1;
+        }
+        else{
+            $donante->spam = 0;
+        }
 
-                $donante->spam = 1;
-            }
-            else{
-                $donante->spam = 0;
-            }
+        try
+        {
+            $donante->save();
+        }
+        catch(QueryException $e){
 
-            if($request->input('colaborador')=="on"){
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('DonanteController@create')->withInput();
+        }
 
-                $donante->es_colaborador = 1;
-            }
-            else{
-                $donante->es_colaborador = 0;
-            }
+        $animales = $request->input('animales');
 
-            //$donante->tipo_colaboracion = $request->input('habitual');
+        $donante->animal()->attach($animales);
 
-            try
-            {
-                $donante->save();
-            }
-            catch(QueryException $e){
-
-                $error = Utilitat::errorMessage($e);
-                $request->session()->flash('error', $error);
-                return redirect()->action('DonanteController@create')->withInput();
-            }
-
-            return redirect('donants');
-        // }
-        // else{
-        //     return redirect()->action('DonanteController@create')->withInput();
-        // }
+        return redirect('donants');
     }
 
     /**
@@ -177,6 +183,14 @@ class DonanteController extends Controller
             "Tarragona",
             "Girona"
         );
+        $data['colaboraciones'] = array(
+            "Padrino",
+            "Adoptante",
+            "Voluntario",
+            "Patrocinador",
+            "RRSS"
+        );
+        $data['animales_donante'] = array_pluck($donante->animal, 'id');
 
         return view('privada.editDonante', $data);
     }
@@ -190,75 +204,75 @@ class DonanteController extends Controller
      */
     public function update(Request $request, $id_donante)
     {
-        // if($request->input('cif') != "" && $request->input('nombre') != "" && $request->input('correo') != "") {
+        $donante = Donante::find($id_donante);
 
-            $donante = Donante::find($id_donante);
+        $donante->tipos_donantes_id = $request->input('tipos_donante');
+        $donante->cif = $request->input('cif');
+        $donante->telefono = $request->input('telefono');
+        $donante->correo = $request->input('correo');
+        $donante->direccion = $request->input('direccion');
+        $donante->poblacion = $request->input('poblacion');
+        $donante->pais = $request->input('pais');
+        $donante->nombre = $request->input('nombre');
+        $donante->fecha_alta = date('Y-m-d H:i:s');
+        $donante->tipo_colaboracion = $request->input('colaboracion');
 
-            $donante->tipos_donantes_id = $request->input('tipos_donante');
-            $donante->cif = $request->input('cif');
-            $donante->telefono = $request->input('telefono');
-            $donante->correo = $request->input('correo');
-            $donante->direccion = $request->input('direccion');
-            $donante->poblacion = $request->input('poblacion');
-            $donante->pais = $request->input('pais');
-            $donante->nombre = $request->input('nombre');
-            $donante->fecha_alta = date('Y-m-d H:i:s');
+        if($request->input('animales') == ""){
+            $donante->tiene_aninales = 0;
+        }
+        else{
+            $donante->tiene_aninales = 1;
+        }
 
-            if($request->input('vinculo') == ""){
-                $donante->sexos_id = $request->input('sexos');
-            }
-            else {
-                $donante->vinculo_entidad = $request->input('vinculo');
-            }
+        if($request->input('colaboracion') == ""){
+            $donante->es_colaborador = 0;
+        }
+        else{
+            $donante->es_colaborador = 1;
+        }
 
-            if($request->input('habitual')=="on"){
+        if($request->input('tipos_donante') == 2){
+            $donante->sexos_id = $request->input('sexos');
+        }
+        elseif($request->input('tipos_donante') == 1){
+            $donante->vinculo_entidad = $request->input('vinculo');
+        }
 
-                $donante->es_habitual = 1;
-            }
-            else{
-                $donante->es_habitual = 0;
-            }
+        if($request->input('habitual')=="on"){
 
-            if($request->input('animales')=="on"){
+            $donante->es_habitual = 1;
+        }
+        else{
+            $donante->es_habitual = 0;
+        }
 
-                $donante->tiene_aninales = 1;
-            }
-            else{
-                $donante->tiene_aninales = 0;
-            }
+        if($request->input('spam')=="on"){
 
-            if($request->input('spam')=="on"){
+            $donante->spam = 1;
+        }
+        else{
+            $donante->spam = 0;
+        }
 
-                $donante->spam = 1;
-            }
-            else{
-                $donante->spam = 0;
-            }
+        try
+        {
+            $donante->save();
+        }
+        catch(QueryException $e){
 
-            if($request->input('colaborador')=="on"){
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('DonanteController@edit')->withInput();
+        }
 
-                $donante->es_colaborador = 1;
-            }
-            else{
-                $donante->es_colaborador = 0;
-            }
+        $donante->animal()->detach();
 
-            try
-            {
-                $donante->save();
-            }
-            catch(QueryException $e){
+        $animales = $request->input('animales');
 
-                $error = Utilitat::errorMessage($e);
-                $request->session()->flash('error', $error);
-                return redirect()->action('DonanteController@edit')->withInput();
-            }
+        $donante->animal()->attach($animales);
 
-            return redirect()->action('DonanteController@index');
-        // }
-        // else{
-        //     return redirect()->action('DonanteController@edit')->withInput();
-        // }
+        return redirect()->action('DonanteController@index');
+
     }
 
     /**
@@ -267,11 +281,20 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_donante)
+    public function destroy(Request $request, $id_donante)
     {
         $donante = Donante::find($id_donante);
 
-        $donante->delete();
+        try
+        {
+            $donante->delete();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('DonanteController@index')->withInput();
+        }
 
         return redirect()->action('DonanteController@index');
     }

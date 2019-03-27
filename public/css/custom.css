@@ -28,13 +28,18 @@ body {
     margin-top: 3rem;
 }
 
-.footer {
+/* .footer {
     position: absolute;
     bottom: 0;
     right: 0;
     width: 100%;
-}
+} */
 
 .bg-grey{
     background-color: #777777;
+}
+
+.rrss_icon{
+    height: 32px;
+    margin-left: 1rem;
 }
