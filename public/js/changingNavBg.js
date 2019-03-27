@@ -20,7 +20,7 @@ $( document ).ready(function(){
     var i = 0;
     setInterval(function(){
         $('.images').fadeOut(1000, function() {
-            $('.images').css({'background-image': 'url(../public/media/bg_images/' + imgs[i] + ')'});
+            $('.images').css({'background-image': 'url(../public/media/publica/bg_images/' + imgs[i] + ')'});
             $('.images').fadeIn(1000);
             i++;
             if(i===imgs.length){

@@ -28,10 +28,14 @@
         @yield('body')
     </div>
 
-    <footer class="page-footer py-5 bg-grey">
-        <div class="container-fluid bg-grey">
-            <a href="{{route('showLogin')}}" class="text-white float-right">Espacio Trabajadores</a>
-        </div>
+    <footer class="footer bg-grey py-3">
+        <a href="https://www.facebook.com/protectoramataro/" class="ml-3">
+            <img class="rrss_icon" src="{{ asset('media/publica/icons/facebook.png') }}" alt="">
+        </a>
+        <a href="https://twitter.com/protemataro">
+            <img class="rrss_icon" src="{{ asset('media/publica/icons/twitter.png') }}" alt="">
+        </a>
+        <a href="{{route('showLogin')}}" class="text-white float-right mr-2">Espacio Trabajadores</a>
     </footer>
 
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
