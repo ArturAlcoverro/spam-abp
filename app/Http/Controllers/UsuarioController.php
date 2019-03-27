@@ -144,7 +144,7 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_user)
+    public function destroy(Request $request, $id_user)
     {
         $usuario = Usuario::find($id_user);
 

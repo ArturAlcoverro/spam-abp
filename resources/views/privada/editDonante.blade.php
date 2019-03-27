@@ -116,21 +116,26 @@
             <div class="form-group row">
                 <label for="animales" class="col-2 col-form-label">Animal</label>
                 <div class="col-10">
-                    <input list="animales" name="animal" class="form-control" placeholder="Animal" value="{{ $donante->tiene_aninales }}">
-                    <datalist id="animales">
-                        @foreach ($animales as $animal)
-                            <option value="{{ $animal }}">{{ $animal }}</option>
+                    <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select">
+                        @foreach($animales as $animal)
+
+                            @if(in_array($animal->id, $animales_donante))
+                                <option value="{{ $animal->id }}" selected>{{ $animal->nombre }}</option>
+                            @else
+                                <option value="{{ $animal->id }}">{{ $animal->nombre }}</option>
+                            @endif
+
                         @endforeach
-                    </datalist>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-3"></div>
                 <div class="col-3">
-                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
+                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input" @if($donante->es_habitual == 1) checked @endif>Es habitual</input>
                 </div>
                 <div class="col-3">
-                    <input type="checkbox" name="spam" id="spam" class="form-check-input">Quiero recibir correos</input>
+                    <input type="checkbox" name="spam" id="spam" class="form-check-input" @if($donante->spam == 1) checked @endif>Quiero recibir correos</input>
                 </div>
             </div>
             <div class="form-group float-right">

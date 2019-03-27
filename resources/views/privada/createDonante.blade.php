@@ -103,12 +103,11 @@
             <div class="form-group row">
                 <label for="animales" class="col-2 col-form-label">Animal</label>
                 <div class="col-10">
-                    <input list="animales" name="animal" class="form-control" placeholder="Animal">
-                    <datalist id="animales">
-                        @foreach ($animales as $animal)
-                            <option value="{{ $animal }}">{{ $animal }}</option>
+                    <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select">
+                        @foreach($animales as $animal)
+                            <option value="{{ $animal->id }}">{{ $animal->nombre }}</option>
                         @endforeach
-                    </datalist>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
