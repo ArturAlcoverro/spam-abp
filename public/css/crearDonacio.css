@@ -48,12 +48,15 @@
     transform: translate(-50%, -50%);
 }
 
+.btn-donant:nth-child(4) img{
+    height: 40px;
+}
+
 .btn-donant p{
     display: inline;
     color: white;
-    height: 50px;
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

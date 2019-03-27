@@ -19,6 +19,10 @@ body {
     overflow: hidden;
 }
 
+.btn-primary {
+    background-color: var(--primary-color) !important;
+}
+
 .fill {
     position: relative;
     overflow: hidden;
