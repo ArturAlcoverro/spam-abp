@@ -104,11 +104,11 @@ body {
 }
 
 .active-tab::before {
-    --size: 13px;
+    --size: 15px;
     content: '';
     position: absolute;
     top: calc(50% - var(--size));
-    left: calc(100% - var(--size));
+    left: calc(100% - var(--size) + 1px);
     width: 0px;
     height: 0px;
     border-top: var(--size) solid transparent;
