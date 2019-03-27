@@ -1,0 +1,40 @@
+html, body{
+    height: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color:rgba(255, 255, 255, 0.5);
+}
+
+.hidden {
+    display:none;
+}
+
+.badge {
+    display: block;
+    max-width: 8rem;
+    font-size: 1rem;
+}
+
+.images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -100;
+    opacity: 0.75;
+    margin-top: 3rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+.bg-grey{
+    background-color: #777777;
+}
