@@ -81,15 +81,25 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="poblacion" class="col-2 col-form-label">Poblacion</label>
+                <label for="pais" class="col-2 col-form-label">Pais</label>
                 <div class="col-10">
-                    <input type="text" name="poblacion" id="poblacion" class="form-control" placeholder="Poblacion" value="{{ $donante->poblacion }}">
+                    <input list="paises" name="pais" class="form-control" placeholder="Pais" value="{{ $donante->pais }}">
+                    <datalist id="paises">
+                        @foreach ($paises as $pais)
+                            <option value="{{ $pais }}">{{ $pais }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="pais" class="col-2 col-form-label">Pais</label>
+                <label for="poblacion" class="col-2 col-form-label">Poblacion</label>
                 <div class="col-10">
-                    <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais" value="{{ $donante->pais }}">
+                    <input list="poblaciones" name="poblacion" class="form-control" placeholder="Poblacion" value="{{ $donante->poblacion }}">
+                    <datalist id="poblaciones">
+                        @foreach ($poblaciones as $poblacion)
+                            <option value="{{ $poblacion }}">{{ $poblacion }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">

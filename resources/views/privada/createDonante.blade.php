@@ -68,22 +68,25 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="poblaciones" class="col-2 col-form-label">Poblacion</label>
+                <label for="pais" class="col-2 col-form-label">Pais</label>
                 <div class="col-10">
-                    <select name="poblaciones" id="poblaciones" class="form-control">
-                        <option value="bcn">Barcelona</option>
-                        <option value="trr">Tarragona</option>
-                        <option value="lld">Lleida</option>
-                        <option value="grn">Girona</option>
-                    </select>
+                    <input list="paises" name="pais" class="form-control" placeholder="Pais">
+                    <datalist id="paises">
+                        @foreach ($paises as $pais)
+                            <option value="{{ $pais }}">{{ $pais }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="paises" class="col-2 col-form-label">Pais</label>
+                <label for="poblacion" class="col-2 col-form-label">Poblacion</label>
                 <div class="col-10">
-                    <select name="paises" id="paises" class="form-control">
-                        <option value="bcn">España</option>
-                    </select>
+                    <input list="poblaciones" name="poblacion" class="form-control" placeholder="Poblacion">
+                    <datalist id="poblaciones">
+                        @foreach ($poblaciones as $poblacion)
+                            <option value="{{ $poblacion }}">{{ $poblacion }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="form-group row">

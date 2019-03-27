@@ -42,6 +42,16 @@ class DonanteController extends Controller
         $data['tipos_donante'] = $tipos_donantes;
         $data['sexos'] = $sexos;
         $data['donativos'] = $donativos;
+        $data['paises'] = array(
+            "España",
+            "Francia"
+        );
+        $data['poblaciones'] = array(
+            "Barcelona",
+            "Lleida",
+            "Tarragona",
+            "Girona"
+        );
 
         return view('privada.createDonante', $data);
     }
@@ -157,6 +167,16 @@ class DonanteController extends Controller
         $data['sexos'] = $sexos;
         $data['donativos'] = $donativos;
         $data['donante'] = $donante;
+        $data['paises'] = array(
+            "España",
+            "Francia"
+        );
+        $data['poblaciones'] = array(
+            "Barcelona",
+            "Lleida",
+            "Tarragona",
+            "Girona"
+        );
 
         return view('privada.editDonante', $data);
     }
