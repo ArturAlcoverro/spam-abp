@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/users.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
     <script src="{{ asset('js/eventsUsers.js') }}"></script>
 @endsection
