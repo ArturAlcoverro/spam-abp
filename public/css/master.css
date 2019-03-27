@@ -16,6 +16,17 @@ body {
     padding: 2rem 3rem 3rem 3rem !important;
 }
 
+.form-control,
+.custom-select {
+    border-radius: 0;
+}
+
+.form-control:focus,
+.custom-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem var(--primary-color-shadow);
+}
+
 #menuSuperior {
     display: flex;
     align-items: center;
