@@ -68,15 +68,22 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="poblacion" class="col-2 col-form-label">Poblacion</label>
+                <label for="poblaciones" class="col-2 col-form-label">Poblacion</label>
                 <div class="col-10">
-                    <input type="text" name="poblacion" id="poblacion" class="form-control" placeholder="Poblacion">
+                    <select name="poblaciones" id="poblaciones" class="form-control">
+                        <option value="bcn">Barcelona</option>
+                        <option value="trr">Tarragona</option>
+                        <option value="lld">Lleida</option>
+                        <option value="grn">Girona</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="pais" class="col-2 col-form-label">Pais</label>
+                <label for="paises" class="col-2 col-form-label">Pais</label>
                 <div class="col-10">
-                    <input type="text" name="pais" id="pais" class="form-control" placeholder="Pais">
+                    <select name="paises" id="paises" class="form-control">
+                        <option value="bcn">España</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">

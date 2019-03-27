@@ -5,6 +5,9 @@
 @endsection
 
 @section('body')
+
+    @include('partial.errores')
+
     <div class="p-4">
         <form action="{{ action('UsuarioController@update', [$user->id]) }}" method="POST">
             @method('put')
