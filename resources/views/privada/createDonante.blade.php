@@ -9,7 +9,6 @@
     @include('partial.errores')
 
     <div class="p-4">
-
         <form class="container pt-2" action="{{ action('DonanteController@store') }}" method="POST">
         @csrf
             <h3>Nuevo donante</h3>

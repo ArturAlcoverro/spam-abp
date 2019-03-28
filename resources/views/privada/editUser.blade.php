@@ -9,36 +9,37 @@
     @include('partial.errores')
 
     <div class="p-4">
-        <form action="{{ action('UsuarioController@update', [$user->id]) }}" method="POST">
+        <form class="container pt-2" action="{{ action('UsuarioController@update', [$user->id]) }}" method="POST">
             @method('put')
             @csrf
-            <div class="form-group row">
-                <label for="correo" class="col-2 col-form-label">Correo electronico</label>
-                <div class="col-10">
+            <h3>Editar usuario</h3>
+            <div class="form-group">
+                <label for="correo" class="col-form-label">Correo electronico</label>
+                <div class="">
                     <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico" value="{{ $user->correo }}">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="lblpassword" class="col-2 col-form-label">Password</label>
-                <div class="col-10">
+            <div class="form-group">
+                <label for="lblpassword" class="col-form-label">Password</label>
+                <div class="">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Nueva contraseña" readonly>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="username" class="col-2 col-form-label">Username</label>
-                <div class="col-10">
+            <div class="form-group">
+                <label for="username" class="col-form-label">Username</label>
+                <div class="">
                     <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="{{ $user->nombre_usuario }}">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="nombre" class="col-2 col-form-label">Nombre</label>
-                <div class="col-10">
+            <div class="form-group">
+                <label for="nombre" class="col-form-label">Nombre</label>
+                <div class="">
                     <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" value="{{ $user->nombre }}">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="rol" class="col-2 col-form-label">Rol</label>
-                <div class="col-10">
+            <div class="form-group">
+                <label for="rol" class="col-form-label">Rol</label>
+                <div class="">
                     <select name="rol" id="rol" class="form-control">
                         @foreach ($roles as $rol)
                             @if($rol->id == $user->rol->id)
