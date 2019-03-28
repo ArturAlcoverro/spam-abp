@@ -10,8 +10,8 @@
     height: 50px;
     width: 50px;
     min-width: 50px;
-    background: white;
-    border: 1px solid #ccc;
+    background-color: transparent;
+    border: 0;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 35px;
