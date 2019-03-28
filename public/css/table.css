@@ -11,15 +11,18 @@
     width: 50px;
     min-width: 50px;
     background-color: transparent;
-    border: 0;
+    border: 1px transparent solid;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 35px;
+    background-size: 50px;
+    padding: 0;
     border-radius: 0;
 }
 
 .dt-buttons .btn:hover {
-    border: 1px solid rgb(132, 175, 238);
+    border: 1px solid rgba(132, 174, 238, 0.849);
+    background-color: rgba(132, 174, 238, 0.192);
+    padding: 0px;
 }
 
 .dt-buttons .btn:click {
@@ -32,7 +35,7 @@
 }
 
 .dt-buttons .btn img {
-    height: 35px;
+    height: 50px;
 }
 
 .dt-buttons .buttons-copy {
