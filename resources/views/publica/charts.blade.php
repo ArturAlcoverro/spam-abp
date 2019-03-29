@@ -6,31 +6,47 @@
 
 @section('body')
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="llistaOpcions" role="tablist" aria-orientation="vertical"></div>
 
-<form action="" class = "mt-2" method="POST">
-        @csrf
+            <div class="tab-content" id="tabsGrafiques"></div>
 
-        <div class="form-group row">
-        <label for="dataInit" class="col-2 col-form-label">Data inicial</label>
-            <div class="col-4">
-                <input type="date" name="dataInit" id="dataInit" class="form-control">
+        </div>
+
+    <div class="col-9">
+        <form action="" class = "mt-2" method="POST">
+            @csrf
+
+            <div class="form-group row">
+            <label for="dataInit" class="col-2 col-form-label">Data inicial</label>
+                <div class="col-4">
+                    <input type="date" name="dataInit" id="dataInit" class="form-control">
+                </div>
+
+                <label for="dataFin" class="col-2 col-form-label">Data final</label>
+                <div class="col-4">
+                    <input type="date" name="dataFin" id="dataFin" class="form-control">
+                </div>
             </div>
 
-            <label for="dataFin" class="col-2 col-form-label">Data final</label>
-            <div class="col-4">
-                <input type="date" name="dataFin" id="dataFin" class="form-control">
+            <div class="form-group float-right">
+                <button type="submit" name="actualizar" class="btn btn-primary boton-amplada">Actualitzar gràfic</button>
             </div>
-        </div>
- 
-        <div class="form-group float-right">
-            <button type="submit" name="actualizar" class="btn btn-primary boton-amplada">Actualitzar gràfic</button>
-        </div>
-</form>
-    
+    </form>
+
 
 
 
     <canvas id="myChart"></canvas>
+    </div>
+
+
+    </div>
+
+
+
+
 
 </div>
 @endsection

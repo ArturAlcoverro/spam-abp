@@ -104,9 +104,9 @@ class DonanteAPIController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function show($id_donante)
+    public function show($dni)
     {
-        $donante = Donante::find($id_donante);
+        $donante = Donante::where('cif',$dni)->first();
 
         return new DonanteResource($donante);
     }

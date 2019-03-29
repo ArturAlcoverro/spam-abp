@@ -9,10 +9,9 @@ use App\Models\Sexo;
 use App\Models\Donativo;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Database\QueryException;
-
 use App\Clases\Utilitat;
+use Session;
 
 class DonanteController extends Controller
 {
@@ -37,8 +36,13 @@ class DonanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        if($request->has('back')){
+            Session::put('back', '');
+        }elseif (Session::has('back')){
+            Session::forget('back');
+        }
         $animales = Animal::all();
         $tipos_donantes = Tipo_donante::all();
         $sexos = Sexo::all();
@@ -141,6 +145,12 @@ class DonanteController extends Controller
         $animales = $request->input('animales');
 
         $donante->animal()->attach($animales);
+
+        if (Session::has('back')){
+            Session::forget('back');
+            Session::flash('dni',$donante->cif);
+            return redirect(action('DonativoController@create'));
+        }
 
         return redirect('donants');
     }
