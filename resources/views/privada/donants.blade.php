@@ -51,7 +51,7 @@
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th hidden>Id</th>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>CIF</th>
                     <th>Tipo</th>
@@ -60,7 +60,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($donantes as $donante)
+                {{-- @foreach ($donantes as $donante)
                     <tr>
                         <td hidden>{{ $donante->id }}</td>
                         <td>{{ $donante->nombre }}</td>
@@ -69,7 +69,7 @@
                         <td>{{ $donante->correo }}</td>
                         <td>{{ $donante->pais }}</td>
                     </tr>
-                @endforeach
+                @endforeach --}}
             </tbody>
         </table>
     </div>

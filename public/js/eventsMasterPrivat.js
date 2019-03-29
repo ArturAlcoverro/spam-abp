@@ -73,5 +73,3 @@ function toast(msg, time){
         $('.toast').fadeOut(500);
     }, time);
 }
-
-

@@ -23,11 +23,13 @@ class DonanteController extends Controller
      */
     public function index()
     {
-        $donantes = Donante::all();
+        //$donantes = Donante::all();
 
-        $data['donantes'] = $donantes;
+        //$data['donantes'] = $donantes;
 
-        return view('privada.donants', $data);
+        //return view('privada.donants', $data);
+
+        return view('privada.donants');
     }
 
     /**

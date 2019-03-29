@@ -193,7 +193,7 @@ class DonanteAPIController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id_donante)
+    public function destroy($id_donante)
     {
         $donante = Donante::find($id_donante);
 

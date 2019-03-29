@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
     $('#row-sexo').hide();
+
+    indexDonants();
 });
 
 function editDonant() {
@@ -19,8 +21,31 @@ function deleteDonant() {
 
     var id = row[0];
 
-    $('#form_delete').attr('action', "http://localhost:8080/spam-abp/public/donants/" + id);
-    $('#form_delete').submit();
+    $.ajax({
+        url: "http://localhost:8080/spam-abp/public/api/donants/" + id,
+        type: "DELETE",
+        dataType: 'json',
+        async: true,
+        data: {
+            // "id": id
+        },
+        beforeSend: function () {},
+        success: function (resp) {
+
+            alert("xd");
+
+            resp['data'].forEach(function(data) {
+                $("#table").DataTable().row.add([
+                    data['id'],
+                    data['nombre'],
+                    data['cif'],
+                    data['tipos_donantes_id'],
+                    data['correo'],
+                    data['pais']
+                ]).draw();
+            });
+        }
+    });
 }
 
 $('#tipos_donante').change(function () {
@@ -44,3 +69,28 @@ $('#tipos_donante').change(function () {
         break;
     }
 });
+
+
+function indexDonants() {
+    $.ajax({
+        url: "http://localhost:8080/spam-abp/public/api/donants",
+        type: "GET",
+        dataType: 'json',
+        async: true,
+        data: {
+        },
+        beforeSend: function () {},
+        success: function (resp) {
+            resp['data'].forEach(function(data) {
+                $("#table").DataTable().row.add([
+                    data['id'],
+                    data['nombre'],
+                    data['cif'],
+                    data['tipos_donantes_id'],
+                    data['correo'],
+                    data['pais']
+                ]).draw();
+            });
+        }
+    });
+}

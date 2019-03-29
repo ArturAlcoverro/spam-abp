@@ -59,9 +59,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ action('DonanteController@index') }}">
+                    {{-- <a href="{{ action('DonanteController@index') }}"> --}}
                         <p>@lang('master.donants_nav')</p>
-                    </a>
+                    {{-- </a> --}}
                 </li>
                 <li>
                     <a href="{{ action('UsuarioController@index') }}">
@@ -88,7 +88,7 @@
                 </a>
             </li>
             <li id="donantsTab">
-                <a href="{{ action('DonanteController@index') }}">
+                <a href="{{ url('/donants') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
                     @lang('master.donants_nav')
                 </a>
