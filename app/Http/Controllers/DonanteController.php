@@ -10,6 +10,8 @@ use App\Models\Donativo;
 
 use Illuminate\Http\Request;
 
+use App\Http\Resources\DonanteResource;
+
 use Illuminate\Database\QueryException;
 
 use App\Clases\Utilitat;
@@ -25,9 +27,7 @@ class DonanteController extends Controller
     {
         $donantes = Donante::all();
 
-        $data['donantes'] = $donantes;
-
-        return view('privada.donants', $data);
+        return DonanteResource::collection($donantes);
     }
 
     /**
@@ -149,10 +149,13 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function show(Donante $donante)
+    public function show($id_donante)
     {
-        //
+        $donante = Donante::find($id_donante);
+
+        return new DonanteResource($donante);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -272,7 +275,6 @@ class DonanteController extends Controller
         $donante->animal()->attach($animales);
 
         return redirect()->action('DonanteController@index');
-
     }
 
     /**
@@ -285,17 +287,19 @@ class DonanteController extends Controller
     {
         $donante = Donante::find($id_donante);
 
-        try
-        {
+        try{
             $donante->delete();
+            $respuesta = (new DonanteResource($donante))
+                            ->response()
+                            ->setStatusCode(200);
         }
         catch(QueryException $e){
 
-            $error = Utilitat::errorMessage($e);
-            $request->session()->flash('error', $error);
-            return redirect()->action('DonanteController@index')->withInput();
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                           ->json(['error'=>$mensaje], 400);
         }
 
-        return redirect()->action('DonanteController@index');
+        return $respuesta;
     }
 }

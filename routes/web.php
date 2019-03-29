@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/donations', 'DonativoController');
 
-    Route::resource('/donants', 'DonanteController');
+    //Route::resource('/donants', 'DonanteController');
 
     Route::resource('/user', 'UsuarioController');
 });
