@@ -27,7 +27,9 @@ class DonanteController extends Controller
     {
         $donantes = Donante::all();
 
-        return DonanteResource::collection($donantes);
+        $data['donantes'] = $donantes;
+
+        return view('privada.donants', $data);
     }
 
     /**
