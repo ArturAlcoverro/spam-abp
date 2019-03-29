@@ -2,14 +2,89 @@
 
 function init(paramsApi, typeChart, optionsChart){
 
-    var data = consultarApi(paramsApi);
+    var data = consultarDataApi(paramsApi);
     createChart(typeChart, data, optionsChart);
 
 }
+function llistaCharts(){
+
+    var llista = consultarLlistaApi();
+    creaLlista(llista);
+
+}
+
+function consultarOpcionsApi(){
+
+    var options = {
+        title:{
+          display:true,
+          text:'Donacions',
+          fontSize:25
+        },
+        legend:{
+          display:true,
+          position:'bottom',
+          labels:{
+            fontColor:'#000'
+          }
+        },
+        // layout:{
+        //   padding:{
+        //     left:0,
+        //     right:0,
+        //     bottom:0,
+        //     top:0
+        //   }
+        // },
+        tooltips:{
+          enabled:true
+        }
+      };
+
+      return options;
+}
+//crea una un menu amb les grafiques disponibles.
+function creaLlista(llista){
+    llista.Lista.forEach(g => {
+        var nav = $('<a>').attr('id', 'nav' + g.id)
+                             .data('tipo', g.tipo)
+                             .data('fechaInit',g.fechaInit)
+                             .data('fechaFin', g.fechaFin)
+                             .text(g.nombre)
+                             .addClass('nav-link')
+                             .data('toggle', 'pill')
+                             .attr('href', "#grid" + g.id)
+                             .attr('role', 'tab')
+                             .attr('aria-controls', "grid" + g.id)
+                             .attr('aria-selected','false');
+
+        nav.appendTo('#llistaOpcions');
+
+        var grafic = $('<div>').attr('id', 'grid' + g.id)
+                               .addClass('tab-pane fade')
+                               .attr('role','tabpanel')
+                               .attr('aria-labelledby', 'nav' + g.id);
+        grafic.appendTo('#tabsGrafiques');
+    });
+    $('#llistaOpcions').first().addClass('active')
+                               .attr('aria-selected','true');
+    $('#tabsGrafiques').first().addClass('show active');
+
+}
+
+function consultarLlistaApi(){
+    var llista = {"Lista":[
+        {"id":1,"tipo":"bar","nombre":"General", "fechaInit":"2019-01-01", "fechaFin":"2019-01-30"},
+        {"id":2,"tipo":"pie","nombre":"Comida", "fechaInit":"2019-02-01", "fechaFin":"2019-03-02"},
+        {"id":3,"tipo":"line","nombre":"Otros", "fechaInit":"2019-03-01", "fechaFin":"2019-03-30"}
+    ]};
+
+    return llista;
+}
 
 //retorna els dataserts usats als charts
-function consultarApi(params){
-
+function consultarDataApi(params){
+    //data provisional de proba hardcoded
     var data = {
         labels:['Mejnar', 'Medicina', 'Higiene', 'Altres'],
         datasets:[{
@@ -29,8 +104,8 @@ function consultarApi(params){
           ],
           borderWidth:1,
           borderColor:'#777',
-          hoverBorderWidth:3,
-          hoverBorderColor:'#000'
+          hoverBorderWidth:2,
+          hoverBorderColor:'#777'
         },
         {
           label:'Objectius',
@@ -50,9 +125,9 @@ function consultarApi(params){
           borderWidth:1,
           borderColor:'#777',
           hoverBorderWidth:3,
-          hoverBorderColor:'#000'
+          hoverBorderColor:'#00000038'
         }
-      
+
       ]
       };
     return data;
