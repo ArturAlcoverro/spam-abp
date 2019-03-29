@@ -12,6 +12,10 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.507);
 }
 
+form .btn-donant{
+    background-color: var(--primary-color-dark) !important;
+}
+
 .btn-donant:nth-child(3){
     background-color: #cc3366e5;
 }
@@ -34,10 +38,6 @@
 
 .btn-donant:nth-child(1):hover{
     background-color: #ff6600;
-}
-
-.btn-donant:nth-child(4){
-    background-color: var(--primary-color-dark);
 }
 
 .btn-donant img{
