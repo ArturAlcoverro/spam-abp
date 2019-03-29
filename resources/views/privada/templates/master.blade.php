@@ -45,10 +45,7 @@
               <a class="dropdown-item" href="locale/es">Castellano</a>
 
             </div>
-          </div>
-
-
-
+        </div>
     </nav>
     <div id="logo">
         <img height="70%" src="{{ asset('media/img/artio.png') }}" alt="">
