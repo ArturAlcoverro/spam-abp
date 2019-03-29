@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Donante;
-use App\Models\Animal;
-use App\Models\Tipo_donante;
-use App\Models\Sexo;
-use App\Models\Donativo;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Http\Resources\DonanteResource;
 use Illuminate\Database\QueryException;
-
 use App\Clases\Utilitat;
 
-class DonanteController extends Controller
+class DonanteAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,46 +21,7 @@ class DonanteController extends Controller
     {
         $donantes = Donante::all();
 
-        $data['donantes'] = $donantes;
-
-        return view('privada.donants', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $animales = Animal::all();
-        $tipos_donantes = Tipo_donante::all();
-        $sexos = Sexo::all();
-        $donativos = Donativo::all();
-
-        $data['animales'] = $animales;
-        $data['tipos_donante'] = $tipos_donantes;
-        $data['sexos'] = $sexos;
-        $data['donativos'] = $donativos;
-        $data['paises'] = array(
-            "España",
-            "Francia"
-        );
-        $data['poblaciones'] = array(
-            "Barcelona",
-            "Lleida",
-            "Tarragona",
-            "Girona"
-        );
-        $data['colaboraciones'] = array(
-            "Padrino",
-            "Adoptante",
-            "Voluntario",
-            "Patrocinador",
-            "RRSS"
-        );
-
-        return view('privada.createDonante', $data);
+        return DonanteResource::collection($donantes);
     }
 
     /**
@@ -125,22 +82,20 @@ class DonanteController extends Controller
             $donante->spam = 0;
         }
 
-        try
-        {
+        try{
             $donante->save();
+            $respuesta =  (new DonanteResource($donante))
+                            ->response()
+                            ->setStatusCode(201);
         }
         catch(QueryException $e){
 
-            $error = Utilitat::errorMessage($e);
-            $request->session()->flash('error', $error);
-            return redirect()->action('DonanteController@create')->withInput();
+            $mensaje=Utilitat::errorMessage($e);
+            $respuesta = response()
+                            ->json(['error'=>$mensaje], 400);
         }
 
-        $animales = $request->input('animales');
-
-        $donante->animal()->attach($animales);
-
-        return redirect('donants');
+        return $respuesta;
     }
 
     /**
@@ -149,50 +104,11 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function show(Donante $donante)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Donante  $donante
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id_donante)
+    public function show($id_donante)
     {
         $donante = Donante::find($id_donante);
-        $animales = Animal::all();
-        $tipos_donantes = Tipo_donante::all();
-        $sexos = Sexo::all();
-        $donativos = Donativo::all();
 
-        $data['animales'] = $animales;
-        $data['tipos_donante'] = $tipos_donantes;
-        $data['sexos'] = $sexos;
-        $data['donativos'] = $donativos;
-        $data['donante'] = $donante;
-        $data['paises'] = array(
-            "España",
-            "Francia"
-        );
-        $data['poblaciones'] = array(
-            "Barcelona",
-            "Lleida",
-            "Tarragona",
-            "Girona"
-        );
-        $data['colaboraciones'] = array(
-            "Padrino",
-            "Adoptante",
-            "Voluntario",
-            "Patrocinador",
-            "RRSS"
-        );
-        $data['animales_donante'] = array_pluck($donante->animal, 'id');
-
-        return view('privada.editDonante', $data);
+        return new DonanteResource($donante);
     }
 
     /**
@@ -202,7 +118,7 @@ class DonanteController extends Controller
      * @param  \App\Models\Donante  $donante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_donante)
+    public function update(Request $request, Donante $donante)
     {
         $donante = Donante::find($id_donante);
 
@@ -254,24 +170,20 @@ class DonanteController extends Controller
             $donante->spam = 0;
         }
 
-        try
-        {
+        try{
             $donante->save();
+            $respuesta =  (new DonanteResource($donante))
+                            ->response()
+                            ->setStatusCode(200);
         }
         catch(QueryException $e){
 
-            $error = Utilitat::errorMessage($e);
-            $request->session()->flash('error', $error);
-            return redirect()->action('DonanteController@edit')->withInput();
+            $mensaje=Utilitat::errorMessage($e);
+            $respuesta = response()
+                            ->json(['error'=>$mensaje], 400);
         }
 
-        $donante->animal()->detach();
-
-        $animales = $request->input('animales');
-
-        $donante->animal()->attach($animales);
-
-        return redirect()->action('DonanteController@index');
+        return $respuesta;
 
     }
 
@@ -285,17 +197,19 @@ class DonanteController extends Controller
     {
         $donante = Donante::find($id_donante);
 
-        try
-        {
+        try{
             $donante->delete();
+            $respuesta = (new DonanteResource($donante))
+                            ->response()
+                            ->setStatusCode(200);
         }
         catch(QueryException $e){
 
-            $error = Utilitat::errorMessage($e);
-            $request->session()->flash('error', $error);
-            return redirect()->action('DonanteController@index')->withInput();
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                           ->json(['error'=>$mensaje], 400);
         }
 
-        return redirect()->action('DonanteController@index');
+        return $respuesta;
     }
 }
