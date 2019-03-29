@@ -24,9 +24,8 @@
             </ul>
         </div>
     </nav>
-    <div class="container" style="height: 90vh">
-        @yield('body')
-    </div>
+
+    @yield('body')
 
     <footer class="footer bg-grey py-3">
         <a href="https://www.facebook.com/protectoramataro/" class="ml-3">
@@ -40,7 +39,7 @@
 
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
-    <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>    
+    <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/changingNavBg.js') }}"></script>
 
     @yield('scripts')

@@ -26,6 +26,10 @@ body {
     z-index: -100;
     opacity: 0.75;
     margin-top: 3rem;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* .footer {
