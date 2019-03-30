@@ -1,58 +1,66 @@
-.btn-donant{
+.btn-donant {
     position: relative;
     font-size: 14px;
     width: 125px;
     height: 125px;
     border: 2px rgba(255, 255, 255, 0.219) solid;
     margin: 10px;
-    transition: box-shadow 0.3s ,background-color 0.1s;
+    background-repeat: no-repeat;
+    background-position: 50% 45%;
+    background-size: 50px;
+    transition: all 0.3s, background-color 0.1s;
 }
 
-.btn-donant:hover{
+.btn-donant:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.507);
 }
 
-form .btn-donant{
+form .btn-donant {
     background-color: var(--primary-color-dark) !important;
 }
 
-.btn-donant:nth-child(3){
+#btnAnonim {
     background-color: #cc3366e5;
+    background-image: url("../media/img/anonim.png");
 }
 
-.btn-donant:nth-child(3):hover{
+#btnAnonim:hover {
     background-color: #cc3366;
 }
 
-.btn-donant:nth-child(2){
+#btnEmpresa {
     background-color: #663366f6;
+    background-image: url("../media/img/empresa.png");
+
 }
 
-.btn-donant:nth-child(2):hover{
+#btnEmpresa:hover {
     background-color: #663366;
 }
 
-.btn-donant:nth-child(1){
+#btnParticular {
     background-color: #ff6600e5;
+    background-image: url("../media/img/user.png");
+
 }
 
-.btn-donant:nth-child(1):hover{
+#btnParticular:hover {
     background-color: #ff6600;
 }
 
-.btn-donant img{
-    height: 50px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.closeBtn:hover {
+    background-color: #ed1c24 !important;
+    background-image: url("../media/img/close.png") !important;
+    background-size: 35px;
 }
 
-.btn-donant:nth-child(4) img{
-    height: 40px;
+
+#btnNou {
+    background-size: 40px;
+    background-image: url("../media/img/plus.png");
 }
 
-.btn-donant p{
+.btn-donant p {
     display: inline;
     color: white;
     position: absolute;
@@ -61,7 +69,26 @@ form .btn-donant{
     transform: translate(-50%, -50%);
 }
 
-.buttons{
+.buttons {
     display: flex;
     flex-wrap: wrap
+}
+
+.modal-content {
+    border-radius: 0;
+    margin: auto;
+    max-width: 350px;
+}
+
+.modal-body,
+.modal-header {
+    border: none;
+}
+
+.modal-body {
+    padding-top: .5rem;
+}
+
+.spinner-border {
+    color: var(--primary-color-dark);
 }
