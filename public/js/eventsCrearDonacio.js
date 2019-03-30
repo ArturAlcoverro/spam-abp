@@ -9,28 +9,28 @@ $(document).ready(function () {
     $('#btnEmpresa').click(function () {
         $('#modalEmpresa').modal();
     });
-});
 
-$('#modalParticular .btn').click(function () {
-    var $this = $(this);
-    var dni = $('#modalParticular input').val();
-    if (dni == '') {
+    $('#modalParticular .btn').click(function () {
+        var $this = $(this);
+        var dni = $('#modalParticular input').val();
+        if (dni == '') {
 
-    }
-    else {
-        $('.spinner-border').show();
-        $this.hide();
-        getDonant(dni, function (data) {
-            if (data != '') {
-                console.log(data)
-            }
-            else {
-                alert('bad');
-            }
-            $('.spinner-border').show();
+        }
+        else {
+            $('.spinner').removeClass('d-none');
             $this.hide();
-        });
-    }
+            getDonant(dni, function (data) {
+                if (data.data.length != 0) {
+                    console.log(data)
+                }
+                else {
+                    alert('bad');
+                }
+                $('.spinner').addClass('d-none');
+                $this.show();
+            });
+        }
+    });
 });
 
 function getDonant(dni, callback) {

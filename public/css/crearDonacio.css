@@ -89,6 +89,34 @@ form .btn-donant {
     padding-top: .5rem;
 }
 
-.spinner-border {
-    color: var(--primary-color-dark);
+.spinner {
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-bottom: 3px solid var(--primary-color-dark);
+    border-top: 3px solid var(--primary-color-dark);
+    border-left: 3px solid var(--primary-color-dark);
+    width: 33px;
+    height: 33px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

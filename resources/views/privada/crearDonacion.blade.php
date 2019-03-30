@@ -42,9 +42,7 @@
                     <input id="dni" type="text" class="form-control" maxlength="9">
                 </div>
                 <button id="cargaDni" type="button" class="btn btn-primary float-right">Cargar donante</button>
-                <div class="spinner-border float-right d-none mr-2" role="status">
-                        <span class="sr-only">Loading...</span>
-                </div>
+                <div class="spinner float-right mr-2 d-none"></div>
             </div>
 
           </div>
@@ -66,9 +64,8 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <button type="button" class="btn btn-primary float-right">Cargar donante</button>
-                    <div class="spinner-border float-right d-none mr-2" role="status">
-                            <span class="sr-only">Loading...</span>
-                    </div>
+                    <div class="spinner float-left mr-2 d-none"></div>
+
                 </div>
 
               </div>
