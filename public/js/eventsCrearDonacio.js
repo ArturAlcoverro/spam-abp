@@ -1,8 +1,9 @@
-var donante = false;
+var donante;
+var isDonante = false;
 $(document).ready(function () {
     $('#btnAnonim').click(function () {
-        $(this).unbind('click');
-        ocultarBotones($(this).attr('id'));
+        ocultarBotones('btnAnonim');
+        isDonante = true;
     });
     $('#btnParticular').click(function () {
         $('.not-found').addClass('d-none');
@@ -13,6 +14,15 @@ $(document).ready(function () {
         $('.not-found').addClass('d-none');
         $('.empty-error').addClass('d-none');
         $('#modalEmpresa').modal();
+    });
+
+    $('.closeBtn').click(function () {
+        $('#titleDonant').text('Selecciona un donant');
+        $('.btn-donant').show();
+        $('.closeBtn').hide();
+        $("#infoParticular").hide();
+        $("#infoEmpresa").hide();
+        isDonante = false;
     });
 
     $('#modalParticular .btn').click(function () {
@@ -30,6 +40,7 @@ $(document).ready(function () {
                     $('.not-found').addClass('d-none');
                     $('.empty-error').addClass('d-none');
                     $('#modalParticular').modal('hide');
+                    isDonante = true;
                     console.log(data);
                     setDonant(data);
                 }
@@ -58,6 +69,7 @@ $(document).ready(function () {
                     $('.not-found').addClass('d-none');
                     $('.empty-error').addClass('d-none');
                     $('#modalEmpresa').modal('hide');
+                    isDonante = true;
                     setDonant(data);
                     console.log(data);
                 }
@@ -70,6 +82,8 @@ $(document).ready(function () {
             });
         }
     });
+
+
 });
 
 function getDonant(dni, callback) {
@@ -84,23 +98,24 @@ function getDonant(dni, callback) {
 }
 
 function setDonant(data) {
+    var habitual;
+    var nombre = data.nombre;
+
     if (data.tipos_donantes_id == 1) {
-
+        ocultarBotones('btnEmpresa');
+        $("#infoEmpresa #nombreEmpresa span").text(nombre.charAt(0).toUpperCase() + nombre.slice(1));
+        $("#infoEmpresa #dniEmpresa span").text(data.cif);
+        $("#infoEmpresa").show();
     } else if (data.tipos_donantes_id == 2) {
-
+        ocultarBotones('btnParticular');
+        $("#infoParticular #nombreParticular span").text(nombre.charAt(0).toUpperCase() + nombre.slice(1));
+        $("#infoParticular #dniParticular span").text(data.cif);
+        $("#infoParticular").show();
     }
 }
 
 function ocultarBotones(id) {
+    $('#titleDonant').text('Informació donant');
     $('.btn-donant').hide();
-    $('#' + id).show();
-    $('#' + id).addClass('closeBtn');
-    $('#' + id).click(function () {
-        $('#' + id).unbind('click');
-        $('#' + id).click(function () {
-            ocultarBotones($(this).attr('id'));
-        });
-        $('.btn-donant').show();
-        $('#' + id).removeClass('closeBtn');
-    });
+    $('#' + id + 'Delete').show();
 }

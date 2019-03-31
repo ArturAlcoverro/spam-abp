@@ -1,4 +1,5 @@
-.btn-donant {
+.btn-donant,
+.btn-donatiu {
     position: relative;
     font-size: 14px;
     width: 125px;
@@ -11,7 +12,8 @@
     transition: all 0.3s, background-color 0.1s;
 }
 
-.btn-donant:hover {
+.btn-donant:hover,
+.btn-donatiu:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.507);
 }
 
@@ -19,7 +21,8 @@ form .btn-donant {
     background-color: var(--primary-color-dark) !important;
 }
 
-#btnAnonim {
+#btnAnonim,
+#btnAnonimDelete {
     background-color: #cc3366e5;
     background-image: url("../media/img/anonim.png");
 }
@@ -28,7 +31,8 @@ form .btn-donant {
     background-color: #cc3366;
 }
 
-#btnEmpresa {
+#btnEmpresa,
+#btnEmpresaDelete {
     background-color: #663366f6;
     background-image: url("../media/img/empresa.png");
 
@@ -38,7 +42,8 @@ form .btn-donant {
     background-color: #663366;
 }
 
-#btnParticular {
+#btnParticular,
+#btnParticularDelete {
     background-color: #ff6600e5;
     background-image: url("../media/img/user.png");
 
@@ -47,6 +52,21 @@ form .btn-donant {
 #btnParticular:hover {
     background-color: #ff6600;
 }
+
+#btnDiners {
+    background-color: var(--primary-color-dark);
+    background-image: url("../media/img/money.png");
+}
+
+#btnMaterials {
+    background-color: #cc3366e5;
+    background-image: url("../media/img/material.png");
+}
+
+#btnMaterials:hover {
+    background-color: #cc3366;
+}
+
 
 .closeBtn:hover {
     background-color: #ed1c24 !important;
@@ -60,7 +80,8 @@ form .btn-donant {
     background-image: url("../media/img/plus.png");
 }
 
-.btn-donant p {
+.btn-donant p,
+.btn-donatiu p {
     display: inline;
     color: white;
     position: absolute;
@@ -101,6 +122,31 @@ form .btn-donant {
     animation: spin 1s linear infinite;
 }
 
+#infoParticular,
+#infoEmpresa {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+#infoParticular p,
+#infoEmpresa p {
+    color: #717171;
+    margin-bottom: 0.5rem;
+    font-style: italic
+}
+
+#infoParticular b,
+#infoEmpresa b {
+    color: #3f3f3f;
+}
+
+#nombreEmpresa,
+#nombreParticular {
+    font-size: 30px;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -122,7 +168,9 @@ form .btn-donant {
 }
 
 @media only screen and (max-width: 400px) {
-    .btn-donant {
+
+    .btn-donant,
+    .btn-donatiu {
         width: calc(50vw - 20px - 1rem);
         height: calc(50vw - 20px - 1rem);
     }

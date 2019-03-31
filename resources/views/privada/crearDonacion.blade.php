@@ -5,10 +5,10 @@
 @endsection
 @section('body')
 @if (Session::has('dni'))
-    <script>getDonant("{{Session::get('dni')}}")</script>
+    <script>getDonant("{{Session::get('dni')}}", setDonant)</script>
 @endif
-    <div class="p-5">
-        <h3>Selecciona un tipus de donant</h3>
+    <div class="p-5 d-inline-block">
+        <h3 id="titleDonant">Selecciona un donant</h3>
         <div class="buttons">
             <button id="btnParticular" class="btn-donant">
                 <p>Particular</p>
@@ -25,15 +25,33 @@
                     <p>Nou</p>
                 </button>
             </form>
+            <button id="btnParticularDelete" class="btn-donant closeBtn" style="display: none">
+                <p>Particular</p>
+            </button>
+            <button id="btnEmpresaDelete" class="btn-donant closeBtn" style="display: none">
+                <p>Empresa</p>
+            </button>
+            <button id="btnAnonimDelete" class="btn-donant closeBtn" style="display: none">
+                <p>Anònim</p>
+            </button>
+            <div id="infoParticular" style="display: none">
+                <p id="nombreParticular"><span></span></p>
+                <p id="dniParticular"><span></span></p>
+            </div>
+
+            <div id="infoEmpresa" style="display: none">
+                <p id="nombreEmpresa"><span></span></p>
+                <p id="dniEmpresa"><span></span></p>
+            </div>
         </div>
 
-        <h3 class="mt-5">Selecciona un tipus de donacio</h3>
+        <h3 class="mt-5">Crea una donació</h3>
         <div class="buttons">
-            <button id="btnDiners" class="btn-donant">
-                <p>Diners</p>
-            </button>
-            <button id="btnMaterials" class="btn-donant">
+            <button id="btnMaterials" class="btn-donatiu">
                 <p>Material</p>
+            </button>
+            <button id="btnDiners" class="btn-donatiu">
+                    <p>Diners</p>
             </button>
         </div>
 

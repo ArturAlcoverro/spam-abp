@@ -1,5 +1,6 @@
 <?php
 return[
+    'idioma'       =>'cat',
     'donacions_nav'=>'Donacions',
     'donants_nav'  =>'Donants',
     'usuaris_nav'  =>'Usuaris',

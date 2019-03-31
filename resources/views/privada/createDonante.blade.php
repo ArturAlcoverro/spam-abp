@@ -113,15 +113,17 @@
             </div>
             <div class="form-group">
                 <div class="col-3"></div>
-                <div class="col-3">
-                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input">Es habitual</input>
+                <div class="col-3 custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" name="habitual" id="habitual">
+                    <label class="custom-control-label" for="habitual">Es habitual</label>
                 </div>
-                <div class="col-3">
-                    <input type="checkbox" name="spam" id="spam" class="form-check-input">Quiero recibir correos</input>
+                <div class="col-3 custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" name="spam" id="spam">
+                    <label class="custom-control-label" for="spam">Quiero recibir correos</label>
                 </div>
             </div>
             <div class="form-group float-right">
-                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
+                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada mb-5">Aceptar</button>
             </div>
         </form>
     </div>
