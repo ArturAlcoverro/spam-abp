@@ -31,7 +31,7 @@ body {
     border: none;
     padding: 21px 50px 9px 15px;
     background: transparent;
-    border: 1px #8a8a8a6e solid;
+    border: 1px hsla(0, 0%, 54%, 0.431) solid;
     border-radius: 5px;
     width: 300px;
     transition: border-color 0.2s
@@ -109,7 +109,7 @@ p {
     background: transparent;
     font-family: 'Material Icons';
     font-size: 25px;
-    color: #8a8a8a6e;
+    color: hsla(0, 0%, 54%, 0.431);
     transform: translate(-50%, -50%);
     cursor: (auto);
     transition: all 0.5s;

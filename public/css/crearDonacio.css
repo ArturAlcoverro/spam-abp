@@ -23,7 +23,7 @@ form .btn-donant {
 
 #btnAnonim,
 #btnAnonimDelete {
-    background-color: #cc3366e5;
+    background-color: hsla(340, 60%, 50%, 0.898);
     background-image: url("../media/img/anonim.png");
 }
 
@@ -33,7 +33,7 @@ form .btn-donant {
 
 #btnEmpresa,
 #btnEmpresaDelete {
-    background-color: #663366f6;
+    background-color: hsla(300, 33%, 30%, 0.965);
     background-image: url("../media/img/empresa.png");
 
 }
@@ -44,7 +44,7 @@ form .btn-donant {
 
 #btnParticular,
 #btnParticularDelete {
-    background-color: #ff6600e5;
+    background-color: hsla(24, 100%, 50%, 0.898);
     background-image: url("../media/img/user.png");
 
 }
@@ -59,12 +59,12 @@ form .btn-donant {
 }
 
 #btnMaterials {
-    background-color: #cc3366e5;
+    background-color: hsla(340, 60%, 50%, 0.898);
     background-image: url("../media/img/material.png");
 }
 
 #btnMaterials:hover {
-    background-color: #cc3366;
+    background-color: hsl(340, 60%, 50%);
 }
 
 
