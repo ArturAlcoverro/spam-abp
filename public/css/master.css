@@ -191,4 +191,8 @@ body {
     .body {
         padding: 20vw 0 0 0;
     }
+
+    .p-5 {
+        padding: 1rem !important;
+    }
 }

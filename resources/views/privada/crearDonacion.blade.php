@@ -26,6 +26,17 @@
                 </button>
             </form>
         </div>
+
+        <h3 class="mt-5">Selecciona un tipus de donacio</h3>
+        <div class="buttons">
+            <button id="btnDiners" class="btn-donant">
+                <p>Diners</p>
+            </button>
+            <button id="btnMaterials" class="btn-donant">
+                <p>Material</p>
+            </button>
+        </div>
+
     </div>
 
     <div class="modal fade" id="modalParticular" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -40,6 +51,8 @@
             <div class="modal-body">
                 <div class="form-group">
                     <input id="dni" type="text" class="form-control" maxlength="9">
+                    <small class="not-found form-text text-danger d-none ml-1">No se ha encontrado ningun particular con este DNI.</small>
+                    <small class="empty-error form-text text-muted d-none ml-1">Escribe el DNI del particular</small>
                 </div>
                 <button id="cargaDni" type="button" class="btn btn-primary float-right">Cargar donante</button>
                 <div class="spinner float-right mr-2 d-none"></div>
@@ -61,10 +74,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" maxlength="9">
-                        <small class="form-text text-muted"></small>
+                        <small class="not-found form-text text-danger d-none ml-1">No se ha encontrado ninguna empresa con este CIF.</small>
+                        <small class="empty-error form-text text-muted d-none ml-1">Escribe el CIF de la empresa</small>
                     </div>
                     <button type="button" class="btn btn-primary float-right">Cargar donante</button>
-                    <div class="spinner float-left mr-2 d-none"></div>
+                    <div class="spinner float-right mr-2 d-none"></div>
 
                 </div>
 

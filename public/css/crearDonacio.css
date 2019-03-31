@@ -120,3 +120,10 @@ form .btn-donant {
         transform: rotate(360deg);
     }
 }
+
+@media only screen and (max-width: 400px) {
+    .btn-donant {
+        width: calc(50vw - 20px - 1rem);
+        height: calc(50vw - 20px - 1rem);
+    }
+}
