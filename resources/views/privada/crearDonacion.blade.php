@@ -115,7 +115,7 @@
 </div>
 
 <div class="modal fade" id="modalMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Nova donació</h5>
@@ -216,15 +216,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-3"></div>
-                            <div class="col-3">
-                                <input type="checkbox" name="spam" id="spam" class="form-check-input">Es coordinada</input>
+                            <div class="col-3 custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="spam" id="spam">
+                                <label class="custom-control-label" for="spam">Es coordinada</label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="nombre" class="col-form-label">Factura</label>
+                            <label for="nombre" class="col-form-label d-block">Factura</label>
+                            {{-- <label for="nombre" class="col-form-label custom-file btn btn-outline-primary d-inline">Puja un arxui</label> --}}
                             <div class="">
-                                <input type="file" name="nombre" id="nombre">
+                                <input type="file" class="" name="nombre" id="nombre">
                             </div>
                         </div>
 

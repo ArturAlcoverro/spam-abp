@@ -59,9 +59,9 @@
                     </a>
                 </li>
                 <li>
-                    {{-- <a href="{{ action('DonanteController@index') }}"> --}}
+                    <a href="{{ action('DonanteController@index') }}">
                         <p>@lang('master.donants_nav')</p>
-                    {{-- </a> --}}
+                    </a>
                 </li>
                 <li>
                     <a href="{{ action('UsuarioController@index') }}">

@@ -8,7 +8,12 @@
     --error-color: #ed1c24;
 }
 
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+}
+
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    border-radius: 0;
     background-color: var(--primary-color-dark);
 }
 
@@ -18,15 +23,22 @@
 }
 
 .btn-primary {
+    cursor: pointer;
+    border-radius: 0;
     color: #fff;
     background-color: var(--primary-color-dark);
     border-color: var(--primary-color)
 }
 
+.form-group {
+    overflow: initial;
+}
+
 .btn-primary:hover {
     color: #fff;
     background-color: var(--primary-color-dark);
-    border-color: var(--primary-color-dark)
+    border-color: var(--primary-color-dark);
+    box-shadow: 0 10px 15px -3px #00000040;
 }
 
 .btn-primary.focus,
