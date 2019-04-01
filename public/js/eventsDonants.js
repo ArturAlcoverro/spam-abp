@@ -1,3 +1,5 @@
+var x,y;
+
 $(document).ready(function () {
 
     $('#row-sexo').hide();
@@ -32,18 +34,9 @@ function deleteDonant() {
         beforeSend: function () {},
         success: function (resp) {
 
-            alert("xd");
+            //$("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
-                $("#table").DataTable().row.add([
-                    data['id'],
-                    data['nombre'],
-                    data['cif'],
-                    data['tipos_donantes_id'],
-                    data['correo'],
-                    data['pais']
-                ]).draw();
-            });
+            indexDonants();
         }
     });
 }
@@ -81,6 +74,11 @@ function indexDonants() {
         },
         beforeSend: function () {},
         success: function (resp) {
+
+            y = resp;
+
+            $("#table").DataTable().clear().draw();
+
             resp['data'].forEach(function(data) {
                 $("#table").DataTable().row.add([
                     data['id'],

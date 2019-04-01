@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
+Route::get('/formtest', function () {
+    return view("privada/createDonacionMaterial");
+});
+
 //ruta provisional a estadistiques publiques
 Route::get('/charts', function(){
     return view('publica.charts');

@@ -19,7 +19,7 @@ class DonanteAPIController extends Controller
      */
     public function index()
     {
-        $donantes = Donante::all();
+        $donantes = Donante::with('tipo_donante')->get();
 
         return DonanteResource::collection($donantes);
     }
