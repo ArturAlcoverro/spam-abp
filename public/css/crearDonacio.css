@@ -18,7 +18,7 @@
 }
 
 form .btn-donant {
-    background-color: var(--primary-color-dark) !important;
+    background-color: var(--primary-color-dark);
 }
 
 #btnAnonim,
@@ -54,19 +54,14 @@ form .btn-donant {
 }
 
 #btnDiners {
-    background-color: var(--primary-color-dark);
+    background-color: #ff9800;
     background-image: url("../media/img/money.png");
 }
 
-#btnMaterials {
-    background-color: hsla(340, 60%, 50%, 0.898);
+#btnMaterial {
+    background-color: #84513e;
     background-image: url("../media/img/material.png");
 }
-
-#btnMaterials:hover {
-    background-color: hsl(340, 60%, 50%);
-}
-
 
 .closeBtn:hover {
     background-color: #ed1c24 !important;
@@ -98,6 +93,10 @@ form .btn-donant {
 .modal-content {
     border-radius: 0;
     margin: auto;
+}
+
+.modalEmpresa,
+.modalParticular{
     max-width: 350px;
 }
 

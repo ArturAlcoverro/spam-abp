@@ -15,6 +15,9 @@ $(document).ready(function () {
         $('.empty-error').addClass('d-none');
         $('#modalEmpresa').modal();
     });
+    $('#btnMaterial').click(function () {
+        $('#modalMaterial').modal();
+    });
 
     $('.closeBtn').click(function () {
         $('#titleDonant').text('Selecciona un donant');
