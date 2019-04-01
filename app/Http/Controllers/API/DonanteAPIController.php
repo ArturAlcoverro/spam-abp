@@ -184,7 +184,6 @@ class DonanteAPIController extends Controller
         }
 
         return $respuesta;
-
     }
 
     /**

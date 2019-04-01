@@ -60,35 +60,33 @@
                     </select>
                 </div>
             </div>
-
-            {{-- <div class="form-group">
-                <label for="unidades" class="col-form-label">Unidades</label>
-                <div class="">
-                    <input type="text" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
-                </div>
-            </div> --}}
             <div class="form-group">
-                <label for="cantidad" class="col-form-label">Cantidad</label>
+                <label for="num" class="col-form-label">Numero de productos</label>
                 <div class="">
-                    <input type="text" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
+                    <input type="number" name="num" id="num" class="form-control" placeholder="Numero de productos">
                 </div>
             </div>
             <div class="form-group">
-                <label for="lblunidades" class="col-form-label">Unidades</label>
-                <div class="">
-                    <select name="unidades" id="unidades" class="form-control">
-                        <option value="">-</option>
-                        <option value="comida">Kg</option>
-                        <option value="">g</option>
-                        <option value="">L</option>
-                        <option value="">multiple</option>
-                    </select>
+                <label for="cantidad" class="col-form-label">Cantidad</label>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
+                    </div>
+                    <div class="col-2">
+                        <select name="unidades" id="unidades" class="form-control">
+                            <option value=""></option>
+                            <option value="comida">Kg</option>
+                            <option value="">g</option>
+                            <option value="">L</option>
+                            <option value="">Ml</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="coste" class="col-form-label">Coste</label>
                 <div class="">
-                    <input type="text" name="coste" id="coste" class="form-control" placeholder="Coste">
+                    <input type="number" name="coste" id="coste" class="form-control" placeholder="Coste">
                 </div>
             </div>
             <div class="form-group">

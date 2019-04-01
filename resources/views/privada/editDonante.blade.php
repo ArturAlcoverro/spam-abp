@@ -132,11 +132,13 @@
             </div>
             <div class="form-group">
                 <div class="col-3"></div>
-                <div class="col-3">
-                    <input type="checkbox" name="habitual" id="habitual" class="form-check-input" @if($donante->es_habitual == 1) checked @endif>Es habitual</input>
+                <div class="col-3 custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="habitual" id="habitual" @if($donante->es_habitual == 1) checked @endif>
+                    <label class="custom-control-label" for="habitual">Es habitual</label>
                 </div>
-                <div class="col-3">
-                    <input type="checkbox" name="spam" id="spam" class="form-check-input" @if($donante->spam == 1) checked @endif>Quiero recibir correos</input>
+                <div class="col-3 custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="spam" id="spam" @if($donante->spam == 1) checked @endif>
+                    <label class="custom-control-label" for="spam">Quiero recibir correos</label>
                 </div>
             </div>
             <div class="form-group float-right">

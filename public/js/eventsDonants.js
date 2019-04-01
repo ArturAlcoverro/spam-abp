@@ -1,5 +1,3 @@
-var x,y;
-
 $(document).ready(function () {
 
     $('#row-sexo').hide();
@@ -29,14 +27,16 @@ function deleteDonant() {
         dataType: 'json',
         async: true,
         data: {
-            // "id": id
+        },
+        error: function (resp) {
+
+            $('#info').text("Error al eliminar el registro");
         },
         beforeSend: function () {},
         success: function (resp) {
 
-            //$("#table").DataTable().clear().draw();
-
             indexDonants();
+            $('#info').text("Registro eliminado");
         }
     });
 }

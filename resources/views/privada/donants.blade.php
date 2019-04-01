@@ -19,6 +19,7 @@
     @include('partial.errores')
 
     <div class="p-5">
+        <p id="info"></p>
         <div class="toolbar">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
                 <a href="{{ action('DonanteController@create') }}">

@@ -113,11 +113,11 @@
             </div>
             <div class="form-group">
                 <div class="col-3"></div>
-                <div class="col-3 custom-control custom-checkbox custom-control-inline">
+                <div class="col-3 custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" name="habitual" id="habitual">
                     <label class="custom-control-label" for="habitual">Es habitual</label>
                 </div>
-                <div class="col-3 custom-control custom-checkbox custom-control-inline">
+                <div class="col-3 custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" name="spam" id="spam">
                     <label class="custom-control-label" for="spam">Quiero recibir correos</label>
                 </div>
