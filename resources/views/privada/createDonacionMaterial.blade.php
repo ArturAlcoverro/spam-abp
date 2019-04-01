@@ -86,11 +86,11 @@
                 </div>
             </div>
             <div class="form-group">
-                    <label for="coste" class="col-form-label">Coste</label>
-                    <div class="">
-                        <input type="text" name="coste" id="coste" class="form-control" placeholder="Coste">
-                    </div>
+                <label for="coste" class="col-form-label">Coste</label>
+                <div class="">
+                    <input type="text" name="coste" id="coste" class="form-control" placeholder="Coste">
                 </div>
+            </div>
             <div class="form-group">
                 <label for="animales" class=" col-form-label">Va dirigida a algun animal?</label>
                 <div class="">
