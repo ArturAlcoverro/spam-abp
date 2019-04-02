@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donativo;
+use App\Models\Tipo;
+use App\Models\Subtipo;
+use App\Models\Centro;
 use Illuminate\Http\Request;
 
 class DonativoController extends Controller
@@ -24,7 +27,13 @@ class DonativoController extends Controller
      */
     public function create()
     {
-        return view('privada.crearDonacion');
+        $tipos = Tipo::all();
+        $subtipos = Subtipo::all();
+        $centros = Centro::all();
+        $data["tipos"] = $tipos;
+        $data["subtipos"] = $subtipos;
+        $data["centros"] = $centros;
+        return view('privada.crearDonacion', $data);
     }
 
     /**

@@ -86,6 +86,16 @@ $(document).ready(function () {
         }
     });
 
+    setSubtipos(1);
+    $("#tipos_donacion").change(function () {
+        setSubtipos($("#tipos_donacion").val());
+    });
+
+    $('#formMaterial').submit(function (event) {
+        alert("submit");
+        event.preventDefault();
+    });
+
 
 });
 
@@ -121,4 +131,14 @@ function ocultarBotones(id) {
     $('#titleDonant').text('Informació donant');
     $('.btn-donant').hide();
     $('#' + id + 'Delete').show();
+}
+
+function setSubtipos(id) {
+    $('#subtipos_donacion').empty();
+    subtipos.forEach(element => {
+        if (element.tipos_id == id) {
+            $('#subtipos_donacion').append('<option value="' + element.id + '">' + element.nombre + '</option>');
+        }
+    });
+
 }

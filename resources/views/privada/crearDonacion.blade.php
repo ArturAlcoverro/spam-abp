@@ -9,6 +9,11 @@
     @if (Session::has('dni'))
         <script>getDonant("{{Session::get('dni')}}", setDonant)</script>
     @endif
+    <script>
+        var subtipos = {!! json_encode($subtipos->toArray()) !!};
+    </script>
+
+
 <div class="p-5 d-inline-block">
     <h3 id="titleDonant">Selecciona un donant</h3>
     <div class="buttons">
@@ -124,29 +129,29 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="container " method="POST">
+                <form class="container" id="formMaterial" method="POST">
                     @csrf
                         <div class="form-group">
                             <label for="lbltipos_donacion" class=" col-form-label">Tipo de donacion</label>
                             <div class="">
                                 <select name="tipos_donacion" id="tipos_donacion" class="form-control">
-                                    <option value="comida">Comida</option>
-                                    <option value="">Veterinaria</option>
-                                    <option value="">Oficinas</option>
-                                    <option value="">Complementos</option>
-                                    <option value="">Encants</option>
+                                    @foreach ($tipos as $tipo)
+                                        @if ($tipo->nombre != "Diners")
+                                            @if ($tipo->id == 1)
+                                                <option value="{{$tipo->id}}" selected>{{$tipo->nombre}}</option>
+                                            @else
+                                                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lblsubtipos_donacion" class=" col-form-label">Subtipo de donacion</label>
+                            <label for="lblsubtipos_donacion" class="col-form-label">Subtipo de donacion</label>
                             <div class="">
                                 <select name="subtipos_donacion" id="subtipos_donacion" class="form-control">
-                                    <option value="comida">Comida</option>
-                                    <option value="">Veterinaria</option>
-                                    <option value="">Oficinas</option>
-                                    <option value="">Complementos</option>
-                                    <option value="">Encants</option>
+
                                 </select>
                             </div>
                         </div>
@@ -154,11 +159,9 @@
                             <label for="lblcentro_receptor" class=" col-form-label">Centro receptor</label>
                             <div class="">
                                 <select name="centro_receptor" id="centro_receptor" class="form-control">
-                                    <option value="comida">Servicios centrales</option>
-                                    <option value="">Espacio veterinario</option>
-                                    <option value="">Refugio Cal Pilè</option>
-                                    <option value="">CCACC</option>
-                                    <option value="">Refugio Can Moret</option>
+                                    @foreach ($centros as $centro)
+                                        <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -166,49 +169,51 @@
                             <label for="lblcentro_destino" class=" col-form-label">Centro destino</label>
                             <div class="">
                                 <select name="centro_destino" id="centro_destino" class="form-control">
-                                    <option value="comida">Servicios centrales</option>
-                                    <option value="">Espacio veterinario</option>
-                                    <option value="">Refugio Cal Pilè</option>
-                                    <option value="">CCACC</option>
-                                    <option value="">Refugio Can Moret</option>
+                                    @foreach ($centros as $centro)
+                                        <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="unidades" class="col-form-label">Unidades</label>
                             <div class="">
-                                <input type="text" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
+                                <input type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades" required>
                             </div>
-                        </div> --}}
-                        <div class="form-group">
-                            <label for="cantidad" class="col-form-label">Cantidad</label>
-                            <div class="">
-                                <input type="text" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-7 col-md-9 pr-0">
+                                <label for="cantidad" class="col-form-label">Cantidad p.u.</label>
+                                <div class="">
+                                    <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
+                                </div>
+                            </div>
+                            <div class="form-group col-5 col-md-3">
+                                <label for="lblunidades" class="col-form-label">Medida</label>
+                                <div class="">
+                                    <select name="unidades" id="unidades" class="form-control">
+                                        <option value="">kg</option>
+                                        <option value="">g</option>
+                                        <option value="">l</option>
+                                        <option value="">ml</option>
+                                        <option value="">cm</option>
+                                        <option value="">m</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lblunidades" class="col-form-label">Unidades</label>
+                            <label for="coste" class="col-form-label">Coste (€)</label>
                             <div class="">
-                                <select name="unidades" id="unidades" class="form-control">
-                                    <option value="">-</option>
-                                    <option value="comida">Kg</option>
-                                    <option value="">g</option>
-                                    <option value="">L</option>
-                                    <option value="">multiple</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="coste" class="col-form-label">Coste</label>
-                            <div class="">
-                                <input type="text" name="coste" id="coste" class="form-control" placeholder="Coste">
+                                <input type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="Coste">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="animales" class=" col-form-label">Va dirigida a algun animal?</label>
                             <div class="">
-                                <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select">
+                                <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select p-0">
                                    <option value="">Perro</option>
                                    <option value="">Gato</option>
                                    <option value="">Hurón</option>
@@ -223,8 +228,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nombre" class="col-form-label d-block">Factura</label>
-                            {{-- <label for="nombre" class="col-form-label custom-file btn btn-outline-primary d-inline">Puja un arxui</label> --}}
-                            <div class="">
+                             <div class="">
                                 <input type="file" class="" name="nombre" id="nombre">
                             </div>
                         </div>
