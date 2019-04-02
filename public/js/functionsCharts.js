@@ -1,9 +1,12 @@
 
 
-function init(paramsApi, typeChart, optionsChart){
+function init(selectedNav){
 
-    var data = consultarDataApi(paramsApi);
-    createChart(typeChart, data, optionsChart);
+    var options = opcions(selectedNav);
+
+    var data = consultarDataApi(options.paramsApi);
+
+    createChart(options.tipo, data, options.optionsChart, options.id);
 
 }
 function llistaCharts(){
@@ -13,13 +16,17 @@ function llistaCharts(){
 
 }
 
-function consultarOpcionsApi(){
 
-    var options = {
+//consulta la data allotjada a la nav per construir el grafic
+function opcions(selectedNav){
+    var nav = $('#' + selectedNav);
+    var valores = [nav.data('fechaInit'), nav.data('fechaFin')]
+
+    var options = 
+      {"optionsChart":{
         title:{
-          display:true,
-          text:'Donacions',
-          fontSize:25
+          display: true,
+          text: nav.text()
         },
         legend:{
           display:true,
@@ -28,55 +35,60 @@ function consultarOpcionsApi(){
             fontColor:'#000'
           }
         },
-        // layout:{
-        //   padding:{
-        //     left:0,
-        //     right:0,
-        //     bottom:0,
-        //     top:0
-        //   }
-        // },
         tooltips:{
           enabled:true
         }
-      };
-
+      },
+      "tipo":nav.data('tipo'),
+      "paramsApi":{"token":nav.data('token'), "valores": valores},
+      "id":nav.data('id')
+    };
       return options;
 }
-//crea una un menu amb les grafiques disponibles.
+//crea una un menu amb les grafiques disponibles, els tabs  i ells canvas per morstrar grafics corresponents.
 function creaLlista(llista){
     llista.Lista.forEach(g => {
         var nav = $('<a>').attr('id', 'nav' + g.id)
+                             .data('id', g.id)
+                             .data('nombre', g.nombre)
                              .data('tipo', g.tipo)
                              .data('fechaInit',g.fechaInit)
                              .data('fechaFin', g.fechaFin)
+                             .data('token', g.token)
                              .text(g.nombre)
                              .addClass('nav-link')
                              .data('toggle', 'pill')
-                             .attr('href', "#grid" + g.id)
+                             .attr('href', "#tab" + g.id)
                              .attr('role', 'tab')
-                             .attr('aria-controls', "grid" + g.id)
+                             .attr('aria-controls', "tab" + g.id)
                              .attr('aria-selected','false');
 
         nav.appendTo('#llistaOpcions');
 
-        var grafic = $('<div>').attr('id', 'grid' + g.id)
+        var tab = $('<div>').attr('id', 'tab' + g.id)
                                .addClass('tab-pane fade')
                                .attr('role','tabpanel')
                                .attr('aria-labelledby', 'nav' + g.id);
-        grafic.appendTo('#tabsGrafiques');
+        tab.appendTo('#tabsGrafiques');
+
+        var grafic = $('<canvas>').attr('id', 'chart' + g.id);
+
+        grafic.appendTo('#tab' + g.id);
+
     });
-    $('#llistaOpcions').first().addClass('active')
-                               .attr('aria-selected','true');
-    $('#tabsGrafiques').first().addClass('show active');
+
+    $('#llistaOpcions').children().eq(0).addClass('active')
+                                        .attr('aria-selected','true');
+    $('#tabsGrafiques').children().eq(0).addClass('show active');
+
 
 }
 
 function consultarLlistaApi(){
     var llista = {"Lista":[
-        {"id":1,"tipo":"bar","nombre":"General", "fechaInit":"2019-01-01", "fechaFin":"2019-01-30"},
-        {"id":2,"tipo":"pie","nombre":"Comida", "fechaInit":"2019-02-01", "fechaFin":"2019-03-02"},
-        {"id":3,"tipo":"line","nombre":"Otros", "fechaInit":"2019-03-01", "fechaFin":"2019-03-30"}
+        {"id":1,"tipo":"bar","nombre":"General", "fechaInit":"2019-01-01", "fechaFin":"2019-01-30", "token":34582374058972},
+        {"id":2,"tipo":"pie","nombre":"Comida", "fechaInit":"2019-02-01", "fechaFin":"2019-03-02", "token":34544474058972},
+        {"id":3,"tipo":"line","nombre":"Otros", "fechaInit":"2019-03-01", "fechaFin":"2019-03-30", "token":34582374333972}
     ]};
 
     return llista;
@@ -133,8 +145,8 @@ function consultarDataApi(params){
     return data;
 }
 // crea un gràfic a aprtir dels parametres proporcionats
-function createChart(type, data, options){
-    var myChart = $('#myChart')[0].getContext('2d');
+function createChart(type, data, options, id){
+    var myChart = $('#chart' + id)[0].getContext('2d');
 
     // Global Options
     // Chart.defaults.global.defaultFontFamily = 'Lato';

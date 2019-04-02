@@ -1,10 +1,22 @@
+
+
+
 $(document).ready(function(){
    // tests charts hardcoded
 
-    var options = llistaCharts();
+    llistaCharts();
+
+    $('#llistaOpcions').find('a').on('click', function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+        init($(this)[0].id);
+
+    });
+
+
     // inicialitza el chart default
 
-    init("", "bar", options);
+    init($('#llistaOpcions').children().eq(0).attr('id'));
 
 
 });
