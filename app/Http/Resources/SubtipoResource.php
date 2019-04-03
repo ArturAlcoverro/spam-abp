@@ -15,8 +15,10 @@ class SubtipoResource extends JsonResource
      */
     public function toArray($request)
     {
+        // return parent::toArray($request);
         return [
-            "donatius" => DonatiuResource::collection($this->donativos)
+            //"nombr" => $this->
+            "donatius" => DonatiuResource::collection($this->donativo)
         ];
     }
 }

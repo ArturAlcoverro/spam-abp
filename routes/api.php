@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('/donants', 'API\DonanteAPIController');
 Route::apiResource('/donations', 'API\DonativoAPIController');
 Route::apiResource('/users', 'API\UsuarioAPIController');
+Route::apiResource('/tipos', 'API\TipoDonacioAPIController');

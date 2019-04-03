@@ -10,7 +10,7 @@ use App\Http\Resources\TipoResource;
 use Illuminate\Database\QueryException;
 use App\Clases\Utilitat;
 
-class TipoDonacioController extends Controller
+class TipoDonacioAPIController extends Controller
 {
     /**
      * Display a listing of the resource.

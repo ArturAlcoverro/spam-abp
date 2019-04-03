@@ -19,7 +19,7 @@ class TipoResource extends JsonResource
         return [
             "id" => $this->id,
             "nombre" => $this->nombre,
-            "tipos" => SubtiposResource::collection($this->subtipos)
+            "subtipos" => SubtipoResource::collection($this->subtipo)
         ];
     }
 }
