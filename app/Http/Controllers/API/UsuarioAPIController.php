@@ -18,7 +18,7 @@ class UsuarioAPIController extends Controller
      */
     public function index()
     {
-        //$usuarios = Usuario::with('rol')->get();
+        // $usuarios = Usuario::with('rol')->get();
 
         $usuarios = Usuario::all();
 

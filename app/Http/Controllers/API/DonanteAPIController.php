@@ -120,7 +120,7 @@ class DonanteAPIController extends Controller
      */
     public function update(Request $request, Donante $donante)
     {
-        $donante = Donante::find($id_donante);
+        //$donante = Donante::find($id_donante);
 
         $donante->tipos_donantes_id = $request->input('tipos_donante');
         $donante->cif = $request->input('cif');

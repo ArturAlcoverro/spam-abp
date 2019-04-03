@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Centro;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
+use App\Clases\Utilitat;
 
 class CentroController extends Controller
 {
@@ -14,7 +16,11 @@ class CentroController extends Controller
      */
     public function index()
     {
-        //
+        $centros = Centro::all();
+
+        $data['centros'] = $centros;
+
+        return view('privada.centros', $data);
     }
 
     /**
@@ -24,7 +30,11 @@ class CentroController extends Controller
      */
     public function create()
     {
-        //
+        $centros = Centro::all();
+
+        $data['centros'] = $centros;
+
+        return view('privada.centros', $data);
     }
 
     /**
@@ -35,7 +45,22 @@ class CentroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $centro = new Centro();
+
+        $centro->nombre = $request->input('nombre');
+
+        try
+        {
+            $centro->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('CentroController@create')->withInput();
+        }
+
+        return redirect()->action('CentroController@index');
     }
 
     /**
@@ -57,7 +82,10 @@ class CentroController extends Controller
      */
     public function edit(Centro $centro)
     {
-        //
+        $data['centro'] = $centro;
+        $data['centros'] = Centro::all();
+
+        return view('editCentro', $data);
     }
 
     /**
@@ -69,7 +97,20 @@ class CentroController extends Controller
      */
     public function update(Request $request, Centro $centro)
     {
-        //
+        $centro->nombre = $request->input('nombre');
+
+        try
+        {
+            $centro->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('CentroController@create')->withInput();
+        }
+
+        return redirect()->action('CentroController@index');
     }
 
     /**
@@ -80,6 +121,17 @@ class CentroController extends Controller
      */
     public function destroy(Centro $centro)
     {
-        //
+        try
+        {
+            $centro->delete();
+        }
+        catch(QueryException $e)
+        {
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('CentroController@index')->withInput();
+        }
+
+        return redirect()->action('CentroController@index')->withInput();
     }
 }
