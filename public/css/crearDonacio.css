@@ -63,12 +63,18 @@ form .btn-donant {
     background-image: url("../media/img/material.png");
 }
 
+.closeBtn{
+    font-size: 12px;
+    background-size: 35px;
+    width: 85px;
+    height: 85px;
+}
+
 .closeBtn:hover {
     background-color: #ed1c24 !important;
     background-image: url("../media/img/close.png") !important;
-    background-size: 35px;
+    background-size: 25px;
 }
-
 
 #btnNou {
     background-size: 40px;
@@ -132,7 +138,7 @@ form .btn-donant {
 #infoParticular p,
 #infoEmpresa p {
     color: #717171;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     font-style: italic
 }
 
@@ -143,9 +149,24 @@ form .btn-donant {
 
 #nombreEmpresa,
 #nombreParticular {
-    font-size: 30px;
+    font-size: 25px;
+    margin: 0;
 }
 
+.showHide{
+    display: inline-block;
+    border: 0;
+    background: transparent;
+}
+
+.showHide img{
+    height: 30px;
+    width: 30px;
+}
+
+.rotate-180{
+    transform: rotate(180deg);
+}
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -172,5 +193,10 @@ form .btn-donant {
     .btn-donatiu {
         width: calc(50vw - 20px - 1rem);
         height: calc(50vw - 20px - 1rem);
+    }
+
+    .closeBtn{
+        width: calc(38vw - 20px - 1rem);
+        height: calc(38vw - 20px - 1rem);
     }
 }
