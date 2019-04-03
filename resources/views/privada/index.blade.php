@@ -29,7 +29,7 @@
         <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
-        <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5">
+        <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
         </button>
         <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
@@ -39,6 +39,49 @@
             <img height="0px" src="{{ asset('media/img/update.png') }}" alt="">
         </button>
 
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="filter-modal">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-body">
+                <form class="container pt-2" method="POST">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="correo" class="col-form-label">Subtipus</label>
+                            <div class="">
+                                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="correo" class="col-form-label">Correo electronico</label>
+                            <div class="">
+                                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="correo" class="col-form-label">Correo electronico</label>
+                            <div class="">
+                                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="correo" class="col-form-label">Correo electronico</label>
+                            <div class="">
+                                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Filtrar</button>
+            </div>
+            </div>
+        </div>
     </div>
 
     <div class="toolbar-append">

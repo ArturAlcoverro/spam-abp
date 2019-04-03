@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grafic extends Model
 {
-    protected $table = 'grafics';
+    protected $table = 'graficos';
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int';
