@@ -1,6 +1,10 @@
 var infoDonante = true;
 var donante;
 var isDonante = false;
+var donacions = [];
+var i = 0;
+var table;
+
 $(document).ready(function () {
     // l'usuari seleccionas és anonim
     $('#btnAnonim').click(function () {
@@ -45,7 +49,7 @@ $(document).ready(function () {
         isDonante = false;
     });
 
-    $('.showHide').click(function(){
+    $('.showHide').click(function () {
         toggleDonant();
     });
 
@@ -108,21 +112,71 @@ $(document).ready(function () {
     });
 
     setSubtipos(1);
-    $("#tipos_donacion").change(function () {
-        setSubtipos($("#tipos_donacion").val());
+    $("#tipo_donacion").change(function () {
+        setSubtipos($("#tipo_donacion").val());
     });
 
     $('#formMaterial').submit(function (event) {
         event.preventDefault();
-        var data = ($(this).serializeArray());
-        console.log(data);
+        var $this = $(this);
+        var data = {
+            id: i,
+            tipos_donacio: $this.find("#tipo_donacion").val(),
+            subtipo_donacion: $this.find("#subtipo_donacion").val(),
+            centro_receptor: $this.find("#centro_receptor").val(),
+            centro_destino: $this.find("#centro_destino").val(),
+            medida: $this.find("#medida").val(),
+            unidades: parseInt($this.find("#unidades").val()) || 0,
+            cantidad: parseInt($this.find("#cantidad").val()) || 0,
+            coste: parseFloat($this.find("#coste").val()) || 0,
+            animales: $this.find("#animales").val(),
+            factura: $this.find("#factura").val(),
+            coordinada: $this.find("#coordinada").is(":checked"),
+        };
+        donacions[i] = data;
+        i++;
+        afegirDonacio(data);
+        $('#modalMaterial').modal('hide');
     });
 
-    $('#tablaDonacions').DataTable({
+    table = $('#tablaDonacions').DataTable({
         responsive: true,
         sort: false,
         dom: 'rt',
         select: false,
+        columnDefs: [{
+            targets: -1,
+            data: null,
+            defaultContent: "<button>edit</button>"
+        }, {
+            targets: -2,
+            data: null,
+            defaultContent: "<button>delete</button>"
+        }],
+        language: {
+            sProcessing: "Processant...",
+            sLengthMenu: "Mostra _MENU_ registres",
+            sZeroRecords: "No s'han trobat registres.",
+            sInfo: "Mostrant de _START_ a _END_ de _TOTAL_ registres",
+            sInfoEmpty: "Mostrant de 0 a 0 de 0 registres",
+            sInfoFiltered: "(filtrat de _MAX_ total registres)",
+            sInfoPostFix: "",
+            sSearch: "Filtrar:",
+            sUrl: "",
+            oPaginate: {
+                sFirst: "Primer",
+                sPrevious: "Anterior",
+                sNext: "Següent",
+                sLast: "Últim"
+            },
+            buttons: {
+                copyTitle: 'Copiat al portapapers',
+                copySuccess: {
+                    _: '%d donacions copiades',
+                    1: '1 donació copiada'
+                }
+            }
+        }
     });
 
 
@@ -139,13 +193,13 @@ function getDonant(dni, callback) {
     })
 }
 
-function toggleDonant(){
-    if(infoDonante){
+function toggleDonant() {
+    if (infoDonante) {
         $('#donante').hide(100);
         $('.showHide').addClass('rotate-180');
         infoDonante = false;
     }
-    else{
+    else {
         $('#donante').show(100);
         $('.showHide').removeClass('rotate-180');
         infoDonante = true;
@@ -176,11 +230,33 @@ function ocultarBotones(id) {
 }
 
 function setSubtipos(id) {
-    $('#subtipos_donacion').empty();
+    $('#subtipo_donacion').empty();
     subtipos.forEach(element => {
         if (element.tipos_id == id) {
-            $('#subtipos_donacion').append('<option value="' + element.id + '">' + element.nombre + '</option>');
+            $('#subtipo_donacion').append('<option value="' + element.id + '">' + element.nombre + '</option>');
         }
     });
+}
+function afegirDonacio(data) {
+    var centro_receptor;
+    var centro_destino;
+    var subtipo;
 
+    subtipos.forEach(function (element) {
+        if (element.id == data.subtipo_donacion) {
+            subtipo = element.nombre;
+        }
+    });
+    centros.forEach(function (element) {
+        if (element.id == data.centro_destino) {
+            centro_destino = element.nombre;
+        }
+        if (element.id == data.centro_receptor) {
+            centro_receptor = element.nombre;
+        }
+    });
+    table.row.add([data.coste, subtipo, centro_receptor, centro_destino, data.id]).draw();
+    $('#donacions').show();
+    table.columns.adjust();
+    table.responsive.recalc();
 }

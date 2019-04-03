@@ -63,7 +63,7 @@ form .btn-donant {
     background-image: url("../media/img/material.png");
 }
 
-.closeBtn{
+.closeBtn {
     font-size: 12px;
     background-size: 35px;
     width: 85px;
@@ -153,20 +153,25 @@ form .btn-donant {
     margin: 0;
 }
 
-.showHide{
+.showHide {
     display: inline-block;
     border: 0;
     background: transparent;
 }
 
-.showHide img{
+.showHide img {
     height: 30px;
     width: 30px;
 }
 
-.rotate-180{
+.showHide:focus {
+    outline: none;
+}
+
+.rotate-180 {
     transform: rotate(180deg);
 }
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -195,7 +200,7 @@ form .btn-donant {
         height: calc(50vw - 20px - 1rem);
     }
 
-    .closeBtn{
+    .closeBtn {
         width: calc(38vw - 20px - 1rem);
         height: calc(38vw - 20px - 1rem);
     }

@@ -11,6 +11,7 @@
     @endif
     <script>
         var subtipos = {!! json_encode($subtipos->toArray()) !!};
+        var centros = {!! json_encode($centros->toArray()) !!};
     </script>
 
 
@@ -75,7 +76,7 @@
         </button>
     </div>
 
-    <div class="Donacions">
+    <div id="donacions" style="display: none">
         <h3 class="mt-4">Donacións</h3>
 
         <table id="tablaDonacions" class="table table-hover table-striped display responsive nowrap" style="width:100%">
@@ -85,6 +86,9 @@
                     <th>Subtipo</th>
                     <th>Centro Origen</th>
                     <th>Centro Destino</th>
+                    <th hidden>Id</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -156,9 +160,9 @@
                 <form class="container" id="formMaterial" method="POST">
                     @csrf
                         <div class="form-group">
-                            <label for="lbltipos_donacion" class=" col-form-label">Tipo de donacion</label>
+                            <label for="lbltipo_donacion" class=" col-form-label">Tipo de donacion</label>
                             <div class="">
-                                <select name="tipos_donacion" id="tipos_donacion" class="form-control">
+                                <select name="tipo_donacion" id="tipo_donacion" class="form-control">
                                     @foreach ($tipos as $tipo)
                                         @if ($tipo->nombre != "Diners")
                                             @if ($tipo->id == 1)
@@ -172,9 +176,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lblsubtipos_donacion" class="col-form-label">Subtipo de donacion</label>
+                            <label for="lblsubtipo_donacion" class="col-form-label">Subtipo de donacion</label>
                             <div class="">
-                                <select name="subtipos_donacion" id="subtipos_donacion" class="form-control">
+                                <select name="subtipo_donacion" id="subtipo_donacion" class="form-control">
 
                                 </select>
                             </div>
@@ -184,7 +188,7 @@
                             <div class="">
                                 <select name="centro_receptor" id="centro_receptor" class="form-control">
                                     @foreach ($centros as $centro)
-                                        <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                                        <option value="{{$centro->id}}">{{$centro->nombre}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -194,19 +198,17 @@
                             <div class="">
                                 <select name="centro_destino" id="centro_destino" class="form-control">
                                     @foreach ($centros as $centro)
-                                        <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                                        <option value="{{$centro->id}}">{{$centro->nombre}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="unidades" class="col-form-label">Unidades</label>
                             <div class="">
                                 <input type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="form-group col-7 col-md-9 pr-0">
                                 <label for="cantidad" class="col-form-label">Cantidad p.u.</label>
@@ -215,9 +217,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-5 col-md-3">
-                                <label for="lblunidades" class="col-form-label">Medida</label>
+                                <label for="medida" class="col-form-label">Medida</label>
                                 <div class="">
-                                    <select name="unidades" id="unidades" class="form-control">
+                                    <select name="medida" id="medida" class="form-control">
                                         <option value="">kg</option>
                                         <option value="">g</option>
                                         <option value="">l</option>
@@ -238,20 +240,20 @@
                             <label for="animales" class=" col-form-label">Va dirigida a algun animal?</label>
                             <div class="">
                                 <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select p-0">
-                                   <option value="">Perro</option>
-                                   <option value="">Gato</option>
-                                   <option value="">Hurón</option>
+                                    @foreach ($animales as $animal)
+                                        <option value="{{$animal->id}}">{{$animal->nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="overflow: hidden">
-                            <label for="nombre" class="col-form-label d-block">Factura</label>
-                            <input type="file" class="" name="nombre" id="nombre">
+                            <label for="factura" class="col-form-label d-block">Factura</label>
+                            <input type="file" name="factura" id="factura">
                         </div>
                         <div class="form-group">
                             <div class="col-3 custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="spam" id="spam">
-                                <label class="custom-control-label" for="spam">Es coordinada</label>
+                                <input type="checkbox" class="custom-control-input" name="coordinada" id="coordinada">
+                                <label class="custom-control-label" for="coordinada">Es coordinada</label>
                             </div>
                         </div>
                         <div class="form-group float-right">
