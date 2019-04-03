@@ -47,13 +47,15 @@ function deleteDonant() {
         },
         error: function (resp) {
 
-            $('#info').text("Error al eliminar el registro");
+            // $('#info').text("Error al eliminar el registro");
+
+            toast("Error",2000);
         },
         beforeSend: function () {},
         success: function (resp) {
 
             indexDonants();
-            $('#info').text("Registro eliminado");
+            // $('#info').text("Registro eliminado");
         }
     });
 }
@@ -89,3 +91,5 @@ $('#tipos_donante').change(function () {
         break;
     }
 });
+
+

@@ -48,13 +48,14 @@ function deleteUsuario() {
         },
         error: function (resp) {
 
-            $('#info').text("Error al eliminar el registro");
+            // $('#info').text("Error al eliminar el registro");
+            toast("Error", 2000);
         },
         beforeSend: function () {},
         success: function (resp) {
 
             indexUsers();
-            $('#info').text("Registro eliminado");
+            // $('#info').text("Registro eliminado");
         }
     });
 }
