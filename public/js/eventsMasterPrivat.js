@@ -9,10 +9,12 @@ $(document).ready(function () {
         case 'donants':
             $('#donantsTab').addClass('active-tab');
             break;
-        case 'user':
+        case 'users':
             $('#usuarisTab').addClass('active-tab');
             break;
-        default: alert(tab); break;
+        default:
+        // alert(tab);
+        break;
 
     }
     $(".menu-btn").click(function () {

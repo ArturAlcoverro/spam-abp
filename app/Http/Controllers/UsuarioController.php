@@ -22,11 +22,13 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
+        // $usuarios = Usuario::all();
 
-        $data['usuarios'] = $usuarios;
+        // $data['usuarios'] = $usuarios;
 
-        return view('privada.users', $data);
+        // return view('privada.users', $data);
+
+        return view('privada.users');
     }
 
     /**
@@ -71,7 +73,7 @@ class UsuarioController extends Controller
             return redirect()->action('UsuarioController@create')->withInput();
         }
 
-        return redirect('user');
+        return redirect()->action('UsuarioController@index');
     }
 
     /**

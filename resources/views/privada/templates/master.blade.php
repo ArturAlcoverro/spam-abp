@@ -94,7 +94,7 @@
                 </a>
             </li>
             <li id="usuarisTab">
-                <a href="{{ action('UsuarioController@index') }}">
+                <a href="{{ url('/users') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
                     @lang('master.usuaris_nav')
                 </a>

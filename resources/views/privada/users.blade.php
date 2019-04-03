@@ -19,6 +19,7 @@
     @include('partial.errores')
 
     <div class="p-5">
+        <p id="info"></p>
         <div class="toolbar">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
                 <a href="{{ action('UsuarioController@create') }}">
@@ -34,7 +35,7 @@
                 </div>
             </button>
             <button title="Eliminar" class="btn btn-secondary buttons-html5">
-                <div onclick="deleteUser()">
+                <div onclick="deleteUsuario()">
                     <img src="{{ asset('media/img/delete.png') }}" alt="">
                     <form id="form_delete" action="" method="post">
                         @method('delete')
@@ -51,7 +52,7 @@
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th hidden>Id</th>
+                    <th>Id</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Name</th>
@@ -59,15 +60,6 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($usuarios as $user)
-                    <tr>
-                        <td hidden>{{ $user->id }}</td>
-                        <td>{{ $user->nombre_usuario }}</td>
-                        <td>{{ $user->correo }}</td>
-                        <td>{{ $user->nombre }}</td>
-                        <td>{{ $user->rol->rol }}</td>
-                    </tr>
-                @endforeach
             </tbody>
         </table>
     </div>

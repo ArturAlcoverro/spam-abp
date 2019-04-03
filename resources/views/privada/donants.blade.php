@@ -61,16 +61,6 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($donantes as $donante)
-                    <tr>
-                        <td hidden>{{ $donante->id }}</td>
-                        <td>{{ $donante->nombre }}</td>
-                        <td>{{ $donante->cif }}</td>
-                        <td>{{ $donante->tipo_donante->tipo }}</td>
-                        <td>{{ $donante->correo }}</td>
-                        <td>{{ $donante->pais }}</td>
-                    </tr>
-                @endforeach --}}
             </tbody>
         </table>
     </div>

@@ -1,18 +1,35 @@
 $(document).ready(function () {
 
-    $('#row-sexo').hide();
-
     indexDonants();
 });
 
-function editDonant() {
+function indexDonants() {
+    $.ajax({
+        url: "http://localhost:8080/spam-abp/public/api/donants",
+        type: "GET",
+        dataType: 'json',
+        async: true,
+        data: {
+        },
+        beforeSend: function () {},
+        success: function (resp) {
 
-    var row = $("#table").DataTable().row('.selected').data();
+            y = resp;
 
-    var id = row[0];
+            $("#table").DataTable().clear().draw();
 
-    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donants/" + id + "/edit");
-    $('#form_edit').submit();
+            resp['data'].forEach(function(data) {
+                $("#table").DataTable().row.add([
+                    data['id'],
+                    data['nombre'],
+                    data['cif'],
+                    data['tipo_donante']['tipo'],
+                    data['correo'],
+                    data['pais']
+                ]).draw();
+            });
+        }
+    });
 }
 
 function deleteDonant() {
@@ -41,6 +58,16 @@ function deleteDonant() {
     });
 }
 
+function editDonant() {
+
+    var row = $("#table").DataTable().row('.selected').data();
+
+    var id = row[0];
+
+    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donants/" + id + "/edit");
+    $('#form_edit').submit();
+}
+
 $('#tipos_donante').change(function () {
 
     var type = $(this).find("option:selected").val();
@@ -62,33 +89,3 @@ $('#tipos_donante').change(function () {
         break;
     }
 });
-
-
-function indexDonants() {
-    $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/donants",
-        type: "GET",
-        dataType: 'json',
-        async: true,
-        data: {
-        },
-        beforeSend: function () {},
-        success: function (resp) {
-
-            y = resp;
-
-            $("#table").DataTable().clear().draw();
-
-            resp['data'].forEach(function(data) {
-                $("#table").DataTable().row.add([
-                    data['id'],
-                    data['nombre'],
-                    data['cif'],
-                    data['tipos_donantes_id'],
-                    data['correo'],
-                    data['pais']
-                ]).draw();
-            });
-        }
-    });
-}
