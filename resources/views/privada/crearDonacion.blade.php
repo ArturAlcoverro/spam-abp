@@ -14,9 +14,14 @@
     </script>
 
 
-<div class="p-5 d-inline-block">
-    <h3 id="titleDonant">Selecciona un donant</h3>
-    <div class="buttons">
+<div class="p-5 d-block">
+    <div class="d-flex">
+        <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
+        <button class="showHide" style="display: none">
+            <img src="{{ asset('media/img/up.png') }}" alt="">
+        </button>
+    </div>
+    <div class="buttons" id="donante">
         <button id="btnParticular" class="btn-donant">
             <p>Particular</p>
         </button>
@@ -60,7 +65,7 @@
         </div>
     </div>
 
-    <h3 class="mt-5">Crea una donació</h3>
+    <h3 class="mt-4">Crea una donació</h3>
     <div class="buttons">
         <button id="btnMaterial" class="btn-donatiu">
             <p>Material</p>
@@ -70,8 +75,25 @@
         </button>
     </div>
 
+    <div class="Donacions">
+        <h3 class="mt-4">Donacións</h3>
+
+        <table id="tablaDonacions" class="table table-hover table-striped display responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Valor</th>
+                    <th>Subtipo</th>
+                    <th>Centro Origen</th>
+                    <th>Centro Destino</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </div>
 
+{{-- Modal insertar DNI --}}
 <div class="modal fade" id="modalParticular" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -95,6 +117,7 @@
     </div>
 </div>
 
+{{-- Modal insertar CIF --}}
 <div class="modal fade" id="modalEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -119,6 +142,7 @@
     </div>
 </div>
 
+{{-- Modal agregar donació material --}}
 <div class="modal fade" id="modalMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -179,7 +203,7 @@
                         <div class="form-group">
                             <label for="unidades" class="col-form-label">Unidades</label>
                             <div class="">
-                                <input type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades" required>
+                                <input type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
                             </div>
                         </div>
 
@@ -205,7 +229,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="coste" class="col-form-label">Coste (€)</label>
+                            <label for="coste" class="col-form-label">Valor estimado (€)</label>
                             <div class="">
                                 <input type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="Coste">
                             </div>
@@ -220,19 +244,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group" style="overflow: hidden">
+                            <label for="nombre" class="col-form-label d-block">Factura</label>
+                            <input type="file" class="" name="nombre" id="nombre">
+                        </div>
                         <div class="form-group">
                             <div class="col-3 custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="spam" id="spam">
                                 <label class="custom-control-label" for="spam">Es coordinada</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="nombre" class="col-form-label d-block">Factura</label>
-                             <div class="">
-                                <input type="file" class="" name="nombre" id="nombre">
-                            </div>
-                        </div>
-
                         <div class="form-group float-right">
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
@@ -243,4 +264,64 @@
         </div>
     </div>
 </div>
+
+{{-- Modal agregar donació diners --}}
+<div class="modal fade" id="modalDiners" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Nova donació</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="container" id="formDiners" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="costeDiners" class="col-form-label">Importe (€)</label>
+                        <div class="">
+                            <input type="number" step="0.01" name="costeDiners" id="costeDiners" class="form-control" placeholder="Importe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="centro_receptor_diners" class=" col-form-label">Centro receptor</label>
+                        <select name="centro_receptor_diners" id="centro_receptor_diners" class="form-control">
+                            @foreach ($centros as $centro)
+                                <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="centro_destino_diners" class="col-form-label">Centro destino</label>
+                        <select name="centro_destino_diners" id="centro_destino_diners" class="form-control">
+                            @foreach ($centros as $centro)
+                                <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group" style="overflow: hidden">
+                        <label for="FacturaDiners" class="col-form-label d-block">Factura</label>
+                         <div class="">
+                            <input type="file" class="" name="FacturaDiners" id="FacturaDiners">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-3 custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="spamDiners" id="spamDiners">
+                            <label class="custom-control-label" for="spamDiners">Es coordinada</label>
+                        </div>
+                    </div>
+                    <div class="form-group float-right">
+                        <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
 @endsection

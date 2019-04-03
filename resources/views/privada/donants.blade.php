@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/table.css') }}">
+    <script src="{{ asset('js/toast.js') }}"></script>
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
     <script src="{{ asset('js/eventsDonants.js') }}"></script>
 @endsection
