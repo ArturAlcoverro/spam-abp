@@ -49,10 +49,12 @@ $(document).ready(function () {
         isDonante = false;
     });
 
+    //Mostra/Oculta la informació del donant
     $('.showHide').click(function () {
         toggleDonant();
     });
 
+    //Busca el Particular per DNI i mostra la seva informació
     $('#modalParticular .btn').click(function () {
         var $this = $(this);
         var dni = $('#modalParticular input').val();
@@ -82,6 +84,7 @@ $(document).ready(function () {
         }
     });
 
+    //Busca la Empres per CIF i mostra la seva informació
     $('#modalEmpresa .btn').click(function () {
         var $this = $(this);
         var dni = $('#modalEmpresa input').val();
@@ -111,11 +114,13 @@ $(document).ready(function () {
         }
     });
 
+    //Carrega els subtipus depenen del tipus
     setSubtipos(1);
     $("#tipo_donacion").change(function () {
         setSubtipos($("#tipo_donacion").val());
     });
 
+    //Al fer submit en el modal de material recollim la informació i l'afegim a la taula de donacions
     $('#formMaterial').submit(function (event) {
         event.preventDefault();
         var $this = $(this);
@@ -135,10 +140,12 @@ $(document).ready(function () {
         };
         donacions[i] = data;
         i++;
-        afegirDonacio(data);
+        afegirDonacioMaterial(data);
         $('#modalMaterial').modal('hide');
+        $(this)[0].reset();
     });
 
+    //Carreguem la taula
     table = $('#tablaDonacions').DataTable({
         responsive: true,
         sort: false,
@@ -148,16 +155,18 @@ $(document).ready(function () {
             targets: 4,
             visible: false,
             searchable: false
-        },{
+        }, {
+            responsivePriority: 1,
             width: "3%",
             targets: -1,
             data: null,
-            defaultContent: "<button onclick='deleteRow()' class='btn-delete'></button>"
+            defaultContent: "<button class='btn-delete'></button>"
         }, {
+            responsivePriority: 1,
             width: "3%",
             targets: -2,
             data: null,
-            defaultContent: "<button onclick='deleteRow()' class='btn-edit'></button>"
+            defaultContent: "<button class='btn-edit'></button>"
         }],
         language: {
             sProcessing: "Processant...",
@@ -183,6 +192,28 @@ $(document).ready(function () {
                 }
             }
         }
+    });
+
+    //Eliminem la fila selccionada
+    $('#tablaDonacions tbody').on('click', '.btn-delete', function () {
+        var data = table.row($(this).parents('tr')).data();
+        var deleteObj;
+
+        var index = donacions.map(x => {
+            return x.id;
+        }).indexOf(data[4]);
+        donacions.splice(index, 1);
+
+        table.row($(this).parents('tr')).remove().draw();
+        if (table.rows().count() == 0) {
+            $('#donacions').hide();
+        }
+    });
+
+
+    $('#tablaDonacions tbody').on('click', '.btn-edit', function () {
+        var data = table.row($(this).parents('tr')).data();
+        console.log(data);
     });
 
 
@@ -243,7 +274,7 @@ function setSubtipos(id) {
         }
     });
 }
-function afegirDonacio(data) {
+function afegirDonacioMaterial(data) {
     var centro_receptor;
     var centro_destino;
     var subtipo;
@@ -267,8 +298,26 @@ function afegirDonacio(data) {
     table.responsive.recalc();
 }
 
-function deleteRow(){
-    var row = $(this).parents('tr');
-    var data = table.row(row).data();
-    console.log(data);
+function afegirDonacioDiners(data) {
+    var centro_receptor;
+    var centro_destino;
+    var subtipo;
+
+    subtipos.forEach(function (element) {
+        if (element.id == data.subtipo_donacion) {
+            subtipo = element.nombre;
+        }
+    });
+    centros.forEach(function (element) {
+        if (element.id == data.centro_destino) {
+            centro_destino = element.nombre;
+        }
+        if (element.id == data.centro_receptor) {
+            centro_receptor = element.nombre;
+        }
+    });
+    table.row.add([data.coste, subtipo, centro_receptor, centro_destino, data.id]).draw();
+    $('#donacions').show();
+    table.columns.adjust();
+    table.responsive.recalc();
 }
