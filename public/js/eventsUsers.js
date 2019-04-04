@@ -38,7 +38,6 @@ function deleteUsuario() {
     var row = $("#table").DataTable().row('.selected').data();
 
     var id = row[0];
-
     $.ajax({
         url: "http://localhost:8080/spam-abp/public/api/users/" + id,
         type: "DELETE",
@@ -64,9 +63,9 @@ function editUser() {
 
     var row = $("#table").DataTable().row('.selected').data();
 
-    var id = row[4];
+    var id = row[0];
 
-    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/user/" + id + "/edit");
+    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/users/" + id + "/edit");
     $('#form_edit').submit();
 }
 

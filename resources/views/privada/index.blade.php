@@ -49,13 +49,13 @@
                     @csrf
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="correo" class="col-form-label">Subtipus</label>
+                            <label for="correo" class="col-form-label">Fecha</label>
                             <div class="">
                                 <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="correo" class="col-form-label">Correo electronico</label>
+                            <label for="correo" class="col-form-label">Centro receptor</label>
                             <div class="">
                                 <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
                             </div>
@@ -63,13 +63,13 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="correo" class="col-form-label">Correo electronico</label>
+                            <label for="correo" class="col-form-label">Centro destino</label>
                             <div class="">
                                 <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="correo" class="col-form-label">Correo electronico</label>
+                            <label for="correo" class="col-form-label">DNI del donante</label>
                             <div class="">
                                 <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
                             </div>
