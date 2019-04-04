@@ -14,8 +14,6 @@ function indexDonants() {
         beforeSend: function () {},
         success: function (resp) {
 
-            y = resp;
-
             $("#table").DataTable().clear().draw();
 
             resp['data'].forEach(function(data) {
@@ -46,16 +44,11 @@ function deleteDonant() {
         data: {
         },
         error: function (resp) {
-
-            // $('#info').text("Error al eliminar el registro");
-
             toast("Error",2000);
         },
         beforeSend: function () {},
         success: function (resp) {
-
             indexDonants();
-            // $('#info').text("Registro eliminado");
         }
     });
 }

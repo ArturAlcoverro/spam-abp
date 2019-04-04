@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Usuario;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UsuarioResource;
@@ -18,9 +18,7 @@ class UsuarioAPIController extends Controller
      */
     public function index()
     {
-        // $usuarios = Usuario::with('rol')->get();
-
-        $usuarios = Usuario::all();
+        $usuarios = Usuario::with('rol')->get();
 
         return UsuarioResource::collection($usuarios);
     }

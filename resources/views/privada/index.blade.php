@@ -1,8 +1,9 @@
 @extends('privada.templates.master')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/table.css') }}">
-<script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
+    <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
+    <script src="{{ asset('js/eventsDonacion.js') }}"></script>
 @endsection
 
 @section('body')
@@ -44,72 +45,73 @@
     <div class="modal" tabindex="-1" role="dialog" id="filter-modal">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-            <div class="modal-body">
-                <form class="container pt-2" method="POST">
-                    @csrf
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <label for="tipos" class="col-form-label">Tipo</label>
-                            <div class="">
-                                <select name="tipos" id="tipos" class="form-control">
-                                    <option value=""></option>
-                                    @foreach ($tipos as $tipo)
-                                        <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
-                                    @endforeach
-                                </select>
+                <div class="modal-body">
+                    <form class="container pt-2" method="POST">
+                        @csrf
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label for="tipos" class="col-form-label">Tipo</label>
+                                <div class="">
+                                    <select name="tipos" id="tipos" class="form-control">
+                                        <option value=""></option>
+                                        @foreach ($tipos as $tipo)
+                                            <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="subtipos" class="col-form-label">Subtipo</label>
+                                <div class="">
+                                    <select name="subtipos" id="subtipos" class="form-control">
+                                        <option value=""></option>
+                                        @foreach ($subtipos as $subtipo)
+                                            <option value="{{ $subtipo->id }}">{{ $subtipo->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="dni" class="col-form-label">DNI/CIF del donante</label>
+                                <div class="">
+                                    <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI/CIF">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="fecha" class="col-form-label">Fecha</label>
+                                <div class="">
+                                    <input type="date" name="fecha" id="fecha" class="form-control" placeholder="Fecha">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="centrosRecepores" class="col-form-label">Centro receptor</label>
+                                <div class="">
+                                    <select name="centrosRecepores" id="centrosRecepores" class="form-control">
+                                        <option value=""></option>
+                                        @foreach ($centros as $centro)
+                                            <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="centrosDestino" class="col-form-label">Centro destino</label>
+                                <div class="">
+                                    <select name="centrosDestino" id="centrosDestino" class="form-control">
+                                        <option value=""></option>
+                                        @foreach ($centros as $centro)
+                                            <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <label for="subtipos" class="col-form-label">Subtipo</label>
-                            <div class="">
-                                <select name="subtipos" id="subtipos" class="form-control">
-                                    <option value=""></option>
-                                    @foreach ($subtipos as $subtipo)
-                                        <option value="{{ $subtipo->id }}">{{ $subtipo->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="dni" class="col-form-label">DNI/CIF del donante</label>
-                            <div class="">
-                                <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI/CIF">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="fecha" class="col-form-label">Fecha</label>
-                            <div class="">
-                                <input type="date" name="fecha" id="fecha" class="form-control" placeholder="Fecha">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="centrosRecepores" class="col-form-label">Centro receptor</label>
-                            <div class="">
-                                <select name="centrosRecepores" id="centrosRecepores" class="form-control">
-                                    <option value=""></option>
-                                    @foreach ($centros as $centro)
-                                        <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="centrosDestino" class="col-form-label">Centro destino</label>
-                            <div class="">
-                                <select name="centrosDestino" id="centrosDestino" class="form-control">
-                                    <option value=""></option>
-                                    @foreach ($centros as $centro)
-                                        <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Filtrar</button>
-            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">Filtrar</button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,3 @@
-var y;
-
 $(document).ready(function () {
 
     indexUsers();
@@ -16,8 +14,6 @@ function indexUsers() {
         beforeSend: function () {},
         success: function (resp) {
 
-            y = resp;
-
             $("#table").DataTable().clear().draw();
 
             resp['data'].forEach(function(data) {
@@ -26,7 +22,7 @@ function indexUsers() {
                     data['nombre_usuario'],
                     data['correo'],
                     data['nombre'],
-                    data['roles_id']
+                    data['rol']['rol']
                 ]).draw();
             });
         }
@@ -46,15 +42,12 @@ function deleteUsuario() {
         data: {
         },
         error: function (resp) {
-
-            // $('#info').text("Error al eliminar el registro");
             toast("Error", 2000);
         },
         beforeSend: function () {},
         success: function (resp) {
 
             indexUsers();
-            // $('#info').text("Registro eliminado");
         }
     });
 }
