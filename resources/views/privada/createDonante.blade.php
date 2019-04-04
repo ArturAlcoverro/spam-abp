@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="form-group" id="row-cif">
-                <label for="lblcif" class=" col-form-label">CIF/DNI</label>
+                <label for="lblcif" class="col-form-label">CIF/DNI</label>
                 <div class="">
                     <input type="text" name="cif" id="cif" class="form-control" placeholder="CIF/DNI">
                 </div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="form-group" id="row-sexo">
-                <label for="sexos" class=" col-form-label">Sexo</label>
+                <label for="sexos" class="col-form-label">Sexo</label>
                 <div class="">
                     <select name="sexos" id="sexos" class="form-control">
                         @foreach ($sexos as $sexo)
@@ -51,19 +51,19 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="correo" class=" col-form-label">Correo electronico</label>
+                <label for="correo" class="col-form-label">Correo electronico</label>
                 <div class="">
                     <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico">
                 </div>
             </div>
             <div class="form-group">
-                <label for="telefono" class=" col-form-label">Telefono</label>
+                <label for="telefono" class="col-form-label">Telefono</label>
                 <div class="">
                     <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
                 </div>
             </div>
             <div class="form-group">
-                <label for="direccion" class=" col-form-label">Direccion</label>
+                <label for="direccion" class="col-form-label">Direccion</label>
                 <div class="">
                     <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion">
                 </div>

@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donativo;
-use App\Models\Tipo;
-use App\Models\Subtipo;
-use App\Models\Centro;
-use App\Models\Animal;
 use Illuminate\Http\Request;
 
-class DonativoController extends Controller
+class FiltroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,16 +13,7 @@ class DonativoController extends Controller
      */
     public function index()
     {
-        $tipos = Tipo::all();
-        $subtipos = Subtipo::all();
-        $centros = Centro::all();
-        $animales = Animal::all();
-        $data["tipos"] = $tipos;
-        $data["subtipos"] = $subtipos;
-        $data["centros"] = $centros;
-        $data["animales"] = $animales;
 
-        return view('privada.index', $data);
     }
 
     /**
@@ -41,11 +27,11 @@ class DonativoController extends Controller
         $subtipos = Subtipo::all();
         $centros = Centro::all();
         $animales = Animal::all();
+
         $data["tipos"] = $tipos;
         $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
         $data["animales"] = $animales;
-        return view('privada.crearDonacion', $data);
     }
 
     /**
@@ -62,10 +48,10 @@ class DonativoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Donativo  $donativo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Donativo $donativo)
+    public function show($id)
     {
         //
     }
@@ -73,10 +59,10 @@ class DonativoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Donativo  $donativo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donativo $donativo)
+    public function edit($id)
     {
         //
     }
@@ -85,10 +71,10 @@ class DonativoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Donativo  $donativo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donativo $donativo)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -96,10 +82,10 @@ class DonativoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Donativo  $donativo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donativo $donativo)
+    public function destroy($id)
     {
         //
     }
