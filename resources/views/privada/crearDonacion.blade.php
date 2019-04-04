@@ -86,7 +86,7 @@
                     <th>Subtipo</th>
                     <th>Centro Origen</th>
                     <th>Centro Destino</th>
-                    <th hidden>Id</th>
+                    <th>Id</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -257,6 +257,7 @@
                             </div>
                         </div>
                         <div class="form-group float-right">
+                            <button name="altaAceptar" class="btn btn-secondary boton-amplada mr-1">Cancelar</button>
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
                     </form>
@@ -315,6 +316,7 @@
                         </div>
                     </div>
                     <div class="form-group float-right">
+                        <button name="altaAceptar" class="btn btn-secondary boton-amplada mr-1">Cancelar</button>
                         <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                     </div>
                 </form>

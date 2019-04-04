@@ -126,7 +126,7 @@ $(document).ready(function () {
             centro_receptor: $this.find("#centro_receptor").val(),
             centro_destino: $this.find("#centro_destino").val(),
             medida: $this.find("#medida").val(),
-            unidades: parseInt($this.find("#unidades").val()) || 0,
+            unidades: parseInt($this.find("#unidades").val()) || 1,
             cantidad: parseInt($this.find("#cantidad").val()) || 0,
             coste: parseFloat($this.find("#coste").val()) || 0,
             animales: $this.find("#animales").val(),
@@ -145,13 +145,19 @@ $(document).ready(function () {
         dom: 'rt',
         select: false,
         columnDefs: [{
+            targets: 4,
+            visible: false,
+            searchable: false
+        },{
+            width: "3%",
             targets: -1,
             data: null,
-            defaultContent: "<button>edit</button>"
+            defaultContent: "<button onclick='deleteRow()' class='btn-delete'></button>"
         }, {
+            width: "3%",
             targets: -2,
             data: null,
-            defaultContent: "<button>delete</button>"
+            defaultContent: "<button onclick='deleteRow()' class='btn-edit'></button>"
         }],
         language: {
             sProcessing: "Processant...",
@@ -259,4 +265,10 @@ function afegirDonacio(data) {
     $('#donacions').show();
     table.columns.adjust();
     table.responsive.recalc();
+}
+
+function deleteRow(){
+    var row = $(this).parents('tr');
+    var data = table.row(row).data();
+    console.log(data);
 }
