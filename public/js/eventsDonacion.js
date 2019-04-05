@@ -66,6 +66,28 @@ function filtrar() {
                     data['fecha_donativo']
                 ]).draw();
             });
+
+
+
+            // var data1 = $("#table").DataTable()
+            // .column(1)
+            // .search()
+            // .data()
+            // .filter(function (value, index) {
+            //     return value > 20 ? true : false;
+            // });
+
+
+            // var data1 = $("#table").DataTable()
+            // .column( 0 )
+            //     .data()
+            //         .filter( function ( value, index ) {
+
+
+
+            //         });
+
+
         }
     });
 
