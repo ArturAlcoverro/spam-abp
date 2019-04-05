@@ -121,12 +121,35 @@ $(document).ready(function () {
     });
 
     //Al fer submit en el modal de material recollim la informació i l'afegim a la taula de donacions
+    $('#formDiners').submit(function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        var data = {
+            id: i,
+            subtipo_donacion: tipoDiners,
+            centro_receptor: $this.find("#centro_receptor_diners").val(),
+            centro_destino: $this.find("#centro_destino_diners").val(),
+            medida: "",
+            unidades: 0,
+            cantidad: 0,
+            coste: parseFloat($this.find("#costeDiners").val()),
+            animales: [],
+            factura: $this.find("#FacturaDiners").val(),
+            coordinada: $this.find("#spamDiners").is(":checked"),
+        };
+        donacions[i] = data;
+        i++;
+        afegirDonacio(data);
+        $('#modalDiners').modal('hide');
+        $(this)[0].reset();
+    });
+
+    //Al fer submit en el modal de material recollim la informació i l'afegim a la taula de donacions
     $('#formMaterial').submit(function (event) {
         event.preventDefault();
         var $this = $(this);
         var data = {
             id: i,
-            tipos_donacio: $this.find("#tipo_donacion").val(),
             subtipo_donacion: $this.find("#subtipo_donacion").val(),
             centro_receptor: $this.find("#centro_receptor").val(),
             centro_destino: $this.find("#centro_destino").val(),
@@ -140,7 +163,7 @@ $(document).ready(function () {
         };
         donacions[i] = data;
         i++;
-        afegirDonacioMaterial(data);
+        afegirDonacio(data);
         $('#modalMaterial').modal('hide');
         $(this)[0].reset();
     });
@@ -274,7 +297,8 @@ function setSubtipos(id) {
         }
     });
 }
-function afegirDonacioMaterial(data) {
+
+function afegirDonacio(data) {
     var centro_receptor;
     var centro_destino;
     var subtipo;
@@ -292,31 +316,7 @@ function afegirDonacioMaterial(data) {
             centro_receptor = element.nombre;
         }
     });
-    table.row.add([data.coste, subtipo, centro_receptor, centro_destino, data.id]).draw();
-    $('#donacions').show();
-    table.columns.adjust();
-    table.responsive.recalc();
-}
-
-function afegirDonacioDiners(data) {
-    var centro_receptor;
-    var centro_destino;
-    var subtipo;
-
-    subtipos.forEach(function (element) {
-        if (element.id == data.subtipo_donacion) {
-            subtipo = element.nombre;
-        }
-    });
-    centros.forEach(function (element) {
-        if (element.id == data.centro_destino) {
-            centro_destino = element.nombre;
-        }
-        if (element.id == data.centro_receptor) {
-            centro_receptor = element.nombre;
-        }
-    });
-    table.row.add([data.coste, subtipo, centro_receptor, centro_destino, data.id]).draw();
+    table.row.add([data.coste + "€", subtipo, centro_receptor, centro_destino, data.id]).draw();
     $('#donacions').show();
     table.columns.adjust();
     table.responsive.recalc();

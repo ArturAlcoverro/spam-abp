@@ -112,7 +112,7 @@ form .btn-donant {
     background-image: url("../media/img/view.svg");
 }
 
-.modal-content {
+/* .modal-content {
     border-radius: 0;
     margin: auto;
 }
@@ -129,7 +129,7 @@ form .btn-donant {
 
 .modal-body {
     padding-top: .5rem;
-}
+} */
 
 .spinner {
     border: 3px solid transparent;
@@ -178,6 +178,7 @@ form .btn-donant {
 .showHide img {
     height: 30px;
     width: 30px;
+    transition: all 0.5s;
 }
 
 .showHide:focus {

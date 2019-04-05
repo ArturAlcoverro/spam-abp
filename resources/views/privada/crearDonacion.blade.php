@@ -12,6 +12,12 @@
     <script>
         var subtipos = {!! json_encode($subtipos->toArray()) !!};
         var centros = {!! json_encode($centros->toArray()) !!};
+        var tipoDiners;
+        subtipos.forEach(element => {
+            if(element.nombre == 'Diners'){
+                tipoDiners = element.id;
+            }
+        });
     </script>
 
 
@@ -76,7 +82,7 @@
         </button>
     </div>
 
-    <div id="donacions" style="display: none">
+    <div id="donacions" class="mb-5" style="display: none">
         <h3 class="mt-4">Donacións</h3>
 
         <table id="tablaDonacions" class="table table-hover table-striped display responsive nowrap" style="width:100%">
@@ -94,6 +100,9 @@
             <tbody>
             </tbody>
         </table>
+
+        <button type="button" id="btnSubmit" class="float-right btn btn-primary boton-amplada mt-2">Aceptar</button>
+        <button type="button" class="float-right btn btn-secondary boton-amplada mr-2 mt-2">Cancelar</button>
     </div>
 </div>
 
@@ -257,7 +266,7 @@
                             </div>
                         </div>
                         <div class="form-group float-right">
-                            <button name="altaAceptar" class="btn btn-secondary boton-amplada mr-1">Cancelar</button>
+                            <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
                     </form>
@@ -284,14 +293,14 @@
                     <div class="form-group">
                         <label for="costeDiners" class="col-form-label">Importe (€)</label>
                         <div class="">
-                            <input type="number" step="0.01" name="costeDiners" id="costeDiners" class="form-control" placeholder="Importe">
+                            <input type="number" required min="1" step="0.01" name="costeDiners" id="costeDiners" class="form-control" placeholder="Importe">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="centro_receptor_diners" class=" col-form-label">Centro receptor</label>
                         <select name="centro_receptor_diners" id="centro_receptor_diners" class="form-control">
                             @foreach ($centros as $centro)
-                                <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                                <option value="{{$centro->id}}">{{$centro->nombre}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -299,7 +308,7 @@
                         <label for="centro_destino_diners" class="col-form-label">Centro destino</label>
                         <select name="centro_destino_diners" id="centro_destino_diners" class="form-control">
                             @foreach ($centros as $centro)
-                                <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
+                                <option value="{{$centro->id}}">{{$centro->nombre}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -316,7 +325,7 @@
                         </div>
                     </div>
                     <div class="form-group float-right">
-                        <button name="altaAceptar" class="btn btn-secondary boton-amplada mr-1">Cancelar</button>
+                        <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                         <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                     </div>
                 </form>

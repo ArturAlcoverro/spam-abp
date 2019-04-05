@@ -54,6 +54,14 @@
     background-image: url("../media/img/print.png");
 }
 
+.buttons-html5:hover{
+    box-shadow: none;
+}
+
+.pagination{
+    margin-bottom: 20px !important;
+}
+
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     top: 50%;

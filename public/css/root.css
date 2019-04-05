@@ -86,3 +86,26 @@
 td:focus{
     outline: none;
 }
+
+.table td, .table th{
+    border-top: none;
+}
+
+.modal-content {
+    border-radius: 0;
+    margin: auto;
+}
+
+.modalEmpresa,
+.modalParticular {
+    max-width: 350px;
+}
+
+.modal-body,
+.modal-header {
+    border: none;
+}
+
+.modal-body {
+    padding-top: .5rem;
+}
