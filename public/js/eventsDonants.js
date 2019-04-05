@@ -34,23 +34,37 @@ function deleteDonant() {
 
     var row = $("#table").DataTable().row('.selected').data();
 
-    var id = row[0];
+    console.log(row);
 
-    $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/donants/" + id,
-        type: "DELETE",
-        dataType: 'json',
-        async: true,
-        data: {
-        },
-        error: function (resp) {
-            toast("Error",2000);
-        },
-        beforeSend: function () {},
-        success: function (resp) {
-            indexDonants();
-        }
-    });
+    var rows = $("#table").DataTable().rows('.selected').data();
+
+    //DELETE TODOS LAS ROWS
+
+    console.log(rows[0]);
+    console.log(rows[1]);
+    console.log(rows.length);
+
+    //FOREACH Y AJAX PARA CADA ROW
+
+    // var id = row[0];
+
+    // $.ajax({
+    //     url: "http://localhost:8080/spam-abp/public/api/donants/" + id,
+    //     type: "DELETE",
+    //     dataType: 'json',
+    //     async: true,
+    //     data: {
+
+
+    //     },
+    //     error: function (resp) {
+    //         toast("Error",2000);
+    //     },
+    //     beforeSend: function () {},
+    //     success: function (resp) {
+    //         indexDonants();
+    //     }
+    // });
 }
 
 function editDonant() {
