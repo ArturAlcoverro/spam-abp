@@ -45,9 +45,7 @@ var colors = new Array(
     [153, 204, 51],
     [138, 181, 51],
     [122, 158, 51],
-    [107, 135, 51],
-    [92, 112, 51],
-    [76, 89, 51]);
+    [107, 135, 51]);
 
   var step = 0;
   //color table indices for:
@@ -101,3 +99,4 @@ var colors = new Array(
   }
 
   setInterval(updateGradient,10);
+//   https://gist.github.com/vincentorback/011ef128acfbf846b825
