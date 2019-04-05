@@ -35,7 +35,7 @@ class Donativo extends Model
 
     public function donante()
     {
-        return $this->belongsTo('App\Models\Donante', 'tipos_donante_id');
+        return $this->belongsTo('App\Models\Donante', 'donantes_id');
     }
 
     public function animales()

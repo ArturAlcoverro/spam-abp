@@ -22,4 +22,6 @@ Route::apiResource('/donations', 'API\DonativoAPIController');
 Route::apiResource('/users', 'API\UsuarioAPIController');
 Route::apiResource('/tipos', 'API\TipoDonacioAPIController');
 
+Route::apiResource('/filtro', 'API\FiltroAPIController');
+
 Route::get("/estadisticas/donativos/{dataInici}/{dataFi}", 'API\EstadisticasController@DonatiusByData');

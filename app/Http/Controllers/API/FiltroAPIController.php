@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\DonanteResource;
 
-class FiltroController extends Controller
+use App\Models\Donativo;
+
+class FiltroAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,25 +17,7 @@ class FiltroController extends Controller
      */
     public function index()
     {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $tipos = Tipo::all();
-        $subtipos = Subtipo::all();
-        $centros = Centro::all();
-        $animales = Animal::all();
-
-        $data["tipos"] = $tipos;
-        $data["subtipos"] = $subtipos;
-        $data["centros"] = $centros;
-        $data["animales"] = $animales;
+        //
     }
 
     /**
@@ -51,20 +37,16 @@ class FiltroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($date)
     {
-        //
-    }
+        $donativos = Donativo::with('centro_receptor')
+                            ->with('centro_desti')
+                            ->with('subtipo.tipo')
+                            ->with('donante')
+                            ->where("fecha_donativo", ">" , $date . " 00:00:00")
+                            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return DonanteResource::collection($donativos);
     }
 
     /**

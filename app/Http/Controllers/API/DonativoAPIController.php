@@ -19,7 +19,12 @@ class DonativoAPIController extends Controller
      */
     public function index()
     {
-        $donativo = Donativo::all();
+        $donativo = Donativo::with('centro_receptor')
+        ->with('centro_desti')
+        ->with('subtipo.tipo')
+        ->with('donante')
+        ->get();
+
         return DonanteResource::collection($donativo);
     }
 
