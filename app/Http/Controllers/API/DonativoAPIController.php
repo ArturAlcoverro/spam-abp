@@ -22,7 +22,7 @@ class DonativoAPIController extends Controller
         $donativo = Donativo::with('centro_receptor')
         ->with('centro_desti')
         ->with('subtipo.tipo')
-        ->with('donante')
+        ->with('donante.tipo_donante')
         ->get();
 
         return DonanteResource::collection($donativo);

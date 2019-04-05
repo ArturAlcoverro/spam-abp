@@ -19,7 +19,7 @@ class EstadisticasController extends Controller
                             ->with('centro_desti')
                             ->with('usuario')
                             ->with('subtipo.tipo')
-                            ->with('donante')
+                            ->with('donante.tipo_donante')
                             ->where("fecha_donativo", ">" , $dataInici . " 00:00:00")
                             ->where("fecha_donativo", "<", $dataFi . " 00:00:00")
                             ->get();
