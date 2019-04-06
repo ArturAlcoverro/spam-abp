@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     indexDonants();
 });
 
@@ -11,12 +10,12 @@ function indexDonants() {
         async: true,
         data: {
         },
-        beforeSend: function () {},
+        beforeSend: function () { },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
+            resp['data'].forEach(function (data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
@@ -81,21 +80,21 @@ $('#tipos_donante').change(function () {
 
     var type = $(this).find("option:selected").val();
 
-    switch(type){
+    switch (type) {
 
         case "1":
 
             $('#row-vinculo').show();
             $('#row-sexo').hide();
 
-        break;
+            break;
 
         case "2":
 
             $('#row-vinculo').hide();
             $('#row-sexo').show();
 
-        break;
+            break;
     }
 });
 

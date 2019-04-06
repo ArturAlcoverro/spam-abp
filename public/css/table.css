@@ -25,13 +25,15 @@
     padding: 0px;
 }
 
-.dt-buttons .btn:click {
+.dt-buttons .btn:active {
     box-shadow: none;
-    background-color: rgb(77, 77, 77);
+    border: 1px solid rgba(132, 174, 238) !important;
+    background-color: rgba(132, 174, 238) !important;
 }
 
+.dt-buttons .btn:hover,
 .dt-buttons .btn:focus {
-    box-shadow: none;
+    box-shadow: none !important;
 }
 
 .dt-buttons .btn img {
@@ -54,11 +56,11 @@
     background-image: url("../media/img/print.png");
 }
 
-.buttons-html5:hover{
+.buttons-html5:hover {
     box-shadow: none;
 }
 
-.pagination{
+.pagination {
     margin-bottom: 20px !important;
 }
 

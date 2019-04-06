@@ -32,8 +32,9 @@
         <div class="menu-btn-animation"></div>
     </div>
     <nav id="menuSuperior">
-        <img height="70%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
-
+        <a style="height: 70%" href="{{ url('/') }}">
+            <img id="logoSpam" height="100%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
+        </a>
         <div class="dropdown mr-2">
             <button class= "dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">
@@ -47,9 +48,13 @@
             </div>
         </div>
     </nav>
+
     <div id="logo">
-        <img height="70%" src="{{ asset('media/img/artio.png') }}" alt="">
+        <a style="height: 70%" href="{{ url('/donations') }}">
+            <img height="100%" src="{{ asset('media/img/artio.png') }}" alt="">
+        </a>
     </div>
+
     <div class="menu">
         <div class="menu-list">
             <ul>

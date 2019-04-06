@@ -165,7 +165,7 @@ body {
         padding-left: 20vw;
     }
 
-    #menuSuperior img {
+    #menuSuperior a {
         width: calc(75% - 20px);
         height: auto;
         margin-left: 10px;

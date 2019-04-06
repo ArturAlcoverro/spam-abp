@@ -48,7 +48,13 @@ $(document).ready(function () {
                     1: '1 donació copiada'
                 }
             }
-        }
+        },
+        "columnDefs": [
+            {
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }]
     });
 
     $(".toolbar .btn").prependTo(".dt-buttons");

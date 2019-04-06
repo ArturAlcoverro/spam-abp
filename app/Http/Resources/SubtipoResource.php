@@ -16,13 +16,5 @@ class SubtipoResource extends JsonResource
     public function toArray($request)
     {
         return parent::toArray($request);
-        // return [
-        //     "nombre" => $this->nombre,
-        //     "tipo" => TipoResource::collection($this->tipo),
-        //     "gama_alta" => $this->gama_alta,
-        //     "gama_media" => $this->gama_media,
-        //     "gama_baja" => $this->gama_baja,
-        //     "tipo_unidad" => $this->tipo_unidad
-        // ];
     }
 }

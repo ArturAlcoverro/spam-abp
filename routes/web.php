@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/centros', 'CentroController');
 
+    Route::resource('/subtipos', 'SubtipoController');
 
 });
 

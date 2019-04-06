@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subtipo;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 
 class SubtipoController extends Controller
@@ -14,7 +15,10 @@ class SubtipoController extends Controller
      */
     public function index()
     {
-        //
+        $tipos = Tipo::all();
+        $data["tipos"] = $tipos;
+
+        return view('privada.subtipus', $data);
     }
 
     /**
