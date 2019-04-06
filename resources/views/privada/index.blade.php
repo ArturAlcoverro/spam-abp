@@ -33,13 +33,6 @@
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
         </button>
-        <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/pie.png') }}" alt="">
-        </button>
-        <button title="@lang('master.update_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/update.png') }}" alt="">
-        </button>
-
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="filter-modal">

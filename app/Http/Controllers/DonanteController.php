@@ -42,6 +42,8 @@ class DonanteController extends Controller
             Session::put('back', '');
         }elseif (Session::has('back')){
             Session::forget('back');
+            Session::flash('back','');
+
         }
         $animales = Animal::all();
         $tipos_donantes = Tipo_donante::all();

@@ -20,8 +20,10 @@
     @include('partial.errores')
 
     <div class="p-5">
-        <p id="info"></p>
-        <div class="toolbar">
+        {{-- <p id="info"></p> --}}
+        <h1>Donants</h1>
+
+        <div class="toolbar mt-3">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
                 <a href="{{ action('DonanteController@create') }}">
                     <img src="{{ asset('media/img/add.png') }}" alt="">
@@ -43,11 +45,6 @@
                         @csrf
                     </form>
                 </div>
-            </button>
-            <button title="Consultar" class="btn btn-secondary buttons-html5">
-                <a href="">
-                    <img src="{{ asset('media/img/save.png') }}" alt="">
-                </a>
             </button>
         </div>
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">

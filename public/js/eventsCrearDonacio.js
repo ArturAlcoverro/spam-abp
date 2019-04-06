@@ -1,11 +1,13 @@
 var infoDonante = true;
 var donante;
 var isDonante = false;
+var isDonacions = false;
 var donacions = [];
 var i = 0;
 var table;
 
 $(document).ready(function () {
+
     // l'usuari seleccionas és anonim
     $('#btnAnonim').click(function () {
         ocultarBotones('btnAnonim');
@@ -230,6 +232,7 @@ $(document).ready(function () {
         table.row($(this).parents('tr')).remove().draw();
         if (table.rows().count() == 0) {
             $('#donacions').hide();
+            isDonacions = false;
         }
     });
 
@@ -242,6 +245,7 @@ $(document).ready(function () {
 
 });
 
+// Consulta AJAX per obtenir la informació  del donant a traves del DNI/CIF
 function getDonant(dni, callback) {
     $.ajax({
         async: 'true',
@@ -253,6 +257,7 @@ function getDonant(dni, callback) {
     })
 }
 
+//Mostra/Oculta la informació del donant
 function toggleDonant() {
     if (infoDonante) {
         $('#donante').hide(100);
@@ -266,6 +271,7 @@ function toggleDonant() {
     }
 }
 
+//Mostra la informacio del donant
 function setDonant(data) {
     var habitual;
     var nombre = data.nombre;
@@ -283,12 +289,14 @@ function setDonant(data) {
     $(".showHide").show();
 }
 
+//Oculta el botons per seleccionar un tipus de donant
 function ocultarBotones(id) {
     $('#titleDonant').text('Informació donant');
     $('.btn-donant').hide();
     $('#' + id + 'Delete').show();
 }
 
+//Carrega els subtipus depenen del tipus seleccionat
 function setSubtipos(id) {
     $('#subtipo_donacion').empty();
     subtipos.forEach(element => {
@@ -298,6 +306,7 @@ function setSubtipos(id) {
     });
 }
 
+//Agrega una donació a la taula
 function afegirDonacio(data) {
     var centro_receptor;
     var centro_destino;
@@ -318,6 +327,7 @@ function afegirDonacio(data) {
     });
     table.row.add([data.coste + "€", subtipo, centro_receptor, centro_destino, data.id]).draw();
     $('#donacions').show();
+    isDonacions = true;
     table.columns.adjust();
     table.responsive.recalc();
 }

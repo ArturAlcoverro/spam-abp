@@ -32,15 +32,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/donants', 'DonanteController');
 
     Route::resource('/users', 'UsuarioController');
-    
+
     Route::resource('/grafics', 'GraficoController');
 
+    Route::resource('/centros', 'CentroController');
+
+
 });
 
 
-Route::get('/formtest', function () {
-    return view("privada/createDonacionMaterial");
-});
+// Route::get('/formtest', function () {
+//     return view("privada/createDonacionMaterial");
+// });
 
 //ruta provisional a estadistiques publiques
 Route::get('/charts', function(){

@@ -112,6 +112,10 @@ form .btn-donant {
     background-image: url("../media/img/view.svg");
 }
 
+.all {
+    max-width: 1100px;
+}
+
 /* .modal-content {
     border-radius: 0;
     margin: auto;

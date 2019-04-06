@@ -21,7 +21,7 @@
     </script>
 
 
-<div class="p-5 d-block">
+<div class="p-5 d-block all">
     <div class="d-flex">
         <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
         <button class="showHide" style="display: none">
@@ -83,7 +83,7 @@
     </div>
 
     <div id="donacions" class="mb-5" style="display: none">
-        <h3 class="mt-4">Donacións</h3>
+        <h3 class="mt-4 mb-3">Donacións</h3>
 
         <table id="tablaDonacions" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
@@ -101,9 +101,10 @@
             </tbody>
         </table>
 
-        <button type="button" id="btnSubmit" class="float-right btn btn-primary boton-amplada mt-2">Aceptar</button>
-        <button type="button" class="float-right btn btn-secondary boton-amplada mr-2 mt-2">Cancelar</button>
+        <button type="button" id="btnSubmit" class="float-right btn btn-primary boton-amplada mt-3">Aceptar</button>
+        <button type="button" class="float-right btn btn-secondary boton-amplada mr-2 mt-3">Cancelar</button>
     </div>
+
 </div>
 
 {{-- Modal insertar DNI --}}
@@ -329,6 +330,24 @@
                         <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                     </div>
                 </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{-- Modal detall donació --}}
+<div class="modal fade" id="modalDetall" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Informació donació</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
             </div>
 
         </div>
