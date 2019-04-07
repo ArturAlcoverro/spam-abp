@@ -1,10 +1,12 @@
-var infoDonante = true;
 var donante;
 var isDonante = false;
+var infoDonante = true;
 var isDonacions = false;
 var donacions = [];
 var i = 0;
 var table;
+var donacionsEnviades;
+var donacionsRebudes;
 
 $(document).ready(function () {
 
@@ -127,6 +129,8 @@ $(document).ready(function () {
         event.preventDefault();
         var $this = $(this);
         var data = {
+            fecha: today(),
+            id_usuario: idUsuario,
             id: i,
             subtipo_donacion: tipoDiners,
             centro_receptor: $this.find("#centro_receptor_diners").val(),
@@ -242,6 +246,23 @@ $(document).ready(function () {
         console.log(data);
     });
 
+    $('#btnSubmit').click(function () {
+        if (!isDonante) {
+            toast('Debes seleccionar un donante', 2000);
+        }
+        else if (!isDonacions) {
+            toast('Debes añadir alguna donación', 2000);
+        }
+        else {
+            $('.unable').show();
+            $('.spinner').removeClass('d-none');
+            donacionsEnviades = donacions.length;
+            donacionsRebudes = 0;
+            donacions.forEach(donacio => {
+                storeDonacio(donacio);
+            });
+        }
+    });
 
 });
 
@@ -253,6 +274,31 @@ function getDonant(dni, callback) {
         url: 'http://localhost:8080/spam-abp/public/api/donants/' + dni,
         success: function (data) {
             callback(data.data);
+        }
+    })
+}
+
+// Envia a la API la informacio sobre les diferents doncions;
+function storeDonacio(dataDonacio) {
+    dataDonacio.fecha = today()
+    dataDonacio.id_usuario = idUsuario;
+    dataDonacio.id_donante = donante.id;
+
+    $.ajax({
+        async: 'true',
+        method: 'POST',
+        data: dataDonacio,
+        url: 'http://localhost:8080/spam-abp/public/api/donations',
+        success: function (resp) {
+            console.log(resp);
+            donacionsRebudes++;
+            reload()
+        },
+        error: function (jqXHR, exception) {
+            console.log(jqXHR);
+            console.log(exception);
+            donacionsRebudes++;
+            reload()
         }
     })
 }
@@ -273,6 +319,7 @@ function toggleDonant() {
 
 //Mostra la informacio del donant
 function setDonant(data) {
+    donante = data;
     var habitual;
     var nombre = data.nombre;
     if (data.tipos_donantes_id == 1) {
@@ -330,4 +377,21 @@ function afegirDonacio(data) {
     isDonacions = true;
     table.columns.adjust();
     table.responsive.recalc();
+}
+
+function today() {
+    var t = new Date();
+    return t.getFullYear() + "-" +
+        (t.getMonth() + 1) + "-" +
+        t.getDate() + " " +
+        t.getHours() + ":" +
+        t.getMinutes() + ":" +
+        t.getSeconds();
+}
+
+function reload() {
+    if (donacionsEnviades == donacionsRebudes) {
+        location.reload();
+        console.log('YYYY')
+    }
 }

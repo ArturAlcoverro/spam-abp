@@ -1,7 +1,6 @@
 @extends('privada.templates.master')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/table.css') }}">
 <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
 @endsection
 
@@ -57,7 +56,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
             </tbody>
         </table>
 </div>

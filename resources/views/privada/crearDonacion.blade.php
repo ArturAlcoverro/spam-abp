@@ -10,18 +10,21 @@
         <script>getDonant("{{Session::get('dni')}}", setDonant)</script>
     @endif
     <script>
+        var idUsuario = {{Auth::user()->id}}
         var subtipos = {!! json_encode($subtipos->toArray()) !!};
         var centros = {!! json_encode($centros->toArray()) !!};
         var tipoDiners;
         subtipos.forEach(element => {
-            if(element.nombre == 'Diners'){
+            if(element.nombre.toLowerCase() == 'diners'){
                 tipoDiners = element.id;
             }
         });
     </script>
 
-
 <div class="p-5 d-block all">
+    <div class="unable" style="display: none">
+            <div class="spinner"></div>
+    </div>
     <div class="d-flex">
         <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
         <button class="showHide" style="display: none">

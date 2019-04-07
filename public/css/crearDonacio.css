@@ -113,7 +113,26 @@ form .btn-donant {
 }
 
 .all {
+    position: relative;
     max-width: 1100px;
+}
+
+.unable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: calc(100%);
+    height: calc(100%);
+    max-width: 1300px;
+    background-color: rgba(255, 255, 255, 0.411);
+    z-index: 10;
+}
+
+.unable .spinner {
+    width: 100px;
+    height: 100px;
+    border-width: 5px;
 }
 
 /* .modal-content {

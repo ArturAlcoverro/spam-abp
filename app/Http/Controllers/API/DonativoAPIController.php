@@ -38,53 +38,25 @@ class DonativoAPIController extends Controller
     {
         $donativo = new Donativo();
 
-        $donativo->tipos_donantes_id = $request->input('tipos_donante');
-        $donativo->cif = $request->input('cif');
-        $donativo->telefono = $request->input('telefono');
-        $donativo->correo = $request->input('correo');
-        $donativo->direccion = $request->input('direccion');
-        $donativo->poblacion = $request->input('poblacion');
-        $donativo->pais = $request->input('pais');
-        $donativo->nombre = $request->input('nombre');
-        $donativo->fecha_alta = date('Y-m-d H:i:s');
-        $donativo->tipo_colaboracion = $request->input('colaboracion');
+        $donativo->cantidad = $request->input('cantidad');
+        $donativo->centros_desti_id = $request->input('centro_destino');
+        $donativo->centros_receptor_id = $request->input('centro_receptor');
+        $donativo->coste = $request->input('coste');
+        $donativo->subtipos_id = $request->input('subtipo_donacion');
+        $donativo->unidad = $request->input('unidades');
+        $donativo->ruta_factura = $request->input('factura');
+        $donativo->usuarios_id = $request->input('id_usuario');
+        $donativo->donantes_id = $request->input('id_donante');
+        $donativo->fecha_donativo = $request->input('fecha');
 
-        if($request->input('animales') == ""){
-            $donativo->tiene_aninales = 0;
-        }
-        else{
-            $donativo->tiene_aninales = 1;
-        }
+        $request->input('factura') == true ?
+                $donativo->es_coordinada = 1 :
+                $donativo->es_coordinada = 0;
 
-        if($request->input('colaboracion') == ""){
-            $donativo->es_colaborador = 0;
-        }
-        else{
-            $donativo->es_colaborador = 1;
-        }
+        $request->input('factura') == "" ?
+                $donativo->hay_factura = 0 :
+                $donativo->hay_factura = 1 ;
 
-        if($request->input('tipos_donante') == 2){
-            $donativo->sexos_id = $request->input('sexos');
-        }
-        elseif($request->input('tipos_donante') == 1){
-            $donativo->vinculo_entidad = $request->input('vinculo');
-        }
-
-        if($request->input('habitual')=="on"){
-
-            $donativo->es_habitual = 1;
-        }
-        else{
-            $donativo->es_habitual = 0;
-        }
-
-        if($request->input('spam')=="on"){
-
-            $donativo->spam = 1;
-        }
-        else{
-            $donativo->spam = 0;
-        }
 
         try{
             $donativo->save();
