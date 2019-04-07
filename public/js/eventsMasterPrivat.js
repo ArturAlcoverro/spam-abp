@@ -3,6 +3,7 @@ var menu = false;
 $(document).ready(function () {
     var tab = window.location.href.split("/")[5];
     switch (tab) {
+        case 'subtipos':
         case 'donations':
             $('#donacionsTab').addClass('active-tab');
             break;
@@ -13,8 +14,8 @@ $(document).ready(function () {
             $('#usuarisTab').addClass('active-tab');
             break;
         default:
-        // alert(tab);
-        break;
+            // alert(tab);
+            break;
 
     }
     $(".menu-btn").click(function () {
@@ -68,10 +69,10 @@ $("#idiomaSwitch").change(function () {
     //window.location = '{{ url("locale/" ) }}';
 });
 
-function toast(msg, time){
+function toast(msg, time) {
     $('.toast').text(msg);
     $('.toast').fadeIn(500);
-    setTimeout(function(){
+    setTimeout(function () {
         $('.toast').fadeOut(500);
     }, time);
 }

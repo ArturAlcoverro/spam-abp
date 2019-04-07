@@ -23,13 +23,17 @@
     background-color: var(--primary-color-dark);
 }
 
-.btn{
+.custom-radio .custom-control-input:checked~.custom-control-label::before {
+    background-color: var(--primary-color-dark);
+}
+
+.btn {
     cursor: pointer;
     border-radius: 0;
     color: #fff;
 }
 
-.btn:hover{
+.btn:hover {
     box-shadow: 0 10px 15px -3px #00000040;
 }
 
@@ -43,7 +47,7 @@
     border-color: var(--primary-color-dark);
 }
 
-.btn-secondary{
+.btn-secondary {
     background-color: var(--disable-color);
     border-color: var(--disable-color);
 }
@@ -83,11 +87,12 @@
     overflow: initial;
 }
 
-td:focus{
+td:focus {
     outline: none;
 }
 
-.table td, .table th{
+.table td,
+.table th {
     border-top: none;
 }
 

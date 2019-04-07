@@ -18,19 +18,19 @@
 </script>
 <div class="p-5">
 
-    <h1>Donacions</h1>
+    <h1>Subtipus de donacions</h1>
 
     <div class="toolbar mt-3">
         <a href="{{ action('DonativoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </a>
-        <button onclick="editDonant()" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
+        <button onclick="editSubtipus()" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
             <form id="form_edit" action="" method="get">
                 @csrf
             </form>
         </button>
-        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
+        <button onclick="deleteSubtipus()" title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
@@ -48,7 +48,9 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Tipo</th>
-                    <th>Gama</th>
+                    <th>Gama alta</th>
+                    <th>Gama media</th>
+                    <th>Gama baja</th>
                     <th>Unidad</th>
                 </tr>
             </thead>

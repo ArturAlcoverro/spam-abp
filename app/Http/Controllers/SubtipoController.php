@@ -28,7 +28,20 @@ class SubtipoController extends Controller
      */
     public function create()
     {
-        //
+        $tipos = Tipo::all();
+        $unidades = array(
+            "kg",
+            "g",
+            "l",
+            "ml",
+            "cm",
+            "m"
+        );
+
+        $data['unidades'] = $unidades;
+        $data['tipos'] = $tipos;
+        return view('privada.createSubtipo', $data);
+
     }
 
     /**
@@ -59,9 +72,24 @@ class SubtipoController extends Controller
      * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subtipo $subtipo)
+    public function edit($id_subtipo)
     {
-        //
+        $subtipo = Subtipo::find($id_subtipo);
+        $tipos = Tipo::all();
+        $unidades = array(
+            "kg",
+            "g",
+            "l",
+            "ml",
+            "cm",
+            "m"
+        );
+
+        $data['unidades'] = $unidades;
+        $data['subtipo'] = $subtipo;
+        $data['tipos'] = $tipos;
+
+        return view('privada.editSubtipo', $data);
     }
 
     /**
@@ -71,9 +99,28 @@ class SubtipoController extends Controller
      * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subtipo $subtipo)
+    public function update(Request $request, $id_subtipo)
     {
-        //
+        $subtipo = Subtipo::find($id_subtipo);
+
+        $subtipo->nombre = $request->input('nombre');
+        $subtipo->tipos_id = $request->input('tipos');
+        $subtipo->gama_alta = $request->input('gama_alta');
+        $subtipo->gama_media = $request->input('gama_media');
+        $subtipo->gama_baja = $request->input('gama_baja');
+        $subtipo->tipo_unidad = $request->input('unidad');
+
+        try
+        {
+            $subtipo->save();
+        }
+        catch(QueryException $e){
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('SubtipoController@edit')->withInput();
+        }
+
+        return redirect()->action('SubtipoController@index');
     }
 
     /**

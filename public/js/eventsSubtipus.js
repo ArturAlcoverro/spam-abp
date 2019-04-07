@@ -25,6 +25,8 @@ function indexSubtipus() {
                     data['nombre'],
                     data['tipo']['nombre'],
                     data['gama_alta'],
+                    data['gama_media'],
+                    data['gama_baja'],
                     data['tipo_unidad'],
                 ]).draw();
             });
@@ -32,16 +34,30 @@ function indexSubtipus() {
     });
 }
 
-function editDonant() {
+function editSubtipus() {
 
     var rows = $("#table").DataTable().rows('.selected').data();
 
     if (rows.length != 1) {
         toast('Per editar has de seleccionar UN registre', 2000);
     } else {
-        var id = row[0];
+        var id = rows[0][0];
 
         $('#form_edit').attr('action', document.URL + '/' + id + '/edit');
         $('#form_edit').submit();
+    }
+}
+
+function deleteSubtipus() {
+
+    var rows = $("#table").DataTable().rows('.selected').data();
+
+    if (rows.length != 1) {
+        toast('Per eliminar has de seleccionar UN registre', 2000);
+    } else {
+        var id = rows[0][0];
+
+        $('#form_delete').attr('action', document.URL + '/' + id + '/destroy');
+        $('#form_delete').submit();
     }
 }
