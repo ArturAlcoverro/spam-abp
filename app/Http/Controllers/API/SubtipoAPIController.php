@@ -67,8 +67,23 @@ class SubtipoAPIController extends Controller
      * @param  \App\Models\Subtipo  $subtipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subtipo $subtipo)
+    public function destroy($id)
     {
-        //
+        $subtipos = Subtipo::find($id);
+
+        try{
+            $subtipos->delete();
+            $respuesta = (new SubtipoResource($subtipos))
+                            ->response()
+                            ->setStatusCode(200);
+        }
+        catch(QueryException $e){
+
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                           ->json(['error'=>$mensaje], 400);
+        }
+
+        return $respuesta;
     }
 }

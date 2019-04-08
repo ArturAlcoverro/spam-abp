@@ -6,6 +6,9 @@ use App\Models\Subtipo;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 
+use Illuminate\Database\QueryException;
+use App\Clases\Utilitat;
+
 class SubtipoController extends Controller
 {
     /**
@@ -52,7 +55,27 @@ class SubtipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subtipo = new Subtipo();
+
+        $subtipo->nombre = $request->input('nombre');
+        $subtipo->tipos_id = $request->input('tipos');
+        $subtipo->gama_alta = $request->input('gama_alta');
+        $subtipo->gama_media = $request->input('gama_media');
+        $subtipo->gama_baja = $request->input('gama_baja');
+        $subtipo->tipo_unidad = $request->input('unidad');
+
+        try
+        {
+            $subtipo->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('SubtipoController@create')->withInput();
+        }
+
+        return redirect('subtipos');
     }
 
     /**

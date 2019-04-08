@@ -16,6 +16,8 @@ return[
     'filter_crud'  =>'Filtrar',
     'update_crud'  =>'Actualitzar',
     'chart_crud'   =>'Gràfics',
+    'tipus_crud'   =>'Tipus donacions',
+    'subtipus_crud'=>'Subtipus donacions',
 ];
 
 ?>

@@ -36,12 +36,12 @@
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
         </button>
-        <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/pie.png') }}" alt="">
+        <button title="@lang('master.tipus_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/tipus.png') }}" alt="">
         </button>
-        <button title="@lang('master.update_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/update.png') }}" alt="">
-        </button>
+        <a href='{{url('/subtipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/subtipus.png') }}" alt="">
+        </a>
 
     </div>
 

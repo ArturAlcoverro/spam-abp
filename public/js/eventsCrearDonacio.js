@@ -1,4 +1,4 @@
-var donante = {id:0};
+var donante = { id: 0 };
 var isDonante = false;
 var infoDonante = true;
 var isDonacions = false;
@@ -125,6 +125,11 @@ $(document).ready(function () {
         setSubtipos($("#tipo_donacion").val());
     });
 
+    setMedida($("#subtipo_donacion").val());
+    $("#subtipo_donacion").change(function () {
+        setMedida($("#subtipo_donacion").val());
+    });
+
     //Al fer submit en el modal de material recollim la informació i l'afegim a la taula de donacions
     $('#formDiners').submit(function (event) {
         event.preventDefault();
@@ -158,10 +163,10 @@ $(document).ready(function () {
         var $this = $(this);
 
         var coste = parseFloat($this.find("#costeDiners").val());
-        if (coste == 0){
+        if (isNaN(coste)) {
             coste = calcularCoste(
-                        $this.find("#subtipo_donacion").val(),
-                        $('input[name=radioGama]:checked', '#formMaterial').data('value'));
+                $this.find("#subtipo_donacion").val(),
+                $('input[name=radioGama]:checked', '#formMaterial').data('value'));
         }
 
         var data = {
@@ -171,7 +176,7 @@ $(document).ready(function () {
             centro_destino: $this.find("#centro_destino").val(),
             unidades: parseInt($this.find("#unidades").val()) || 1,
             cantidad: parseInt($this.find("#cantidad").val()) || 0,
-            coste: parseFloat($this.find("#coste").val()) || 0,
+            coste: coste,
             animales: $this.find("#animales").val(),
             factura: $this.find("#factura").val(),
             coordinada: $this.find("#coordinada").is(":checked"),
@@ -233,6 +238,11 @@ $(document).ready(function () {
     });
 
     //Eliminem la fila selccionada
+    $('#tablaDonacions tbody').on('click', '.btn-edit', function () {
+        var data = table.row($(this).parents('tr')).data();
+    });
+
+    //Eliminem la fila selccionada
     $('#tablaDonacions tbody').on('click', '.btn-delete', function () {
         var data = table.row($(this).parents('tr')).data();
         var deleteObj;
@@ -248,7 +258,6 @@ $(document).ready(function () {
             isDonacions = false;
         }
     });
-
 
     $('#tablaDonacions tbody').on('click', '.btn-edit', function () {
         var data = table.row($(this).parents('tr')).data();
@@ -362,6 +371,21 @@ function setSubtipos(id) {
     });
 }
 
+function setMedida(id_subtipo) {
+    var unidad;
+    subtipos.forEach(element => {
+        if (element.id == id_subtipo) {
+            unidad = element.tipo_unidad;
+        }
+    });
+
+    if (unidad != "") {
+        $('#unidadMedida').text(' (' + unidad + ')');
+    } else {
+        $('#unidadMedida').text('');
+    }
+}
+
 //Agrega una donació a la taula
 function afegirDonacio(data) {
     var centro_receptor;
@@ -405,11 +429,11 @@ function reload() {
     }
 }
 
-function calcularCoste(id_subtipo, gama){
+function calcularCoste(id_subtipo, gama) {
     var subtipo;
     var coste;
     subtipos.forEach(element => {
-        if(element.id = id_subtipo){
+        if (element.id == id_subtipo) {
             subtipo = element;
         }
     });
@@ -417,13 +441,13 @@ function calcularCoste(id_subtipo, gama){
     switch (gama) {
         case 'Alta':
             coste = subtipo.gama_alta
-        break;
+            break;
         case 'Media':
-            coste = subtipo.gama_alta
-        break;
+            coste = subtipo.gama_media
+            break;
         case 'Baja':
-            coste = subtipo.gama_alta
-        break;
+            coste = subtipo.gama_baja
+            break;
     }
 
     return coste;

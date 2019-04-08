@@ -9,8 +9,8 @@ $(document).ready(function () {
     var month = ("0" + (fechaInicio.getMonth() + 1)).slice(-2);
     var month2 = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
 
-    var today = fechaInicio.getFullYear()+"-"+(month)+"-"+(day);
-    var today2 = fechaFinal.getFullYear()+"-"+(month2)+"-"+(day);
+    var today = fechaInicio.getFullYear() + "-" + (month) + "-" + (day);
+    var today2 = fechaFinal.getFullYear() + "-" + (month2) + "-" + (day);
 
     $('#fechaInicio').val(today2);
     $('#fechaFinal').val(today);
@@ -26,15 +26,15 @@ function indexDonaciones() {
         async: true,
         data: {
         },
-        beforeSend: function () {},
-        error : function (resp) {
-            toast(resp.responseJSON.error,5000);
+        beforeSend: function () { },
+        error: function (resp) {
+            toast(resp.responseJSON.error, 5000);
         },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
+            resp['data'].forEach(function (data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['subtipo']['tipos_id'],
@@ -67,10 +67,10 @@ function deleteDonacion() {
             async: true,
             data: {
             },
-            error : function (resp) {
-                toast(resp.responseJSON.error,5000);
+            error: function (resp) {
+                toast(resp.responseJSON.error, 5000);
             },
-            beforeSend: function () {},
+            beforeSend: function () { },
             success: function (resp) {
                 indexDonaciones();
             }
@@ -99,21 +99,21 @@ function filtrar() {
     console.log($('#fechaFinal').val());
 
     $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/filtro/"+ fechaInicio + "/" + fechaFinal,
+        url: "http://localhost:8080/spam-abp/public/api/filtro/" + fechaInicio + "/" + fechaFinal,
         type: "GET",
         dataType: 'json',
         async: true,
         data: {
         },
-        beforeSend: function () {},
-        error : function (resp) {
-            toast(resp.responseJSON.error,5000);
+        beforeSend: function () { },
+        error: function (resp) {
+            toast(resp.responseJSON.error, 5000);
         },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
+            resp['data'].forEach(function (data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['subtipo']['tipos_id'],
@@ -130,7 +130,7 @@ function filtrar() {
                 ]).draw();
             });
 
-            $("#table").DataTable().column(1).search($('#tipos').val()  )
+            $("#table").DataTable().column(1).search($('#tipos').val())
                 .column(3).search($('#subtipos').val())
                 .column(5).search($('#centrosReceptores').val())
                 .column(7).search($('#centrosDestino').val())

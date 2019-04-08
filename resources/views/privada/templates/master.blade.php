@@ -33,7 +33,7 @@
         <div class="menu-btn-animation"></div>
     </div>
     <nav id="menuSuperior">
-        <a style="height: 70%" href="{{ url('/') }}">
+        <a href="{{ url('/') }}">
             <img id="logoSpam" height="100%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
         </a>
         <div class="dropdown mr-2">

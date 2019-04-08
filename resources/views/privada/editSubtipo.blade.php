@@ -36,27 +36,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="gama_alta" class="col-form-label">Gama alta</label>
-                <div class="">
-                    <input type="number" name="gama_alta" id="gama_alta" class="form-control" value="{{ $subtipo->gama_alta }}">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="gama_media" class="col-form-label">Gama media</label>
-                <div class="">
-                    <input type="number" name="gama_media" id="gama_media" class="form-control" value="{{ $subtipo->gama_media }}">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="gama_baja" class="col-form-label">Gama baja</label>
-                <div class="">
-                    <input type="number" name="gama_baja" id="gama_baja" class="form-control" value="{{ $subtipo->gama_baja }}">
-                </div>
-            </div>
-
             <div class="form-group ">
                 <label for="unidad" class="col-form-label">Unidad de medida</label>
                 <div class="">
@@ -68,7 +47,32 @@
                     </datalist>
                 </div>
             </div>
-            <div class="form-group float-right">
+
+            <div class="row">
+                <div class="form-group col-12 col-sm">
+                    <label for="gama_alta" class="col-form-label">Gama alta</label>
+                    <div class="">
+                        <input type="number" name="gama_alta" id="gama_alta" class="form-control" value="{{ $subtipo->gama_alta }}">
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm">
+                    <label for="gama_media" class="col-form-label">Gama media</label>
+                    <div class="">
+                        <input type="number" name="gama_media" id="gama_media" class="form-control" value="{{ $subtipo->gama_media }}">
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm">
+                    <label for="gama_baja" class="col-form-label">Gama baja</label>
+                    <div class="">
+                        <input type="number" name="gama_baja" id="gama_baja" class="form-control" value="{{ $subtipo->gama_baja }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group float-right mt-2">
+                <a href="{{ url('/subtipos') }}" class="btn btn-secondary boton-amplada mr-1">Cancelar</a>
                 <button type="submit" name="editAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
             </div>
         </form>

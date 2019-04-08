@@ -20,7 +20,7 @@
     <h1>Subtipus de donacions</h1>
 
     <div class="toolbar mt-3">
-        <a href="{{ action('DonativoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
+        <a href="{{ action('SubtipoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </a>
         <button onclick="editSubtipus()" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
@@ -35,6 +35,9 @@
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
         </button>
+        <a href='{{url('/tipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/tipus.png') }}" alt="">
+        </a>
     </div>
 
     <div class="toolbar-append">

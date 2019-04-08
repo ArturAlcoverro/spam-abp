@@ -52,12 +52,29 @@ function deleteSubtipus() {
 
     var rows = $("#table").DataTable().rows('.selected').data();
 
-    if (rows.length != 1) {
+    if (rows.length == 0) {
         toast('Per eliminar has de seleccionar UN registre', 2000);
-    } else {
-        var id = rows[0][0];
+    }
+    else {
+        for (var i = 0; i < rows.length; i++) {
 
-        $('#form_delete').attr('action', document.URL + '/' + id + '/destroy');
-        $('#form_delete').submit();
+            $.ajax({
+                url: "http://localhost:8080/spam-abp/public/api/subtipos/" + rows[i][0],
+                type: "DELETE",
+                dataType: 'json',
+                async: true,
+                data: {
+                },
+                error: function (resp) {
+                    toast(resp.responseJSON.error, 5000);
+                },
+                beforeSend: function () { },
+                success: function (resp) {
+                    indexSubtipus();
+                }
+            });
+        }
     }
 }
+
+

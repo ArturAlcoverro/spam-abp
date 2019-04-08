@@ -7,7 +7,27 @@
 
 @section('body')
     @if (Session::has('dni'))
-        <script>getDonant("{{Session::get('dni')}}", setDonant)</script>
+        <script>
+
+        getDonant("{{Session::get('dni')}}",
+        function (data) {
+                if (data.length != 0) {
+                    $('.not-found').addClass('d-none');
+                    $('.empty-error').addClass('d-none');
+                    $('#modalEmpresa').modal('hide');
+                    isDonante = true;
+                    setDonant(data);
+                    console.log(data);
+                }
+                else {
+                    $('.not-found').removeClass('d-none');
+                    $('.empty-error').addClass('d-none');
+                }
+                $('.spinner').addClass('d-none');
+                $this.show();
+            });
+
+        </script>
     @endif
     <script>
         var idUsuario = {{Auth::user()->id}}
@@ -191,7 +211,7 @@
                         <div class="form-group">
                             <label for="lblsubtipo_donacion" class="col-form-label">Subtipo de donacion</label>
                             <div class="">
-                                <select name="subtipo_donacion" id="subtipo_donacion" class="form-control">
+                                <select required name="subtipo_donacion" id="subtipo_donacion" class="form-control">
 
                                 </select>
                             </div>
@@ -223,7 +243,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="cantidad" class="col-form-label">Cantidad p.u. <span></span></label>
+                            <label for="cantidad" class="col-form-label">Cantidad p.u. <span id="unidadMedida"></span></label>
                             <div class="">
                                 <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
                             </div>
