@@ -26,3 +26,5 @@ Route::apiResource('/subtipos', 'API\SubtipoAPIController');
 Route::apiResource('/filtro', 'API\FiltroAPIController');
 
 Route::get("/estadisticas/donativos/{dataInici}/{dataFi}", 'API\EstadisticasController@DonatiusByData');
+
+Route::get("/filtro/{fechaInicio}/{fechaFinal}", 'API\FiltroAPIController@show');

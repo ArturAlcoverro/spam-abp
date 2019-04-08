@@ -37,13 +37,14 @@ class FiltroAPIController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($date)
+    public function show($fechaInicio, $fechaFinal)
     {
         $donativos = Donativo::with('centro_receptor')
                             ->with('centro_desti')
                             ->with('subtipo.tipo')
                             ->with('donante')
-                            ->where("fecha_donativo", ">" , $date . " 00:00:00")
+                            ->where("fecha_donativo", ">" , $fechaInicio . " 00:00:00")
+                            ->where("fecha_donativo", "<" , $fechaFinal . " 00:00:00")
                             ->get();
 
         return DonanteResource::collection($donativos);
