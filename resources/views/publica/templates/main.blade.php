@@ -27,14 +27,24 @@
 
     @yield('body')
 
-    <footer class="footer bg-grey py-3">
-        <a href="https://www.facebook.com/protectoramataro/" class="ml-3">
-            <img class="rrss_icon" src="{{ asset('media/publica/icons/facebook.png') }}" alt="">
-        </a>
-        <a href="https://twitter.com/protemataro">
-            <img class="rrss_icon" src="{{ asset('media/publica/icons/twitter.png') }}" alt="">
-        </a>
-        <a href="{{route('showLogin')}}" class="text-white float-right mr-2">Espacio Trabajadores</a>
+    <footer class="footer bg-dark py-5">
+        <div class="container-fluid">
+            <div class="">
+                <a href="https://www.facebook.com/protectoramataro/" class="rrss_icon" style="">
+                    <img class="rrss_icon" src="{{ asset('media/publica/icons/facebook.png') }}" alt="">
+                </a>
+                <a href="https://twitter.com/protemataro" class="rrss_icon" style="margin-left: 1rem;">
+                    <img class="rrss_icon" src="{{ asset('media/publica/icons/twitter.png') }}" alt="">
+                </a>
+                <a href="https://www.instagram.com/protectoramataro/" class="rrss_icon" style="margin-left: 1rem;">
+                    <img class="rrss_icon" src="{{ asset('media/publica/icons/instagram.png') }}" alt="">
+                </a>
+                <a href="https://www.protectoramataro.org" class="rrss_icon" style="margin-left: 1rem;">
+                    <img class="rrss_icon" src="{{ asset('media/publica/icons/grid-world.png') }}" alt="">
+                </a>
+                <a href="{{route('showLogin')}}" class="text-white float-right mr-2">Espacio Trabajadores</a>
+            </div>
+        </div>
     </footer>
 
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
