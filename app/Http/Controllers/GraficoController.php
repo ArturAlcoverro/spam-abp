@@ -6,7 +6,12 @@ use App\Models\Grafico;
 use App\Models\Tipo;
 use App\Models\Subtipo;
 use App\Models\Centro;
+use App\Models\Animal;
+
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
+use App\Clases\Utilitat;
+use Session;
 
 class GraficoController extends Controller
 {
@@ -30,9 +35,11 @@ class GraficoController extends Controller
         $tipos = Tipo::all();
         $subtipos = Subtipo::all();
         $centros = Centro::all();
+        $animales = Animal::all();
         $data["tipos"] = $tipos;
         $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
+        $data["animales"] = $animales;
         return view('privada.createGrafic', $data);
     }
 
@@ -44,7 +51,28 @@ class GraficoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $grafico = new Grafico();
+        $grafico->nombre            = $request->input("nombre");
+        $grafico->subtipos_donacion = $request->input("subtipo");
+        $grafico->centro            = $request->input("centro");
+        $grafico->animales          = $request->input("animales");
+        $grafico->mostrar_valor     = $request->input("valor");
+        $grafico->tipo_grafico      = $request->input("tipus_grafic");
+        $grafico->ordenar           = $request->input("ordenar");
+        $grafico->publica           = $request->input("public");
+
+        try
+        {
+            $grafico->save();
+        }
+        catch(QueryException $e){
+
+            $error = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('GraficoController@create')->withInput();
+        }
+
+        return redirect('privada.grafics');
     }
 
     /**

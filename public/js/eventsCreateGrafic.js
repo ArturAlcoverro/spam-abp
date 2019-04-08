@@ -1,26 +1,64 @@
 $(document).ready(function(){
     $('#btnDades').click(function () {
         //objectipus
-        $('#modalGrafic').modal();
-        $('#lblvalor').text('Valor a mostrar');
-        $('#objectiu').hide();
+        $('#modalGraficDades').modal();
+        if ($(".tipo_donacion:checked").length == 1){
+            setSubtipos($(this).data("id"));
+        }
+        else{
+            $('#subtipo_donacion').append('<option value="-1" selected></option>')
+            .prop( "disabled", true );
+        }
+        tipoData();
+
 
     });
     $('#btnComp').click(function () {
-        $('#modalGrafic').modal();
         //objectipus
-        $('#modalGrafic').modal();
-        $('#lblvalor').text('Valor a mostrar');
-        $('#objectiu').hide();
-        
+        $('#modalGraficComparativa').modal();
+        if ($(".tipo_donacion:checked").length == 1){
+            setSubtipos($(this).data("id"));
+        }
+        else{
+            $('#subtipo_donacion').append('<option value="-1" selected></option>')
+            .prop( "disabled", true );
+        }
+
+
     });
     $('#btnObj').click(function () {
-        $('#modalGrafic').modal();
+
         //objectipus
-        $('#modalGrafic').modal();
-        $('#lblvalor').text('Objectiu');
-        $('#objectiu').show();
+        $('#modalGraficObjectius').modal();
+        if ($(".tipo_donacion:checked").length == 1){
+            setSubtipos($(this).data("id"));
+        }
+        else{
+            $('#subtipo_donacion').append('<option value="-1" selected></option>')
+            .prop( "disabled", true );
+        }
+        tipoData();
     });
 
-    
+    $(".tipo_donacion").change(function () {
+
+        if ($(".tipo_donacion:checked").length == 1){
+            setSubtipos($(this).data("id"));
+        }
+        else{
+            $('#subtipo_donacion').append('<option value="-1" selected></option>')
+            .prop( "disabled", true );
+        }
+
+
+    });
+
+    $('#tipoData').change(function(){
+        tipoData();
+    });
+
+
+
+
+
 });
