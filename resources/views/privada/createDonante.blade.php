@@ -132,6 +132,6 @@
 
 @section('js')
 
-    <script src="{{ asset('js/eventsDonants.js') }}"></script>
+    <script src="{{ asset('js/eventsEditDonant.js') }}"></script>
 
 @endsection

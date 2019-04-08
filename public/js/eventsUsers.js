@@ -12,6 +12,9 @@ function indexUsers() {
         data: {
         },
         beforeSend: function () {},
+        error : function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
@@ -43,8 +46,7 @@ function deleteUsuario() {
             data: {
             },
             error: function (resp) {
-
-                toast("Error",2000);
+                toast(resp.responseJSON.error,5000);
             },
             beforeSend: function () {},
             success: function (resp) {
