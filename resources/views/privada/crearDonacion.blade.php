@@ -222,31 +222,33 @@
                                 <input type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-7 col-md-9 pr-0">
-                                <label for="cantidad" class="col-form-label">Cantidad p.u.</label>
-                                <div class="">
-                                    <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
-                                </div>
-                            </div>
-                            <div class="form-group col-5 col-md-3">
-                                <label for="medida" class="col-form-label">Medida</label>
-                                <div class="">
-                                    <select name="medida" id="medida" class="form-control">
-                                        <option value="">kg</option>
-                                        <option value="">g</option>
-                                        <option value="">l</option>
-                                        <option value="">ml</option>
-                                        <option value="">cm</option>
-                                        <option value="">m</option>
-                                    </select>
-                                </div>
+                        <div class="form-group">
+                            <label for="cantidad" class="col-form-label">Cantidad p.u. <span></span></label>
+                            <div class="">
+                                <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="coste" class="col-form-label">Valor estimado (€)</label>
                             <div class="">
                                 <input type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="Coste">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="coste" class="col-form-label">Gama</label>
+                            <div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input checked data-value='Baja' value"Baja" type="radio" id="radioBaja" name="radioGama" class="custom-control-input">
+                                    <label class="custom-control-label" for="radioBaja">Baja</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input data-value='Media' value"Media" type="radio" id="radioMedia" name="radioGama" class="custom-control-input">
+                                    <label class="custom-control-label" for="radioMedia">Media</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input data-value='Alta' type="radio" id="radioAlta" name="radioGama" class="custom-control-input">
+                                    <label class="custom-control-label" for="radioAlta">Alta</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

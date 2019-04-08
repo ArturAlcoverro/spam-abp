@@ -49,11 +49,11 @@ $(document).ready(function () {
                 }
             }
         },
-        "columnDefs": [
+        columnDefs: [
             {
-                "targets": [0],
-                "visible": false,
-                "searchable": false
+                targets: [0],
+                visible: false,
+                searchable: false
             }]
     });
 

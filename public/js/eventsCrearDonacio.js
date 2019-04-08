@@ -1,4 +1,4 @@
-var donante;
+var donante = {id:0};
 var isDonante = false;
 var infoDonante = true;
 var isDonacions = false;
@@ -14,6 +14,7 @@ $(document).ready(function () {
     $('#btnAnonim').click(function () {
         ocultarBotones('btnAnonim');
         isDonante = true;
+        donante.id = 0;
         $('.showHide').show();
     });
 
@@ -128,6 +129,7 @@ $(document).ready(function () {
     $('#formDiners').submit(function (event) {
         event.preventDefault();
         var $this = $(this);
+
         var data = {
             fecha: today(),
             id_usuario: idUsuario,
@@ -135,7 +137,6 @@ $(document).ready(function () {
             subtipo_donacion: tipoDiners,
             centro_receptor: $this.find("#centro_receptor_diners").val(),
             centro_destino: $this.find("#centro_destino_diners").val(),
-            medida: "",
             unidades: 0,
             cantidad: 0,
             coste: parseFloat($this.find("#costeDiners").val()),
@@ -153,13 +154,21 @@ $(document).ready(function () {
     //Al fer submit en el modal de material recollim la informació i l'afegim a la taula de donacions
     $('#formMaterial').submit(function (event) {
         event.preventDefault();
+
         var $this = $(this);
+
+        var coste = parseFloat($this.find("#costeDiners").val());
+        if (coste == 0){
+            coste = calcularCoste(
+                        $this.find("#subtipo_donacion").val(),
+                        $('input[name=radioGama]:checked', '#formMaterial').data('value'));
+        }
+
         var data = {
             id: i,
             subtipo_donacion: $this.find("#subtipo_donacion").val(),
             centro_receptor: $this.find("#centro_receptor").val(),
             centro_destino: $this.find("#centro_destino").val(),
-            medida: $this.find("#medida").val(),
             unidades: parseInt($this.find("#unidades").val()) || 1,
             cantidad: parseInt($this.find("#cantidad").val()) || 0,
             coste: parseFloat($this.find("#coste").val()) || 0,
@@ -394,4 +403,28 @@ function reload() {
         location.reload();
         console.log('YYYY')
     }
+}
+
+function calcularCoste(id_subtipo, gama){
+    var subtipo;
+    var coste;
+    subtipos.forEach(element => {
+        if(element.id = id_subtipo){
+            subtipo = element;
+        }
+    });
+
+    switch (gama) {
+        case 'Alta':
+            coste = subtipo.gama_alta
+        break;
+        case 'Media':
+            coste = subtipo.gama_alta
+        break;
+        case 'Baja':
+            coste = subtipo.gama_alta
+        break;
+    }
+
+    return coste;
 }
