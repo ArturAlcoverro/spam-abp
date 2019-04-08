@@ -31,25 +31,27 @@ function indexUsers() {
 
 function deleteUsuario() {
 
-    var row = $("#table").DataTable().row('.selected').data();
+    var rows = $("#table").DataTable().rows('.selected').data();
 
-    var id = row[0];
-    $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/users/" + id,
-        type: "DELETE",
-        dataType: 'json',
-        async: true,
-        data: {
-        },
-        error: function (resp) {
-            toast("Error", 2000);
-        },
-        beforeSend: function () {},
-        success: function (resp) {
+    for (var i = 0; i < rows.length; i++) {
 
-            indexUsers();
-        }
-    });
+        $.ajax({
+            url: "http://localhost:8080/spam-abp/public/api/users/" + rows[i][0],
+            type: "DELETE",
+            dataType: 'json',
+            async: true,
+            data: {
+            },
+            error: function (resp) {
+
+                toast("Error",2000);
+            },
+            beforeSend: function () {},
+            success: function (resp) {
+                indexUsers();
+            }
+        });
+    }
 }
 
 function editUser() {

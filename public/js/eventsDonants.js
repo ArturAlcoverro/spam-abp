@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     indexDonants();
 });
 
@@ -10,12 +11,12 @@ function indexDonants() {
         async: true,
         data: {
         },
-        beforeSend: function () { },
+        beforeSend: function () {},
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function (data) {
+            resp['data'].forEach(function(data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
@@ -31,39 +32,31 @@ function indexDonants() {
 
 function deleteDonant() {
 
-    var row = $("#table").DataTable().row('.selected').data();
-
-    console.log(row);
-
     var rows = $("#table").DataTable().rows('.selected').data();
 
-    //DELETE TODOS LAS ROWS
+    for (var i = 0; i < rows.length; i++) {
 
-    console.log(rows[0]);
-    console.log(rows[1]);
-    console.log(rows.length);
+        $.ajax({
+            url: "http://localhost:8080/spam-abp/public/api/donants/" + rows[i][0],
+            type: "DELETE",
+            dataType: 'json',
+            async: true,
+            data: {
+            },
+            error: function (resp) {
 
-    //FOREACH Y AJAX PARA CADA ROW
+                console.log(resp);
 
-    // var id = row[0];
+                alert(resp);
 
-    // $.ajax({
-    //     url: "http://localhost:8080/spam-abp/public/api/donants/" + id,
-    //     type: "DELETE",
-    //     dataType: 'json',
-    //     async: true,
-    //     data: {
-
-
-    //     },
-    //     error: function (resp) {
-    //         toast("Error",2000);
-    //     },
-    //     beforeSend: function () {},
-    //     success: function (resp) {
-    //         indexDonants();
-    //     }
-    // });
+                toast("Error",2000);
+            },
+            beforeSend: function () {},
+            success: function (resp) {
+                indexDonants();
+            }
+        });
+    }
 }
 
 function editDonant() {
@@ -80,21 +73,21 @@ $('#tipos_donante').change(function () {
 
     var type = $(this).find("option:selected").val();
 
-    switch (type) {
+    switch(type){
 
         case "1":
 
             $('#row-vinculo').show();
             $('#row-sexo').hide();
 
-            break;
+        break;
 
         case "2":
 
             $('#row-vinculo').hide();
             $('#row-sexo').show();
 
-            break;
+        break;
     }
 });
 

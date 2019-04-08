@@ -1,6 +1,7 @@
 @extends('privada.templates.master')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
     <script src="{{ asset('js/eventsDonacion.js') }}"></script>
 @endsection
@@ -23,15 +24,25 @@
         <a href="{{ action('DonativoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </a>
-        <button onclick="" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
+        <button onclick="editDonacion()" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
+            <form id="form_edit" action="" method="get">
+                @csrf
+            </form>
         </button>
-        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
+        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5" onclick="deleteDonacion()">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
         </button>
+        <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/pie.png') }}" alt="">
+        </button>
+        <button title="@lang('master.update_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/update.png') }}" alt="">
+        </button>
+
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="filter-modal">
@@ -70,15 +81,9 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="fecha" class="col-form-label">Fecha</label>
+                                <label for="centrosReceptores" class="col-form-label">Centro receptor</label>
                                 <div class="">
-                                    <input type="date" name="fecha" id="fecha" class="form-control" placeholder="Fecha">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label for="centrosRecepores" class="col-form-label">Centro receptor</label>
-                                <div class="">
-                                    <select name="centrosRecepores" id="centrosRecepores" class="form-control">
+                                    <select name="centrosReceptores" id="centrosReceptores" class="form-control">
                                         <option value=""></option>
                                         @foreach ($centros as $centro)
                                             <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
@@ -95,6 +100,18 @@
                                             <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="fechaInicio" class="col-form-label">Fecha inicio</label>
+                                <div class="">
+                                    <input type="date" name="fechaInicio" id="fechaInicio" class="form-control" placeholder="Fecha inicio">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="fechaFinal" class="col-form-label">Fecha final</label>
+                                <div class="">
+                                    <input type="date" name="fechaFinal" id="fechaFinal" class="form-control" placeholder="Fecha final">
                                 </div>
                             </div>
                         </div>
@@ -116,9 +133,13 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>IdTipo</th>
                     <th>Tipo</th>
+                    <th>IdSubtipo</th>
                     <th>Subtipo</th>
+                    <th>IdCentro1</th>
                     <th>Centro Receptor</th>
+                    <th>IdCentro2</th>
                     <th>Centro Destino</th>
                     <th>Donante</th>
                     <th>Coste</th>

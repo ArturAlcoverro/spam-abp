@@ -19,7 +19,7 @@
     @include('partial.errores')
 
     <div class="p-5">
-        {{-- <p id="info"></p> --}}
+
         <h1>Donants</h1>
 
         <div class="toolbar mt-3">

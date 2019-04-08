@@ -19,10 +19,13 @@ class DonativoAPIController extends Controller
      */
     public function index()
     {
+        $date = date('y-m-d', strtotime('-90 days'));
+
         $donativo = Donativo::with('centro_receptor')
         ->with('centro_desti')
         ->with('subtipo.tipo')
         ->with('donante.tipo_donante')
+        ->where("fecha_donativo", ">" , $date . " 00:00:00")
         ->get();
 
         return DonanteResource::collection($donativo);
