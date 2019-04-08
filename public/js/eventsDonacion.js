@@ -1,9 +1,19 @@
 $(document).ready(function () {
 
-    // var date = Date();
+    var fechaInicio = new Date();
+    var fechaFinal = new Date();
 
-    // $('#fechaInicio').val(date.getFullYear + "-" + date.getMonth + "-" + date.getDate);
-    // $('#fechaFinal').val(date.getFullYear + "-" + date.getMonth + "-" + date.getDate);
+    fechaFinal.setMonth(fechaFinal.getMonth() - 3);
+
+    var day = ("0" + fechaInicio.getDate()).slice(-2);
+    var month = ("0" + (fechaInicio.getMonth() + 1)).slice(-2);
+    var month2 = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
+
+    var today = fechaInicio.getFullYear()+"-"+(month)+"-"+(day);
+    var today2 = fechaFinal.getFullYear()+"-"+(month2)+"-"+(day);
+
+    $('#fechaInicio').val(today2);
+    $('#fechaFinal').val(today);
 
     indexDonaciones();
 });
@@ -17,6 +27,9 @@ function indexDonaciones() {
         data: {
         },
         beforeSend: function () {},
+        error : function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
@@ -54,8 +67,8 @@ function deleteDonacion() {
             async: true,
             data: {
             },
-            error: function (resp) {
-                toast("Error",2000);
+            error : function (resp) {
+                toast(resp.responseJSON.error,5000);
             },
             beforeSend: function () {},
             success: function (resp) {
@@ -80,6 +93,11 @@ function filtrar() {
     var fechaInicio = $('#fechaInicio').val();
     var fechaFinal = $('#fechaFinal').val();
 
+    console.log("inicio");
+    console.log($('#fechaInicio').val());
+    console.log("final");
+    console.log($('#fechaFinal').val());
+
     $.ajax({
         url: "http://localhost:8080/spam-abp/public/api/filtro/"+ fechaInicio + "/" + fechaFinal,
         type: "GET",
@@ -88,6 +106,9 @@ function filtrar() {
         data: {
         },
         beforeSend: function () {},
+        error : function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();

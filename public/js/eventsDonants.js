@@ -12,6 +12,9 @@ function indexDonants() {
         data: {
         },
         beforeSend: function () {},
+        error : function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
@@ -45,11 +48,12 @@ function deleteDonant() {
             },
             error: function (resp) {
 
-                console.log(resp);
 
-                alert(resp);
+                //resp.status
+                //resp.responseJSON.error
 
-                toast("Error",2000);
+
+                toast(resp.responseJSON.error,5000);
             },
             beforeSend: function () {},
             success: function (resp) {
@@ -68,27 +72,3 @@ function editDonant() {
     $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donants/" + id + "/edit");
     $('#form_edit').submit();
 }
-
-$('#tipos_donante').change(function () {
-
-    var type = $(this).find("option:selected").val();
-
-    switch(type){
-
-        case "1":
-
-            $('#row-vinculo').show();
-            $('#row-sexo').hide();
-
-        break;
-
-        case "2":
-
-            $('#row-vinculo').hide();
-            $('#row-sexo').show();
-
-        break;
-    }
-});
-
-
