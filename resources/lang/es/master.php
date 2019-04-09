@@ -5,6 +5,8 @@ return[
     'donants_nav'  =>'Donantes',
     'usuaris_nav'  =>'Usuarios',
     'sortir_nav'   =>'Salir',
+    'charts_nav'   =>'Gráficos',
+    'centres_nav'  =>'Centros',
     'add_crud'     =>'Añadir',
     'edit_crud'    =>'Editar',
     'delete_crud'  =>'Eliminar',
