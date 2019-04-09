@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Grafico;
 use App\Models\Tipo;
-use App\Models\Subtipo;
 use App\Models\Centro;
 use App\Models\Animal;
 
@@ -33,11 +32,9 @@ class GraficoController extends Controller
     public function create()
     {
         $tipos = Tipo::all();
-        $subtipos = Subtipo::all();
         $centros = Centro::all();
         $animales = Animal::all();
         $data["tipos"] = $tipos;
-        $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
         $data["animales"] = $animales;
         return view('privada.createGrafic', $data);
@@ -51,9 +48,12 @@ class GraficoController extends Controller
      */
     public function store(Request $request)
     {
+        $modal = $request->input('modal');
+        $tipos = Tipo::all();
+        $campos = "";
+
         $grafico = new Grafico();
         $grafico->nombre            = $request->input("nombre");
-        $grafico->subtipos_donacion = $request->input("subtipo");
         $grafico->centro            = $request->input("centro");
         $grafico->animales          = $request->input("animales");
         $grafico->mostrar_valor     = $request->input("valor");
@@ -61,7 +61,37 @@ class GraficoController extends Controller
         $grafico->ordenar           = $request->input("ordenar");
         $grafico->publica           = $request->input("public");
 
+        if($request->has($modal . "TipoData")){
+            $grafico->tipo_data         = $request->input($modal . "TipoData");
+            if ( $request->input($modal . "TipoData") == "dinamic"){
+                $grafico->intervalo     = $request->input("cantidad") . $request->input("medida");
+            }
+            else{
+                $grafico->data_init     = $request->input('dataInit');
+                $grafico->data_fin      = $request->input('dataFin');
+            }
+
+        }
+        else{
+            $grafico->tipo_data         = "comp";
+        }
+
+        foreach($tipos as $tipo){
+            if($request->has($modal . $tipo->nombre)){
+                if($request->input($modal . $tipo->nombre)){
+                    if ($campos == ""){
+                        $campos = $tipo->nombre;
+                    }
+                    else{
+                        $campos = "," . $tipo->nombre;
+                    }
+                }
+            }
+        }
+
+        $grafico->tipos_donacion    = $campos;
         try
+
         {
             $grafico->save();
         }
@@ -69,10 +99,10 @@ class GraficoController extends Controller
 
             $error = Utilitat::errorMessage($e);
             $request->session()->flash('error', $error);
-            return redirect()->action('GraficoController@create')->withInput();
+            return redirect()->action('GraficoController@create');
         }
 
-        return redirect('privada.grafics');
+        return redirect()->action('GraficoController@index');
     }
 
     /**
