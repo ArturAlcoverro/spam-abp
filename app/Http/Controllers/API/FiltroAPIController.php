@@ -44,7 +44,7 @@ class FiltroAPIController extends Controller
                             ->with('subtipo.tipo')
                             ->with('donante')
                             ->where("fecha_donativo", ">" , $fechaInicio . " 00:00:00")
-                            ->where("fecha_donativo", "<" , $fechaFinal . " 00:00:00")
+                            ->where("fecha_donativo", "<" , $fechaFinal . " 23:59:59")
                             ->get();
 
         return DonanteResource::collection($donativos);
