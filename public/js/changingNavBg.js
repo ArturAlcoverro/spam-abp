@@ -34,7 +34,14 @@ $( document ).ready(function(){
             $(".col h2").fadeIn(3000, function(){
                 $(".col h4").fadeIn(1500, function(){
                     $(".row .col").fadeIn(1500, function(){
-                        $(".col h3").fadeIn(1500);
+                        $(".col h3").fadeIn(1500, function(){
+                            $(".delighted-text").css("transition", "all .5s ease-in-out");
+                            $(".delighted-text").hover(function(){
+                                $(this).css("transform", "scale(1.2)");
+                            },function(){
+                                $(this).css("transform", "scale(1.0)");
+                            });
+                        });
                     })
             })
         })

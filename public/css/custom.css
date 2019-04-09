@@ -2,9 +2,27 @@ html, body{
     height: 100%;
 }
 
+nav li a{
+    transition: all .5s ease-in-out;
+}
+
+nav li a:hover{
+    transform: scale(1.1);
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color:rgba(255, 255, 255, 0.5);
+}
+
+.introduction {
+    position: absolute;
+    height: 591px;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .hidden {
@@ -25,19 +43,12 @@ body {
     height: 100vh;
     z-index: -100;
     opacity: 0.75;
-    margin-top: 3rem;
+    margin-top: 4rem;
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-/* .footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-} */
 
 .bg-grey{
     background-color: #777777;
@@ -51,14 +62,6 @@ body {
 .hidden{
     color: white;
     text-shadow: 2px 2px 4px #000000;
-}
-
-.mr-0 a:hover{
-    color: transparent;
-}
-
-.mr-0 a img:hover{
-    opacity: 0.75;
 }
 
 /* Footer raro */
