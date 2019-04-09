@@ -1,4 +1,4 @@
-$( document ).ready(function(){
+$(document).ready(function () {
     // $('#one').hover(function() {
 
     //     // increase the 500 to larger values to lengthen the duration of the fadeout
@@ -18,24 +18,24 @@ $( document ).ready(function(){
         "kitty3.jpg",
     ]
     var i = 0;
-    setInterval(function(){
-        $('.images').fadeOut(1000, function() {
-            $('.images').css({'background-image': 'url(../public/media/publica/bg_images/' + imgs[i] + ')'});
+    setInterval(function () {
+        $('.images').fadeOut(1000, function () {
+            $('.images').css({ 'background-image': 'url(../public/media/publica/bg_images/' + imgs[i] + ')' });
             $('.images').fadeIn(1000);
             i++;
-            if(i===imgs.length){
+            if (i === imgs.length) {
                 i = 0;
             }
         });
 
-    },7500);
+    }, 7500);
 
-    $(".col h1").fadeIn(1500, function(){
-            $(".col h2").fadeIn(3000, function(){
-                $(".col h4").fadeIn(1500, function(){
-                    $(".row .col").fadeIn(1500, function(){
-                        $(".col h3").fadeIn(1500);
-                    })
+    $(".col h1").animate({ opacity: 1 }, 1500, function () {
+        $(".col h2").animate({ opacity: 1 }, 3000, function () {
+            $(".col h4").animate({ opacity: 1 }, 1500, function () {
+                $(".row .col").animate({ opacity: 1 }, 1500, function () {
+                    $(".col h3").animate({ opacity: 1 }, 1500);
+                })
             })
         })
     })

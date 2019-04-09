@@ -36,7 +36,7 @@
         <a href="{{ url('/') }}">
             <img id="logoSpam" height="100%" src="{{ asset('media/img/logo_spam_full.png') }}" alt="">
         </a>
-        <div class="dropdown mr-2">
+        <div class="dropdown mr-4">
             <button class= "dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">
                     language
@@ -47,12 +47,16 @@
               <a class="dropdown-item" href="locale/es">Castellano</a>
 
             </div>
+
+            <a href="{{ url('/logout') }}" class="btn-exit">
+                <img src="{{ asset('media/img/exit.png') }}" alt="">
+            </a>
         </div>
     </nav>
 
     <div id="logo">
-        <a style="height: 70%" href="{{ url('/donations') }}">
-            <img height="100%" src="{{ asset('media/img/artio.png') }}" alt="">
+        <a style="height: 75%" href="{{ url('/donations') }}">
+            <img height="100%" src="{{ asset('media/img/artio.svg') }}" alt="">
         </a>
     </div>
 

@@ -49,11 +49,27 @@ body {
     border: 0px;
     color: #0000006b;
     margin-top: 6px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .dropdown-lenguage::after {
     display: none !important;
+}
+
+.dropdown {
+    display: flex;
+}
+
+.btn-exit {
+    margin-top: 6px;
+    background: none;
+    border: none
+}
+
+.btn-exit img {
+    height: 23px;
+    width: 23px;
+    opacity: 0.4;
 }
 
 #menuLateral {
@@ -101,6 +117,7 @@ body {
     list-style-type: none;
     text-decoration: none;
     color: white;
+    opacity: 0.8;
 }
 
 #opcionsMenuLateral li:hover {
@@ -198,4 +215,9 @@ body {
     .p-5 {
         padding: 1rem !important;
     }
+
+    .dropdown-lenguage {
+        margin-right: 0;
+    }
+
 }
