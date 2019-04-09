@@ -14,7 +14,7 @@ class TipoController extends Controller
      */
     public function index()
     {
-        //
+        return view('privada.tipus');
     }
 
     /**
