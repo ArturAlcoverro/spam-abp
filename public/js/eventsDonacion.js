@@ -42,6 +42,12 @@ $(document).ready(function () {
                 sNext: "Següent",
                 sLast: "Últim"
             },
+            select: {
+                rows: {
+                    _: "%d files seleccionades",
+                    1: "1 fila seleccionada"
+                }
+            },
             buttons: {
                 copyTitle: 'Copiat al portapapers',
                 copySuccess: {
@@ -137,37 +143,46 @@ function indexDonaciones() {
 }
 
 function deleteDonacion() {
-
     var rows = $("#table").DataTable().rows('.selected').data();
 
-    for (var i = 0; i < rows.length; i++) {
+    if (rows.length == 0) {
+        toast('Per eliminar has de seleccionar UN registre', 2000);
+    } else {
 
-        $.ajax({
-            url: "http://localhost:8080/spam-abp/public/api/donations/" + rows[i][0],
-            type: "DELETE",
-            dataType: 'json',
-            async: true,
-            data: {
-            },
-            error: function (resp) {
-                toast(resp.responseJSON.error, 5000);
-            },
-            beforeSend: function () { },
-            success: function (resp) {
-                indexDonaciones();
-            }
-        });
+        for (var i = 0; i < rows.length; i++) {
+
+            $.ajax({
+                url: "http://localhost:8080/spam-abp/public/api/donations/" + rows[i][0],
+                type: "DELETE",
+                dataType: 'json',
+                async: true,
+                data: {
+                },
+                error: function (resp) {
+                    toast(resp.responseJSON.error, 5000);
+                },
+                beforeSend: function () { },
+                success: function (resp) {
+                    indexDonaciones();
+                }
+            });
+        }
     }
 }
 
 function editDonacion() {
 
-    var row = $("#table").DataTable().row('.selected').data();
+    var rows = $("#table").DataTable().rows('.selected').data();
 
-    var id = row[0];
+    if (rows.length != 1) {
+        toast('Per editar has de seleccionar UN registre', 2000);
+    }
+    else {
+        var id = rows[0][0];
 
-    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donations/" + id + "/edit");
-    $('#form_edit').submit();
+        $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donations/" + id + "/edit");
+        $('#form_edit').submit();
+    }
 }
 
 function filtrar() {

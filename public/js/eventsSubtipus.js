@@ -1,4 +1,59 @@
 $(document).ready(function () {
+    $('#table').DataTable({
+        responsive: true,
+        dom: 'Blprtip',
+        select: true,
+        buttons: [
+            {
+                title: 'Subtipus',
+                extend: 'copy',
+                text: "",
+            },
+            {
+                title: 'Subtipus',
+                extend: 'excel',
+                text: "",
+            },
+            {
+                title: 'Subtipus',
+                extend: 'pdf',
+                text: "",
+            },
+            {
+                title: 'Subtipus',
+                extend: 'print',
+                text: "",
+            },
+        ],
+        language: {
+            sProcessing: "Processant...",
+            sLengthMenu: "Mostra _MENU_ registres",
+            sZeroRecords: "No s'han trobat registres.",
+            sInfo: "Mostrant de _START_ a _END_ de _TOTAL_ registres",
+            sInfoEmpty: "Mostrant de 0 a 0 de 0 registres",
+            sInfoFiltered: "(filtrat de _MAX_ total registres)",
+            sInfoPostFix: "",
+            sSearch: "Filtrar:",
+            sUrl: "",
+            oPaginate: {
+                sFirst: "Primer",
+                sPrevious: "Anterior",
+                sNext: "Següent",
+                sLast: "Últim"
+            },
+            buttons: {
+                copyTitle: 'Copiat al portapapers',
+                copySuccess: {
+                    _: '%d subtipus copiats',
+                    1: '1 subtipus copiat'
+                }
+            }
+        },
+    });
+
+    $(".toolbar .btn").prependTo(".dt-buttons");
+
+    
     indexSubtipus();
     console.log(window.location.pathname);
 });
