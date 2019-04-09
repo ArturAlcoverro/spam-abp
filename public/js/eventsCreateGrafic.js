@@ -1,60 +1,41 @@
 $(document).ready(function(){
     $('#btnDades').click(function () {
-        //objectipus
-        $('#modalGraficDades').modal();
-        if ($(".tipo_donacion:checked").length == 1){
-            setSubtipos($(this).data("id"));
-        }
-        else{
-            $('#subtipo_donacion').append('<option value="-1" selected></option>')
-            .prop( "disabled", true );
-        }
-        tipoData();
 
+        $('#modalGraficDades').modal();
+        dTipoData();
 
     });
     $('#btnComp').click(function () {
-        //objectipus
+
         $('#modalGraficComparativa').modal();
-        if ($(".tipo_donacion:checked").length == 1){
-            setSubtipos($(this).data("id"));
-        }
-        else{
-            $('#subtipo_donacion').append('<option value="-1" selected></option>')
-            .prop( "disabled", true );
-        }
 
 
     });
     $('#btnObj').click(function () {
 
-        //objectipus
         $('#modalGraficObjectius').modal();
-        if ($(".tipo_donacion:checked").length == 1){
-            setSubtipos($(this).data("id"));
-        }
-        else{
-            $('#subtipo_donacion').append('<option value="-1" selected></option>')
-            .prop( "disabled", true );
-        }
-        tipoData();
+
+        oTipoData();
     });
 
-    $(".tipo_donacion").change(function () {
+    // $(".tipo_donacion").change(function () {
 
-        if ($(".tipo_donacion:checked").length == 1){
-            setSubtipos($(this).data("id"));
-        }
-        else{
-            $('#subtipo_donacion').append('<option value="-1" selected></option>')
-            .prop( "disabled", true );
-        }
+    //     if ($(".tipo_donacion:checked").length == 1){
+    //         setSubtipos($(this).data("id"));
+    //     }
+    //     else{
+    //         $('#subtipo_donacion').append('<option value="-1" selected></option>')
+    //         .prop( "disabled", true );
+    //     }
 
 
+    // });
+
+    $('#dTipoData').change(function(){
+        dTipoData();
     });
-
-    $('#tipoData').change(function(){
-        tipoData();
+    $('#oTipoData').change(function(){
+        oTipoData();
     });
 
 

@@ -1,22 +1,32 @@
-function tipoData(){
-    if($('#tipoData').val() == 'dinamic'){
-        $('#interval').show();
-        $('#fixe').hide();
+function dTipoData(){
+    if($('#dTipoData').val() == 'dinamic'){
+        $('#dInterval').show();
+        $('#dFixe').hide();
     }
     else{
-        $('#interval').hide();
-        $('#fixe').show();
+        $('#dInterval').hide();
+        $('#dFixe').show();
+    }
+}
+function oTipoData(){
+    if($('#oTipoData').val() == 'dinamic'){
+        $('#oInterval').show();
+        $('#oFixe').hide();
+    }
+    else{
+        $('#oInterval').hide();
+        $('#oFixe').show();
     }
 }
 //Carrega els subtipus depenen del tipus seleccionat
-function setSubtipos(id) {
+// function setSubtipos(id) {
 
-    $('#subtipo_donacion').empty()
-                        .prop( "disabled", false )
-                        .append('<option value="all" selected>Tots</option>');
-    subtipos.forEach(element => {
-        if (element.tipos_id == id) {
-            $('#subtipo_donacion').append('<option value="' + element.id + '">' + element.nombre + '</option>');
-        }
-    });
-}
+//     $('#subtipo_donacion').empty()
+//                         .prop( "disabled", false )
+//                         .append('<option value="all" selected>Tots</option>');
+//     subtipos.forEach(element => {
+//         if (element.tipos_id == id) {
+//             $('#subtipo_donacion').append('<option value="' + element.id + '">' + element.nombre + '</option>');
+//         }
+//     });
+// }
