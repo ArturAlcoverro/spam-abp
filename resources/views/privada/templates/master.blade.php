@@ -47,12 +47,15 @@
               <a class="dropdown-item" href="locale/es">Castellano</a>
 
             </div>
+            <a href="{{ url('/logout') }}" class="btn-exit mr-4">
+                <img src="{{ asset('media/img/exit.png') }}" alt="">
+            </a>
         </div>
     </nav>
 
     <div id="logo">
         <a style="height: 70%" href="{{ url('/donations') }}">
-            <img height="100%" src="{{ asset('media/img/artio.png') }}" alt="">
+            <img height="100%" src="{{ asset('media/img/artio.svg') }}" alt="">
         </a>
     </div>
 
@@ -61,22 +64,32 @@
             <ul>
                 <li>
                     <a href="{{ action('DonativoController@index') }}">
+                        <img  width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
                         <p>@lang('master.donacions_nav')</p>
                     </a>
                 </li>
                 <li>
                     <a href="{{ action('DonanteController@index') }}">
+                        <img  width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
                         <p>@lang('master.donants_nav')</p>
                     </a>
                 </li>
                 <li>
                     <a href="{{ action('UsuarioController@index') }}">
+                        <img  width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
                         <p>@lang('master.usuaris_nav')</p>
                     </a>
                 </li>
-                <li class="mt-5">
-                    <a href="{{ url('/logout') }}">
-                        @lang('master.sortir_nav')
+                <li class="">
+                    <a href="{{ url('/donations') }}">
+                        <img class="" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
+                        @lang('master.centres_nav')
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ url('/donations') }}">
+                        <img class="" width="40px" src="{{ asset('media/img/charts.png') }}" alt="">
+                        @lang('master.charts_nav')
                     </a>
                 </li>
             </ul>
@@ -106,9 +119,15 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('/logout') }}">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/exit.png') }}" alt="">
-                    @lang('master.sortir_nav')
+                <a href="{{ url('/donations') }}">
+                    <img class="mb-1" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
+                    @lang('master.centres_nav')
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/donations') }}">
+                    <img class="mb-1" width="40px" src="{{ asset('media/img/charts.png') }}" alt="">
+                    @lang('master.charts_nav')
                 </a>
             </li>
 
