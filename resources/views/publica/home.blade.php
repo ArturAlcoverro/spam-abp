@@ -5,7 +5,7 @@
 @endsection
 
 @section('body')
-<div class="container" style="height: 90vh">
+<div class="container" style="height: 80vh">
     <div class="images"></div>
     <div role="main" class="introduction mt-5">
         <div class="col">
