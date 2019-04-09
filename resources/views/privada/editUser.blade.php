@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    Editar usuari
+@endsection
+
 @section('css')
     <script src="{{ asset('js/eventsUsers.js') }}"></script>
 @endsection

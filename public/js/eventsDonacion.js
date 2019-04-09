@@ -55,7 +55,28 @@ $(document).ready(function () {
                 targets: [0],
                 visible: false,
                 searchable: false
-            }]
+            },
+            {
+                targets: [1],
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: [3],
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: [5],
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: [7],
+                visible: false,
+                searchable: false
+            },
+        ]
     });
 
     $(".toolbar .btn").prependTo(".dt-buttons");

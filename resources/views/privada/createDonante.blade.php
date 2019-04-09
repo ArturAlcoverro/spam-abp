@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    Crear donante
+@endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/donantes.css') }}">
 @endsection

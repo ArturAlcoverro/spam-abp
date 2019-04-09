@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    Users
+@endsection
+
 @section('css')
     <script src="{{ asset('js/toast.js') }}"></script>
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>

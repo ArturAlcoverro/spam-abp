@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    Ediit donante
+@endsection
+
 @section('css')
 
 @endsection

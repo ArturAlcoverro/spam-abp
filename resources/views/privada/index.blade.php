@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    Donacions
+@endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>

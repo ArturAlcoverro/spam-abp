@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    Crear usuari
+@endsection
+
 @section('body')
 
     @include('partial.errores')
