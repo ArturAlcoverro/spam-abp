@@ -35,7 +35,7 @@
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
             <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
         </button>
-        <a href='{{url('/tipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
+        <a href='{{url('/tipos')}}' title="@lang('master.tipus_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/tipus.png') }}" alt="">
         </a>
     </div>
