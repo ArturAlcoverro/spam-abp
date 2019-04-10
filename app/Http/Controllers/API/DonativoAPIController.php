@@ -52,7 +52,7 @@ class DonativoAPIController extends Controller
         $donativo->donantes_id = $request->input('id_donante');
         $donativo->fecha_donativo = $request->input('fecha');
 
-        $request->input('factura') == true ?
+        $request->input('coordinada') == true ?
                 $donativo->es_coordinada = 1 :
                 $donativo->es_coordinada = 0;
 

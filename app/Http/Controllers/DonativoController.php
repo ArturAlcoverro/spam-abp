@@ -113,11 +113,8 @@ class DonativoController extends Controller
         $donativo->subtipos_id = $request->input('subtipo_donacion');
         $donativo->unidad = $request->input('unidades');
         $donativo->ruta_factura = $request->input('factura');
-        $donativo->usuarios_id = $request->input('id_usuario');
-        $donativo->donantes_id = $request->input('id_donante');
-        $donativo->fecha_donativo = $request->input('fecha');
 
-        $request->input('factura') == true ?
+        $request->input('coordinada') == true ?
                 $donativo->es_coordinada = 1 :
                 $donativo->es_coordinada = 0;
 
@@ -127,21 +124,17 @@ class DonativoController extends Controller
 
         try{
             $donativo->save();
-            $respuesta =  (new DonanteResource($donativo))
-                            ->response()
-                            ->setStatusCode(201);
         }
         catch(QueryException $e){
-
-            $mensaje=Utilitat::errorMessage($e);
-            $respuesta = response()
-                            ->json(['error'=>$mensaje], 400);
+            $error=Utilitat::errorMessage($e);
+            $request->session()->flash('error', $error);
+            return redirect()->action('DonativoController@edit')->withInput();
         }
 
         $animales = $request->input('animales');
         $donativo->animales()->attach($animales);
 
-        return $respuesta;
+        return redirect()->action('DonativoController@index');
     }
 
     /**
