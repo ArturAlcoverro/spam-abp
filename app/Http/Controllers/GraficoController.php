@@ -58,7 +58,7 @@ class GraficoController extends Controller
         $modal = $request->input('modal');
         $tipos = Tipo::all();
         $campos = "";
-
+        $objetivos = "";
         $grafico = new Grafico();
         $grafico->nombre            = $request->input("nombre");
         $grafico->centro            = $request->input("centro");
@@ -70,12 +70,12 @@ class GraficoController extends Controller
         if ($modal == "d"){
             $grafico->tema          = 'dades';
         }elseif($modal == "c"){
-            $grafico                = 'comparativa';
+            $grafico->tema          = 'comparativa';
         }else{
-            $grafico                = 'objectiu';
-        }      
+            $grafico->tema          = 'objectiu';
+        }
 
-        if ($request->input("public") == "on"){
+        if ($request->input($modal . "Public") == "on"){
             $grafico->publica       = 1;
         }
         else{
@@ -103,15 +103,24 @@ class GraficoController extends Controller
                 if($request->input($modal . $tipo->nombre) == "on"){
                     if ($campos == ""){
                         $campos = $tipo->nombre;
+                        if($modal == "o"){
+                            $objetivos = $request->input('objectiu' . $tipo->nombre);
+                        }
                     }
                     else{
                         $campos = $campos . "," . $tipo->nombre;
+                        if($modal == "o"){
+                            $objetivos = $objetivos . "," . $request->input('objectiu' . $tipo->nombre);
+                        }
                     }
                 }
             }
         }
 
         $grafico->tipos_donacion    = $campos;
+        if($objetivos != ""){
+            $grafico->objetivos = $objetivos;
+        }
         try{
             $grafico->save();
         }
