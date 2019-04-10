@@ -52,14 +52,13 @@ class DonativoAPIController extends Controller
         $donativo->donantes_id = $request->input('id_donante');
         $donativo->fecha_donativo = $request->input('fecha');
 
-        $request->input('factura') == true ?
+        $request->input('coordinada') == true ?
                 $donativo->es_coordinada = 1 :
                 $donativo->es_coordinada = 0;
 
         $request->input('factura') == "" ?
                 $donativo->hay_factura = 0 :
                 $donativo->hay_factura = 1 ;
-
 
         try{
             $donativo->save();
@@ -73,6 +72,9 @@ class DonativoAPIController extends Controller
             $respuesta = response()
                             ->json(['error'=>$mensaje], 400);
         }
+
+        $animales = $request->input('animales');
+        $donativo->animales()->attach($animales);
 
         return $respuesta;
     }

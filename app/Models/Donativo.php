@@ -40,6 +40,6 @@ class Donativo extends Model
 
     public function animales()
     {
-        return $this->belongsToMany('App\Models\Animal', 'animales_donativos', 'animales_id', 'donativos_id');
+        return $this->belongsToMany('App\Models\Animal', 'animales_donativos', 'donativos_id', 'animales_id');
     }
 }
