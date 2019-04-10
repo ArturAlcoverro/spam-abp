@@ -102,9 +102,46 @@ class DonativoController extends Controller
      * @param  \App\Models\Donativo  $donativo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donativo $donativo)
+    public function update(Request $request, $id_donativo)
     {
-        //
+        $donativo = Donativo::find($id_donativo);
+
+        $donativo->cantidad = $request->input('cantidad');
+        $donativo->centros_desti_id = $request->input('centro_destino');
+        $donativo->centros_receptor_id = $request->input('centro_receptor');
+        $donativo->coste = $request->input('coste');
+        $donativo->subtipos_id = $request->input('subtipo_donacion');
+        $donativo->unidad = $request->input('unidades');
+        $donativo->ruta_factura = $request->input('factura');
+        $donativo->usuarios_id = $request->input('id_usuario');
+        $donativo->donantes_id = $request->input('id_donante');
+        $donativo->fecha_donativo = $request->input('fecha');
+
+        $request->input('factura') == true ?
+                $donativo->es_coordinada = 1 :
+                $donativo->es_coordinada = 0;
+
+        $request->input('factura') == "" ?
+                $donativo->hay_factura = 0 :
+                $donativo->hay_factura = 1 ;
+
+        try{
+            $donativo->save();
+            $respuesta =  (new DonanteResource($donativo))
+                            ->response()
+                            ->setStatusCode(201);
+        }
+        catch(QueryException $e){
+
+            $mensaje=Utilitat::errorMessage($e);
+            $respuesta = response()
+                            ->json(['error'=>$mensaje], 400);
+        }
+
+        $animales = $request->input('animales');
+        $donativo->animales()->attach($animales);
+
+        return $respuesta;
     }
 
     /**

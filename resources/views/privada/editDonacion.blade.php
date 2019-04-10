@@ -19,10 +19,10 @@
     @include('partial.errores')
 
     <div class="p-4">
-        <form class="container" id="formMaterial" method="POST">
+        <form action="{{action('DonativoController@update', [$donativo->id])}}" class="container" id="formMaterial" method="POST">
             @method('put')
             @csrf
-            <h3>Editar donante</h3>
+            <h3>Edita donació</h3>
             <div class="form-group">
                 <label for="lbltipo_donacion" class=" col-form-label">Tipo de donacion</label>
                 <div class="">
@@ -89,23 +89,6 @@
                 <label for="coste" class="col-form-label">Valor estimado (€)</label>
                 <div class="">
                     <input value="{{$donativo->coste}}" type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="Coste">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="coste" class="col-form-label">Gama</label>
-                <div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input checked data-value='Baja' value"Baja" type="radio" id="radioBaja" name="radioGama" class="custom-control-input">
-                        <label class="custom-control-label" for="radioBaja">Baja</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input data-value='Media' value"Media" type="radio" id="radioMedia" name="radioGama" class="custom-control-input">
-                        <label class="custom-control-label" for="radioMedia">Media</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input data-value='Alta' type="radio" id="radioAlta" name="radioGama" class="custom-control-input">
-                        <label class="custom-control-label" for="radioAlta">Alta</label>
-                    </div>
                 </div>
             </div>
             <div class="form-group">
