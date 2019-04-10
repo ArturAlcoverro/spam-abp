@@ -258,11 +258,11 @@
                             <label for="coste" class="col-form-label">Gama</label>
                             <div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input checked data-value='Baja' value"Baja" type="radio" id="radioBaja" name="radioGama" class="custom-control-input">
+                                    <input checked data-value='Baja' value="Baja" type="radio" id="radioBaja" name="radioGama" class="custom-control-input">
                                     <label class="custom-control-label" for="radioBaja">Baja</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input data-value='Media' value"Media" type="radio" id="radioMedia" name="radioGama" class="custom-control-input">
+                                    <input data-value='Media' value="Media" type="radio" id="radioMedia" name="radioGama" class="custom-control-input">
                                     <label class="custom-control-label" for="radioMedia">Media</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
