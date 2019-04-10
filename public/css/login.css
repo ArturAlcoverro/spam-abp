@@ -3,7 +3,12 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: #fafafa !important;
+    background-size: cover;
+    background-image: url(https://imgur.com/3zilLPq.png);
+    background-image: url(https://i.imgur.com/J7swtfg.jpg);
+
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 .loginBox {
