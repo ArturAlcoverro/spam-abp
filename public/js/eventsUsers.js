@@ -139,7 +139,5 @@ function editUser() {
     }
 }
 
-function changePassword() {
-    $("#password").removeAttr('readonly');
-}
+
 

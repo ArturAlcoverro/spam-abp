@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-    <script src="{{ asset('js/eventsUsers.js') }}"></script>
+    <script src="{{ asset('js/eventsEditUser.js') }}"></script>
 @endsection
 
 @section('body')
