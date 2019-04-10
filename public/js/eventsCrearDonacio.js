@@ -289,7 +289,7 @@ function getDonant(dni, callback) {
     $.ajax({
         async: 'true',
         method: 'GET',
-        url: 'api/donants/' + dni,
+        url: '../api/donants/' + dni,
         success: function (data) {
             callback(data.data);
         }
@@ -306,7 +306,7 @@ function storeDonacio(dataDonacio) {
         async: 'true',
         method: 'POST',
         data: dataDonacio,
-        url: 'api/donations',
+        url: '../api/donations',
         success: function (resp) {
             console.log(resp);
             donacionsRebudes++;
