@@ -37,7 +37,7 @@ class CentroAPIController extends Controller
 
         try{
             $centro->save();
-            $respuesta =  (new DonanteResource($centro))
+            $respuesta =  (new CentroResource($centro))
                             ->response()
                             ->setStatusCode(201);
         }
@@ -69,15 +69,15 @@ class CentroAPIController extends Controller
      * @param  \App\Models\Centro  $centro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Centro $centro)
+    public function update(Request $request, $id_centro)
     {
-        //$centro = Centro::find($id_centro);
+        $centro = Centro::find($id_centro);
 
         $centro->nombre = $request->input('nombre');
 
         try{
             $centro->save();
-            $respuesta =  (new DonanteResource($centro))
+            $respuesta =  (new CentroResource($centro))
                             ->response()
                             ->setStatusCode(201);
         }
@@ -103,7 +103,7 @@ class CentroAPIController extends Controller
 
         try{
             $centro->delete();
-            $respuesta = (new DonanteResource($centro))
+            $respuesta = (new CentroResource($centro))
                             ->response()
                             ->setStatusCode(200);
         }

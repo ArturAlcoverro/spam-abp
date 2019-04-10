@@ -16,11 +16,11 @@ class CentroController extends Controller
      */
     public function index()
     {
-        $centros = Centro::all();
+        // $centros = Centro::all();
 
-        $data['centros'] = $centros;
+        // $data['centros'] = $centros;
 
-        return view('privada.centros', $data);
+        return view('privada.centros');
     }
 
     /**
