@@ -61,10 +61,10 @@ $(document).ready(function () {
     $(".toolbar .btn").prependTo(".dt-buttons");
     // $(".toolbar-append .btn").appendTo(".dt-buttons");
 
-    indexCentres();
+    indexCentros();
 });
 
-function indexCentres() {
+function indexCentros() {
     $.ajax({
         url: "api/centros",
         type: "GET",
@@ -90,7 +90,7 @@ function indexCentres() {
     });
 }
 
-function deleteCentres() {
+function deleteCentros() {
 
     var rows = $("#table").DataTable().rows('.selected').data();
 
@@ -108,7 +108,7 @@ function deleteCentres() {
             },
             beforeSend: function () {},
             success: function (resp) {
-                indexCentres();
+                indexCentros();
             }
         });
     }
@@ -126,7 +126,7 @@ function openEdit() {
     }
 }
 
-function editCentres() {
+function editCentros() {
 
     var row = $("#table").DataTable().row('.selected').data();
 
@@ -145,12 +145,12 @@ function editCentres() {
         },
         beforeSend: function () {},
         success: function (resp) {
-            indexCentres();
+            indexCentros();
         }
     });
 }
 
-function addCentres() {
+function addCentros() {
 
     $.ajax({
         url: "api/centros",
@@ -168,7 +168,7 @@ function addCentres() {
 
             console.log("succces");
 
-            indexCentres();
+            indexCentros();
         }
     });
 }
