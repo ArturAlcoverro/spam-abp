@@ -124,7 +124,7 @@
                     @lang('master.centres_nav')
                 </a>
             </li>
-            <li>
+            <li id="graficsTab">
                 <a href="{{ url('/grafics') }}">
                     <img class="mb-1" width="35px" src="{{ asset('media/img/charts.png') }}" alt="">
                     @lang('master.charts_nav')

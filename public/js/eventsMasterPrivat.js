@@ -1,26 +1,23 @@
 var menu = false;
 
 $(document).ready(function () {
-    var tab = window.location.href.split("/")[5];
-    switch (tab) {
-        case 'subtipos':
-        case 'donations':
-            $('#donacionsTab').addClass('active-tab');
-            break;
-        case 'donants':
-            $('#donantsTab').addClass('active-tab');
-            break;
-        case 'users':
-            $('#usuarisTab').addClass('active-tab');
-            break;
-        case 'centros':
-            $('#centrosTab').addClass('active-tab');
-            break;
-        default:
-            // alert(tab);
-            break;
-
+    var tab = window.location.href.split("/");
+    if (tab.includes('subtipos') || tab.includes('donations') || tab.includes('tipos')) {
+        $('#donacionsTab').addClass('active-tab');
     }
+    else if (tab.includes('donants')) {
+        $('#donantsTab').addClass('active-tab');
+    }
+    else if (tab.includes('users')) {
+        $('#usuarisTab').addClass('active-tab');
+    }
+    else if (tab.includes('centros')) {
+        $('#centrosTab').addClass('active-tab');
+    }
+    else if (tab.includes('grafics')) {
+        $('#graficsTab').addClass('active-tab');
+    }
+
     $(".menu-btn").click(function () {
         if (menu) {
             hideMenu();
