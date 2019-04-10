@@ -145,7 +145,7 @@ $(document).ready(function () {
             unidades: 0,
             cantidad: 0,
             coste: parseFloat($this.find("#costeDiners").val()),
-            animales: [],
+            animales: $this.find("#animales").val(),
             factura: $this.find("#FacturaDiners").val(),
             coordinada: $this.find("#spamDiners").is(":checked"),
         };

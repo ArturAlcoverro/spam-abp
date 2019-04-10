@@ -60,6 +60,8 @@ class DonativoAPIController extends Controller
                 $donativo->hay_factura = 0 :
                 $donativo->hay_factura = 1 ;
 
+        $animales = $request->input('animales');
+        $donativo->animales()->attach($animales);
 
         try{
             $donativo->save();
@@ -74,7 +76,7 @@ class DonativoAPIController extends Controller
                             ->json(['error'=>$mensaje], 400);
         }
 
-        return $respuesta;
+        return $animales;
     }
 
     /**

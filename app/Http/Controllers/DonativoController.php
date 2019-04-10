@@ -76,9 +76,23 @@ class DonativoController extends Controller
      * @param  \App\Models\Donativo  $donativo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donativo $donativo)
+    public function edit($id_donativo)
     {
-        //
+        $donativo = Donativo::find($id_donativo);
+        $subtipo = $donativo->subtipo;
+        $tipos = Tipo::all();
+        $subtipos = Subtipo::all();
+        $centros = Centro::all();
+        $animales = Animal::all();
+
+        $data["donativo"] = $donativo;
+        $data["tipos"] = $tipos;
+        $data["subtipo"] = $subtipo;
+        $data["subtipos"] = $subtipos;
+        $data["centros"] = $centros;
+        $data["animales"] = $animales;
+        $data["animales_donativo"] = array_pluck($donativo->animales, "id");
+        return view('privada.editDonacion', $data);
     }
 
     /**

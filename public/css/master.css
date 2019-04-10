@@ -120,10 +120,17 @@ body {
     opacity: 0.55;
 }
 
+#opcionsMenuLateral li a:hover{
+    opacity: 1;
+}
+
 #opcionsMenuLateral li:hover {
     background-color: #383837;
 }
 
+.active-tab a{
+    opacity: 1 !important;
+}
 .active-tab::before {
     --size: 15px;
     content: '';

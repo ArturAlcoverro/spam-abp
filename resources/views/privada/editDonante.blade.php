@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Ediit donante
+    Editar donante
 @endsection
 
 @section('css')

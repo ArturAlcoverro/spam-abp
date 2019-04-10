@@ -102,31 +102,31 @@
         <ul id="opcionsMenuLateral">
             <li id="donacionsTab">
                 <a href="{{ action('DonativoController@index') }}">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/donacio.png') }}" alt="">
+                    <img class="mb-1" width="35px" src="{{ asset('media/img/donacio.png') }}" alt="">
                     @lang('master.donacions_nav')
                 </a>
             </li>
             <li id="donantsTab">
                 <a href="{{ url('/donants') }}">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/donant.png') }}" alt="">
+                    <img class="mb-1" width="35px" src="{{ asset('media/img/donant.png') }}" alt="">
                     @lang('master.donants_nav')
                 </a>
             </li>
             <li id="usuarisTab">
                 <a href="{{ url('/users') }}">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
+                    <img class="mb-1" width="35px" src="{{ asset('media/img/usuari.png') }}" alt="">
                     @lang('master.usuaris_nav')
                 </a>
             </li>
             <li id="centrosTab">
                 <a href="{{ url('/centros') }}">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
+                    <img class="mb-1" width="35px" src="{{ asset('media/img/house.png') }}" alt="">
                     @lang('master.centres_nav')
                 </a>
             </li>
             <li>
                 <a href="{{ url('/donations') }}">
-                    <img class="mb-1" width="40px" src="{{ asset('media/img/charts.png') }}" alt="">
+                    <img class="mb-1" width="35px" src="{{ asset('media/img/charts.png') }}" alt="">
                     @lang('master.charts_nav')
                 </a>
             </li>
