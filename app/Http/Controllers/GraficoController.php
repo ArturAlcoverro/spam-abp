@@ -60,6 +60,15 @@ class GraficoController extends Controller
         $grafico->mostrar_valor     = $request->input("valor");
         $grafico->tipo_grafico      = $request->input("tipus_grafic");
         $grafico->ordenar           = $request->input("ordenar");
+
+        if ($modal == "d"){
+            $grafico->tema          = 'dades';
+        }elseif($modal == "c"){
+            $grafico                = 'comparativa';
+        }else{
+            $grafico                = 'objectiu';
+        }      
+
         if ($request->input("public") == "on"){
             $grafico->publica       = 1;
         }

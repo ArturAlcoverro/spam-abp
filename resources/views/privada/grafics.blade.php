@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('css')
-<script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
+<script src="{{ asset('js/eventsIndexGrafic.js') }}"></script>
 @endsection
 
 @section('body')
@@ -46,13 +46,17 @@
 
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
+
                 <tr>
+                    <th>id</th>
                     <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Publica</th>
+                    <th>Tema</th>
+                    <th>Tipo de Gráfico</th>
                     <th>Campos</th>
-                    <th>Flitro</th>
-                    <th>Intervalo</th>
+                    <th>Centro</th>
+                    <th>Animales</th>
+                    <th>Ordenar</th>                    
+                    <th>Pública</th>
                 </tr>
             </thead>
             <tbody>

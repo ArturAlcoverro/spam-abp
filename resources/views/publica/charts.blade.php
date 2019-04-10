@@ -5,7 +5,8 @@
 @endsection
 
 @section('body')
-<div class="container-fluid">
+<!-- style= "height: 100vh" -->
+<div class="container-fluid" >
     <div class="row">
         <div class="col-3">
             <div class="nav flex-column nav-pills mt-2" id="llistaOpcions" role="tablist" aria-orientation="vertical"></div>

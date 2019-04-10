@@ -47,14 +47,23 @@ function opcions(selectedNav){
 }
 //crea una un menu amb les grafiques disponibles, els tabs  i ells canvas per morstrar grafics corresponents.
 function creaLlista(llista){
+
+  //,"tema":"dades"}
     llista.Lista.forEach(g => {
         var nav = $('<a>').attr('id', 'nav' + g.id)
                              .data('id', g.id)
                              .data('nombre', g.nombre)
-                             .data('tipo', g.tipo)
-                             .data('fechaInit',g.fechaInit)
-                             .data('fechaFin', g.fechaFin)
-                             .data('token', g.token)
+                             .data('tipo', g.tipo_grafico)
+                             .data('fechaInit',g.data_init)
+                             .data('fechaFin', g.data_fin)
+                             .data('tipo_data', g.tipo_data)
+                             .data('intervalo', g.intervalo)
+                             .data('tipos_donacion', g.tipos_donacion)
+                             .data('centro', g.centro)
+                             .data('animales', g.animales)
+                             .data('mostrar_valor',g.mostrar_valor)
+                             .data('ordenar',g.ordenar)
+                             .data('tema',g.tema)
                              .text(g.nombre)
                              .addClass('nav-link')
                              .data('toggle', 'pill')
@@ -85,18 +94,31 @@ function creaLlista(llista){
 }
 
 function consultarLlistaApi(){
-    var llista = {"Lista":[
-        {"id":1,"tipo":"bar","nombre":"General", "fechaInit":"2019-01-01", "fechaFin":"2019-01-30", "token":34582374058972},
-        {"id":2,"tipo":"pie","nombre":"Comida", "fechaInit":"2019-02-01", "fechaFin":"2019-03-02", "token":34544474058972},
-        {"id":3,"tipo":"line","nombre":"Otros", "fechaInit":"2019-03-01", "fechaFin":"2019-03-30", "token":34582374333972}
-    ]};
+  var llista = {"Lista":[]};
+  $.ajax({
+    url: "http://localhost:8080/spam-abp/public/api/grafico",
+    type: "GET",
+    dataType: 'json',
+    async: false,
+    data: {
+    },
+    beforeSend: function () { },
+    error: function (resp) {
+        toast(resp.responseJSON.error, 5000);
+    },
+    success: function (resp) {       
 
+        llista.Lista = resp['data'];
+    }
+});
     return llista;
 }
 
 //retorna els dataserts usats als charts
 function consultarDataApi(params){
     //data provisional de proba hardcoded
+
+    //http://localhost:8080/spam-abp/public/api/estadisticas/donativos/0000-00-00/2019-12-31
     var data = {
         labels:['Mejnar', 'Medicina', 'Higiene', 'Altres'],
         datasets:[{
