@@ -180,6 +180,13 @@ form .btn-donant {
 .modal-body {
     padding-top: .5rem;
 } */
+#detall p {
+    font-weight: 600;
+}
+
+#detall p span {
+    font-weight: normal
+}
 
 .spinner {
     border: 3px solid transparent;

@@ -363,16 +363,23 @@
 
 {{-- Modal detall donació --}}
 <div class="modal fade" id="modalDetall" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Informació donació</h5>
+                <h4 class="modal-title" id="exampleModalLongTitle">Informació donació</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-
+            <div class="modal-body" id="detall">
+                <p>Valor: <span class="valor"></span></p>
+                <p>Subtipo: <span class="subtipus"></span></p>
+                <p>Centro origen: <span class="origen"></span></p>
+                <p>Centro destino: <span class="desti"></span></p>
+                <p>Unidades: <span class="unitats"></span></p>
+                <p>Cantidad p.u: <span class="cantitat"></span></p>
+                <p>Para animal: <span class="animals"></span></p>
+                <p>Es coordinada: <span class="coordinada"></span></p>
             </div>
 
         </div>

@@ -239,7 +239,45 @@ $(document).ready(function () {
 
     //Eliminem la fila selccionada
     $('#tablaDonacions tbody').on('click', '.btn-edit', function () {
-        var data = table.row($(this).parents('tr')).data();
+        var row = table.row($(this).parents('tr')).data();
+        var data;
+        var animales = "";
+        var coordinada;
+
+        donacions.forEach(element => {
+            if (element.id == row[4]) {
+                data = element;
+            }
+        });
+
+        data.animales.forEach(element => {
+            switch (element) {
+                case "1":
+                    animales = animales + "Perro, "
+                    break;
+                case "2":
+                    animales = animales + "Gato, "
+                    break;
+                case "3":
+                    animales = animales + "Hurón, "
+                    break;
+            }
+        });
+
+        animales = animales.substring(0, animales.length - 2);
+
+        data.coordinada ? coordinada = 'Si' : coordinada = 'No';
+        var x = getSubtipus(data.subtipo_donacion);
+
+        $('#detall .valor').text(data.coste + "€");
+        $('#detall .subtipus').text(getSubtipus(data.subtipo_donacion).nombre);
+        $('#detall .origen').text(getCentro(data.centro_destino).nombre);
+        $('#detall .desti').text(getCentro(data.centro_receptor).nombre);
+        $('#detall .unitats').text(data.unidades);
+        $('#detall .cantitat').text(data.cantidad + getSubtipus(data.subtipo_donacion).tipo_unidad);
+        $('#detall .animals').text(animales);
+        $('#detall .coordinada').text(coordinada);
+        $("#modalDetall").modal()
     });
 
     //Eliminem la fila selccionada
@@ -451,4 +489,25 @@ function calcularCoste(id_subtipo, gama) {
     }
 
     return coste;
+}
+
+function getSubtipus(id) {
+    var resp;
+    subtipos.forEach(element => {
+        if (element.id == id) {
+            resp = element;
+        }
+    });
+    return resp;
+}
+
+function getCentro(id) {
+    var resp;
+    centros.forEach(element => {
+        if (element.id == id) {
+            resp = element;
+        }
+    });
+    return resp;
+
 }

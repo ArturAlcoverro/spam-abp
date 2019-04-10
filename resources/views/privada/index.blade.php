@@ -52,10 +52,22 @@
     <div class="modal" tabindex="-1" role="dialog" id="filter-modal">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
+                <div class="modal-header pb-0">
+                    <h4 class="modal-title" id="exampleModalLabel">Filtra donacións</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <form class="container pt-2" method="POST">
                         @csrf
                         <div class="form-group row">
+                            <div class="col-12">
+                                <label for="dni" class="col-form-label">DNI/CIF del donante</label>
+                                <div class="">
+                                    <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI/CIF">
+                                </div>
+                            </div>
                             <div class="col-6">
                                 <label for="tipos" class="col-form-label">Tipo</label>
                                 <div class="">
@@ -76,12 +88,6 @@
                                             <option value="{{ $subtipo->id }}">{{ $subtipo->nombre }}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label for="dni" class="col-form-label">DNI/CIF del donante</label>
-                                <div class="">
-                                    <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI/CIF">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -121,9 +127,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">Filtrar</button>
+                <div class="modal-footer pt-0 border-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">Aplicar</button>
                 </div>
             </div>
         </div>
