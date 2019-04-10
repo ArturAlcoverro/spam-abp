@@ -130,7 +130,6 @@
                     @lang('master.charts_nav')
                 </a>
             </li>
-
         </ul>
     </nav>
     <div id="body" class="d-none">
