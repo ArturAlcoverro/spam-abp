@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label for="nombre" class="col-form-label">Nombre</label>
                 <div class="">
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                    <input required type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
                 </div>
             </div>
             <div class="form-group" id="row-cif">
