@@ -106,7 +106,7 @@
     </div>
 
     <div id="donacions" class="mb-5" style="display: none">
-        <h3 class="mt-4 mb-3">Donacións</h3>
+        <h3 class="mt-4 mb-3">Donacions</h3>
 
         <table id="tablaDonacions" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
