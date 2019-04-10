@@ -71,15 +71,15 @@ function indexDonants() {
         async: true,
         data: {
         },
-        beforeSend: function () {},
-        error : function (resp) {
-            toast(resp.responseJSON.error,5000);
+        beforeSend: function () { },
+        error: function (resp) {
+            toast(resp.responseJSON.error, 5000);
         },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
+            resp['data'].forEach(function (data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
@@ -97,38 +97,47 @@ function deleteDonant() {
 
     var rows = $("#table").DataTable().rows('.selected').data();
 
-    for (var i = 0; i < rows.length; i++) {
+    if (rows.length == 0) {
+        toast('Per eliminar has de seleccionar UN registre', 2000);
+    }
+    else {
+        for (var i = 0; i < rows.length; i++) {
 
-        $.ajax({
-            url: "api/donants/" + rows[i][0],
-            type: "DELETE",
-            dataType: 'json',
-            async: true,
-            data: {
-            },
-            error: function (resp) {
+            $.ajax({
+                url: "api/donants/" + rows[i][0],
+                type: "DELETE",
+                dataType: 'json',
+                async: true,
+                data: {
+                },
+                error: function (resp) {
 
 
-                //resp.status
-                //resp.responseJSON.error
+                    //resp.status
+                    //resp.responseJSON.error
 
 
-                toast(resp.responseJSON.error,5000);
-            },
-            beforeSend: function () {},
-            success: function (resp) {
-                indexDonants();
-            }
-        });
+                    toast(resp.responseJSON.error, 5000);
+                },
+                beforeSend: function () { },
+                success: function (resp) {
+                    indexDonants();
+                }
+            });
+        }
     }
 }
 
 function editDonant() {
 
-    var row = $("#table").DataTable().row('.selected').data();
+    var rows = $("#table").DataTable().rows('.selected').data();
 
-    var id = row[0];
+    if (rows.length != 1) {
+        toast('Per editar has de seleccionar UN registre', 2000);
+    } else {
+        var id = rows[0][0];
 
-    $('#form_edit').attr('action', "donants/" + id + "/edit");
-    $('#form_edit').submit();
+        $('#form_edit').attr('action', "donants/" + id + "/edit");
+        $('#form_edit').submit();
+    }
 }

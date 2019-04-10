@@ -72,15 +72,15 @@ function indexCentros() {
         async: true,
         data: {
         },
-        beforeSend: function () {},
-        error : function (resp) {
-            toast(resp.responseJSON.error,5000);
+        beforeSend: function () { },
+        error: function (resp) {
+            toast(resp.responseJSON.error, 5000);
         },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
+            resp['data'].forEach(function (data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
@@ -94,33 +94,39 @@ function deleteCentros() {
 
     var rows = $("#table").DataTable().rows('.selected').data();
 
-    for (var i = 0; i < rows.length; i++) {
+    if (rows.length == 0) {
+        toast('Per eliminar has de seleccionar UN registre', 2000);
+    }
+    else {
+        for (var i = 0; i < rows.length; i++) {
 
-        $.ajax({
-            url: "api/centros/" + rows[i][0],
-            type: "DELETE",
-            dataType: 'json',
-            async: true,
-            data: {
-            },
-            error: function (resp) {
-                toast(resp.responseJSON.error,5000);
-            },
-            beforeSend: function () {},
-            success: function (resp) {
-                indexCentros();
-            }
-        });
+            $.ajax({
+                url: "api/centros/" + rows[i][0],
+                type: "DELETE",
+                dataType: 'json',
+                async: true,
+                data: {
+                },
+                error: function (resp) {
+                    toast(resp.responseJSON.error, 5000);
+                },
+                beforeSend: function () { },
+                success: function (resp) {
+                    indexCentros();
+                }
+            });
+        }
     }
 }
 
 function openEdit() {
 
-    var row = $("#table").DataTable().row('.selected').data();
+    var rows = $("#table").DataTable().rows('.selected').data();
 
-    if(row != undefined){
-
-        $("#editNombre").val(row[1]);
+    if (rows.length != 1) {
+        toast('Per editar has de seleccionar UN registre', 2000);
+    } else {
+        $("#editNombre").val(rows[0][1]);
 
         $("#edit-modal").modal();
     }
@@ -141,9 +147,9 @@ function editCentros() {
             "nombre": $("#editNombre").val()
         },
         error: function (resp) {
-            toast(resp.responseJSON.error,5000);
+            toast(resp.responseJSON.error, 5000);
         },
-        beforeSend: function () {},
+        beforeSend: function () { },
         success: function (resp) {
             indexCentros();
         }
@@ -158,12 +164,12 @@ function addCentros() {
         dataType: 'json',
         async: true,
         data: {
-            "nombre" : $("#addNombre").val()
+            "nombre": $("#addNombre").val()
         },
         error: function (resp) {
-            toast(resp.responseJSON.error,5000);
+            toast(resp.responseJSON.error, 5000);
         },
-        beforeSend: function () {},
+        beforeSend: function () { },
         success: function (resp) {
 
             console.log("succces");

@@ -6,22 +6,22 @@ $(document).ready(function () {
         select: true,
         buttons: [
             {
-                title: 'Donacions',
+                title: 'Tipus',
                 extend: 'copy',
                 text: "",
             },
             {
-                title: 'Donacions',
+                title: 'Tipus',
                 extend: 'excel',
                 text: "",
             },
             {
-                title: 'Donacions',
+                title: 'Tipus',
                 extend: 'pdf',
                 text: "",
             },
             {
-                title: 'Donacions',
+                title: 'Tipus',
                 extend: 'print',
                 text: "",
             },
@@ -45,8 +45,8 @@ $(document).ready(function () {
             buttons: {
                 copyTitle: 'Copiat al portapapers',
                 copySuccess: {
-                    _: '%d donacions copiades',
-                    1: '1 donació copiada'
+                    _: '%d tipus copiades',
+                    1: '1 tipus copiada'
                 }
             }
         },
@@ -72,15 +72,15 @@ function indexTipus() {
         async: true,
         data: {
         },
-        beforeSend: function () {},
-        error : function (resp) {
-            toast(resp.responseJSON.error,5000);
+        beforeSend: function () { },
+        error: function (resp) {
+            toast(resp.responseJSON.error, 5000);
         },
         success: function (resp) {
 
             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function(data) {
+            resp['data'].forEach(function (data) {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
@@ -94,34 +94,39 @@ function deleteTipus() {
 
     var rows = $("#table").DataTable().rows('.selected').data();
 
-    for (var i = 0; i < rows.length; i++) {
+    if (rows.length == 0) {
+        toast('Per eliminar has de seleccionar UN registre', 2000);
+    }
+    else {
+        for (var i = 0; i < rows.length; i++) {
 
-        $.ajax({
-            url: "api/tipos/" + rows[i][0],
-            type: "DELETE",
-            dataType: 'json',
-            async: true,
-            data: {
-            },
-            error: function (resp) {
-                toast(resp.responseJSON.error,5000);
-            },
-            beforeSend: function () {},
-            success: function (resp) {
-                indexTipus();
-            }
-        });
+            $.ajax({
+                url: "api/tipos/" + rows[i][0],
+                type: "DELETE",
+                dataType: 'json',
+                async: true,
+                data: {
+                },
+                error: function (resp) {
+                    toast(resp.responseJSON.error, 5000);
+                },
+                beforeSend: function () { },
+                success: function (resp) {
+                    indexTipus();
+                }
+            });
+        }
     }
 }
 
 function openEdit() {
 
-    var row = $("#table").DataTable().row('.selected').data();
+    var rows = $("#table").DataTable().rows('.selected').data();
 
-    if(row != undefined){
-
-        $("#editNombre").val(row[1]);
-
+    if (rows.length != 1) {
+        toast('Per editar has de seleccionar UN registre', 2000);
+    } else {
+        $("#editNombre").val(rows[0][1]);
         $("#edit-modal").modal();
     }
 }
@@ -141,9 +146,9 @@ function editTipus() {
             "nombre": $("#editNombre").val()
         },
         error: function (resp) {
-            toast(resp.responseJSON.error,5000);
+            toast(resp.responseJSON.error, 5000);
         },
-        beforeSend: function () {},
+        beforeSend: function () { },
         success: function (resp) {
             indexTipus();
         }
@@ -158,12 +163,12 @@ function addTipus() {
         dataType: 'json',
         async: true,
         data: {
-            "nombre" : $("#addNombre").val()
+            "nombre": $("#addNombre").val()
         },
         error: function (resp) {
-            toast(resp.responseJSON.error,5000);
+            toast(resp.responseJSON.error, 5000);
         },
-        beforeSend: function () {},
+        beforeSend: function () { },
         success: function (resp) {
 
             console.log("succces");
