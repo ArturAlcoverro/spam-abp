@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="{{ url('/donations') }}">
+                    <a href="{{ action('CentroController@index') }}">
                         <img class="" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
                         @lang('master.centres_nav')
                     </a>
@@ -119,7 +119,7 @@
                 </a>
             </li>
             <li id="centrosTab">
-                <a href="{{ url('/donations') }}">
+                <a href="{{ url('/centros') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
                     @lang('master.centres_nav')
                 </a>

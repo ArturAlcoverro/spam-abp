@@ -22,6 +22,7 @@ Route::apiResource('/donations', 'API\DonativoAPIController');
 Route::apiResource('/users', 'API\UsuarioAPIController');
 Route::apiResource('/tipos', 'API\TipoDonacioAPIController');
 Route::apiResource('/subtipos', 'API\SubtipoAPIController');
+Route::apiResource('/centros', 'API\CentroAPIController');
 
 Route::apiResource('/filtro', 'API\FiltroAPIController');
 
