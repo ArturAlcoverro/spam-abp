@@ -118,7 +118,7 @@
                     @lang('master.usuaris_nav')
                 </a>
             </li>
-            <li>
+            <li id="centrosTab">
                 <a href="{{ url('/donations') }}">
                     <img class="mb-1" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
                     @lang('master.centres_nav')

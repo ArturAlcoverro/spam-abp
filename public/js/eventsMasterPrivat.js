@@ -13,6 +13,9 @@ $(document).ready(function () {
         case 'users':
             $('#usuarisTab').addClass('active-tab');
             break;
+        case 'centros':
+            $('#centrosTab').addClass('active-tab');
+            break;
         default:
             // alert(tab);
             break;
