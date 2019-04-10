@@ -78,7 +78,7 @@ form .btn-donant {
 }
 
 #btnComp:hover {
-    background-color: #cc3366;
+    background-color: #663366;
 }
 
 #btnObj {
@@ -87,7 +87,7 @@ form .btn-donant {
 }
 
 #btnObj:hover {
-    background-color: 663366;
+    background-color: #cc3366;
 }
 
 .closeBtn {
