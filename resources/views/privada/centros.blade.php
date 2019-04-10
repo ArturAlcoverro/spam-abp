@@ -35,6 +35,12 @@
     <div class="modal" tabindex="-1" role="dialog" id="create-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo centro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 <div class="modal-body">
                     <form class="container pt-2" method="POST">
                         @csrf
@@ -48,7 +54,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer pt-0 border-0">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button onclick="addCentros()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                 </div>
@@ -59,6 +65,12 @@
     <div class="modal" tabindex="-1" role="dialog" id="edit-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar centrO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <form class="container pt-2" method="POST">
                         @csrf
@@ -72,7 +84,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer pt-0 border-0">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button onclick="editCentros()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                 </div>
