@@ -96,7 +96,7 @@
                                 @foreach ($tipos as $tipo)
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input tipo_donacion" name="d{{$tipo->nombre}}" id="d{{$tipo->nombre}}" data-id="{{$tipo->id}}">
+                                                <input type="checkbox" class="custom-control-input" name="d{{$tipo->nombre}}" id="d{{$tipo->nombre}}">
                                                 <label class="custom-control-label" for="d{{$tipo->nombre}}">{{$tipo->nombre}}</label>
                                             </div>
                                         </div>
@@ -172,6 +172,7 @@
                         </div>
 
                         <div class="form-group float-right">
+                            <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
                     </form>
@@ -206,13 +207,69 @@
                                 <div class="form-group col-6">
                                     <label for="dataInit" class="col-form-label">Data Inicial</label>
                                     <div class="">
-                                        <input type="date" name="dataInit" id="dataInit" class="form-control">
+                                        <input type="date" name="dataInit0" id="dataInit" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group col-6">
                                     <label for="dataFin" class="col-form-label">Data Final</label>
                                     <div class="">
-                                        <input type="date" name="dataFin" id="dataFin" class="form-control">
+                                        <input type="date" name="dataFin0" id="dataFin" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id = "data2">
+                                <div class="form-group col-6">
+                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
+                                    <div class="">
+                                        <input type="date" name="dataInit1" id="dataInit1" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="dataFin" class="col-form-label">Data Final</label>
+                                    <div class="">
+                                        <input type="date" name="dataFin1" id="dataFin1" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id = "data3">
+                                <div class="form-group col-6">
+                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
+                                    <div class="">
+                                        <input type="date" name="dataInit2" id="dataInit2" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="dataFin" class="col-form-label">Data Final</label>
+                                    <div class="">
+                                        <input type="date" name="dataFin2" id="dataFin2" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id = "data4">
+                                <div class="form-group col-6">
+                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
+                                    <div class="">
+                                        <input type="date" name="dataInit3" id="dataInit3" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="dataFin" class="col-form-label">Data Final</label>
+                                    <div class="">
+                                        <input type="date" name="dataFin3" id="dataFin3" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id = "data5">
+                                <div class="form-group col-6">
+                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
+                                    <div class="">
+                                        <input type="date" name="dataInit4" id="dataInit4" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="dataFin" class="col-form-label">Data Final</label>
+                                    <div class="">
+                                        <input type="date" name="dataFin4" id="dataFin4" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +277,7 @@
 
                         </div>
                         <div class="form-group ">
-                                <button type="button" name="afegirData" class="btn btn-secondary boton-amplada">Afegir interval</button>
+                                <button type="button" name="afegirData" value = "2" class="btn btn-secondary boton-amplada">Afegir interval</button>
                         </div>
                         <div class="form-group">
                             <label for="lbltipos_donacion" class=" col-form-label">Tipo de donacion</label>
@@ -228,7 +285,7 @@
                                 @foreach ($tipos as $tipo)
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input tipo_donacion" name="c{{$tipo->nombre}}" id="c{{$tipo->nombre}}" data-id="{{$tipo->id}}">
+                                                <input type="checkbox" class="custom-control-input" name="c{{$tipo->nombre}}" id="c{{$tipo->nombre}}">
                                                 <label class="custom-control-label" for="c{{$tipo->nombre}}">{{$tipo->nombre}}</label>
                                             </div>
                                         </div>
@@ -301,6 +358,7 @@
                         </div>
 
                         <div class="form-group float-right">
+                            <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
                     </form>
@@ -384,7 +442,7 @@
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
 
-                                            <input type="checkbox" class="custom-control-input" name="o{{$tipo->nombre}}" id="o{{$tipo->nombre}}">
+                                            <input type="checkbox" class="custom-control-input tipo_donacion" data-tipo="{{$tipo->nombre}}" name="o{{$tipo->nombre}}" id="o{{$tipo->nombre}}">
                                             <label class="custom-control-label" for="o{{$tipo->nombre}}">{{$tipo->nombre}}</label>
                                         </div>
                                     </div>
@@ -463,6 +521,7 @@
                     </div>
 
                     <div class="form-group float-right">
+                        <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                         <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                     </div>
                 </form>
