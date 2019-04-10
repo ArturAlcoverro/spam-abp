@@ -8,7 +8,7 @@
 @endsection
 
 @section('body')
-
+@include('partial.errores')
 <div class="p-5 d-inline-block">
     <h3 class="mt-5">Crea un gràfic</h3>
     <div class="buttons">

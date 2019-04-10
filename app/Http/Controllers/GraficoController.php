@@ -48,6 +48,7 @@ class GraficoController extends Controller
      */
     public function store(Request $request)
     {
+        //var_dump($request);
         $modal = $request->input('modal');
         $tipos = Tipo::all();
         $campos = "";
@@ -59,7 +60,13 @@ class GraficoController extends Controller
         $grafico->mostrar_valor     = $request->input("valor");
         $grafico->tipo_grafico      = $request->input("tipus_grafic");
         $grafico->ordenar           = $request->input("ordenar");
-        $grafico->publica           = $request->input("public");
+        if ($request->input("public") == "on"){
+            $grafico->publica       = 1;
+        }
+        else{
+            $grafico->publica       = 0;
+        }
+
 
         if($request->has($modal . "TipoData")){
             $grafico->tipo_data         = $request->input($modal . "TipoData");
@@ -78,26 +85,25 @@ class GraficoController extends Controller
 
         foreach($tipos as $tipo){
             if($request->has($modal . $tipo->nombre)){
-                if($request->input($modal . $tipo->nombre)){
+                if($request->input($modal . $tipo->nombre) == "on"){
                     if ($campos == ""){
                         $campos = $tipo->nombre;
                     }
                     else{
-                        $campos = "," . $tipo->nombre;
+                        $campos = $campos . "," . $tipo->nombre;
                     }
                 }
             }
         }
 
         $grafico->tipos_donacion    = $campos;
-        try
-
-        {
+        try{
             $grafico->save();
         }
         catch(QueryException $e){
 
             $error = Utilitat::errorMessage($e);
+            var_dump($error);
             $request->session()->flash('error', $error);
             return redirect()->action('GraficoController@create');
         }
