@@ -63,6 +63,33 @@ form .btn-donant {
     background-image: url("../media/img/material.png");
 }
 
+#btnDades {
+    background-color: hsla(24, 100%, 50%, 0.898);
+    background-image: url("../media/img/dades.png");
+}
+
+#btnDades:hover {
+    background-color: #ff6600;
+}
+
+#btnComp {
+    background-color: hsla(300, 33%, 30%, 0.965);
+    background-image: url("../media/img/charts.png");
+}
+
+#btnComp:hover {
+    background-color: #cc3366;
+}
+
+#btnObj {
+    background-color: hsla(340, 60%, 50%, 0.898);
+    background-image: url("../media/img/objectiu.png");
+}
+
+#btnObj:hover {
+    background-color: 663366;
+}
+
 .closeBtn {
     font-size: 12px;
     background-size: 35px;
