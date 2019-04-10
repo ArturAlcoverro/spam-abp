@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 function indexUsers() {
     $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/users",
+        url: "api/users",
         type: "GET",
         dataType: 'json',
         async: true,
@@ -103,7 +103,7 @@ function deleteUsuario() {
     for (var i = 0; i < rows.length; i++) {
 
         $.ajax({
-            url: "http://localhost:8080/spam-abp/public/api/users/" + rows[i][0],
+            url: "api/users/" + rows[i][0],
             type: "DELETE",
             dataType: 'json',
             async: true,
@@ -126,7 +126,7 @@ function editUser() {
 
     var id = row[0];
 
-    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/users/" + id + "/edit");
+    $('#form_edit').attr('action', "users/" + id + "/edit");
     $('#form_edit').submit();
 }
 

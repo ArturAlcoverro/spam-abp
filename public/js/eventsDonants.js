@@ -65,7 +65,7 @@ $(document).ready(function () {
 
 function indexDonants() {
     $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/donants",
+        url: "api/donants",
         type: "GET",
         dataType: 'json',
         async: true,
@@ -100,7 +100,7 @@ function deleteDonant() {
     for (var i = 0; i < rows.length; i++) {
 
         $.ajax({
-            url: "http://localhost:8080/spam-abp/public/api/donants/" + rows[i][0],
+            url: "api/donants/" + rows[i][0],
             type: "DELETE",
             dataType: 'json',
             async: true,
@@ -129,6 +129,6 @@ function editDonant() {
 
     var id = row[0];
 
-    $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donants/" + id + "/edit");
+    $('#form_edit').attr('action', "donants/" + id + "/edit");
     $('#form_edit').submit();
 }

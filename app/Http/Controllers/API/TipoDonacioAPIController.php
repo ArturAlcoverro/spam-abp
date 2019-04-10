@@ -32,7 +32,24 @@ class TipoDonacioAPIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipo = new Tipo();
+
+        $tipo->nombre = $request->input('nombre');
+
+        try{
+            $tipo->save();
+            $respuesta =  (new TipoResource($tipo))
+                            ->response()
+                            ->setStatusCode(201);
+        }
+        catch(QueryException $e){
+
+            $mensaje=Utilitat::errorMessage($e);
+            $respuesta = response()
+                            ->json(['error'=>$mensaje], 400);
+        }
+
+        return $respuesta;
     }
 
     /**
@@ -45,7 +62,7 @@ class TipoDonacioAPIController extends Controller
     {
         $tipo = Tipo::find($id_tipo);
 
-        return new TipoRersource($tipo);
+        return new TipoResource($tipo);
     }
 
     /**
@@ -55,9 +72,26 @@ class TipoDonacioAPIController extends Controller
      * @param  \App\TipoController  $tipoController
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoController $tipoController)
+    public function update(Request $request, $id_tipo)
     {
-        //
+        $tipo = Tipo::find($id_tipo);
+
+        $tipo->nombre = $request->input('nombre');
+
+        try{
+            $tipo->save();
+            $respuesta =  (new TipoResource($tipo))
+                            ->response()
+                            ->setStatusCode(201);
+        }
+        catch(QueryException $e){
+
+            $mensaje=Utilitat::errorMessage($e);
+            $respuesta = response()
+                            ->json(['error'=>$mensaje], 400);
+        }
+
+        return $respuesta;
     }
 
     /**
@@ -66,8 +100,23 @@ class TipoDonacioAPIController extends Controller
      * @param  \App\TipoController  $tipoController
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoController $tipoController)
+    public function destroy($id)
     {
-        //
+        $tipo = Tipo::find($id);
+
+        try{
+            $tipo->delete();
+            $respuesta = (new TipoResource($tipo))
+                            ->response()
+                            ->setStatusCode(200);
+        }
+        catch(QueryException $e){
+
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                           ->json(['error'=>$mensaje], 400);
+        }
+
+        return $respuesta;
     }
 }

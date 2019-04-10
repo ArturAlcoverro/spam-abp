@@ -20,24 +20,67 @@
     <h1>Tipus de donacions</h1>
 
     <div class="toolbar mt-3">
-        <a href="{{ action('SubtipoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
+        <a title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#create-modal">
             <img height="0px" src="{{ asset('media/img/add.png') }}" alt="">
         </a>
-        <button onclick="editTipus()" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
+        <a title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5" onclick="openEdit()">
+            {{-- data-toggle="modal" data-target="#edit-modal" --}}
             <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
-            <form id="form_edit" action="" method="get">
-                @csrf
-            </form>
-        </button>
+        </a>
         <button onclick="deleteTipus()" title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
-        <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
-            <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
-        </button>
-        <a href='{{url('/tipos')}}' title="@lang('master.Tipus_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/tipus.png') }}" alt="">
+        <a href='{{url('/subtipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
+            <img height="0px" src="{{ asset('media/img/subtipus.png') }}" alt="">
         </a>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="create-modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="container pt-2" method="POST">
+                        @csrf
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <label for="addNombre" class="col-form-label">Nombre</label>
+                                <div class="">
+                                    <input name="addNombre" id="addNombre" type="text" placeholder="Nombre" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button onclick="addTipus()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="edit-modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="container pt-2" method="POST">
+                        @csrf
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <label for="editNombre" class="col-form-label">Nombre</label>
+                                <div class="">
+                                    <input name="editNombre" id="editNombre" type="text" placeholder="Nombre" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button onclick="editTipus()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="toolbar-append">

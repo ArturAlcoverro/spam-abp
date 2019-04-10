@@ -53,14 +53,14 @@ $(document).ready(function () {
 
     $(".toolbar .btn").prependTo(".dt-buttons");
 
-    
+
     indexSubtipus();
     console.log(window.location.pathname);
 });
 
 function indexSubtipus() {
     $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/subtipos",
+        url: "api/subtipos",
         type: "GET",
         dataType: 'json',
         async: true,
@@ -114,7 +114,7 @@ function deleteSubtipus() {
         for (var i = 0; i < rows.length; i++) {
 
             $.ajax({
-                url: "http://localhost:8080/spam-abp/public/api/subtipos/" + rows[i][0],
+                url: "api/subtipos/" + rows[i][0],
                 type: "DELETE",
                 dataType: 'json',
                 async: true,

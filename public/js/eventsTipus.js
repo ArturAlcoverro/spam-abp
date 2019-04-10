@@ -50,14 +50,125 @@ $(document).ready(function () {
                 }
             }
         },
-        columnDefs: [
-            {
-                targets: [0],
-                visible: false,
-                searchable: false
-            }]
+        // columnDefs: [
+        //     {
+        //         targets: [0],
+        //         visible: false,
+        //         searchable: false
+        //     }]
     });
 
     $(".toolbar .btn").prependTo(".dt-buttons");
     // $(".toolbar-append .btn").appendTo(".dt-buttons");
+
+    indexTipus();
 });
+
+function indexTipus() {
+    $.ajax({
+        url: "api/tipos",
+        type: "GET",
+        dataType: 'json',
+        async: true,
+        data: {
+        },
+        beforeSend: function () {},
+        error : function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
+        success: function (resp) {
+
+            $("#table").DataTable().clear().draw();
+
+            resp['data'].forEach(function(data) {
+                $("#table").DataTable().row.add([
+                    data['id'],
+                    data['nombre'],
+                ]).draw();
+            });
+        }
+    });
+}
+
+function deleteTipus() {
+
+    var rows = $("#table").DataTable().rows('.selected').data();
+
+    for (var i = 0; i < rows.length; i++) {
+
+        $.ajax({
+            url: "api/tipos/" + rows[i][0],
+            type: "DELETE",
+            dataType: 'json',
+            async: true,
+            data: {
+            },
+            error: function (resp) {
+                toast(resp.responseJSON.error,5000);
+            },
+            beforeSend: function () {},
+            success: function (resp) {
+                indexTipus();
+            }
+        });
+    }
+}
+
+function openEdit() {
+
+    var row = $("#table").DataTable().row('.selected').data();
+
+    if(row != undefined){
+
+        $("#editNombre").val(row[1]);
+
+        $("#edit-modal").modal();
+    }
+}
+
+function editTipus() {
+
+    var row = $("#table").DataTable().row('.selected').data();
+
+    var id = row[0];
+
+    $.ajax({
+        url: "api/tipos/" + id,
+        type: "PUT",
+        dataType: 'json',
+        async: true,
+        data: {
+            "nombre": $("#editNombre").val()
+        },
+        error: function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
+        beforeSend: function () {},
+        success: function (resp) {
+            indexTipus();
+        }
+    });
+}
+
+function addTipus() {
+
+    $.ajax({
+        url: "api/tipos",
+        type: "POST",
+        dataType: 'json',
+        async: true,
+        data: {
+            "nombre" : $("#addNombre").val()
+        },
+        error: function (resp) {
+            toast(resp.responseJSON.error,5000);
+        },
+        beforeSend: function () {},
+        success: function (resp) {
+
+            console.log("succces");
+
+            indexTipus();
+        }
+    });
+}

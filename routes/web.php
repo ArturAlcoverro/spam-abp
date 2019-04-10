@@ -40,7 +40,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/subtipos', 'SubtipoController');
 
     Route::resource('/tipos', 'TipoController');
-
 });
 
 
