@@ -6,22 +6,22 @@ $(document).ready(function () {
         select: true,
         buttons: [
             {
-                title: 'Donacions',
+                title: 'Gráfics',
                 extend: 'copy',
                 text: "",
             },
             {
-                title: 'Donacions',
+                title: 'Gráfics',
                 extend: 'excel',
                 text: "",
             },
             {
-                title: 'Donacions',
+                title: 'Gráfics',
                 extend: 'pdf',
                 text: "",
             },
             {
-                title: 'Donacions',
+                title: 'Gráfics',
                 extend: 'print',
                 text: "",
             },
@@ -104,11 +104,18 @@ function indexDonaciones() {
             $("#table").DataTable().clear().draw();
 
             resp['data'].forEach(function (data) {
+                var a;
+                if (data['animales'] == "all"){
+                    a = "tots";
+                }else{
+                    
+
+                }
+
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
-                    data['tema'],
-                    data['tipo_data'],
+                    data['tema'],                    
                     data['tipos_donacion'],
                     data['centro'],
                     data['animales'],
@@ -131,7 +138,7 @@ function deleteDonacion() {
         for (var i = 0; i < rows.length; i++) {
 
             $.ajax({
-                url: "http://localhost:8080/spam-abp/public/api/donations/" + rows[i][0],
+                url: "http://localhost:8080/spam-abp/public/api/grafics/" + rows[i][0],
                 type: "DELETE",
                 dataType: 'json',
                 async: true,
@@ -164,54 +171,54 @@ function editDonacion() {
     }
 }
 
-function filtrar() {
+// function filtrar() {
 
-    var fechaInicio = $('#fechaInicio').val();
-    var fechaFinal = $('#fechaFinal').val();
+//     var fechaInicio = $('#fechaInicio').val();
+//     var fechaFinal = $('#fechaFinal').val();
 
-    console.log("inicio");
-    console.log($('#fechaInicio').val());
-    console.log("final");
-    console.log($('#fechaFinal').val());
+//     console.log("inicio");
+//     console.log($('#fechaInicio').val());
+//     console.log("final");
+//     console.log($('#fechaFinal').val());
 
-    $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/filtro/" + fechaInicio + "/" + fechaFinal,
-        type: "GET",
-        dataType: 'json',
-        async: true,
-        data: {
-        },
-        beforeSend: function () { },
-        error: function (resp) {
-            toast(resp.responseJSON.error, 5000);
-        },
-        success: function (resp) {
+//     $.ajax({
+//         url: "http://localhost:8080/spam-abp/public/api/filtro/" + fechaInicio + "/" + fechaFinal,
+//         type: "GET",
+//         dataType: 'json',
+//         async: true,
+//         data: {
+//         },
+//         beforeSend: function () { },
+//         error: function (resp) {
+//             toast(resp.responseJSON.error, 5000);
+//         },
+//         success: function (resp) {
 
-            $("#table").DataTable().clear().draw();
+//             $("#table").DataTable().clear().draw();
 
-            resp['data'].forEach(function (data) {
-                $("#table").DataTable().row.add([
-                    data['id'],
-                    data['subtipo']['tipos_id'],
-                    data['subtipo']['tipo']['nombre'],
-                    data['subtipos_id'],
-                    data['subtipo']['nombre'],
-                    data['centros_receptor_id'],
-                    data['centro_receptor']['nombre'],
-                    data['centros_desti_id'],
-                    data['centro_desti']['nombre'],
-                    data['donante']['cif'],
-                    data['coste'],
-                    data['fecha_donativo']
-                ]).draw();
-            });
+//             resp['data'].forEach(function (data) {
+//                 $("#table").DataTable().row.add([
+//                     data['id'],
+//                     data['subtipo']['tipos_id'],
+//                     data['subtipo']['tipo']['nombre'],
+//                     data['subtipos_id'],
+//                     data['subtipo']['nombre'],
+//                     data['centros_receptor_id'],
+//                     data['centro_receptor']['nombre'],
+//                     data['centros_desti_id'],
+//                     data['centro_desti']['nombre'],
+//                     data['donante']['cif'],
+//                     data['coste'],
+//                     data['fecha_donativo']
+//                 ]).draw();
+//             });
 
-            $("#table").DataTable().column(1).search($('#tipos').val())
-                .column(3).search($('#subtipos').val())
-                .column(5).search($('#centrosReceptores').val())
-                .column(7).search($('#centrosDestino').val())
-                .column(9).search($('#dni').val())
-                .draw();
-        }
-    });
-}
+//             $("#table").DataTable().column(1).search($('#tipos').val())
+//                 .column(3).search($('#subtipos').val())
+//                 .column(5).search($('#centrosReceptores').val())
+//                 .column(7).search($('#centrosDestino').val())
+//                 .column(9).search($('#dni').val())
+//                 .draw();
+//         }
+//     });
+// }

@@ -21,7 +21,13 @@ class GraficoController extends Controller
      */
     public function index()
     {
-        return view('privada.grafics');
+        $tipos = Tipo::all();
+        $centros = Centro::all();
+        $animales = Animal::all();
+        $data["centros"] = $centros;
+        $data["animales"] = $animales;
+
+        return view('privada.grafics', $data);
     }
 
     /**
