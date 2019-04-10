@@ -125,7 +125,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('/donations') }}">
+                <a href="{{ url('/grafics') }}">
                     <img class="mb-1" width="35px" src="{{ asset('media/img/charts.png') }}" alt="">
                     @lang('master.charts_nav')
                 </a>
