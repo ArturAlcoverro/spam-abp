@@ -86,7 +86,8 @@ class GraficoController extends Controller
         if($request->has($modal . "TipoData")){
             $grafico->tipo_data         = $request->input($modal . "TipoData");
             if ( $request->input($modal . "TipoData") == "dinamic"){
-                $grafico->intervalo     = $request->input("cantidad") . $request->input("medida");
+                $grafico->intervalo     = $request->input("cantidad");
+                $grafico->magnitud_intervalo = $request->input("medida");
             }
             else{
                 $grafico->data_init     = $request->input('dataInit');
