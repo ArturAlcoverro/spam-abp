@@ -89,7 +89,7 @@ $(document).ready(function () {
 
 function indexDonaciones() {
     $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/grafico",
+        url: "api/grafico",
         type: "GET",
         dataType: 'json',
         async: true,
@@ -108,14 +108,14 @@ function indexDonaciones() {
                 if (data['animales'] == "all"){
                     a = "tots";
                 }else{
-                    
+
 
                 }
 
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
-                    data['tema'],                    
+                    data['tema'],
                     data['tipos_donacion'],
                     data['centro'],
                     data['animales'],
@@ -138,7 +138,7 @@ function deleteDonacion() {
         for (var i = 0; i < rows.length; i++) {
 
             $.ajax({
-                url: "http://localhost:8080/spam-abp/public/api/grafics/" + rows[i][0],
+                url: "api/grafics/" + rows[i][0],
                 type: "DELETE",
                 dataType: 'json',
                 async: true,
@@ -166,7 +166,7 @@ function editDonacion() {
     else {
         var id = rows[0][0];
 
-        $('#form_edit').attr('action', "http://localhost:8080/spam-abp/public/donations/" + id + "/edit");
+        $('#form_edit').attr('action', "donations/" + id + "/edit");
         $('#form_edit').submit();
     }
 }

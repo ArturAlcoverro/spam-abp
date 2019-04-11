@@ -96,7 +96,7 @@ function creaLlista(llista){
 function consultarLlistaApi(){
   var llista = {"Lista":[]};
   $.ajax({
-    url: "http://localhost:8080/spam-abp/public/api/grafico",
+    url: "api/grafico",
     type: "GET",
     dataType: 'json',
     async: false,
@@ -147,7 +147,7 @@ function consultarDataApi(options){
 
             $.ajax({
                 // url:"htwww.abp-politecnics.com/2019/daw/projecte02/dw01/spam-abp/public/api/estadisticas/donativos/2019-2-11/2019-4-11",
-                url: "http://localhost:8080/spam-abp/public/api/estadisticas/donativos/" + data1 + "/" + data2,
+                url: "api/estadisticas/donativos/" + data1 + "/" + data2,
                 type: "GET",
                 dataType: 'json',
                 async: true,

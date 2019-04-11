@@ -162,7 +162,7 @@ $(document).ready(function () {
 
         var $this = $(this);
 
-        var coste = parseFloat($this.find("#costeDiners").val());
+        var coste = parseFloat($this.find("#coste").val());
         if (isNaN(coste)) {
             coste = calcularCoste(
                 $this.find("#subtipo_donacion").val(),
