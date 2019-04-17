@@ -77,12 +77,14 @@
                         <p>@lang('master.donants_nav')</p>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ action('UsuarioController@index') }}">
-                        <img width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
-                        <p>@lang('master.usuaris_nav')</p>
-                    </a>
-                </li>
+                @if(Auth::user()->rol->id == 1)
+                    <li>
+                        <a href="{{ action('UsuarioController@index') }}">
+                            <img width="40px" src="{{ asset('media/img/usuari.png') }}" alt="">
+                            <p>@lang('master.usuaris_nav')</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="">
                     <a href="{{ action('CentroController@index') }}">
                         <img class="" width="40px" src="{{ asset('media/img/house.png') }}" alt="">
@@ -115,12 +117,15 @@
                     @lang('master.donants_nav')
                 </a>
             </li>
-            <li id="usuarisTab">
-                <a href="{{ url('/users') }}">
-                    <img class="mb-1" width="35px" src="{{ asset('media/img/usuari.png') }}" alt="">
-                    @lang('master.usuaris_nav')
-                </a>
-            </li>
+            @if(Auth::user()->rol->id == 1)
+                <li id="usuarisTab">
+                    <a href="{{ url('/users') }}">
+                        <img class="mb-1" width="35px" src="{{ asset('media/img/usuari.png') }}" alt="">
+                        @lang('master.usuaris_nav')
+                    </a>
+                </li>
+            @endif
+
             <li id="centrosTab">
                 <a href="{{ url('/centros') }}">
                     <img class="mb-1" width="35px" src="{{ asset('media/img/house.png') }}" alt="">
