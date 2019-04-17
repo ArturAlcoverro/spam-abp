@@ -120,7 +120,7 @@ body {
     opacity: 0.55;
 }
 
-#opcionsMenuLateral li a:hover{
+#opcionsMenuLateral li a:hover {
     opacity: 1;
 }
 
@@ -128,9 +128,10 @@ body {
     background-color: #383837;
 }
 
-.active-tab a{
+.active-tab a {
     opacity: 1 !important;
 }
+
 .active-tab::before {
     --size: 15px;
     content: '';
@@ -181,6 +182,54 @@ body {
     margin: 0;
 }
 
+.unable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.411);
+    z-index: 10;
+}
+
+.unable .spinner {
+    width: 115px;
+    height: 115px;
+    border-width: 9px;
+}
+
+.spinner {
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-bottom: 3px solid var(--primary-color-dark);
+    border-top: 3px solid var(--primary-color-dark);
+    border-left: 3px solid var(--primary-color-dark);
+    width: 33px;
+    height: 33px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+.unable:before {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    content: " ";
+    background: white;
+    width: 150px;
+    height: 150px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.431)
+}
+
+#alertModal .btn {
+    padding-bottom: 6px;
+}
+
+/* Responsive Movil */
 
 @media only screen and (max-width: 600px) {
     #menuLateral {
@@ -227,4 +276,26 @@ body {
         margin-right: 0;
     }
 
+}
+
+/* Animaciones */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

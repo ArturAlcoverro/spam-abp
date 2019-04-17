@@ -42,9 +42,7 @@
     </script>
 
 <div class="p-5 d-block all">
-    <div class="unable" style="display: none">
-            <div class="spinner"></div>
-    </div>
+
     <div class="d-flex">
         <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
         <button class="showHide" style="display: none">

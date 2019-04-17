@@ -144,24 +144,6 @@ form .btn-donant {
     max-width: 1100px;
 }
 
-.unable {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: calc(100%);
-    height: calc(100%);
-    max-width: 1300px;
-    background-color: rgba(255, 255, 255, 0.411);
-    z-index: 10;
-}
-
-.unable .spinner {
-    width: 100px;
-    height: 100px;
-    border-width: 5px;
-}
-
 /* .modal-content {
     border-radius: 0;
     margin: auto;
@@ -186,18 +168,6 @@ form .btn-donant {
 
 #detall p span {
     font-weight: normal
-}
-
-.spinner {
-    border: 3px solid transparent;
-    border-radius: 50%;
-    border-bottom: 3px solid var(--primary-color-dark);
-    border-top: 3px solid var(--primary-color-dark);
-    border-left: 3px solid var(--primary-color-dark);
-    width: 33px;
-    height: 33px;
-    -webkit-animation: spin 1s linear infinite;
-    animation: spin 1s linear infinite;
 }
 
 #infoParticular,
@@ -244,26 +214,6 @@ form .btn-donant {
 
 .rotate-180 {
     transform: rotate(180deg);
-}
-
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 @media only screen and (max-width: 400px) {
