@@ -33,6 +33,9 @@
         var idUsuario = {{Auth::user()->id}}
         var subtipos = {!! json_encode($subtipos->toArray()) !!};
         var centros = {!! json_encode($centros->toArray()) !!};
+        var particulares = {!! json_encode($particulares->toArray()) !!};
+        var empresas = {!! json_encode($empresas->toArray()) !!};
+
         var tipoDiners;
         subtipos.forEach(element => {
             if(element.nombre.toLowerCase() == 'diners'){
@@ -188,7 +191,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="container" id="formMaterial" method="POST">
+                <form class="container" id="formMaterial" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="form-group">
                             <label for="lbltipo_donacion" class=" col-form-label">Tipo de donacion</label>

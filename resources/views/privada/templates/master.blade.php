@@ -167,7 +167,7 @@
     </div>
 
     <script>
-    $('#alertModal').modal();
+    // $('#alertModal').modal();
     </script>
 
 

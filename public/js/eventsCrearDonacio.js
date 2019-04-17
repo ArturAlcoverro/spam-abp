@@ -3,6 +3,7 @@ var isDonante = false;
 var infoDonante = true;
 var isDonacions = false;
 var donacions = [];
+var formDonacions = [];
 var i = 0;
 var table;
 var donacionsEnviades;
@@ -134,10 +135,19 @@ $(document).ready(function () {
     $('#formDiners').submit(function (event) {
         event.preventDefault();
         var $this = $(this);
+        var formData = new FormData();
+        formData.append('id', i);
+        formData.append('subtipo_donacion', $this.find("#subtipo_donacion").val());
+        formData.append('centro_receptor', $this.find("#centro_receptor").val());
+        formData.append('centro_destino', $this.find("#centro_destino").val());
+        formData.append('unidades', parseInt($this.find("#unidades").val()) || 1);
+        formData.append('cantidad', parseInt($this.find("#cantidad").val()) || 0);
+        formData.append('coste', coste);
+        formData.append('animales', $this.find("#animales").val());
+        formData.append('factura', $this.find("#factura")[0].files[0]);
+        formData.append('coordinada', $this.find("#coordinada").is(":checked"));
 
         var data = {
-            fecha: today(),
-            id_usuario: idUsuario,
             id: i,
             subtipo_donacion: tipoDiners,
             centro_receptor: $this.find("#centro_receptor_diners").val(),
@@ -161,13 +171,23 @@ $(document).ready(function () {
         event.preventDefault();
 
         var $this = $(this);
-
+        var formData = new FormData();
         var coste = parseFloat($this.find("#coste").val());
         if (isNaN(coste)) {
             coste = calcularCoste(
                 $this.find("#subtipo_donacion").val(),
                 $('input[name=radioGama]:checked', '#formMaterial').data('value'));
         }
+        formData.append('id', i);
+        formData.append('subtipo_donacion', $this.find("#subtipo_donacion").val());
+        formData.append('centro_receptor', $this.find("#centro_receptor").val());
+        formData.append('centro_destino', $this.find("#centro_destino").val());
+        formData.append('unidades', parseInt($this.find("#unidades").val()) || 1);
+        formData.append('cantidad', parseInt($this.find("#cantidad").val()) || 0);
+        formData.append('coste', coste);
+        formData.append('animales', $this.find("#animales").val());
+        formData.append('factura', $this.find("#factura")[0].files[0]);
+        formData.append('coordinada', $this.find("#coordinada").is(":checked"));
 
         var data = {
             id: i,
@@ -180,7 +200,9 @@ $(document).ready(function () {
             animales: $this.find("#animales").val(),
             factura: $this.find("#factura").val(),
             coordinada: $this.find("#coordinada").is(":checked"),
+            factura: $this.find("#factura")[0].files[0],
         };
+        formDonacions[i] = formData;
         donacions[i] = data;
         i++;
         afegirDonacio(data);
@@ -314,7 +336,7 @@ $(document).ready(function () {
             $('.spinner').removeClass('d-none');
             donacionsEnviades = donacions.length;
             donacionsRebudes = 0;
-            donacions.forEach(donacio => {
+            formDonacions.forEach(donacio => {
                 storeDonacio(donacio);
             });
         }
@@ -336,14 +358,24 @@ function getDonant(dni, callback) {
 
 // Envia a la API la informacio sobre les diferents doncions;
 function storeDonacio(dataDonacio) {
-    dataDonacio.fecha = today()
-    dataDonacio.id_usuario = idUsuario;
-    dataDonacio.id_donante = donante.id;
+    // dataDonacio.fecha = today()
+    // dataDonacio.id_usuario = idUsuario;
+    // dataDonacio.id_donante = donante.id;
+    // var data = new FormData();
+    // data.append('factura', dataDonacio.factura);
+
+    dataDonacio.append('fecha', today());
+    dataDonacio.append('id_usuario', idUsuario);
+    dataDonacio.append('id_donante', donante.id);
+
 
     $.ajax({
         async: 'true',
         method: 'POST',
         data: dataDonacio,
+        processData: false,
+        contentType: false,
+        enctype: 'multipart/form-data',
         url: '../api/donations',
         success: function (resp) {
             console.log(resp);

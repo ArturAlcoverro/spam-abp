@@ -7,6 +7,7 @@ use App\Models\Tipo;
 use App\Models\Subtipo;
 use App\Models\Centro;
 use App\Models\Animal;
+use App\Models\Donante;
 use Illuminate\Http\Request;
 
 class DonativoController extends Controller
@@ -22,6 +23,7 @@ class DonativoController extends Controller
         $subtipos = Subtipo::all();
         $centros = Centro::all();
         $animales = Animal::all();
+
         $data["tipos"] = $tipos;
         $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
@@ -41,10 +43,15 @@ class DonativoController extends Controller
         $subtipos = Subtipo::all();
         $centros = Centro::all();
         $animales = Animal::all();
+        $particulares = Donante::where('tipos_donantes_id', 2)->get();
+        $empresas = Donante::where('tipos_donantes_id', 1)->get();
+
         $data["tipos"] = $tipos;
         $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
         $data["animales"] = $animales;
+        $data["empresas"] = $empresas;
+        $data["particulares"] = $particulares;
         return view('privada.crearDonacion', $data);
     }
 

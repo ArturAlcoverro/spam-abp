@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\DonanteResource;
 use Illuminate\Database\QueryException;
 use App\Clases\Utilitat;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class DonativoAPIController extends Controller
 {
@@ -47,10 +50,19 @@ class DonativoAPIController extends Controller
         $donativo->coste = $request->input('coste');
         $donativo->subtipos_id = $request->input('subtipo_donacion');
         $donativo->unidad = $request->input('unidades');
-        $donativo->ruta_factura = $request->input('factura');
         $donativo->usuarios_id = $request->input('id_usuario');
         $donativo->donantes_id = $request->input('id_donante');
         $donativo->fecha_donativo = $request->input('fecha');
+
+        $file = $request->file('factura');
+        if($file){
+            $file_path = rand() . rand() . ' ' . $file->getClientOriginalName();
+            Storage::disk('public')->putFileAs('facturas/', $file, $file_path);
+            $donativo->ruta_factura = $file_path;
+        }
+        else{
+            return json_encode($request->file('factura'));
+        }
 
         $request->input('coordinada') == true ?
                 $donativo->es_coordinada = 1 :
