@@ -168,7 +168,7 @@
     </div>
 
     <script>
-        alert('Estas seguro?', 'Se eliminaran los registros seleccionados', function(){})
+
     </script>
 
 

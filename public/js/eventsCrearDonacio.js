@@ -137,9 +137,9 @@ $(document).ready(function () {
         var $this = $(this);
         var formData = new FormData();
         formData.append('id', i);
-        formData.append('subtipo_donacion', $this.find("#subtipo_donacion").val());
-        formData.append('centro_receptor', $this.find("#centro_receptor").val());
-        formData.append('centro_destino', $this.find("#centro_destino").val());
+        formData.append('subtipo_donacion', tipoDiners);
+        formData.append('centro_receptor', $this.find("#centro_receptor_diners").val());
+        formData.append('centro_destino', $this.find("#centro_destino_diners").val());
         formData.append('unidades', 0);
         formData.append('cantidad', 0);
         formData.append('coste', parseFloat($this.find("#costeDiners").val()));
@@ -159,6 +159,7 @@ $(document).ready(function () {
             factura: $this.find("#FacturaDiners").val(),
             coordinada: $this.find("#spamDiners").is(":checked"),
         };
+        formDonacions[i] = formData;
         donacions[i] = data;
         i++;
         afegirDonacio(data);
@@ -259,7 +260,7 @@ $(document).ready(function () {
         }
     });
 
-    //Eliminem la fila selccionada
+    //Visualitzem la fila selccionada
     $('#tablaDonacions tbody').on('click', '.btn-edit', function () {
         var row = table.row($(this).parents('tr')).data();
         var data;
@@ -304,19 +305,23 @@ $(document).ready(function () {
 
     //Eliminem la fila selccionada
     $('#tablaDonacions tbody').on('click', '.btn-delete', function () {
-        var data = table.row($(this).parents('tr')).data();
-        var deleteObj;
-
+        var $this = $(this);
+        var data = table.row($this.parents('tr')).data();
         var index = donacions.map(x => {
             return x.id;
         }).indexOf(data[4]);
-        donacions.splice(index, 1);
 
-        table.row($(this).parents('tr')).remove().draw();
-        if (table.rows().count() == 0) {
-            $('#donacions').hide();
-            isDonacions = false;
-        }
+        alert('Estas seguro?', 'Se eliminara eol registro seleccionado', function () {
+
+            donacions.splice(index, 1);
+            formDonacions.splice(index, 1);
+
+            table.row($this.parents('tr')).remove().draw();
+            if (table.rows().count() == 0) {
+                $('#donacions').hide();
+                isDonacions = false;
+            }
+        });
     });
 
     $('#tablaDonacions tbody').on('click', '.btn-edit', function () {
@@ -334,7 +339,7 @@ $(document).ready(function () {
         else {
             $('.unable').show();
             $('.spinner').removeClass('d-none');
-            donacionsEnviades = donacions.length;
+            donacionsEnviades = table.rows().count();
             donacionsRebudes = 0;
             formDonacions.forEach(donacio => {
                 storeDonacio(donacio);
@@ -358,11 +363,6 @@ function getDonant(dni, callback) {
 
 // Envia a la API la informacio sobre les diferents doncions;
 function storeDonacio(dataDonacio) {
-    // dataDonacio.fecha = today()
-    // dataDonacio.id_usuario = idUsuario;
-    // dataDonacio.id_donante = donante.id;
-    // var data = new FormData();
-    // data.append('factura', dataDonacio.factura);
 
     dataDonacio.append('fecha', today());
     dataDonacio.append('id_usuario', idUsuario);

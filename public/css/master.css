@@ -194,8 +194,8 @@ body {
 }
 
 .unable .spinner {
-    width: 115px;
-    height: 115px;
+    width: 80px;
+    height: 80px;
     border-width: 9px;
 }
 
@@ -217,12 +217,12 @@ body {
     position: absolute;
     content: " ";
     background: white;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     z-index: -1;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.431)
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.431)
 }
 
 #alertModal .btn {

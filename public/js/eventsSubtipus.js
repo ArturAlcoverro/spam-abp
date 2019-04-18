@@ -1,3 +1,6 @@
+var donacionsEnviades;
+var donacionsRebudes;
+
 $(document).ready(function () {
     $('#table').DataTable({
         responsive: true,
@@ -85,6 +88,7 @@ function indexSubtipus() {
                     data['tipo_unidad'],
                 ]).draw();
             });
+            $('.unable').hide();
         }
     });
 }
@@ -104,31 +108,49 @@ function editSubtipus() {
 }
 
 function deleteSubtipus() {
-
     var rows = $("#table").DataTable().rows('.selected').data();
+    var msg;
 
     if (rows.length == 0) {
         toast('Per eliminar has de seleccionar UN registre', 2000);
     }
     else {
-        for (var i = 0; i < rows.length; i++) {
-
-            $.ajax({
-                url: "api/subtipos/" + rows[i][0],
-                type: "DELETE",
-                dataType: 'json',
-                async: true,
-                data: {
-                },
-                error: function (resp) {
-                    toast(resp.responseJSON.error, 5000);
-                },
-                beforeSend: function () { },
-                success: function (resp) {
-                    indexSubtipus();
-                }
-            });
+        if (rows.length > 1) {
+            msg = 'Se eliminaran ' + rows.length + ' registros';
+        } else {
+            msg = 'Se eliminara 1 registro';
         }
+        alert('Estas seguro?', msg, function () {
+            donacionsEnviades = rows.length;
+            donacionsRebudes = 0;
+            $('.unable').show();
+
+            for (var i = 0; i < rows.length; i++) {
+
+                $.ajax({
+                    url: "api/subtipos/" + rows[i][0],
+                    type: "DELETE",
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                    },
+                    error: function (resp) {
+                        donacionsRebudes++;
+                        toast(resp.responseJSON.error, 5000);
+                        if (donacionsRebudes == donacionsEnviades) {
+                            $('.unable').hide();
+                        }
+                    },
+                    beforeSend: function () { },
+                    success: function (resp) {
+                        donacionsRebudes++;
+                        if (donacionsRebudes == donacionsEnviades) {
+                            indexSubtipus();
+                        }
+                    }
+                });
+            }
+        });
     }
 }
 

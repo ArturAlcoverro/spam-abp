@@ -1,6 +1,7 @@
+var donacionsEnviades;
+var donacionsRebudes;
+
 $(document).ready(function () {
-
-
     $('#table').DataTable({
         responsive: true,
         dom: 'Blprtip',
@@ -92,36 +93,54 @@ function indexUsers() {
                     data['rol']['rol']
                 ]).draw();
             });
+            $('.unable').hide();
         }
     });
 }
 
 function deleteUsuario() {
-
     var rows = $("#table").DataTable().rows('.selected').data();
+    var msg;
 
     if (rows.length == 0) {
         toast('Per eliminar has de seleccionar UN registre', 2000);
     }
     else {
-        for (var i = 0; i < rows.length; i++) {
-
-            $.ajax({
-                url: "api/users/" + rows[i][0],
-                type: "DELETE",
-                dataType: 'json',
-                async: true,
-                data: {
-                },
-                error: function (resp) {
-                    toast(resp.responseJSON.error, 5000);
-                },
-                beforeSend: function () { },
-                success: function (resp) {
-                    indexUsers();
-                }
-            });
+        if (rows.length > 1) {
+            msg = 'Se eliminaran ' + rows.length + ' registros';
+        } else {
+            msg = 'Se eliminara 1 registro';
         }
+        alert('Estas seguro?', msg, function () {
+            donacionsEnviades = rows.length;
+            donacionsRebudes = 0;
+            $('.unable').show();
+
+            for (var i = 0; i < rows.length; i++) {
+                $.ajax({
+                    url: "api/users/" + rows[i][0],
+                    type: "DELETE",
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                    },
+                    error: function (resp) {
+                        donacionsRebudes++;
+                        toast(resp.responseJSON.error, 5000);
+                        if (donacionsRebudes == donacionsEnviades) {
+                            $('.unable').hide();
+                        }
+                    },
+                    beforeSend: function () { },
+                    success: function (resp) {
+                        donacionsRebudes++;
+                        if (donacionsRebudes == donacionsEnviades) {
+                            indexUsers();
+                        }
+                    }
+                });
+            }
+        });
     }
 }
 

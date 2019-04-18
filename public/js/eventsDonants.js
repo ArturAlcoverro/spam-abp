@@ -1,3 +1,6 @@
+var donacionsEnviades;
+var donacionsRebudes;
+
 $(document).ready(function () {
     $('#table').DataTable({
         responsive: true,
@@ -89,42 +92,56 @@ function indexDonants() {
                     data['pais']
                 ]).draw();
             });
+            $('.unable').hide();
         }
     });
 }
 
 function deleteDonant() {
-
     var rows = $("#table").DataTable().rows('.selected').data();
+    var msg;
 
     if (rows.length == 0) {
         toast('Per eliminar has de seleccionar UN registre', 2000);
     }
     else {
-        for (var i = 0; i < rows.length; i++) {
-
-            $.ajax({
-                url: "api/donants/" + rows[i][0],
-                type: "DELETE",
-                dataType: 'json',
-                async: true,
-                data: {
-                },
-                error: function (resp) {
-
-
-                    //resp.status
-                    //resp.responseJSON.error
-
-
-                    toast(resp.responseJSON.error, 5000);
-                },
-                beforeSend: function () { },
-                success: function (resp) {
-                    indexDonants();
-                }
-            });
+        if (rows.length > 1) {
+            msg = 'Se eliminaran ' + rows.length + ' registros';
+        } else {
+            msg = 'Se eliminara 1 registro';
         }
+        alert('Estas seguro?', msg, function () {
+            donacionsEnviades = rows.length;
+            donacionsRebudes = 0;
+            $('.unable').show();
+
+            for (var i = 0; i < rows.length; i++) {
+                $.ajax({
+                    url: "api/donants/" + rows[i][0],
+                    type: "DELETE",
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                    },
+                    error: function (resp) {
+                        //resp.status
+                        //resp.responseJSON.error
+                        donacionsRebudes++;
+                        toast(resp.responseJSON.error, 5000);
+                        if (donacionsRebudes == donacionsEnviades) {
+                            $('.unable').hide();
+                        }
+                    },
+                    beforeSend: function () { },
+                    success: function (resp) {
+                        donacionsRebudes++;
+                        if (donacionsRebudes == donacionsEnviades) {
+                            indexDonants();
+                        }
+                    }
+                });
+            }
+        });
     }
 }
 

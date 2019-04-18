@@ -60,9 +60,6 @@ class DonativoAPIController extends Controller
             Storage::disk('public')->putFileAs('facturas/', $file, $file_path);
             $donativo->ruta_factura = $file_path;
         }
-        else{
-            return json_encode($request->file('factura'));
-        }
 
         $request->input('coordinada') == true ?
                 $donativo->es_coordinada = 1 :
@@ -127,6 +124,7 @@ class DonativoAPIController extends Controller
         $donativo = Donativo::find($id);
 
         try{
+            $donativo->animales()->detach();
             $donativo->delete();
             $respuesta = (new DonanteResource($donativo))
                             ->response()
