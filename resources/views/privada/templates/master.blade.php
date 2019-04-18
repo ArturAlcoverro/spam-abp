@@ -153,21 +153,22 @@
     <!-- Alert Modal -->
     <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body">
-                    are u sure?
+                <div class="modal-body pt-3">
+                    <h5></h5>
+                    <p class="mb-0"></p>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer border-0 pt-0">
                     <button type="button" class="btn btn-secondary boton-amplada mr-1 btn-sm"data-dismiss="modal">Cancelar</button>
-                    <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada btn-sm">Aceptar</button>
+                    <button type="button" class="btn btn-primary boton-amplada btn-sm">Aceptar</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-    // $('#alertModal').modal();
+        alert('Estas seguro?', 'Se eliminaran los registros seleccionados', function(){})
     </script>
 
 

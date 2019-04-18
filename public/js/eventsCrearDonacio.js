@@ -140,12 +140,12 @@ $(document).ready(function () {
         formData.append('subtipo_donacion', $this.find("#subtipo_donacion").val());
         formData.append('centro_receptor', $this.find("#centro_receptor").val());
         formData.append('centro_destino', $this.find("#centro_destino").val());
-        formData.append('unidades', parseInt($this.find("#unidades").val()) || 1);
-        formData.append('cantidad', parseInt($this.find("#cantidad").val()) || 0);
-        formData.append('coste', coste);
-        formData.append('animales', $this.find("#animales").val());
-        formData.append('factura', $this.find("#factura")[0].files[0]);
-        formData.append('coordinada', $this.find("#coordinada").is(":checked"));
+        formData.append('unidades', 0);
+        formData.append('cantidad', 0);
+        formData.append('coste', parseFloat($this.find("#costeDiners").val()));
+        formData.append('animales', []);
+        formData.append('factura', $this.find("#FacturaDiners")[0].files[0]);
+        formData.append('coordinada', $this.find("#spamDiners").is(":checked"));
 
         var data = {
             id: i,
