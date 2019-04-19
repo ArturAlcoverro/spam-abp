@@ -3,6 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/crearDonacio.css') }}">
 <script src="{{asset('js/eventsCrearDonacio.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 @endsection
 
 @section('body')
@@ -95,6 +96,8 @@
             </p>
         </div>
     </div>
+
+    <button onclick="pdf()">Descargar certificado</button>
 
     <h3 class="mt-4">Crea una donació</h3>
     <div class="buttons">

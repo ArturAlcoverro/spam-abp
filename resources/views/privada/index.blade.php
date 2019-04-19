@@ -46,7 +46,9 @@
         <a href='{{url('/subtipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/subtipus.png') }}" alt="">
         </a>
-
+        <a href="" class="btn btn-secondary buttons-html5">
+            <p>FACTURA</p>
+        </a>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="filter-modal">

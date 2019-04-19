@@ -8,6 +8,12 @@
     <script src="{{ asset('js/toast.js') }}"></script>
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
     <script src="{{ asset('js/eventsDonants.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+    {{-- <script type="text/javascript" src="{{ asset('js/libraries/jspdf/zlib.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/libraries/jspdf/png.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libraries/jspdf/addimage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libraries/jspdf/png_support.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libraries/jspdf/jspdf.js') }}"></script> --}}
 @endsection
 
 @section('body')
@@ -48,6 +54,9 @@
                         @csrf
                     </form>
                 </div>
+            </button>
+            <button onclick="pdf()">
+                <p>TEMP</p>
             </button>
         </div>
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
