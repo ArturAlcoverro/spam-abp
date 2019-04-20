@@ -1,20 +1,12 @@
 <?php
     return[
-        "subtype"   =>"Subtipos",
+        "subtype"   =>"Subtipos de donaciones",
         "id"        =>"Id",
+        "name"      =>"Nombre",
         "type"      =>"Tipos",
         "high"      =>"Gama alta",
         "medium"    =>"Gama media",
         "low"       =>"Gama baja",
         "Unity"     =>"Unidad",
-        "back"      =>"Anterior",
-        "next"      =>"Siguiente",
-        "add"       =>"Añadir",
-        "edit"      =>"Editar",
-        "delete"    =>"Eliminar",
-        "copy"      =>"Copiar",
-        "excel"     =>"Excel",
-        "pdf"       =>"PDF",
-        "print"     =>"Imprimir",
     ];
 ?>

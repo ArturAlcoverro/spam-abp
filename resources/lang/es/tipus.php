@@ -3,14 +3,9 @@
         "type"      =>"Tipos",
         "id"        =>"Id",
         "name"      =>"Nombre",
-        "back"      =>"Anterior",
-        "next"      =>"Siguiente",
-        "add"       =>"Añadir",
-        "edit"      =>"Editar",
-        "delete"    =>"Eliminar",
-        "copy"      =>"Copiar",
-        "excel"     =>"Excel",
-        "pdf"       =>"PDF",
-        "print"     =>"Imprimir",
+        "new"       =>"Nuevo tipo",
+        "edit"      =>"Editar tipo",
+        "close"     =>"Cerrar",
+        "accept"    =>"Aceptar"
     ];
 ?>

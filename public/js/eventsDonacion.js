@@ -213,11 +213,6 @@ function filtrar() {
     var fechaInicio = $('#fechaInicio').val();
     var fechaFinal = $('#fechaFinal').val();
 
-    console.log("inicio");
-    console.log($('#fechaInicio').val());
-    console.log("final");
-    console.log($('#fechaFinal').val());
-
     $.ajax({
         url: "api/filtro/" + fechaInicio + "/" + fechaFinal,
         type: "GET",

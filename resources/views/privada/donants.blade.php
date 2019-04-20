@@ -30,7 +30,7 @@
 
     <div class="p-5">
 
-        <h1>Donants</h1>
+        <h1>@lang('donants.donants')</h1>
 
         <div class="toolbar mt-3">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
@@ -47,7 +47,7 @@
                 </div>
             </button>
             <button title="Eliminar" class="btn btn-secondary buttons-html5">
-                <div onclick="deleteDonant()">
+                <div @if(Auth::user()->rol->id == 1) onclick="deleteDonant()" @endif>
                     <img src="{{ asset('media/img/delete.png') }}" alt="">
                     <form id="form_delete" action="" method="post">
                         @method('delete')
@@ -55,19 +55,16 @@
                     </form>
                 </div>
             </button>
-            <button onclick="pdf()">
-                <p>TEMP</p>
-            </button>
         </div>
         <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre</th>
-                    <th>CIF</th>
-                    <th>Tipo</th>
-                    <th>Correo</th>
-                    <th>Pais</th>
+                    <th>@lang('donants.name')</th>
+                    <th>@lang('donants.cif')</th>
+                    <th>@lang('donants.type')</th>
+                    <th>@lang('donants.email')</th>
+                    <th>@lang('donants.country')</th>
                 </tr>
             </thead>
             <tbody>

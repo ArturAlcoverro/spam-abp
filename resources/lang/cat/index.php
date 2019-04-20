@@ -8,15 +8,10 @@
         "donant"            =>"Donant",
         "cost"              =>"Cost",
         "date"              =>"Data",
-        "back"              =>"Anterior",
-        "next"              =>"Següent",
-        "add"               =>"Afegir",
-        "edit"              =>"Editar",
-        "delete"            =>"Eliminar",
-        "copy"              =>"Copiar",
-        "excel"             =>"Excel",
-        "pdf"               =>"PDF",
-        "print"             =>"Imprimir",
-        "filter"            =>"Filtrar",
+        "filter"            =>"Filtrar donacions",
+        "bill"              =>"Factura",
+        "start_date"        =>"Data inici",
+        "end_date"          =>"Data final",
+        "cif"               =>"DNI/CIF"
     ];
 ?>

@@ -5,14 +5,6 @@
         "email"     =>"Correo",
         "name"      =>"Nombre",
         "rol"       =>"Rol",
-        "back"      =>"Anterior",
-        "next"      =>"Siguiente",
-        "add"       =>"Añadir",
-        "edit"      =>"Modificar",
-        "delete"    =>"Eliminar",
-        "copy"      =>"Copiar",
-        "excel"     =>"Excel",
-        "pdf"       =>"PDF",
-        "print"     =>"Imprimir",
+
     ];
 ?>

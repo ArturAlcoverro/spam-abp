@@ -23,7 +23,9 @@
     @include('partial.errores')
 
     <div class="p-5">
-        <h1>Usuarios</h1>
+
+        <h1>@lang('users.users')</h1>
+
         <div class="toolbar">
             <button title="Añadir" class="btn btn-secondary buttons-html5">
                 <a href="{{ action('UsuarioController@create') }}">
@@ -52,10 +54,10 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Name</th>
-                    <th>Rol</th>
+                    <th>@lang('users.username')</th>
+                    <th>@lang('users.email')</th>
+                    <th>@lang('users.name')</th>
+                    <th>@lang('users.rol')</th>
                 </tr>
             </thead>
             <tbody>
