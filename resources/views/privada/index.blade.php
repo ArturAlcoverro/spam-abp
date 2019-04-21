@@ -130,8 +130,8 @@
                     </form>
                 </div>
                 <div class="modal-footer pt-0 border-0">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">Aplicar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('index.cancel')</button>
+                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">@lang('index.aplicar')</button>
                 </div>
             </div>
         </div>

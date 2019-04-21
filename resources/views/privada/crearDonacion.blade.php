@@ -46,7 +46,7 @@
     </script>
 
 <div class="p-5 d-block all">
-
+    <p id="user" hidden>{{ Auth::user()->nombre }}</p>
     <div class="d-flex">
         <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
         <button class="showHide" style="display: none">

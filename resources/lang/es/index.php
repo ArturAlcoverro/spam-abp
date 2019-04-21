@@ -12,6 +12,8 @@
         "bill"              =>"Factura",
         "start_date"        =>"Fecha de inicio",
         "end_date"          =>"Fecha final",
-        "cif"               =>"DNI/CIF"
+        "cif"               =>"DNI/CIF",
+        "cancel"            =>"Cancelar",
+        "aplicar"           =>"Aplicar"
     ];
 ?>
