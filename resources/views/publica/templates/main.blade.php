@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="{{app()->getLocale()}}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +15,14 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="{{url('/')}}"><img class="" src="{{ asset('media/img/logo_spam.png') }}" alt="" style="width: 128px"></a>
+        <a class="navbar-brand" href="{{url('/')}}"><img class="" src="{{ asset('media/img/logo_spam.png') }}" alt="Ir al indice" style="width: 128px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/charts')}}">Estadísticas</a>
+                    <a class="nav-link" href="{{url('/charts')}}">@lang('home.graphics')</a>
                 </li>
             </ul>
         </div>
