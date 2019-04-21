@@ -89,7 +89,7 @@ $(document).ready(function () {
 
 function indexDonaciones() {
     $.ajax({
-        url: "http://localhost:8080/spam-abp/public/api/grafico",
+        url: "api/grafico",
         type: "GET",
         dataType: 'json',
         async: true,
@@ -108,14 +108,14 @@ function indexDonaciones() {
                 if (data['animales'] == "all"){
                     a = "tots";
                 }else{
-                    
+
 
                 }
 
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
-                    data['tema'],                    
+                    data['tema'],
                     data['tipos_donacion'],
                     data['centro'],
                     data['animales'],
