@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donativo;
-use App\Models\Tipo;
-use App\Models\Subtipo;
-use App\Models\Centro;
 use App\Models\Animal;
+use App\Models\Centro;
+use App\Models\Donante;
+use App\Models\Donativo;
+use App\Models\Subtipo;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 
 class DonativoController extends Controller
@@ -22,6 +23,7 @@ class DonativoController extends Controller
         $subtipos = Subtipo::all();
         $centros = Centro::all();
         $animales = Animal::all();
+
         $data["tipos"] = $tipos;
         $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
@@ -41,10 +43,15 @@ class DonativoController extends Controller
         $subtipos = Subtipo::all();
         $centros = Centro::all();
         $animales = Animal::all();
+        $particulares = Donante::where('tipos_donantes_id', 2)->get();
+        $empresas = Donante::where('tipos_donantes_id', 1)->get();
+
         $data["tipos"] = $tipos;
         $data["subtipos"] = $subtipos;
         $data["centros"] = $centros;
         $data["animales"] = $animales;
+        $data["empresas"] = $empresas;
+        $data["particulares"] = $particulares;
         return view('privada.crearDonacion', $data);
     }
 
@@ -115,18 +122,17 @@ class DonativoController extends Controller
         $donativo->ruta_factura = $request->input('factura');
 
         $request->input('coordinada') == true ?
-                $donativo->es_coordinada = 1 :
-                $donativo->es_coordinada = 0;
+        $donativo->es_coordinada = 1 :
+        $donativo->es_coordinada = 0;
 
         $request->input('factura') == "" ?
-                $donativo->hay_factura = 0 :
-                $donativo->hay_factura = 1 ;
+        $donativo->hay_factura = 0 :
+        $donativo->hay_factura = 1;
 
-        try{
+        try {
             $donativo->save();
-        }
-        catch(QueryException $e){
-            $error=Utilitat::errorMessage($e);
+        } catch (QueryException $e) {
+            $error = Utilitat::errorMessage($e);
             $request->session()->flash('error', $error);
             return redirect()->action('DonativoController@edit')->withInput();
         }

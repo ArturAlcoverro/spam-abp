@@ -3,6 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/crearDonacio.css') }}">
 <script src="{{asset('js/eventsCrearDonacio.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 @endsection
 
 @section('body')
@@ -33,6 +34,9 @@
         var idUsuario = {{Auth::user()->id}}
         var subtipos = {!! json_encode($subtipos->toArray()) !!};
         var centros = {!! json_encode($centros->toArray()) !!};
+        var particulares = {!! json_encode($particulares->toArray()) !!};
+        var empresas = {!! json_encode($empresas->toArray()) !!};
+
         var tipoDiners;
         subtipos.forEach(element => {
             if(element.nombre.toLowerCase() == 'diners'){
@@ -42,9 +46,7 @@
     </script>
 
 <div class="p-5 d-block all">
-    <div class="unable" style="display: none">
-            <div class="spinner"></div>
-    </div>
+    <p id="user" hidden>{{ Auth::user()->nombre }}</p>
     <div class="d-flex">
         <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
         <button class="showHide" style="display: none">
@@ -94,6 +96,8 @@
             </p>
         </div>
     </div>
+
+    <button onclick="pdf()">Descargar certificado</button>
 
     <h3 class="mt-4">Crea una donació</h3>
     <div class="buttons">
@@ -190,7 +194,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="container" id="formMaterial" method="POST">
+                <form class="container" id="formMaterial" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="form-group">
                             <label for="lbltipo_donacion" class=" col-form-label">Tipo de donacion</label>

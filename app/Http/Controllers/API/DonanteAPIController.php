@@ -197,6 +197,7 @@ class DonanteAPIController extends Controller
         $donante = Donante::find($id_donante);
 
         try{
+            $donante->animal()->detach();
             $donante->delete();
             $respuesta = (new DonanteResource($donante))
                             ->response()

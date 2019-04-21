@@ -22,7 +22,7 @@
 </script>
 <div class="p-5">
 
-    <h1>Donacions</h1>
+    <h1>@lang('index.donations')</h1>
 
     <div class="toolbar mt-3">
         <a href="{{ action('DonativoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
@@ -34,7 +34,7 @@
                 @csrf
             </form>
         </button>
-        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5" onclick="deleteDonacion()">
+        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5" @if(Auth::user()->rol->id == 1) onclick="deleteDonacion()" @endif>
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
@@ -46,14 +46,16 @@
         <a href='{{url('/subtipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/subtipus.png') }}" alt="">
         </a>
-
+        <a href="" class="btn btn-secondary buttons-html5" title="@lang('index.bill')">
+            <img height="0px" src="{{ asset('media/img/bill.png') }}" alt="">
+        </a>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="filter-modal">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header pb-0">
-                    <h4 class="modal-title" id="exampleModalLabel">Filtra donacións</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">@lang('index.filter')</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -63,13 +65,13 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-12">
-                                <label for="dni" class="col-form-label">DNI/CIF del donante</label>
+                                <label for="dni" class="col-form-label">@lang('index.cif')</label>
                                 <div class="">
-                                    <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI/CIF">
+                                    <input type="text" name="dni" id="dni" class="form-control" placeholder="@lang('index.cif')">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="tipos" class="col-form-label">Tipo</label>
+                                <label for="tipos" class="col-form-label">@lang('index.type')</label>
                                 <div class="">
                                     <select name="tipos" id="tipos" class="form-control">
                                         <option value=""></option>
@@ -80,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="subtipos" class="col-form-label">Subtipo</label>
+                                <label for="subtipos" class="col-form-label">@lang('index.subtype')</label>
                                 <div class="">
                                     <select name="subtipos" id="subtipos" class="form-control">
                                         <option value=""></option>
@@ -91,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="centrosReceptores" class="col-form-label">Centro receptor</label>
+                                <label for="centrosReceptores" class="col-form-label">@lang('index.center_rec')</label>
                                 <div class="">
                                     <select name="centrosReceptores" id="centrosReceptores" class="form-control">
                                         <option value=""></option>
@@ -102,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="centrosDestino" class="col-form-label">Centro destino</label>
+                                <label for="centrosDestino" class="col-form-label">@lang('index.center_dest')</label>
                                 <div class="">
                                     <select name="centrosDestino" id="centrosDestino" class="form-control">
                                         <option value=""></option>
@@ -113,23 +115,23 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="fechaInicio" class="col-form-label">Fecha inicio</label>
+                                <label for="fechaInicio" class="col-form-label">@lang('index.start_date')</label>
                                 <div class="">
-                                    <input type="date" name="fechaInicio" id="fechaInicio" class="form-control" placeholder="Fecha inicio">
+                                    <input type="date" name="fechaInicio" id="fechaInicio" class="form-control" placeholder="@lang('index.start_date')">
                                 </div>
                             </div>
                             <div class="col-6">
-                                <label for="fechaFinal" class="col-form-label">Fecha final</label>
+                                <label for="fechaFinal" class="col-form-label">@lang('index.end_date')</label>
                                 <div class="">
-                                    <input type="date" name="fechaFinal" id="fechaFinal" class="form-control" placeholder="Fecha final">
+                                    <input type="date" name="fechaFinal" id="fechaFinal" class="form-control" placeholder="@lang('index.end_date')">
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer pt-0 border-0">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">Aplicar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('index.cancel')</button>
+                    <button type="button" class="btn btn-primary" onclick="filtrar()" data-dismiss="modal">@lang('index.aplicar')</button>
                 </div>
             </div>
         </div>
@@ -142,18 +144,18 @@
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>@lang('index.id')</th>
                     <th>IdTipo</th>
-                    <th>Tipo</th>
+                    <th>@lang('index.type')</th>
                     <th>IdSubtipo</th>
-                    <th>Subtipo</th>
+                    <th>@lang('index.subtype')</th>
                     <th>IdCentro1</th>
-                    <th>Centro Receptor</th>
+                    <th>@lang('index.center_rec')</th>
                     <th>IdCentro2</th>
-                    <th>Centro Destino</th>
-                    <th>Donante</th>
-                    <th>Coste</th>
-                    <th>Fecha</th>
+                    <th>@lang('index.center_dest')</th>
+                    <th>@lang('index.donant')</th>
+                    <th>@lang('index.cost')</th>
+                    <th>@lang('index.date')</th>
                 </tr>
             </thead>
             <tbody>

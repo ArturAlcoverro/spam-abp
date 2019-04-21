@@ -1,5 +1,7 @@
-$(document).ready(function () {
+var donacionsEnviades;
+var donacionsRebudes;
 
+$(document).ready(function () {
     $('#table').DataTable({
         responsive: true,
         dom: 'Blprtip',
@@ -138,35 +140,56 @@ function indexDonaciones() {
                     data['fecha_donativo']
                 ]).draw();
             });
+            $('.unable').hide();
         }
     });
 }
 
 function deleteDonacion() {
     var rows = $("#table").DataTable().rows('.selected').data();
+    var msg;
 
     if (rows.length == 0) {
         toast('Per eliminar has de seleccionar UN registre', 2000);
     } else {
-
-        for (var i = 0; i < rows.length; i++) {
-
-            $.ajax({
-                url: "api/donations/" + rows[i][0],
-                type: "DELETE",
-                dataType: 'json',
-                async: true,
-                data: {
-                },
-                error: function (resp) {
-                    toast(resp.responseJSON.error, 5000);
-                },
-                beforeSend: function () { },
-                success: function (resp) {
-                    indexDonaciones();
-                }
-            });
+        if (rows.length > 1) {
+            msg = 'Se eliminaran ' + rows.length + ' registros';
+        } else {
+            msg = 'Se eliminara 1 registro';
         }
+        alert('Estas seguro?', msg, function () {
+            donacionsEnviades = rows.length;
+            donacionsRebudes = 0;
+            $('.unable').show();
+
+            for (var i = 0; i < rows.length; i++) {
+                $.ajax({
+                    url: "api/donations/" + rows[i][0],
+                    type: "DELETE",
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                    },
+                    error: function (jqXHR, exception) {
+                        donacionsRebudes++;
+                        console.log(jqXHR);
+                        console.log(exception);
+                        reload();
+                        toast(exception.responseJSON.error, 5000);
+                        if (donacionsRebudes == donacionsEnviades) {
+                            $('.unable').hide();
+                        }
+                    },
+                    beforeSend: function () { },
+                    success: function (resp) {
+                        donacionsRebudes++;
+                        if (donacionsRebudes == donacionsEnviades) {
+                            indexDonaciones();
+                        }
+                    }
+                });
+            }
+        });
     }
 }
 
@@ -189,11 +212,6 @@ function filtrar() {
 
     var fechaInicio = $('#fechaInicio').val();
     var fechaFinal = $('#fechaFinal').val();
-
-    console.log("inicio");
-    console.log($('#fechaInicio').val());
-    console.log("final");
-    console.log($('#fechaFinal').val());
 
     $.ajax({
         url: "api/filtro/" + fechaInicio + "/" + fechaFinal,
@@ -236,3 +254,4 @@ function filtrar() {
         }
     });
 }
+

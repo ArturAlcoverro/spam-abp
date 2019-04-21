@@ -17,7 +17,7 @@
 </script>
 <div class="p-5">
 
-    <h1>Subtipus de donacions</h1>
+    <h1>@lang('subtipus.subtype')</h1>
 
     <div class="toolbar mt-3">
         <a href="{{ action('SubtipoController@create') }}" title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5">
@@ -47,13 +47,13 @@
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Gama alta</th>
-                    <th>Gama media</th>
-                    <th>Gama baja</th>
-                    <th>Unidad</th>
+                    <th>@lang('subtipus.id')</th>
+                    <th>@lang('subtipus.name')</th>
+                    <th>@lang('subtipus.type')</th>
+                    <th>@lang('subtipus.high')</th>
+                    <th>@lang('subtipus.medium')</th>
+                    <th>@lang('subtipus.low')</th>
+                    <th>@lang('subtipus.unity')</th>
                 </tr>
             </thead>
             <tbody>

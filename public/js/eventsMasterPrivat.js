@@ -36,6 +36,11 @@ $(document).ready(function () {
 
     $('#body').removeClass('d-none');
 
+    $('#alertModal .btn-secondary').click(function () {
+        $('#alertModal .btn-primary').unbind('click');
+    });
+
+
 });
 
 function showMenu() {
@@ -75,4 +80,16 @@ function toast(msg, time) {
     setTimeout(function () {
         $('.toast').fadeOut(500);
     }, time);
+}
+
+function alert(title, text, callback) {
+    $('#alertModal h5').text(title);
+    $('#alertModal p').text(text);
+    $('#alertModal').modal({ backdrop: 'static', keyboard: false });
+    $('#alertModal .btn-primary').click(function () {
+        callback();
+        $('#alertModal').modal('hide');
+        $(this).unbind('click');
+    });
+
 }

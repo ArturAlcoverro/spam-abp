@@ -17,7 +17,7 @@
 </script>
 <div class="p-5">
 
-    <h1>Centros</h1>
+    <h1>@lang('centros.centers')</h1>
 
     <div class="toolbar mt-3">
         <a title="@lang('master.add_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#create-modal">
@@ -36,7 +36,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                     <div class="modal-header border-0 pb-0">
-                        <h5 class="modal-title" id="exampleModalLabel">Nuevo centro</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">@lang('centros.new')</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -46,17 +46,17 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-12">
-                                <label for="addNombre" class="col-form-label">Nombre</label>
+                                <label for="addNombre" class="col-form-label">@lang('centros.name')</label>
                                 <div class="">
-                                    <input name="addNombre" id="addNombre" type="text" placeholder="Nombre" class="form-control">
+                                    <input name="addNombre" id="addNombre" type="text" placeholder="@lang('centros.name')" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer pt-0 border-0">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button onclick="addCentros()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('centros.close')</button>
+                    <button onclick="addCentros()" type="button" class="btn btn-primary" data-dismiss="modal">@lang('centros.accept')</button>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar centro</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@lang('centros.edit')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -76,17 +76,17 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-12">
-                                <label for="editNombre" class="col-form-label">Nombre</label>
+                                <label for="editNombre" class="col-form-label">@lang('centros.name')</label>
                                 <div class="">
-                                    <input name="editNombre" id="editNombre" type="text" placeholder="Nombre" class="form-control">
+                                    <input name="editNombre" id="editNombre" type="text" placeholder="@lang('centros.name')" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer pt-0 border-0">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button onclick="editCentros()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('centros.close')</button>
+                    <button onclick="editCentros()" type="button" class="btn btn-primary" data-dismiss="modal">@lang('centros.accept')</button>
                 </div>
             </div>
         </div>
@@ -99,8 +99,8 @@
     <table id="table" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
+                    <th>@lang('centros.id')</th>
+                    <th>@lang('centros.name')</th>
                 </tr>
             </thead>
             <tbody>

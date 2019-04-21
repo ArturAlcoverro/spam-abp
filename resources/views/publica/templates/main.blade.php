@@ -7,7 +7,7 @@
     <title>@yield('name')</title>
     <link rel="shortcut icon" type="image/png" href=""/>
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap.min.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
