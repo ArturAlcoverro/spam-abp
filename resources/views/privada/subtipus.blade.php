@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    @lang('subtipus.subtype')
+@endsection
+
 @section('css')
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
     <script src="{{ asset('js/eventsSubtipus.js') }}"></script>
@@ -53,7 +57,7 @@
                     <th>@lang('subtipus.high')</th>
                     <th>@lang('subtipus.medium')</th>
                     <th>@lang('subtipus.low')</th>
-                    <th>@lang('subtipus.unity')</th>
+                    <th>@lang('subtipus.unit')</th>
                 </tr>
             </thead>
             <tbody>

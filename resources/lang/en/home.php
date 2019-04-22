@@ -1,13 +1,13 @@
 <?php
     return[
-        "graphics"      =>"Estadisticas",
-        "text1"         =>"¿Puede un animal sin hogar disfrutar tanto como tu mascota?",
-        "text2"         =>"¡Nosotros así lo creemos!",
-        "text3"         =>"Cada dia en los centros de acogida se cuidan innumerables animales y se gasta una gran cantidad de recursos",
-        "text4"         =>"Recursos como:",
-        "food"          =>"Comida",
-        "medicines"     =>"Medicinas",
-        "higiene"       =>"Higiene",
-        "text5"         =>"¡Contamos con tu ayuda!"
+        "graphics"      =>"Stats",
+        "text1"         =>"Can a homeless animal enjoy as much as your pet?",
+        "text2"         =>"We believe so!",
+        "text3"         =>"Countless animals are taken care of every day in the shelters and a lot of resources are spent",
+        "text4"         =>"Resources like:",
+        "food"          =>"Food",
+        "medicines"     =>"Medicines",
+        "higiene"       =>"Hygiene",
+        "text5"         =>"We count on your help!"
     ];
 ?>

@@ -62,27 +62,26 @@ $(document).ready(function () {
             {
                 targets: [0],
                 visible: false,
-                //searchable: false
             },
             {
                 targets: [1],
                 visible: false,
-                //searchable: false
             },
             {
                 targets: [3],
                 visible: false,
-                //searchable: false
             },
             {
                 targets: [5],
                 visible: false,
-                // searchable: false
             },
             {
                 targets: [7],
                 visible: false,
-                // searchable: false
+            },
+            {
+                targets: [13],
+                visible: false,
             },
         ]
     });
@@ -104,6 +103,10 @@ $(document).ready(function () {
 
     $('#fechaInicio').val(today2);
     $('#fechaFinal').val(today);
+
+    $('#facturaButton').click(function (event) {
+        descargarFactura(event);
+    })
 
     indexDonaciones();
 });
@@ -137,7 +140,9 @@ function indexDonaciones() {
                     data['centro_desti']['nombre'],
                     data['donante']['cif'],
                     data['coste'],
-                    data['fecha_donativo']
+                    data['fecha_donativo'],
+                    data['hay_factura'] == '0' ? 'Si' : 'No',
+                    data['ruta_factura']
                 ]).draw();
             });
             $('.unable').hide();
@@ -207,6 +212,28 @@ function editDonacion() {
         $('#form_edit').submit();
     }
 }
+
+function descargarFactura(event) {
+    var rows = $("#table").DataTable().rows('.selected').data();
+    if (rows.length != 1) {
+        toast('Seleccionar UN registre per descarregar la seva factura', 2000);
+        event.preventDefault();
+    }
+    else if (rows[0][12] == 'No') {
+        toast('Aquesta donació no te factura', 2000);
+        event.preventDefault();
+    }
+    else {
+        var ruta = rows[0][13];
+        if (ruta != '') {
+            $('#facturaButton').attr('href', asset + ruta);
+        } else {
+            toast('Error! Aquesta donació no te factura', 2000);
+            event.preventDefault();
+        }
+    }
+}
+
 
 function filtrar() {
 

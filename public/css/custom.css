@@ -153,6 +153,23 @@ section .section-title {
     }
 }
 
-video:focus{
-    border-color: transparent;
+.dropdown-lenguage {
+    background: transparent;
+    border: 0px;
+    color: white;
+    margin-top: 6px;
+    margin-right: 15px;
+}
+
+.dropdown-lenguage::after {
+    display: none !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .dropdown-lenguage {
+        margin-right: 0;
+    }
+
 }

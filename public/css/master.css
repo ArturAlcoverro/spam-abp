@@ -168,7 +168,7 @@ body {
     position: fixed;
     top: 90%;
     left: 50%;
-    z-index: 10;
+    z-index: 1051;
     font-size: 18px;
     font-weight: 600;
     padding: 1rem 2rem;

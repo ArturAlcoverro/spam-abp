@@ -181,7 +181,7 @@ form .btn-donant {
 #infoParticular p,
 #infoEmpresa p {
     color: #717171;
-    margin-top: 0.5rem;
+    margin: 0;
     font-style: italic
 }
 
@@ -214,6 +214,19 @@ form .btn-donant {
 
 .rotate-180 {
     transform: rotate(180deg);
+}
+
+.dataTables_filter {
+    text-align: left !important;
+    display: inline-block;
+}
+
+.dataTables_filter input {
+    margin-top: .5rem
+}
+
+.dataTables_paginate {
+    margin-top: 0rem !important
 }
 
 @media only screen and (max-width: 400px) {

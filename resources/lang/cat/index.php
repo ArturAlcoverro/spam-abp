@@ -13,7 +13,7 @@
         "start_date"        =>"Data inici",
         "end_date"          =>"Data final",
         "cif"               =>"DNI/CIF",
-        "cancel"            =>"Cancelar",
+        "cancel"            =>"Cancel·lar",
         "aplicar"           =>"Aplicar"
     ];
 ?>

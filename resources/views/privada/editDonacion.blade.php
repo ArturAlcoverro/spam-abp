@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Editar donacion
+    @lang('editDonacion.edit')
 @endsection
 
 @section('css')
@@ -22,9 +22,9 @@
         <form action="{{action('DonativoController@update', [$donativo->id])}}" class="container" id="formMaterial" method="POST">
             @method('put')
             @csrf
-            <h3>Edita donació</h3>
+            <h3>@lang('editDonacion.edit')</h3>
             <div class="form-group">
-                <label for="lbltipo_donacion" class=" col-form-label">Tipo de donacion</label>
+                <label for="lbltipo_donacion" class=" col-form-label">@lang('editDonacion.type')</label>
                 <div class="">
                     <select name="tipo_donacion" id="tipo_donacion" class="form-control">
                         @foreach ($tipos as $tipo)
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="lblsubtipo_donacion" class="col-form-label">Subtipo de donacion</label>
+                <label for="lblsubtipo_donacion" class="col-form-label">@lang('editDonacion.subtype')</label>
                 <div class="">
                     <select required name="subtipo_donacion" id="subtipo_donacion" class="form-control">
 
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="lblcentro_receptor" class=" col-form-label">Centro receptor</label>
+                <label for="lblcentro_receptor" class=" col-form-label">@lang('editDonacion.centre_rec')</label>
                 <div class="">
                     <select name="centro_receptor" id="centro_receptor" class="form-control">
                         @foreach ($centros as $centro)
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="lblcentro_destino" class=" col-form-label">Centro destino</label>
+                <label for="lblcentro_destino" class=" col-form-label">@lang('editDonacion.cenre_dest')</label>
                 <div class="">
                     <select name="centro_destino" id="centro_destino" class="form-control">
                         @foreach ($centros as $centro)
@@ -74,25 +74,25 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="unidades" class="col-form-label">Unidades</label>
+                <label for="unidades" class="col-form-label">@lang('editDonacion.units')</label>
                 <div class="">
-                    <input value="{{$donativo->cantidad}}" type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
+                    <input value="{{$donativo->cantidad}}" type="number" name="unidades" id="unidades" class="form-control" placeholder="@lang('editDonacion.units')">
                 </div>
             </div>
             <div class="form-group">
-                <label for="cantidad" class="col-form-label">Cantidad p.u. <span id="unidadMedida"></span></label>
+                <label for="cantidad" class="col-form-label">@lang('editDonacion.quantity') <span id="unidadMedida"></span></label>
                 <div class="">
-                    <input value="{{$donativo->peso}}" type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
+                    <input value="{{$donativo->peso}}" type="number" name="cantidad" id="cantidad" class="form-control" placeholder="@lang('editDonacion.quantity')">
                 </div>
             </div>
             <div class="form-group">
-                <label for="coste" class="col-form-label">Valor estimado (€)</label>
+                <label for="coste" class="col-form-label">@lang('editDonacion.value')</label>
                 <div class="">
-                    <input value="{{$donativo->coste}}" type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="Coste">
+                    <input value="{{$donativo->coste}}" type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="@lang('editDonacion.value')">
                 </div>
             </div>
             <div class="form-group">
-                <label for="animales" class=" col-form-label">Va dirigida a algun animal?</label>
+                <label for="animales" class=" col-form-label">@lang('editDonacion.animal')</label>
                 <div class="">
                     <select name="animales[]" id="animales" size="5" multiple="multiple" class="custom-select p-0">
                         @foreach ($animales as $animal)
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="form-group" style="overflow: hidden">
-                <label for="factura" class="col-form-label d-block">Factura</label>
+                <label for="factura" class="col-form-label d-block">@lang('editDonacion.bill')</label>
                 <input type="file" name="factura" id="factura">
             </div>
             <div class="form-group">
@@ -116,12 +116,12 @@
                     @else
                         <input type="checkbox" class="custom-control-input" name="coordinada" id="coordinada">
                     @endif
-                    <label class="custom-control-label" for="coordinada">Es coordinada</label>
+                    <label class="custom-control-label" for="coordinada">@lang('editDonacion.coordination')</label>
                 </div>
             </div>
             <div class="form-group float-right">
-                <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
-                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
+                <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">@lang('editDonacion.cancel')</button>
+                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">@lang('editDonacion.accept')</button>
             </div>
         </form>
     </div>

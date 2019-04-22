@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Donacions
+    @lang('index.donations')
 @endsection
 
 @section('css')

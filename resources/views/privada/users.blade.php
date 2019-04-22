@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Users
+    @lang('users.users')
 @endsection
 
 @section('css')

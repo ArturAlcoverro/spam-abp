@@ -41,3 +41,13 @@ $('#tipos_donante').change(function () {
         break;
     }
 });
+
+function send() {
+
+    if($("#nombre").val() == "" && $("#cif").val() =="" && $("#correo").val() == ""){
+        toast('Añade un nombre, email o cif', 5000);
+    }
+    else{
+        $('#form-create').submit();
+    }
+}
