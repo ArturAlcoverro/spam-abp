@@ -85,6 +85,9 @@
             <p id="dniParticular">
                 <span></span>
             </p>
+            <p id="correuParticular">
+                <span></span>
+            </p>
         </div>
 
         <div id="infoEmpresa" style="display: none">
@@ -92,6 +95,9 @@
                 <span></span>
             </p>
             <p id="dniEmpresa">
+                <span></span>
+            </p>
+            <p id="correuEmpresa">
                 <span></span>
             </p>
         </div>
@@ -136,21 +142,38 @@
 
 {{-- Modal insertar DNI --}}
 <div class="modal fade" id="modalParticular" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">DNI del particular</h5>
+                <h4 class="modal-title" id="exampleModalLongTitle">Selecciona un particular</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <input id="dni" type="text" class="form-control" maxlength="9">
-                    <small class="not-found form-text text-danger d-none ml-1">No se ha encontrado ningun particular con este DNI.</small>
-                    <small class="empty-error form-text text-muted d-none ml-1">Escribe el DNI del particular</small>
-                </div>
-                <button id="cargaDni" type="button" class="btn btn-primary float-right">Cargar donante</button>
+                    <table id="table-particulars" class="table table-hover table-striped display responsive nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>DNI</th>
+                                <th>Correu electronic</th>
+                                <th>ID</th>
+                                <th>Tipus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($particulares as $particular)
+                            <tr>
+                                <td>{{$particular->nombre}}</td>
+                                <td>{{$particular->cif}}</td>
+                                <td>{{$particular->correo}}</td>
+                                <td>{{$particular->id}}</td>
+                                <td>{{$particular->tipos_donantes_id}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                <button id="seleccionarParticular" type="button" class="btn btn-primary float-right mt-3">Seleccionar</button>
                 <div class="spinner float-right mr-2 d-none"></div>
             </div>
 
@@ -160,23 +183,39 @@
 
 {{-- Modal insertar CIF --}}
 <div class="modal fade" id="modalEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">CIF de la empresa</h5>
+                <h4 class="modal-title" id="exampleModalLongTitle">Selecciona una empresa</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" maxlength="9">
-                    <small class="not-found form-text text-danger d-none ml-1">No se ha encontrado ninguna empresa con este CIF.</small>
-                    <small class="empty-error form-text text-muted d-none ml-1">Escribe el CIF de la empresa</small>
-                </div>
-                <button type="button" class="btn btn-primary float-right">Cargar donante</button>
+                    <table id="table-empresas" class="table table-hover table-striped display responsive nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>DNI</th>
+                                <th>Correu electronic</th>
+                                <th>ID</th>
+                                <th>Tipus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($empresas as $empresa)
+                            <tr>
+                                <td>{{$empresa->nombre}}</td>
+                                <td>{{$empresa->cif}}</td>
+                                <td>{{$empresa->correo}}</td>
+                                <td>{{$empresa->id}}</td>
+                                <td>{{$empresa->tipos_donantes_id}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                <button id="seleccionarEmpresa" type="button" class="btn btn-primary float-right mt-3">Seleccionar</button>
                 <div class="spinner float-right mr-2 d-none"></div>
-
             </div>
 
         </div>
