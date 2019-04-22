@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    @lang('centros.centers')
+@endsection
+
 @section('css')
     <script src="{{ asset('js/eventsIndexPrivat.js') }}"></script>
     <script src="{{ asset('js/eventsCentros.js') }}"></script>

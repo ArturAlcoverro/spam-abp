@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Crear donante
+    @lang('createDonante.new')
 @endsection
 
 @section('css')
@@ -29,7 +29,6 @@
             <div class="form-group">
                 <label for="nombre" class="col-form-label">@lang('createDonante.name')</label>
                 <div class="">
-                    {{-- HACER UNO DE LOS 3 OBLIGATORIO --}}
                     <input type="text" name="nombre" id="nombre" class="form-control" placeholder="@lang('createDonante.name')">
                 </div>
             </div>

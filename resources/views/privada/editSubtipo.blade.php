@@ -1,5 +1,9 @@
 @extends('privada.templates.master')
 
+@section('name')
+    @lang('editSubtipo.edit')
+@endsection
+
 @section('css')
 
 @endsection

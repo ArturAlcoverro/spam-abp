@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Editar usuari
+    @lang('editUser.edit')
 @endsection
 
 @section('css')
