@@ -83,13 +83,25 @@ function indexDonants() {
             $("#table").DataTable().clear().draw();
 
             resp['data'].forEach(function (data) {
+
+                var yesno;
+
+                if(data['es_habitual'] == 0){
+
+                    yesno = "No";
+                }
+                else{
+                    yesno = "Si";
+                }
+
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
                     data['cif'],
                     data['tipo_donante']['tipo'],
                     data['correo'],
-                    data['pais']
+                    data['pais'],
+                    yesno
                 ]).draw();
             });
             $('.unable').hide();
