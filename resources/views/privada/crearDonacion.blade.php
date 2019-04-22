@@ -48,35 +48,35 @@
 <div class="p-5 d-block all">
     <p id="user" hidden>{{ Auth::user()->nombre }}</p>
     <div class="d-flex">
-        <h3 id="titleDonant" class="d-inline-block">Selecciona un donant</h3>
+        <h3 id="titleDonant" class="d-inline-block">@lang('messages.titleDonant')</h3>
         <button class="showHide" style="display: none">
             <img src="{{ asset('media/img/up.png') }}" alt="">
         </button>
     </div>
     <div class="buttons" id="donante">
         <button id="btnParticular" class="btn-donant">
-            <p>Particular</p>
+            <p>@lang('messages.particular')</p>
         </button>
         <button id="btnEmpresa" class="btn-donant">
-            <p>Empresa</p>
+            <p>@lang('messages.empresa')</p>
         </button>
         <button id="btnAnonim" class="btn-donant">
-            <p>Anònim</p>
+            <p>@lang('messages.anonim')</p>
         </button>
         <form action="{{ action('DonanteController@create') }}" method="get">
             <input type="hidden" name="back">
             <button id="btnNou" class="btn-donant">
-                <p>Nou</p>
+                <p>@lang('messages.now')</p>
             </button>
         </form>
         <button id="btnParticularDelete" class="btn-donant closeBtn" style="display: none">
-            <p>Particular</p>
+            <p>@lang('messages.particular')</p>
         </button>
         <button id="btnEmpresaDelete" class="btn-donant closeBtn" style="display: none">
-            <p>Empresa</p>
+            <p>@lang('messages.empresa')</p>
         </button>
         <button id="btnAnonimDelete" class="btn-donant closeBtn" style="display: none">
-            <p>Anònim</p>
+            <p>@lang('messages.anonim')</p>
         </button>
         <div id="infoParticular" style="display: none">
             <p id="nombreParticular">
@@ -103,29 +103,29 @@
         </div>
     </div>
 
-    <button onclick="pdf()">Descargar certificado</button>
+    <button onclick="pdf()">@lang('messages.btnCertificat')</button>
 
-    <h3 class="mt-4">Crea una donació</h3>
+    <h3 class="mt-4">@lang('messages.creaDonacio')</h3>
     <div class="buttons">
         <button id="btnMaterial" class="btn-donatiu">
-            <p>Material</p>
+            <p>@lang('messages.material')</p>
         </button>
         <button id="btnDiners" class="btn-donatiu">
-            <p>Diners</p>
+            <p>@lang('messages.diners')</p>
         </button>
     </div>
 
     <div id="donacions" class="mb-5" style="display: none">
-        <h3 class="mt-4 mb-3">Donacions</h3>
+        <h3 class="mt-4 mb-3">@lang('messages.donacions')</h3>
 
         <table id="tablaDonacions" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>Valor</th>
-                    <th>Subtipo</th>
-                    <th>Centro Origen</th>
-                    <th>Centro Destino</th>
-                    <th>Id</th>
+                    <th>@lang('messages.tableValor')</th>
+                    <th>@lang('messages.tableSubtipo')</th>
+                    <th>@lang('messages.tableOrigen')</th>
+                    <th>@lang('messages.tableDestino')</th>
+                    <th>@lang('messages.tableId')</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -134,8 +134,8 @@
             </tbody>
         </table>
 
-        <button type="button" id="btnSubmit" class="float-right btn btn-primary boton-amplada mt-3">Aceptar</button>
-        <button type="button" class="float-right btn btn-secondary boton-amplada mr-2 mt-3">Cancelar</button>
+        <button type="button" id="btnSubmit" class="float-right btn btn-primary boton-amplada mt-3">@lang('messages.btnAceptar')</button>
+        <button type="button" class="float-right btn btn-secondary boton-amplada mr-2 mt-3">@lang('messages.btnCancelar')</button>
     </div>
 
 </div>
@@ -145,7 +145,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLongTitle">Selecciona un particular</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle">@lang('messages.seleccionarParticular')</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -154,11 +154,11 @@
                     <table id="table-particulars" class="table table-hover table-striped display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Nom</th>
-                                <th>DNI</th>
-                                <th>Correu electronic</th>
-                                <th>ID</th>
-                                <th>Tipus</th>
+                                <th>@lang('messages.tableNom')</th>
+                                <th>@lang('messages.tableDni')</th>
+                                <th>@lang('messages.tableCorreu')</th>
+                                <th>@lang('messages.tableId')</th>
+                                <th>@lang('messages.tableTipo')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -173,7 +173,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                <button id="seleccionarParticular" type="button" class="btn btn-primary float-right mt-3">Seleccionar</button>
+                <button id="seleccionarParticular" type="button" class="btn btn-primary float-right mt-3">@lang('messages.btnSelect')</button>
                 <div class="spinner float-right mr-2 d-none"></div>
             </div>
 
@@ -186,7 +186,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLongTitle">Selecciona una empresa</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle">@lang('messages.seleccionarEmpresa')</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -195,11 +195,11 @@
                     <table id="table-empresas" class="table table-hover table-striped display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Nom</th>
-                                <th>DNI</th>
-                                <th>Correu electronic</th>
-                                <th>ID</th>
-                                <th>Tipus</th>
+                                <th>@lang('messages.tableNom')</th>
+                                <th>@lang('messages.tableDni')</th>
+                                <th>@lang('messages.tableCorreu')</th>
+                                <th>@lang('messages.tableId')</th>
+                                <th>@lang('messages.tableTipo')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -214,7 +214,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                <button id="seleccionarEmpresa" type="button" class="btn btn-primary float-right mt-3">Seleccionar</button>
+                <button id="seleccionarEmpresa" type="button" class="btn btn-primary float-right mt-3">@lang('messages.btnSelect')</button>
                 <div class="spinner float-right mr-2 d-none"></div>
             </div>
 
@@ -415,14 +415,14 @@
                 </button>
             </div>
             <div class="modal-body" id="detall">
-                <p>Valor: <span class="valor"></span></p>
-                <p>Subtipo: <span class="subtipus"></span></p>
-                <p>Centro origen: <span class="origen"></span></p>
-                <p>Centro destino: <span class="desti"></span></p>
-                <p>Unidades: <span class="unitats"></span></p>
-                <p>Cantidad p.u: <span class="cantitat"></span></p>
-                <p>Para animal: <span class="animals"></span></p>
-                <p>Es coordinada: <span class="coordinada"></span></p>
+                <p>@lang('messages.viewValor')<span class="valor"></span></p>
+                <p>@lang('messages.viewSubtipo')<span class="subtipus"></span></p>
+                <p>@lang('messages.viewOrigen')<span class="origen"></span></p>
+                <p>@lang('messages.viewDestino')<span class="desti"></span></p>
+                <p>@lang('messages.viewUnidades')<span class="unitats"></span></p>
+                <p>@lang('messages.viewCantidad')<span class="cantitat"></span></p>
+                <p>@lang('messages.viewAnimal')<span class="animals"></span></p>
+                <p>@lang('messages.viewCoordinada')<span class="coordinada"></span></p>
             </div>
 
         </div>

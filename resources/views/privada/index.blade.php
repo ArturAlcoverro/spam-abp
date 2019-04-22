@@ -19,6 +19,7 @@
         $('.buttons-pdf').attr('title',"{{ __('master.pdf_crud') }}");
         $('.buttons-print').attr('title',"{{ __('master.print_crud') }}");
     });
+    var asset = '{{asset('')}}';
 </script>
 <div class="p-5">
 
@@ -46,7 +47,7 @@
         <a href='{{url('/subtipos')}}' title="@lang('master.subtipus_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/subtipus.png') }}" alt="">
         </a>
-        <a href="" class="btn btn-secondary buttons-html5" title="@lang('index.bill')">
+        <a id='facturaButton' href="" class="btn btn-secondary buttons-html5" title="@lang('index.bill')" download>
             <img height="0px" src="{{ asset('media/img/bill.png') }}" alt="">
         </a>
     </div>
@@ -156,6 +157,9 @@
                     <th>@lang('index.donant')</th>
                     <th>@lang('index.cost')</th>
                     <th>@lang('index.date')</th>
+                    <th>Factura</th>
+                    <th>RutaFactura</th>
+
                 </tr>
             </thead>
             <tbody>

@@ -56,9 +56,13 @@ class DonativoAPIController extends Controller
 
         $file = $request->file('factura');
         if($file){
-            $file_path = rand() . rand() . ' ' . $file->getClientOriginalName();
-            Storage::disk('public')->putFileAs('', $file, $file_path);
-            $donativo->ruta_factura = Storage::url($file_path);
+            try{
+                $file_path = rand() . rand() . ' ' . $file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('facturas/', $file, $file_path);
+                $donativo->ruta_factura = Storage::url('facturas/'.$file_path);
+            } catch (Exception $e) {
+                return json_encode($e);
+            }
         }
 
         $request->input('coordinada') == true ?
@@ -76,7 +80,6 @@ class DonativoAPIController extends Controller
                             ->setStatusCode(201);
         }
         catch(QueryException $e){
-
             $mensaje=Utilitat::errorMessage($e);
             $respuesta = response()
                             ->json(['error'=>$mensaje], 400);
