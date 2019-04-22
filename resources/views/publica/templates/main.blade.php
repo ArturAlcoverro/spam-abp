@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -25,6 +26,19 @@
                     <a class="nav-link" href="{{url('/charts')}}">@lang('home.graphics')</a>
                 </li>
             </ul>
+        </div>
+        <div class="dropdown mr-2">
+            <button class="dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">
+                    language
+                </i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="locale/cat">Català</a>
+                <a class="dropdown-item" href="locale/es">Castellano</a>
+                <a class="dropdown-item" href="locale/en">English</a>
+            </div>
         </div>
     </nav>
 

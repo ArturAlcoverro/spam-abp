@@ -6,7 +6,7 @@
         "rol"       =>"Rol",
         "new"       =>"Nou centre",
         "edit"      =>"Editar centre",
-        "close"     =>"Tancar",
-        "accept"    =>"Aceptar"
+        "close"     =>"Cancel·lar",
+        "accept"    =>"Acceptar"
     ];
 ?>

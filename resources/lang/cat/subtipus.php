@@ -4,9 +4,9 @@
         "id"        =>"Id",
         "name"      =>"Nom",
         "type"      =>"Tipus",
-        "high"      =>"Gama alta",
-        "medium"    =>"Gama mitja",
-        "low"       =>"Gama baixa",
-        "Unity"     =>"Unidad",
+        "high"      =>"Gamma alta",
+        "medium"    =>"Gamma mitjana",
+        "low"       =>"Gamma baixa",
+        "Unity"     =>"Unitat",
     ];
 ?>

@@ -5,6 +5,5 @@
         "email"     =>"Correo",
         "name"      =>"Nombre",
         "rol"       =>"Rol",
-
     ];
 ?>

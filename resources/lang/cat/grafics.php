@@ -8,7 +8,6 @@
         "animal"            =>"Animal",
         "order"             =>"Ordenar",
         "public"            =>"Public",
-
         "filter"            =>"Filtrar",
     ];
 ?>

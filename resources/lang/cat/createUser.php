@@ -6,6 +6,6 @@
         "username"          =>"Nom d'usuari",
         "name"              =>"Nom",
         "rol"               =>"Rol",
-        "accept"            =>"Aceptar",
+        "accept"            =>"Acceptar",
     ];
 ?>

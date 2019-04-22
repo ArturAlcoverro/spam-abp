@@ -5,7 +5,7 @@
         "name"      =>"Nombre",
         "new"       =>"Nuevo tipo",
         "edit"      =>"Editar tipo",
-        "close"     =>"Cerrar",
+        "close"     =>"Cancelar",
         "accept"    =>"Aceptar"
     ];
 ?>

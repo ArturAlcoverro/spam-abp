@@ -1,7 +1,7 @@
 <?php
     return[
         "edit"          =>"Editar usuario",
-        "email"         =>"Correo electronico",
+        "email"         =>"Correo electrónico",
         "password"      =>"Contraseña",
         "username"      =>"Nombre de usuario",
         "name"          =>"Nombre",
