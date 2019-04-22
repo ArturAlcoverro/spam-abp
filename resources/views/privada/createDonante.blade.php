@@ -13,7 +13,7 @@
     @include('partial.errores')
 
     <div class="p-4">
-        <form class="container pt-2" action="{{ action('DonanteController@store') }}" method="POST">
+        <form class="container pt-2" action="{{ action('DonanteController@store') }}" method="POST" id="form-create">
         @csrf
             <h3>@lang('createDonante.new')</h3>
             <div class="form-group">
@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="form-group float-right">
-                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada mb-5">@lang('createDonante.accept')</button>
+                <button type="button" name="altaAceptar" class="btn btn-primary boton-amplada mb-5" onclick="send()">@lang('createDonante.accept')</button>
             </div>
         </form>
     </div>
