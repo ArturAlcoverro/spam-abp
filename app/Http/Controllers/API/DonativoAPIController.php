@@ -57,8 +57,8 @@ class DonativoAPIController extends Controller
         $file = $request->file('factura');
         if($file){
             $file_path = rand() . rand() . ' ' . $file->getClientOriginalName();
-            Storage::disk('public')->putFileAs('facturas/', $file, $file_path);
-            $donativo->ruta_factura = $file_path;
+            Storage::disk('public')->putFileAs('', $file, $file_path);
+            $donativo->ruta_factura = Storage::url($file_path);
         }
 
         $request->input('coordinada') == true ?
