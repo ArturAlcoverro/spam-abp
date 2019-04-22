@@ -47,7 +47,7 @@
                 </div>
             </button>
             <button title="Eliminar" class="btn btn-secondary buttons-html5">
-                <div @if(Auth::user()->rol->id == 1) onclick="deleteDonant()" @endif>
+                <div @if(Auth::user()->rol->id == 1) onclick="deleteDonant()" @else onclick="msgAdmin()" @endif>
                     <img src="{{ asset('media/img/delete.png') }}" alt="">
                     <form id="form_delete" action="" method="post">
                         @method('delete')

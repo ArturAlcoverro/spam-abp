@@ -255,3 +255,6 @@ function filtrar() {
     });
 }
 
+function msgAdmin() {
+    toast('Eliminar no permitido, contacta con un administrador', 2000);
+}

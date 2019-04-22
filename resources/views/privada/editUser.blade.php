@@ -16,33 +16,33 @@
         <form class="container pt-2" action="{{ action('UsuarioController@update', [$user->id]) }}" method="POST">
             @method('put')
             @csrf
-            <h3>Editar usuario</h3>
+            <h3>@lang('editUser.edit')</h3>
             <div class="form-group">
-                <label for="correo" class="col-form-label">Correo electronico</label>
+                <label for="correo" class="col-form-label">@lang('editUser.email')</label>
                 <div class="">
-                    <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electronico" value="{{ $user->correo }}">
+                    <input type="email" name="correo" id="correo" class="form-control" placeholder="@lang('editUser.email')" value="{{ $user->correo }}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="lblpassword" class="col-form-label">Password</label>
+                <label for="lblpassword" class="col-form-label">@lang('editUser.password')</label>
                 <div class="">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Nueva contraseña" readonly>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="@lang('editUser.password')" readonly>
                 </div>
             </div>
             <div class="form-group">
-                <label for="username" class="col-form-label">Username</label>
+                <label for="username" class="col-form-label">@lang('editUser.username')</label>
                 <div class="">
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="{{ $user->nombre_usuario }}">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="@lang('editUser.username')" value="{{ $user->nombre_usuario }}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="nombre" class="col-form-label">Nombre</label>
+                <label for="nombre" class="col-form-label">@lang('editUser.name')</label>
                 <div class="">
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" value="{{ $user->nombre }}">
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="@lang('editUser.name')" value="{{ $user->nombre }}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="rol" class="col-form-label">Rol</label>
+                <label for="rol" class="col-form-label">@lang('editUser.rol')</label>
                 <div class="">
                     <select name="rol" id="rol" class="form-control">
                         @foreach ($roles as $rol)
@@ -56,8 +56,8 @@
                 </div>
             </div>
             <div class="form-group float-right">
-                <button type="button" name="pass" class="btn btn-primary boton-amplada" onclick="changePassword()">Cambiar contraseña</button>
-                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
+                <button type="button" name="pass" class="btn btn-primary boton-amplada" onclick="changePassword()">@lang('editUser.change')</button>
+                <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">@lang('editUser.accept')</button>
             </div>
         </form>
     </div>

@@ -34,7 +34,7 @@
                 @csrf
             </form>
         </button>
-        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5" @if(Auth::user()->rol->id == 1) onclick="deleteDonacion()" @endif>
+        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5" @if(Auth::user()->rol->id == 1) onclick="deleteDonacion()" @else onclick="msgAdmin()" @endif>
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
         <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5" data-toggle="modal" data-target="#filter-modal">
