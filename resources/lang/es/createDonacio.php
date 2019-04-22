@@ -49,5 +49,9 @@
         "viewCantidad"          =>"Cantidad p.u: ",
         "viewAnimal"            =>"Para animal: ",
         "viewCoordinada"        =>"Es coordinada: ",
+        "phUnidades"            =>"Unidades",
+        "phCantidad"            =>"Cantidad",
+        "phCost"                =>"Coste",
+        "phImporte"             =>"Importe",
     ];
 ?>

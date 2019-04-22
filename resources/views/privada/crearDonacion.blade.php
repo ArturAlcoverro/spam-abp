@@ -282,19 +282,19 @@
                         <div class="form-group">
                             <label for="unidades" class="col-form-label">@lang('createDonacio.lblUnidades')</label>
                             <div class="">
-                                <input type="number" name="unidades" id="unidades" class="form-control" placeholder="Unidades">
+                                <input type="number" name="unidades" id="unidades" class="form-control" placeholder="@lang('createDonacio.phUnidades')">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="cantidad" class="col-form-label">@lang('createDonacio.lblCantidad')<span id="unidadMedida"></span></label>
                             <div class="">
-                                <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad">
+                                <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="@lang('createDonacio.phCantidad')">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="coste" class="col-form-label">@lang('createDonacio.lblValor')</label>
                             <div class="">
-                                <input type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="Coste">
+                                <input type="number" step="0.01" name="coste" id="coste" class="form-control" placeholder="@lang('createDonacio.phCost')">
                             </div>
                         </div>
                         <div class="form-group">
@@ -362,7 +362,7 @@
                     <div class="form-group">
                         <label for="costeDiners" class="col-form-label">@lang('createDonacio.lblImporte')</label>
                         <div class="">
-                            <input type="number" required min="1" step="0.01" name="costeDiners" id="costeDiners" class="form-control" placeholder="Importe">
+                            <input type="number" required min="1" step="0.01" name="costeDiners" id="costeDiners" class="form-control" placeholder="@lang('createDonacio.phImporte')">
                         </div>
                     </div>
                     <div class="form-group">
