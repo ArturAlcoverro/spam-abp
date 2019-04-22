@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('publica.home');
 })->name("home");
 
+Route::get('/video', function(){
+    return view('publica.video');
+})->name('video');
+
 Route::get('/login', 'Auth\LoginController@showLogin')->name("showLogin");
 Route::post('/login', 'Auth\LoginController@login')->name("login");
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");

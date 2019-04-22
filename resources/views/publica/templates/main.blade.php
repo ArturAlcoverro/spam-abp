@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/charts')}}">@lang('home.graphics')</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/video')}}">@lang('home.graphics')</a>
+                </li>
             </ul>
         </div>
     </nav>

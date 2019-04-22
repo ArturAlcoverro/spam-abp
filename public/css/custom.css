@@ -152,3 +152,7 @@ section .section-title {
         margin-bottom: 10px;
     }
 }
+
+video:focus{
+    border-color: transparent;
+}
