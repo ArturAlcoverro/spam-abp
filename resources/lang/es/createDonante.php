@@ -9,7 +9,7 @@
         "email"             =>"Correo electronico",
         "phone"             =>"Telefono",
         "address"           =>"Direccion",
-        "contry"            =>"País",
+        "country"            =>"País",
         "town"              =>"Poblacion",
         "collaboration"     =>"Colaboración",
         "animal"            =>"Animal",

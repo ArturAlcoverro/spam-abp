@@ -29,7 +29,8 @@
             <div class="form-group">
                 <label for="nombre" class="col-form-label">@lang('createDonante.name')</label>
                 <div class="">
-                    <input required type="text" name="nombre" id="nombre" class="form-control" placeholder="@lang('createDonante.name')">
+                    {{-- HACER UNO DE LOS 3 OBLIGATORIO --}}
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="@lang('createDonante.name')">
                 </div>
             </div>
             <div class="form-group" id="row-cif">
