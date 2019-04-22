@@ -26,18 +26,18 @@
                     <a class="nav-link" href="{{url('/charts')}}">@lang('home.graphics')</a>
                 </li>
             </ul>
-        </div>
-        <div class="dropdown mr-2">
-            <button class="dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">
-                    language
-                </i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="locale/cat">Català</a>
-                <a class="dropdown-item" href="locale/es">Castellano</a>
-                <a class="dropdown-item" href="locale/en">English</a>
+            <div class="dropdown mr-5 pr-5">
+                <button class="dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">
+                        language
+                    </i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="locale/cat">Català</a>
+                    <a class="dropdown-item" href="locale/es">Castellano</a>
+                    <a class="dropdown-item" href="locale/en">English</a>
+                </div>
             </div>
         </div>
     </nav>
