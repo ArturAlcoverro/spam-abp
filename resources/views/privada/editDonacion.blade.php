@@ -105,10 +105,7 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group" style="overflow: hidden">
-                <label for="factura" class="col-form-label d-block">@lang('editDonacion.bill')</label>
-                <input type="file" name="factura" id="factura">
-            </div>
+
             <div class="form-group">
                 <div class="col-3 custom-control custom-checkbox">
                     @if ($donativo->es_coordinada == 1)
