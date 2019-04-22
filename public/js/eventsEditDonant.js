@@ -50,6 +50,4 @@ function send() {
     else{
         $('#form-create').submit();
     }
-
 }
-

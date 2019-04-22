@@ -132,7 +132,7 @@ function deleteDonacion() {
     var rows = $("#table").DataTable().rows('.selected').data();
 
     if (rows.length == 0) {
-        toast('Per eliminar has de seleccionar UN registre', 2000);
+        toast('Para eliminar tienes que seleccionar UN registro', 2000);
     } else {
 
         for (var i = 0; i < rows.length; i++) {
@@ -161,7 +161,7 @@ function editDonacion() {
     var rows = $("#table").DataTable().rows('.selected').data();
 
     if (rows.length != 1) {
-        toast('Per editar has de seleccionar UN registre', 2000);
+        toast('Para editar tienes que seleccionar UN registro', 2000);
     }
     else {
         var id = rows[0][0];
