@@ -638,9 +638,24 @@ function pdf() {
 
     var nombre = $("#user").text();
 
+    var nombreDonante = donante.nombre;
+    var cifDonante = donante.cif;
+
+    var rows = $("#tablaDonacions").DataTable().rows().data();
+
+    var suma = 0;
+
+    for(var i = 0; i<rows.length; i++){
+        console.log(rows[i][0]);
+
+        var x = rows[i][0].replace(/\€/g, '');
+
+        suma = suma + parseInt(x);
+    }
+
     doc.text('CERTIFICADO DE DONACIÓN', 10, 50);
 
-    var txt = "D/Dª " + nombre + " en calidad de trabajador de la entidad SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ con NIF G58223785 y domicilio social en Ctra. Nacional II, Km. 648, 4 certifica que: SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ es una fundación de utilidad pública incluida entre las reguladas en el art.16 de la ley 49/2002. \n \nSOCIETAT PROTECTORA D'ANIMALS DE MATARÓ ha recibido de D/Dña YYYY (nombre del donante) con DNI/CIF YYYYYYYYYYY el valor estimado de ZZZ euros durante el año " + date.getFullYear() + ". \n \nLa cantidad indicada ha sido entregada en concepto de donativo, destinado al cumplimiento de los fines de la fundación/asociación. Esta donación tiene carácter irrevocable, sin perjuicio de lo establecido en las normas imperativas civiles que regulan la revocación de las donaciones. \n \n" + today;
+    var txt = "D/Dª " + nombre + " en calidad de trabajador de la entidad SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ con NIF G58223785 y domicilio social en Ctra. Nacional II, Km. 648, 4 certifica que: SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ es una fundación de utilidad pública incluida entre las reguladas en el art.16 de la ley 49/2002. \n \nSOCIETAT PROTECTORA D'ANIMALS DE MATARÓ ha recibido de D/Dña "+ nombreDonante + " con DNI/CIF " + cifDonante + " el valor estimado de "+ suma + " euros durante el año " + date.getFullYear() + ". \n \nLa cantidad indicada ha sido entregada en concepto de donativo, destinado al cumplimiento de los fines de la fundación/asociación. Esta donación tiene carácter irrevocable, sin perjuicio de lo establecido en las normas imperativas civiles que regulan la revocación de las donaciones. \n \n" + today;
 
     var splitTitle = doc.splitTextToSize(txt, 180);
     doc.text(10, 60, splitTitle);

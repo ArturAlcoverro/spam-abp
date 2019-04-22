@@ -7,6 +7,6 @@
         "high"      =>"Gama alta",
         "medium"    =>"Gama media",
         "low"       =>"Gama baja",
-        "Unity"     =>"Unidad",
+        "unit"      =>"Unidad",
     ];
 ?>

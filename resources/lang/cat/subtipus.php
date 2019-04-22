@@ -7,6 +7,6 @@
         "high"      =>"Gamma alta",
         "medium"    =>"Gamma mitjana",
         "low"       =>"Gamma baixa",
-        "Unity"     =>"Unitat",
+        "unit"      =>"Unitat",
     ];
 ?>
