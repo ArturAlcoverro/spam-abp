@@ -13,7 +13,7 @@
         "town"              =>"Població",
         "collaboration"     =>"Colaboració",
         "animal"            =>"Animal",
-        "habitual"          =>"Es habitual",
+        "habitual"          =>"És habitual",
         "spam"              =>"Vull rebre correus",
         "accept"            =>"Acceptar"
     ];

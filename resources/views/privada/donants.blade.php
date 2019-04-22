@@ -65,6 +65,7 @@
                     <th>@lang('donants.type')</th>
                     <th>@lang('donants.email')</th>
                     <th>@lang('donants.country')</th>
+                    <th>@lang('donants.habitual')</th>
                 </tr>
             </thead>
             <tbody>

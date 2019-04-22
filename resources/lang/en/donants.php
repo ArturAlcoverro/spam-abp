@@ -6,5 +6,6 @@
         "type"        =>"Tipo",
         "email"       =>"Correo",
         "country"     =>"País",
+        "habitual"    =>"Es habitual"
     ];
 ?>
