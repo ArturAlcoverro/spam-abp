@@ -25,6 +25,24 @@ Route::get('locale/{locale}', function($locale){
     return redirect()->back();
 });
 
+Route::get('donants/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('users/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('donations/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/donations', 'DonativoController');
