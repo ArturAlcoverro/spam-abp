@@ -82,7 +82,7 @@ section .section-title {
 }
 
 #footer {
-    background: var(--background-color) !important;
+    background: #30343a !important;
 }
 
 #footer h5 {
@@ -146,7 +146,7 @@ section .section-title {
     font-weight: 700;
 }
 .contenedor{
-    min-height: 100vh;
+    min-height: calc(100vh - 87px);
 }
 
 @media (max-width:767px) {

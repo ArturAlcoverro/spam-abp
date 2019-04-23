@@ -1,12 +1,12 @@
 @media only screen and (max-width: 1080px) {
     .images{
-        min-height: 110vh;
+        min-height: 120vh;
     }
 }
 
 @media only screen and (max-width: 800px) {
     .images{
-        min-height: 120vh;
+        min-height: 130vh;
     }
     .contenedor{
         min-height: 110vh;
@@ -15,7 +15,7 @@
 
 @media only screen and (max-width: 800px) {
     .images{
-        min-height: 120vh;
+        min-height: 130vh;
     }
     .contenedor{
         min-height: 110vh;
@@ -24,13 +24,13 @@
 
 @media only screen and (max-width: 750px) {
     .images{
-        min-height: 125vh;
+        min-height: 135vh;
     }
 }
 
 @media only screen and (max-width: 690px) {
     .images{
-        min-height: 130vh;
+        min-height: 140vh;
     }
     .contenedor{
         min-height: 120vh;
@@ -39,7 +39,7 @@
 
 @media only screen and (max-width: 620px) {
     .images{
-        min-height: 135vh;
+        min-height: 145vh;
     }
     .contenedor{
         min-height: 122vh;
@@ -52,7 +52,7 @@
 
 @media only screen and (max-width: 550px) {
     .images{
-        min-height: 162vh;
+        min-height: 172vh;
     }
     .contenedor{
         min-height: 145vh;
