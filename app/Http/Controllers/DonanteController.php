@@ -178,7 +178,7 @@ class DonanteController extends Controller
     {
         $donante = Donante::find($id_donante);
         $animales = Animal::all();
-        $tipos_donantes = Tipo_donante::all();
+        $tipos_donantes = Tipo_donante::where("id", 1)->orWhere("id", 2)->get();
         $sexos = Sexo::all();
         $donativos = Donativo::all();
 
