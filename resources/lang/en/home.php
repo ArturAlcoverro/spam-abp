@@ -23,6 +23,8 @@
         "animals"       =>"The Animals",
         "meetAnimals"   =>"Meet our Animals",
         "images"        =>"Images",
+        "vincles"       =>"Bonds",
+        "niceEnd"       =>"Happy Endings",
         "historys"      =>"Historys",
         "ppp"           =>"The PPP'S",
 
@@ -34,6 +36,11 @@
         "redVideos"     =>"Red Videos",
 
         "others"        =>"Others",
-        "workersSite"   =>"Workers Site"
+        "workersSite"   =>"Workers Site",
+
+        "license"       =>"Photographys by Antuà Blonde Photography for Sociedad Protectora de Animales de Mataró. ",
+        "license2"      =>"Images are distributed by a ",
+        "license3"      =>"Creative Commons License.",
+        "license4"      =>"Legal Notice - Privacity Politics"
     ];
 ?>
