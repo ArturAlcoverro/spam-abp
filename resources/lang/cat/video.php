@@ -1,9 +1,5 @@
 <?php
     return[
-        "users"     =>"Usuaris",
-        "username"  =>"Nom d'usuari",
-        "email"     =>"Correu",
-        "name"      =>"Nom",
-        "rol"       =>"Rol",
+        "videoFail"     =>"El teu navegador no soporta aquest tipus de video."
     ];
 ?>

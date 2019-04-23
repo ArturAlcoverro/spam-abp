@@ -26,7 +26,7 @@
                     <a class="nav-link" href="{{url('/charts')}}">@lang('home.graphics')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/video')}}">@lang('home.graphics')</a>
+                    <a class="nav-link" href="{{url('/video')}}">@lang('home.video')</a>
                 </li>
             </ul>
             <div class="dropdown mr-5 pr-5">
@@ -116,7 +116,6 @@
     <script src="{{ asset('js/libraries/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/libraries/popper.min.js') }}"></script>
     <script src="{{ asset('js/libraries/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/changingNavBg.js') }}"></script>
 
     @yield('scripts')
 </body>

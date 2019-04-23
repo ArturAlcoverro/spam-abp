@@ -27,8 +27,10 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.hidden {
+.hidden-video{
+    color: white;
     display: none;
+    text-shadow: 0px 0px 15px var(--background-color);
 }
 
 .badge {
@@ -60,6 +62,7 @@ body {
 }
 
 .hidden {
+    display: none;
     color: white;
     text-shadow: 0px 0px 15px var(--background-color);
 }
