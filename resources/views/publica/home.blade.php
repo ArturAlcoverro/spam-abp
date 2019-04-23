@@ -5,7 +5,9 @@
 @endsection
 
 @section('body')
-<div class="container" style="min-height: 100vh">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
+<div class="container contenedor">
     <div class="images">
 
     </div>
