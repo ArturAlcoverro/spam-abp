@@ -100,7 +100,10 @@
                         <li class="list-inline-item"><a href="https://twitter.com/ARTIOABP
                             {{-- https://twitter.com/protemataro --}}
                             "><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/protectoramataro/"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="
+                            {{-- https://www.instagram.com/protectoramataro/ --}}
+                            https://www.instagram.com/artio_abp/
+                            "><i class="fa fa-instagram"></i></a></li>
 						<li class="list-inline-item"><a href="mailto:artioABP@gmail.com?" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
