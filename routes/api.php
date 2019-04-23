@@ -26,7 +26,7 @@ Route::apiResource('/centros', 'API\CentroAPIController');
 
 Route::apiResource('/filtro', 'API\FiltroAPIController');
 
-Route::get("/estadisticas/donativos/{dataInici}/{dataFi}", 'API\EstadisticasController@DonatiusByData');
+Route::get("/estadisticas/donativos/{dataInici}/{dataFi}/{tipos}/{subtipo}/{ordenar}/{poblacio}/{origen}/{desti}/{animal}/{valor}", 'API\EstadisticasController@DonatiusByData');
 Route::get("/grafico", 'API\GraficoApiController@index');
 
 Route::get("/filtro/{fechaInicio}/{fechaFinal}", 'API\FiltroAPIController@show');
