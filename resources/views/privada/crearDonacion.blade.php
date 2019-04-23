@@ -103,8 +103,6 @@
         </div>
     </div>
 
-    <button onclick="pdf()">@lang('createDonacio.btnCertificat')</button>
-
     <h3 class="mt-4">@lang('createDonacio.creaDonacio')</h3>
     <div class="buttons">
         <button id="btnMaterial" class="btn-donatiu">
@@ -134,8 +132,9 @@
             </tbody>
         </table>
 
+        <button class="btn mt-3 bg-blue" onclick="validarCertificado()">@lang('createDonacio.btnCertificat')</button>
         <button type="button" id="btnSubmit" class="float-right btn btn-primary boton-amplada mt-3">@lang('createDonacio.btnAceptar')</button>
-        <button type="button" class="float-right btn btn-secondary boton-amplada mr-2 mt-3">@lang('createDonacio.btnCancelar')</button>
+        <a href="{{ action('DonativoController@index') }}" class="float-right btn btn-secondary boton-amplada mr-2 mt-3">@lang('createDonacio.btnCancelar')</a>
     </div>
 
 </div>
@@ -298,19 +297,22 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="coste" class="col-form-label">@lang('createDonacio.lblGama')</label>
+                            <label for="radioGama" class="col-form-label">@lang('createDonacio.lblGama')</label>
+                            <div class="btn bg-blue gamaHelp">?
+                                <p class="gamaHelpText">@lang('createDonacio.gamaHelp')</p>
+                            </div>
                             <div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input checked data-value='Baja' value="Baja" type="radio" id="radioBaja" name="radioGama" class="custom-control-input">
-                                    <label class="custom-control-label" for="radioBaja">@lang('createDonacio.lblBaja')</label>
+                                    <label class="custom-control-label" for="radioBaja">@lang('createDonacio.lblBaja')<span id="valorGamaBaja"></span></label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input data-value='Media' value="Media" type="radio" id="radioMedia" name="radioGama" class="custom-control-input">
-                                    <label class="custom-control-label" for="radioMedia">@lang('createDonacio.lblMedia')</label>
+                                    <label class="custom-control-label" for="radioMedia">@lang('createDonacio.lblMedia')<span id="valorGamaMedia"></span></label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input data-value='Alta' type="radio" id="radioAlta" name="radioGama" class="custom-control-input">
-                                    <label class="custom-control-label" for="radioAlta">@lang('createDonacio.lblAlta')</label>
+                                    <label class="custom-control-label" for="radioAlta">@lang('createDonacio.lblAlta')<span id="valorGamaAlta"></span></label>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 var donante = { id: 0 };
 var isDonante = false;
+var isAnonim = false;
 var infoDonante = true;
 var isDonacions = false;
 var donacions = [];
@@ -16,6 +17,7 @@ $(document).ready(function () {
     $('#btnAnonim').click(function () {
         ocultarBotones('btnAnonim');
         isDonante = true;
+        isAnonim = true;
         donante.id = 0;
         $('.showHide').show();
     });
@@ -52,8 +54,8 @@ $(document).ready(function () {
         $("#infoParticular").hide();
         $("#infoEmpresa").hide();
         $(".showHide").hide();
-
         isDonante = false;
+        isAnonim = false;
     });
 
     //Mostra/Oculta la informació del donant
@@ -117,6 +119,7 @@ $(document).ready(function () {
     setSubtipos(1);
     $("#tipo_donacion").change(function () {
         setSubtipos($("#tipo_donacion").val());
+        setMedida($("#subtipo_donacion").val());
     });
 
     setMedida($("#subtipo_donacion").val());
@@ -169,6 +172,7 @@ $(document).ready(function () {
         var coste = parseFloat($this.find("#coste").val());
         if (isNaN(coste)) {
             coste = calcularCoste(
+                parseInt($this.find("#unidades").val()) || 1,
                 $this.find("#subtipo_donacion").val(),
                 $('input[name=radioGama]:checked', '#formMaterial').data('value'));
         }
@@ -387,7 +391,7 @@ $(document).ready(function () {
             return x.id;
         }).indexOf(data[4]);
 
-        alert('Estas seguro?', 'Se eliminara eol registro seleccionado', function () {
+        alert('Estas seguro?', 'Se eliminara el registro seleccionado', function () {
 
             donacions.splice(index, 1);
             formDonacions.splice(index, 1);
@@ -521,13 +525,25 @@ function setSubtipos(id) {
 
 function setMedida(id_subtipo) {
     var unidad;
+    var gama_alta;
+    var gama_media;
+    var gama_baja;
+
     subtipos.forEach(element => {
         if (element.id == id_subtipo) {
             unidad = element.tipo_unidad;
+            gama_alta = element.gama_alta;
+            gama_media = element.gama_media;
+            gama_baja = element.gama_baja;
         }
     });
-
-    if (unidad != "") {
+    if (gama_baja == null) gama_baja = '0';
+    if (gama_media == null) gama_media = '0';
+    if (gama_alta == null) gama_alta = '0';
+    $('#valorGamaBaja').text(' (' + gama_baja + '€)');
+    $('#valorGamaMedia').text(' (' + gama_media + '€)');
+    $('#valorGamaAlta').text(' (' + gama_alta + '€)');
+    if (unidad != null) {
         $('#unidadMedida').text(' (' + unidad + ')');
     } else {
         $('#unidadMedida').text('');
@@ -576,7 +592,7 @@ function reload() {
     }
 }
 
-function calcularCoste(id_subtipo, gama) {
+function calcularCoste(unidades, id_subtipo, gama) {
     var subtipo;
     var coste;
     subtipos.forEach(element => {
@@ -597,7 +613,7 @@ function calcularCoste(id_subtipo, gama) {
             break;
     }
 
-    return coste;
+    return coste * unidades;
 }
 
 function getSubtipus(id) {
@@ -619,6 +635,21 @@ function getCentro(id) {
     });
     return resp;
 
+}
+
+function validarCertificado() {
+    if (!isDonante) {
+        toast('Debes seleccionar un donante', 2000);
+    }
+    else if (!isDonacions) {
+        toast('Debes añadir alguna donación', 2000);
+    }
+    else if (isAnonim) {
+        toast('El usuario no puede ser anónimo', 2000);
+    }
+    else {
+        pdf();
+    }
 }
 
 function pdf() {
@@ -645,7 +676,7 @@ function pdf() {
 
     var suma = 0;
 
-    for(var i = 0; i<rows.length; i++){
+    for (var i = 0; i < rows.length; i++) {
         console.log(rows[i][0]);
 
         var x = rows[i][0].replace(/\€/g, '');
@@ -655,7 +686,7 @@ function pdf() {
 
     doc.text('CERTIFICADO DE DONACIÓN', 10, 50);
 
-    var txt = "D/Dª " + nombre + " en calidad de trabajador de la entidad SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ con NIF G58223785 y domicilio social en Ctra. Nacional II, Km. 648, 4 certifica que: SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ es una fundación de utilidad pública incluida entre las reguladas en el art.16 de la ley 49/2002. \n \nSOCIETAT PROTECTORA D'ANIMALS DE MATARÓ ha recibido de D/Dña "+ nombreDonante + " con DNI/CIF " + cifDonante + " el valor estimado de "+ suma + " euros durante el año " + date.getFullYear() + ". \n \nLa cantidad indicada ha sido entregada en concepto de donativo, destinado al cumplimiento de los fines de la fundación/asociación. Esta donación tiene carácter irrevocable, sin perjuicio de lo establecido en las normas imperativas civiles que regulan la revocación de las donaciones. \n \n" + today;
+    var txt = "D/Dª " + nombre + " en calidad de trabajador de la entidad SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ con NIF G58223785 y domicilio social en Ctra. Nacional II, Km. 648, 4 certifica que: SOCIETAT PROTECTORA D'ANIMALS DE MATARÓ es una fundación de utilidad pública incluida entre las reguladas en el art.16 de la ley 49/2002. \n \nSOCIETAT PROTECTORA D'ANIMALS DE MATARÓ ha recibido de D/Dña " + nombreDonante + " con DNI/CIF " + cifDonante + " el valor estimado de " + suma + " euros durante el año " + date.getFullYear() + ". \n \nLa cantidad indicada ha sido entregada en concepto de donativo, destinado al cumplimiento de los fines de la fundación/asociación. Esta donación tiene carácter irrevocable, sin perjuicio de lo establecido en las normas imperativas civiles que regulan la revocación de las donaciones. \n \n" + today;
 
     var splitTitle = doc.splitTextToSize(txt, 180);
     doc.text(10, 60, splitTitle);

@@ -229,6 +229,61 @@ form .btn-donant {
     margin-top: 0rem !important
 }
 
+.bg-blue {
+    background: #007acc;
+}
+
+.gamaHelp {
+    position: relative;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.363);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 15px;
+    width: 14px;
+    margin: 0 0 3px 10px;
+    font-size: 11px;
+    /* border: 1px solid white; */
+    transition: all 0.3s;
+    border-radius: 50%
+}
+
+.gamaHelp:hover {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.63);
+}
+
+.gamaHelp:hover .gamaHelpText {
+    display: inline;
+    opacity: 1;
+}
+
+.gamaHelpText {
+    display: none;
+    padding: 8px;
+    top: -80px;
+    left: -11px;
+    text-align: start;
+    position: absolute;
+    background: #3f3f3f;
+    margin: 0;
+    width: 200px;
+    border-radius: 3px;
+    transition: opacity 0.3s;
+}
+
+.gamaHelpText:before {
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-top: 15px solid #3f3f3f;
+    top: 59px;
+    left: 4px;
+}
+
 @media only screen and (max-width: 400px) {
 
     .btn-donant,
