@@ -10,7 +10,8 @@
         "medicines"     =>"Medicinas",
         "higiene"       =>"Higiene",
         "text5"         =>"¡Contamos con tu ayuda!",
-        "protectora"    =>"La protectora",
+
+        "protectora"    =>"La Protectora",
         "whoWeAre"      =>"Quiénes somos",
         "data"          =>"Datos, Cifras, Vidas",
         "centers"       =>"Centros de Acogida",
@@ -18,7 +19,21 @@
         "daina"         =>"Fundación DAINA",
         "whereAreWe"    =>"Donde estamos",
         "contact"       =>"Contacto",
-        "animals"       =>"Los animales",
-        "meetAnimals"   =>"Conoce a nuestros animales"
+
+        "animals"       =>"Los Animales",
+        "meetAnimals"   =>"Conoce a nuestros animales",
+        "images"        =>"Imágenes",
+        "historys"      =>"Historias",
+        "ppp"           =>"Los PPP'S",
+
+        "comunication"  =>"Comunicación",
+        "infosoc"       =>"Información Socios",
+        "prensaNotes"   =>"Notas de Prensa",
+        "radio"         =>"Radio",
+        "boletin"       =>"Boletín",
+        "redVideos"     =>"Videos en la Red",
+
+        "others"        =>"Otros",
+        "workersSite"   =>"Espacio Trabajadores"
     ];
 ?>
