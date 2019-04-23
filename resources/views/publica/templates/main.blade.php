@@ -29,14 +29,14 @@
                     <a class="nav-link" href="{{url('/video')}}">@lang('home.video')</a>
                 </li>
             </ul>
-            <div class="dropdown mr-5 pr-5">
+            <div class="dropdown">
                 <button class="dropdown-toggle dropdown-lenguage" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">
                         language
                     </i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="locale/cat">Català</a>
                     <a class="dropdown-item" href="locale/es">Castellano</a>
                     <a class="dropdown-item" href="locale/en">English</a>
@@ -94,10 +94,14 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com/protectoramataro/"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/protemataro"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/artio.abp.1
+                            {{-- https://www.facebook.com/protectoramataro/ --}}
+                            "><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/ARTIOABP
+                            {{-- https://twitter.com/protemataro --}}
+                            "><i class="fa fa-twitter"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.instagram.com/protectoramataro/"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href=" mailto:info@protectoramataro.org?" target="_blank"><i class="fa fa-envelope"></i></a></li>
+						<li class="list-inline-item"><a href="mailto:artioABP@gmail.com?" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
 				</hr>
