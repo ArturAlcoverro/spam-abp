@@ -5,7 +5,7 @@
         "empresa"               =>"Empresa",
         "anonim"                =>"Anònim",
         "nou"                   =>"Nou",
-        "btnCertificat"         =>"Descarregar Certificat",
+        "btnCertificat"         =>"Certificat",
         "creaDonacio"           =>"Crea una donació",
         "material"              =>"Material",
         "diners"                =>"Diners",
@@ -31,7 +31,7 @@
         "lblValor"              =>"Valor estimat (€)",
         "lblUnidades"           =>"Unitats",
         "lblCantidad"           =>"Cantitat p.u",
-        "lblGama"               =>"Gama",
+        "lblGama"               =>"Gamma",
         "lblBaja"               =>"Baja",
         "lblMedia"              =>"Mitja",
         "lblAlta"               =>"Alta",
@@ -53,5 +53,7 @@
         "phCantidad"            =>"Cantitat",
         "phCost"                =>"Cost",
         "phImporte"             =>"Import",
+        "gamaHelp"              =>"En el cas de no saber el valor de la <br>donació, aquest es calcularà a través <br>de la gamma i el nombre d'unitats.",
+
     ];
 ?>

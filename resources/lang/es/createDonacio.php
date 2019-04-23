@@ -5,7 +5,7 @@
         "empresa"               =>"Empresa",
         "anonim"                =>"Anónimo",
         "nou"                   =>"Nuevo",
-        "btnCertificat"         =>"Descargar Certificado",
+        "btnCertificat"         =>"Certificado",
         "creaDonacio"           =>"Crear una donación",
         "material"              =>"Material",
         "diners"                =>"Dinero",
@@ -53,5 +53,7 @@
         "phCantidad"            =>"Cantidad",
         "phCost"                =>"Coste",
         "phImporte"             =>"Importe",
+        "gamaHelp"              =>"En el caso de no saber el valor de la <br>donación, este se calculará a través de <br>la gamma y el número de unidades.",
+
     ];
 ?>
