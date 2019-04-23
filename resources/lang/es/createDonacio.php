@@ -53,7 +53,7 @@
         "phCantidad"            =>"Cantidad",
         "phCost"                =>"Coste",
         "phImporte"             =>"Importe",
-        "gamaHelp"              =>"En el caso de no saber el valor de la <br>donación, este se calculará a través de <br>la gamma y el número de unidades.",
+        "gamaHelp"              =>"En el caso de no saber el valor de la <br>donación, este se calculará a través de <br>la gama y el número de unidades.",
 
     ];
 ?>
