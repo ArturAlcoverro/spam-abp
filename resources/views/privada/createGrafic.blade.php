@@ -105,10 +105,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="lblcentro" class=" col-form-label">Centro origen</label>
+                            <div class="">
+                                <select name="origen" id="origen" class="form-control">
+                                    <option value= "0" selected>Tots</option>
+                                    @foreach ($centros as $centro)
+                                        <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="lblcentro" class=" col-form-label">Centro destino</label>
                             <div class="">
-                                <select name="centro" id="centro" class="form-control">
-                                    <option value= "all" selected>Tots</option>
+                                <select name="destino" id="destino" class="form-control">
+                                    <option value= "0" selected>Tots</option>
                                     @foreach ($centros as $centro)
                                         <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
                                     @endforeach
@@ -119,7 +131,7 @@
                                 <label for="lblanimales" class=" col-form-label">Animales</label>
                                 <div class="">
                                     <select name="animales" id="animales" class="form-control">
-                                        <option value= "all" selected>Tots</option>
+                                        <option value= "0" selected>Tots</option>
                                         @foreach ($animales as $animal)
                                             <option value="{{$animal->id}}">{{$animal->nombre}}</option>
                                         @endforeach
@@ -127,14 +139,15 @@
                                 </div>
                         </div>
                         <div class="form-group">
-                                <label id ="lblvalor"for="valor" class="col-form-label">Valor a mostrar</label>
-                                <div class="">
-                                    <select name="valor" id="valor" class="form-control">
-                                        <option value="cash">Diners(€)</option>
-                                        <option value="pes">Pes(Kg)</option>
-                                    </select>
-                                </div>
-                        </div>
+                            <label id ="lblvalor"for="valor" class="col-form-label">Valor a mostrar</label>
+                            <div class="">
+                                <select name="valor" id="valor" class="form-control">
+                                    <option value="cash">Diners(€)</option>
+                                    <option value="uu">Unitats</option>
+                                    <option value="donacions">Donacions</option>
+                                </select>
+                            </div>
+                    </div>
 
 
                         <div class="form-group">
@@ -155,7 +168,7 @@
                                 <div class="">
                                     <select name="ordenar" id="ordenar" class="form-control" >
                                         <option value="tipus" selected>Tipus Donació</option>
-                                        <option value="animal">Animal</option>
+                                        <option value="animals">Animal</option>
                                         <option value="desti">Centre destí</option>
                                         <option value="origen">Centre recollida</option>
                                     </select>
@@ -274,9 +287,11 @@
 
 
                         </div>
-                        <div class="form-group ">
-                                <button type="button" name="afegirData" value = "2" class="btn btn-secondary boton-amplada">Afegir interval</button>
+                        <div class="form-group float-left">
+                                <button type="button" id = btnAfegir class="btn btn-secondary boton-amplada">Afegir interval</button>
+                                <button type="button" name="btnEliminar" value = "2" class="btn btn-secondary boton-amplada">Eliminar interval</button>
                         </div>
+
                         <div class="form-group">
                             <label for="lbltipos_donacion" class=" col-form-label">Tipo de donacion</label>
                             <div class="">
@@ -290,12 +305,23 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="lblcentro" class=" col-form-label">Centro origen</label>
+                            <div class="">
+                                <select name="origen" id="origen" class="form-control">
+                                    <option value= "0" selected>Tots</option>
+                                    @foreach ($centros as $centro)
+                                        <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="lblcentro" class=" col-form-label">Centro destino</label>
                             <div class="">
-                                <select name="centro" id="centro" class="form-control" >
-                                    <option value= "all" selected>Tots</option>
+                                <select name="destino" id="destino" class="form-control">
+                                    <option value= "0" selected>Tots</option>
                                     @foreach ($centros as $centro)
                                         <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
                                     @endforeach
@@ -307,7 +333,7 @@
                             <label for="lblanimales" class=" col-form-label">Animales</label>
                             <div class="">
                                 <select name="animales" id="animales" class="form-control">
-                                    <option value= "all" selected>Tots</option>
+                                    <option value= "0" selected>Tots</option>
                                     @foreach ($animales as $animal)
                                         <option value="{{$animal->id}}">{{$animal->nombre}}</option>
                                     @endforeach
@@ -319,10 +345,11 @@
                             <div class="">
                                 <select name="valor" id="valor" class="form-control">
                                     <option value="cash">Diners(€)</option>
-                                    <option value="pes">Pes(Kg)</option>
+                                    <option value="uu">Unitats</option>
+                                    <option value="donacions">Donacions</option>
                                 </select>
                             </div>
-                        </div>
+                    </div>
 
 
                         <div class="form-group">
@@ -338,16 +365,17 @@
                             </div>
                         </div>
                         <div class="form-group">
-                                <label for="lblordenar" class="col-form-label">Ordenar per</label>
-                                <div class="">
-                                    <select name="ordenar" id="ordenar" class="form-control" >
-                                        <option value="tipus" selected>Tipus Donació</option>
-                                        <option value="animal">Animal</option>
-                                        <option value="desti">Centre destí</option>
-                                        <option value="origen">Centre recollida</option>
-                                    </select>
-                                </div>
-                        </div>
+                            <label for="lblordenar" class="col-form-label">Ordenar per</label>
+                            <div class="">
+                                <select name="ordenar" id="ordenar" class="form-control" >
+                                    <option value="tipus" selected>Tipus Donació</option>
+                                    {{-- <option value="subtipus" selected>Subtipus Donació</option> --}}
+                                    <option value="animals">Animal</option>
+                                    <option value="desti">Centre destí</option>
+                                    <option value="origen">Centre recollida</option>
+                                </select>
+                            </div>
+                    </div>
 
                         <div class="form-group">
                             <div class="col-5 custom-control custom-checkbox">
@@ -460,16 +488,29 @@
                             <div class="">
                                 <select name="valor" id="valor" class="form-control">
                                     <option value="cash">Diners(€)</option>
-                                    <option value="pes">Pes(Kg)</option>
+                                    <option value="uu">Unitats</option>
+                                    <option value="donacions">Donacions</option>
                                 </select>
                             </div>
                     </div>
 
                     <div class="form-group">
+                        <label for="lblcentro" class=" col-form-label">Centro origen</label>
+                        <div class="">
+                            <select name="origen" id="origen" class="form-control">
+                                <option value= "0" selected>Tots</option>
+                                @foreach ($centros as $centro)
+                                    <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="lblcentro" class=" col-form-label">Centro destino</label>
                         <div class="">
-                            <select name="centro" id="centro" class="form-control" >
-                                <option value= "all" selected>Tots</option>
+                            <select name="destino" id="destino" class="form-control">
+                                <option value= "0" selected>Tots</option>
                                 @foreach ($centros as $centro)
                                     <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
                                 @endforeach
@@ -480,7 +521,7 @@
                             <label for="lblanimales" class=" col-form-label">Animales</label>
                             <div class="">
                                 <select name="animales" id="animales" class="form-control">
-                                    <option value= "all" selected>Tots</option>
+                                    <option value= "0" selected>Tots</option>
                                     @foreach ($animales as $animal)
                                         <option value="{{$animal->id}}">{{$animal->nombre}}</option>
                                     @endforeach
@@ -501,16 +542,17 @@
                     </div>
 
                     <div class="form-group">
-                            <label for="lblordenar" class="col-form-label">Ordenar per</label>
-                            <div class="">
-                                <select name="ordenar" id="ordenar" class="form-control" >
-                                    <option value="tipus" selected>Tipus Donació</option>
-                                    <option value="animal">Animal</option>
-                                    <option value="desti">Centre destí</option>
-                                    <option value="origen">Centre recollida</option>
-                                </select>
-                            </div>
-                    </div>
+                        <label for="lblordenar" class="col-form-label">Ordenar per</label>
+                        <div class="">
+                            <select name="ordenar" id="ordenar" class="form-control" >
+                                <option value="tipus" selected>Tipus Donació</option>
+                                {{-- <option value="subtipus" selected>Subtipus Donació</option> --}}
+                                <option value="animals">Animal</option>
+                                <option value="desti">Centre destí</option>
+                                <option value="origen">Centre recollida</option>
+                            </select>
+                        </div>
+                </div>
 
 
                     <div class="form-group">

@@ -56,9 +56,10 @@
                     <th>Nombre</th>
                     <th>Tema</th>
                     <th>Campos</th>
-                    <th>Centro</th>
+                    <th>Centro Origen</th>
+                    <th>Centro Destino</th>
                     <th>Animales</th>
-                    <th>Ordenar</th>                    
+                    <th>Ordenar</th>
                     <th>Pública</th>
                 </tr>
             </thead>

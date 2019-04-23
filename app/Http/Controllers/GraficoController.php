@@ -61,7 +61,8 @@ class GraficoController extends Controller
         $objetivos = "";
         $grafico = new Grafico();
         $grafico->nombre            = $request->input("nombre");
-        $grafico->centro            = $request->input("centro");
+        $grafico->origen            = $request->input("origen");
+        $grafico->desti             = $request->input("destino");
         $grafico->animales          = $request->input("animales");
         $grafico->mostrar_valor     = $request->input("valor");
         $grafico->tipo_grafico      = $request->input("tipus_grafic");
@@ -103,13 +104,13 @@ class GraficoController extends Controller
             if($request->has($modal . $tipo->nombre)){
                 if($request->input($modal . $tipo->nombre) == "on"){
                     if ($campos == ""){
-                        $campos = $tipo->nombre;
+                        $campos = $tipo->id;
                         if($modal == "o"){
                             $objetivos = $request->input('objectiu' . $tipo->nombre);
                         }
                     }
                     else{
-                        $campos = $campos . "," . $tipo->nombre;
+                        $campos = $campos . "," . $tipo->id;
                         if($modal == "o"){
                             $objetivos = $objetivos . "," . $request->input('objectiu' . $tipo->nombre);
                         }
