@@ -9,6 +9,7 @@
         "food"          =>"Menjar",
         "medicines"     =>"Medicines",
         "higiene"       =>"Higiene",
-        "text5"         =>"Comptem amb la teva ajuda!"
+        "text5"         =>"Comptem amb la teva ajuda!",
+
     ];
 ?>

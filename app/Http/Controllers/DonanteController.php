@@ -46,7 +46,7 @@ class DonanteController extends Controller
 
         }
         $animales = Animal::all();
-        $tipos_donantes = Tipo_donante::all();
+        $tipos_donantes = Tipo_donante::where("id", "1")->where("id", "2")->get();
         $sexos = Sexo::all();
         $donativos = Donativo::all();
 

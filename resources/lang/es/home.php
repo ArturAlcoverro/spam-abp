@@ -9,6 +9,16 @@
         "food"          =>"Comida",
         "medicines"     =>"Medicinas",
         "higiene"       =>"Higiene",
-        "text5"         =>"¡Contamos con tu ayuda!"
+        "text5"         =>"¡Contamos con tu ayuda!",
+        "protectora"    =>"La protectora",
+        "whoWeAre"      =>"Quiénes somos",
+        "data"          =>"Datos, Cifras, Vidas",
+        "centers"       =>"Centros de Acogida",
+        "veter"         =>"Los Veterinarios",
+        "daina"         =>"Fundación DAINA",
+        "whereAreWe"    =>"Donde estamos",
+        "contact"       =>"Contacto",
+        "animals"       =>"Los animales",
+        "meetAnimals"   =>"Conoce a nuestros animales"
     ];
 ?>
