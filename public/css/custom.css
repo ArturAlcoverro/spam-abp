@@ -136,7 +136,6 @@ section .section-title {
 #footer ul.quick-links li:hover {
     padding: 3px 0;
     margin-left: 5px;
-    font-weight: 700;
 }
 
 #footer ul.quick-links li a i {
@@ -159,9 +158,13 @@ section .section-title {
 .dropdown-lenguage {
     background: transparent;
     border: 0px;
-    color: white;
+    color: rgba(255, 255, 255, .5);
     margin-top: 6px;
     margin-right: 15px;
+}
+
+.dropdown-lenguage:hover{
+    color: rgba(255, 255, 255, .75);
 }
 
 .dropdown-lenguage::after {
@@ -174,5 +177,10 @@ section .section-title {
     .dropdown-lenguage {
         margin-right: 0;
     }
+}
 
+@media only screen and (max-width: 990px) {
+    .dropdown-menu-right {
+        right: auto;
+    }
 }

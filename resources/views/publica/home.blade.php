@@ -5,8 +5,10 @@
 @endsection
 
 @section('body')
-<div class="container" style="height: 95vh">
-    <div class="images"></div>
+<div class="container" style="min-height: 100vh">
+    <div class="images">
+
+    </div>
     <div role="main" class="introduction">
         <div class="col">
             <h1 class="hidden text-center text-uppercase font-weight-bold delighted-text">@lang('home.text1')</h1>
