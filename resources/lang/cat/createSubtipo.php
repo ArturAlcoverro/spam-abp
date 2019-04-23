@@ -3,11 +3,11 @@
         "create"        =>"Crear subtipus",
         "name"          =>"Nom",
         "type"          =>"Tipus",
-        "high"          =>"Gama alta",
-        "medium"        =>"Gama media",
-        "low"           =>"Gama baja",
+        "high"          =>"Gamma alta",
+        "medium"        =>"Gamma mitjana",
+        "low"           =>"Gamma baixa",
         "unit"          =>"Unitat de mesura",
-        "cancel"        =>"Cancelar",
-        "accept"        =>"Aceptar"
+        "cancel"        =>"Cancel·lar",
+        "accept"        =>"Acceptar"
     ];
 ?>

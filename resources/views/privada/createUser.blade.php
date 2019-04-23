@@ -1,7 +1,7 @@
 @extends('privada.templates.master')
 
 @section('name')
-    Crear usuari
+    @lang('createUser.new_user')
 @endsection
 
 @section('body')

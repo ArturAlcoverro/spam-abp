@@ -15,11 +15,51 @@ Route::get('/', function () {
     return view('publica.home');
 })->name("home");
 
+Route::get('/video', function(){
+    return view('publica.video');
+})->name('video');
+
 Route::get('/login', 'Auth\LoginController@showLogin')->name("showLogin");
 Route::post('/login', 'Auth\LoginController@login')->name("login");
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 
 Route::get('locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('donants/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('donants/{id}/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('users/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('users/{id}/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('donations/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    //$request->session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::get('donations/{id}/locale/{locale}', function($locale){
     Session::put('locale', $locale);
     //$request->session()->put('locale', $locale);
     return redirect()->back();

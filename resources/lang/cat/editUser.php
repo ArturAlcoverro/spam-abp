@@ -1,12 +1,12 @@
 <?php
     return[
         "edit"          =>"Editar usuari",
-        "email"         =>"Correu electronic",
+        "email"         =>"Correu electrònic",
         "password"      =>"Contrasenya",
         "username"      =>"Nom d'usuari",
         "name"          =>"Nom",
         "rol"           =>"Rol",
         "change"        =>"Cambiar contrasenya",
-        "accept"        =>"Aceptar"
+        "accept"        =>"Acceptar"
     ];
 ?>

@@ -1,13 +1,13 @@
 <?php
     return[
-        "graphics"      =>"Estadisticas",
-        "text1"         =>"¿Puede un animal sin hogar disfrutar tanto como tu mascota?",
-        "text2"         =>"¡Nosotros así lo creemos!",
-        "text3"         =>"Cada dia en los centros de acogida se cuidan innumerables animales y se gasta una gran cantidad de recursos",
-        "text4"         =>"Recursos como:",
-        "food"          =>"Comida",
-        "medicines"     =>"Medicinas",
+        "graphics"      =>"Estadístiques",
+        "text1"         =>"Pot un animal sense llar disfrutar tant com la teva mascota?",
+        "text2"         =>"Nosaltres ho creiem!",
+        "text3"         =>"Cada dia en els centres d'acogida es cuiden a innumerables animals i es gasta una gran cantitat de recursos",
+        "text4"         =>"Recursos com:",
+        "food"          =>"Menjar",
+        "medicines"     =>"Medicines",
         "higiene"       =>"Higiene",
-        "text5"         =>"¡Contamos con tu ayuda!"
+        "text5"         =>"comptem amb la teva ajuda!"
     ];
 ?>

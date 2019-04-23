@@ -152,3 +152,24 @@ section .section-title {
         margin-bottom: 10px;
     }
 }
+
+.dropdown-lenguage {
+    background: transparent;
+    border: 0px;
+    color: white;
+    margin-top: 6px;
+    margin-right: 15px;
+}
+
+.dropdown-lenguage::after {
+    display: none !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .dropdown-lenguage {
+        margin-right: 0;
+    }
+
+}
