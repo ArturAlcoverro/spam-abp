@@ -8,23 +8,25 @@ use App\Http\Resources\DonativoResource;
 
 use App\Models\Donativo;
 use App\Models\Tipio;
+use App\Models\Animal;
+use App\Models\Subtipo;
+use App\Models\Centro;
+
 class EstadisticasController extends Controller
 {
     //
     public function DonatiusByData($dataInici, $dataFi, $tipos, $subtipo, $ordenar, $poblacio, $origen, $desti, $animal, $valor)
     {
-        $whereTipos = [];
+
+
         $dataSet;
         if(strpos($tipos, ",") === false){
-            array_push($whereTipos,['subtipos.id_tipo', '=', $tipos]);
+            $arrTipos = [];
+            array_push($arrTipos, $tipos);
+
         }
         else{
-            $where;
             $arrTipos = explode(",",$tipos);
-            foreach ($arrTipos as $t) {
-              $where =['subtipos.id_tipo', '=', $t];
-              array_push($whereTipos,$where);
-            }
         }
 
         $query = Donativo::select('coste','cantidad')
@@ -41,27 +43,27 @@ class EstadisticasController extends Controller
         if($subtipo !== 0){
             $query->where("subtipos_id","=",$subtipo);
         }
-        if($animal !== 0){
+        if($animal != 0){
             $query->join('animales_donativos', function ($join) {
                 $join->on('donativos.id', '=', 'animales_donativos.donativos_id')
                      ->where('animales_donativos.animales_id', '=', $animal);
             });
         }
-        if($poblacio !== 0){
+        if($poblacio != 0){
             $query->join('donantes', function ($join) {
                 $join->on('donativos.donantes_id', '=', 'donantes.id')
                      ->where('donantes.poblacio', '=', $poblacio);
             });
         }
-        if($tipos !== 0){
+        if($tipos != 0){
             $query->join('subtipos', function ($join) {
                 $join->on('subtipos.id', '=', 'donativos.subtipos_id');
-                for($i = 0; $i < count($whereTipos); $i++){
+                for($i = 0; $i < count($arrTipos); $i++){
                     if ($i==0) {
-                        $join->where('subtipos.id_tipo', '=', $whereTipos[$i]);
+                        $join->where('subtipos.id_tipo', '=', $arrTipos[$i]);
                     }
                     else{
-                        $join->orWhere('subtipos.id_tipo', '=', $whereTipos[$i]);
+                        $join->orWhere('subtipos.id_tipo', '=', $arrTipos[$i]);
                     }
                 }
             });

@@ -58,7 +58,8 @@ function creaLlista(llista){
                              .data('intervalo', g.intervalo)
                              .data('magnitud_intervalo',g.magnitud_intervalo)
                              .data('tipos_donacion', g.tipos_donacion)
-                             .data('centro', g.centro)
+                             .data('origen', g.origen)
+                             .data('desti', g.desti)
                              .data('animales', g.animales)
                              .data('mostrar_valor',g.mostrar_valor)
                              .data('ordenar',g.ordenar)
@@ -116,7 +117,7 @@ function consultarLlistaApi(){
 function consultarDataApi(options){
     var params = options.paramsApi;
     var data;
-
+    var apiTipos = params.tipos_donacion.replace(',','-')
     if (params.tema == "comparativa"){
         var fechasI = new Array();
         var fechasF = new Array();
@@ -146,8 +147,10 @@ function consultarDataApi(options){
             data1 = hoy.getFullYear() + '-' + (hoy.getMonth()+1) + '-' + hoy.getDate();
 
             $.ajax({
+                //DonatiusByData($dataInici, $dataFi, $tipos, $subtipo, $ordenar, $poblacio, $origen, $desti, $animal, $valor)
                 // url:"htwww.abp-politecnics.com/2019/daw/projecte02/dw01/spam-abp/public/api/estadisticas/donativos/2019-2-11/2019-4-11",
-                url: "api/estadisticas/donativos/" + data1 + "/" + data2,
+                url: "api/estadisticas/donativos/" + data1 + "/" + data2 + "/" + params.tipos_donacion + "/" + 0 + "/" + params.ordenar + "/" + 0
+                    + "/" + params.origen + "/" + params.desti + "/" + params.animales + "/" + params.mostrar_valor,
                 type: "GET",
                 dataType: 'json',
                 async: true,
@@ -155,7 +158,8 @@ function consultarDataApi(options){
                 },
                 beforeSend: function () { },
                 error: function (resp) {
-                    toast(resp.responseJSON.error, 5000);
+                alert(resp.responseJSON.error);
+                   toast(resp.responseJSON.message + "line" + resp.responseJSON.line, 5000);
                 },
                 success: function (resp) {
                     data = dataSets(resp['data'], params);
@@ -198,26 +202,26 @@ function dataSets(dataApi,params){
 // tipo: "bar"
 // tipo_data: "dinamic"
 // tipos_donacion: "Menjar,Veterinaria,Oficines"
-    var ordenar = "tipus"
-    var tipos = new Array();
-    tipos = params.tipos_donacion.split(',');
+    // var ordenar = "tipus"
+    // var tipos = new Array();
+    // tipos = params.tipos_donacion.split(',');
     var datasets = [];
     var dataset;
-    var labels = tipos;
-    var donatius = [];
+    // var labels = tipos;
+    // var donatius = [];
 
-    $.each(tipos, function(ii,t){
-        var donatiu = 0;
-        $.each(dataApi,function(i,d){
-          if (t == d.subtipo.tipo.nombre){
-              donatiu = donatiu + d.coste;
-          }
-        });
-        donatius.push(donatiu);
-    });
+    // $.each(tipos, function(ii,t){
+    //     var donatiu = 0;
+    //     $.each(dataApi,function(i,d){
+    //       if (t == d.subtipo.tipo.nombre){
+    //           donatiu = donatiu + d.coste;
+    //       }
+    //     });
+    //     donatius.push(donatiu);
+    // });
     dataset = {
         label:'Donacions',
-        data:donatius,
+        data:dataApi['data'],
         //backgroundColor:'green',
         backgroundColor:[
           'rgba(255, 99, 132, 0.6)',
@@ -262,7 +266,7 @@ function dataSets(dataApi,params){
     }
 
     var data = {
-        labels:labels,
+        labels:dataApi['labels'],
         datasets:datasets
       };
     return data;

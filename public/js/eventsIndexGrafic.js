@@ -105,7 +105,7 @@ function indexDonaciones() {
 
             resp['data'].forEach(function (data) {
                 var a;
-                if (data['animales'] == "all"){
+                if (data['animales'] === 0){
                     a = "tots";
                 }else{
 
@@ -117,7 +117,8 @@ function indexDonaciones() {
                     data['nombre'],
                     data['tema'],
                     data['tipos_donacion'],
-                    data['centro'],
+                    data['origen'],
+                    data['desti'],
                     data['animales'],
                     data['ordenar'],
                     data['publica'],
