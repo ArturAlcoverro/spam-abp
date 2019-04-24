@@ -157,9 +157,12 @@ function consultarDataApi(options){
                 data: {
                 },
                 beforeSend: function () { },
-                error: function (resp) {
-                alert(resp.responseJSON.error);
-                   toast(resp.responseJSON.message + "line" + resp.responseJSON.line, 5000);
+                error: function (resp, error, errorThrow) {
+                // alert(resp.responseJSON.error);
+                //    toast(resp.responseJSON.message + "line" + resp.responseJSON.line, 5000);
+                console.log(resp);
+                console.log(error);
+                console.log(errorThrow);
                 },
                 success: function (resp) {
                     data = dataSets(resp['data'], params);

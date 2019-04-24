@@ -5,9 +5,9 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DonativoResource;
-
+use App\Clases\Sort;
 use App\Models\Donativo;
-use App\Models\Tipio;
+use App\Models\Tipo;
 use App\Models\Animal;
 use App\Models\Subtipo;
 use App\Models\Centro;
@@ -44,19 +44,26 @@ class EstadisticasController extends Controller
             $query->where("subtipos_id","=",$subtipo);
         }
         if($animal != 0){
-            $query->join('animales_donativos', function ($join) {
+            try{
+            $query->join('animales_donativos', function ($join) use ($animal){
+                try{
                 $join->on('donativos.id', '=', 'animales_donativos.donativos_id')
                      ->where('animales_donativos.animales_id', '=', $animal);
-            });
+                }catch(Exception $e){
+                    return json_encode($query->toSql());
+                }
+            });}catch(Exception $e){
+                return json_encode($query->toSql());
+            }
         }
         if($poblacio != 0){
-            $query->join('donantes', function ($join) {
+            $query->join('donantes', function ($join) use ($poblacio){
                 $join->on('donativos.donantes_id', '=', 'donantes.id')
                      ->where('donantes.poblacio', '=', $poblacio);
             });
         }
         if($tipos != 0){
-            $query->join('subtipos', function ($join) {
+            $query->join('subtipos', function ($join) use ($arrTipos) {
                 $join->on('subtipos.id', '=', 'donativos.subtipos_id');
                 for($i = 0; $i < count($arrTipos); $i++){
                     if ($i==0) {
@@ -68,7 +75,7 @@ class EstadisticasController extends Controller
                 }
             });
         }
-
+        $var = [];
         switch ($ordenar){
 
             case 'tipus':
@@ -78,12 +85,12 @@ class EstadisticasController extends Controller
                 $arr['joinId'] = 'id';
                 $arr['idOrigen'] = 'subtipos_id';
                 $arr['tabla'] = 'subtipos';
-                foreach ($tipos as $t) {
+                foreach ($arrTipos as $t) {
                     $tipo = Tipo::find($t);
-                    $var[$t->id] = $tipo->nombre;
+                    $var[$t] = $tipo->nombre;
                     array_push($arr['data'], $var);
                 }
-                $dataSet = sortJoin($query, $arr);
+                $dataSet = Sort::sortJoin($query, $arr);
             break;
             case 'subtipus':
                 $subtipos = Subtipo::all();
@@ -140,70 +147,11 @@ class EstadisticasController extends Controller
 
 
         return response()->json($dataSet);
+        // }catch(Exception $e){
+        //     // return json_encode($query->toSql());
+        //     return 'hola';
+        // }
     }
-    public function sort($query, $arr){
-        $dataSet['labels']= [];
-        $dataSet['data']= [];
 
-        foreach($arr['data'] as $key => $value){
-            $executa = $query;
-            $executa->where($arr['id'],"=",$key);
-            $executa = $executa->get();
-            $label = $value;
-            $quantitat = 0;
-            if($arr['sort'] == 'cash'){
-                foreach($executa as $result){
-                    $quantitat =$quantitat + $result->coste;
-                }
-            }
-            elseif ($arr['sort'] == 'uu') {
-                foreach($executa as $result){
-                    $quantitat = $quantitat + $result->cantidad;
-                }
-            }
-            else{
-                foreach($executa as $result){
-                    $quantitat++;
-                }
-            }
-            array_push($dataSet['labels'], $label);
-            array_push($dataSet['data'], $quantitat);
-        }
-
-        return $dataSet;
-    }
-    public function sortJoin($query, $arr){
-        $dataSet['labels']= [];
-        $dataSet['data']= [];
-
-        foreach($arr['data'] as $key => $value){
-            $executa = $query;
-            $executa->join($arr['tabla'], function ($join) {
-                $join->on('donativos.'.$arr['idOrigen'], '=', $arr['tabla'].'.'.$arr['joinId'])
-                     ->where($arr['tabla'].'.'.$arr['id'], '=', $key);
-            });
-            $executa = $executa->get();
-            $label = $value;
-            $quantitat = 0;
-            if($arr['sort'] == 'cash'){
-                foreach($executa as $result){
-                    $quantitat =$quantitat + $result->coste;
-                }
-            }
-            elseif ($arr['sort'] == 'uu') {
-                foreach($executa as $result){
-                    $quantitat = $quantitat + $result->cantidad;
-                }
-            }
-            else{
-                foreach($executa as $result){
-                    $quantitat++;
-                }
-            }
-            array_push($dataSet['labels'], $label);
-            array_push($dataSet['data'], $quantitat);
-        }
-
-        return $dataSet;
-    }
 }
+
