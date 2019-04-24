@@ -5,16 +5,16 @@
 @endsection
 
 @section('body')
-<!-- style= "height: 100vh" -->
+
 <div class="container-fluid" >
-    <div class="row">
+    <div class="row" style= "height: 100vh">
         <div class="col-3">
             <div class="nav flex-column nav-pills mt-2" id="llistaOpcions" role="tablist" aria-orientation="vertical"></div>
-            
+
         </div>
 
         <div class="col-9">
-            <form action="" class = "mt-2" method="POST">
+            {{-- <form action="" class = "mt-2" method="POST">
                 @csrf
 
                 <div class="form-group row">
@@ -31,7 +31,7 @@
                 <div class="form-group float-right">
                     <button type="submit" name="actualizar" class="btn btn-primary boton-amplada">Actualitzar gràfic</button>
                 </div>
-            </form>
+            </form> --}}
 
 
             <div class="tab-content" id="tabsGrafiques"></div>
