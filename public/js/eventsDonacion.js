@@ -80,7 +80,7 @@ $(document).ready(function () {
                 visible: false,
             },
             {
-                targets: [13],
+                targets: [15],
                 visible: false,
             },
         ]
@@ -128,6 +128,7 @@ function indexDonaciones() {
             $("#table").DataTable().clear().draw();
 
             resp['data'].forEach(function (data) {
+
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['subtipo']['tipos_id'],
@@ -139,6 +140,8 @@ function indexDonaciones() {
                     data['centros_desti_id'],
                     data['centro_desti']['nombre'],
                     data['donante']['cif'],
+                    data['donante']['nombre'],
+                    data['donante']['correo'],
                     data['coste'],
                     data['fecha_donativo'],
                     data['hay_factura'] == '0' ? 'Si' : 'No',
@@ -267,8 +270,12 @@ function filtrar() {
                     data['centros_desti_id'],
                     data['centro_desti']['nombre'],
                     data['donante']['cif'],
+                    data['donante']['nombre'],
+                    data['donante']['correo'],
                     data['coste'],
-                    data['fecha_donativo']
+                    data['fecha_donativo'],
+                    data['hay_factura'] == '0' ? 'Si' : 'No',
+                    data['ruta_factura']
                 ]).draw();
             });
 
@@ -277,6 +284,8 @@ function filtrar() {
                 .column(5).search($('#centrosReceptores').val())
                 .column(7).search($('#centrosDestino').val())
                 .column(9).search($('#dni').val())
+                .column(10).search($('#name').val())
+                .column(11).search($('#email').val())
                 .draw();
         }
     });
