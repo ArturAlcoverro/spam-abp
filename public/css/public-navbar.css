@@ -7,10 +7,20 @@
     color: grey !important;
 }
 
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: darkgrey !important;
+}
+
 .dropdown-lenguage
 {
     color: grey !important;
 }
+
+.dropdown-lenguage:hover
+{
+    color: darkgray !important;
+}
+
 .navbar-dark .navbar-toggler{
     color: grey !important;
     border-color: rgba(128, 128, 128, 0.486) !important;
