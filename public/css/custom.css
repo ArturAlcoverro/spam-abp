@@ -174,7 +174,6 @@ section .section-title {
     display: none !important;
 }
 
-
 @media only screen and (max-width: 600px) {
 
     .dropdown-lenguage {

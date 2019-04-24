@@ -5,8 +5,11 @@
 @endsection
 
 @section('body')
+<style>
+
+</style>
 <div id="vcontainer" class="container">
-    <video width="720" height="480" controls class="mx-auto" style="width: 100%;">
+    <video width="720" height="480" controls class="mx-auto mt-4" style="width: 100%; height: auto">
         <source src="{{ asset('media/publica/SPAM_DEFDEF.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
