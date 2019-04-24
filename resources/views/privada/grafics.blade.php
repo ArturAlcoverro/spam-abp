@@ -7,6 +7,10 @@
 @section('body')
 
 <script>
+
+    var centros = {!! json_encode($centros->toArray()) !!};
+    var animales = {!! json_encode($animales->toArray()) !!};
+
     $(document).ready(function(){
         $('.buttons-copy').attr('title',"{{ __('master.copy_crud') }}");
         $('.buttons-excel').attr('title',"{{ __('master.xls_crud') }}");
@@ -28,16 +32,9 @@
         <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
-        <button title="@lang('master.filter_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/filter.png') }}" alt="">
-        </button>
         <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/pie.png') }}" alt="">
         </button>
-        <button title="@lang('master.update_crud')" class="btn btn-secondary buttons-html5">
-            <img height="0px" src="{{ asset('media/img/update.png') }}" alt="">
-        </button>
-
     </div>
 
     <div class="toolbar-append">
@@ -51,11 +48,11 @@
                     <th>id</th>
                     <th>Nombre</th>
                     <th>Tema</th>
-                    <th>Tipo de Gráfico</th>
                     <th>Campos</th>
-                    <th>Centro</th>
+                    <th>Centro Origen</th>
+                    <th>Centro Destino</th>
                     <th>Animales</th>
-                    <th>Ordenar</th>                    
+                    <th>Ordenar</th>
                     <th>Pública</th>
                 </tr>
             </thead>

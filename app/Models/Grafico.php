@@ -12,5 +12,4 @@ class Grafico extends Model
     protected $keyType = 'int';
 
     public $timestamps = false;
-
 }
