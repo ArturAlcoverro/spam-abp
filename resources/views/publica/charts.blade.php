@@ -9,7 +9,7 @@ ARTIO
 <link rel="stylesheet" href="{{ asset('css/charts.css') }}">
 
 <div class="container-fluid">
-    <h2 class="mt-3">@lang('home.graphics')</h2>
+    <h1 class="mt-4">@lang('home.graphics')</h1>
     <div class="p-2">
         <div class="row grafics-card" style="height: calc(100vh - 92px);">
 
