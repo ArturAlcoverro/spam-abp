@@ -7,6 +7,10 @@
 @section('body')
 
 <script>
+
+    var centros = {!! json_encode($centros->toArray()) !!};
+    var animales = {!! json_encode($animales->toArray()) !!};
+
     $(document).ready(function(){
         $('.buttons-copy').attr('title',"{{ __('master.copy_crud') }}");
         $('.buttons-excel').attr('title',"{{ __('master.xls_crud') }}");
@@ -51,11 +55,11 @@
                     <th>id</th>
                     <th>Nombre</th>
                     <th>Tema</th>
-                    <th>Tipo de Gráfico</th>
                     <th>Campos</th>
-                    <th>Centro</th>
+                    <th>Centro Origen</th>
+                    <th>Centro Destino</th>
                     <th>Animales</th>
-                    <th>Ordenar</th>                    
+                    <th>Ordenar</th>
                     <th>Pública</th>
                 </tr>
             </thead>
