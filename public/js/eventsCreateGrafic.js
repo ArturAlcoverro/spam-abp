@@ -15,27 +15,21 @@ $(document).ready(function(){
 
         $('#modalGraficObjectius').modal();
 
-        $(".tipo_donacion").each(function(){
-            if($(this).prop('checked')){
-                $('#objectiu' + $(this).data("tipo")).prop( "disabled", false );
-            }else{
-                $('#objectiu' + $(this).data("tipo")).prop( "disabled", true );
-            }
-        });
-
         oTipoData();
     });
 
-    $(".tipo_donacion").change(function () {
+    // $(".tipo_donacion").change(function () {
+
+    //     if ($(".tipo_donacion:checked").length == 1){
+    //         setSubtipos($(this).data("id"));
+    //     }
+    //     else{
+    //         $('#subtipo_donacion').append('<option value="-1" selected></option>')
+    //         .prop( "disabled", true );
+    //     }
 
 
-        if($(this).prop('checked')){
-            $('#objectiu' + $(this).data("tipo")).prop( "disabled", false );
-        }else{
-            $('#objectiu' + $(this).data("tipo")).val(null)
-                                                 .prop( "disabled", true );
-        }
-    });
+    // });
 
     $('#dTipoData').change(function(){
         dTipoData();

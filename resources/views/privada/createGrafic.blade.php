@@ -10,7 +10,7 @@
 @section('body')
 @include('partial.errores')
 <div class="p-5 d-inline-block">
-    <h3 class="">Crea un gràfic</h3>
+    <h3 class="mt-5">Crea un gràfic</h3>
     <div class="buttons">
         <button id="btnDades" class="btn-donatiu">
             <p>Dades</p>
@@ -96,7 +96,7 @@
                                 @foreach ($tipos as $tipo)
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="d{{$tipo->nombre}}" id="d{{$tipo->nombre}}">
+                                                <input type="checkbox" class="custom-control-input tipo_donacion" name="d{{$tipo->nombre}}" id="d{{$tipo->nombre}}" data-id="{{$tipo->id}}">
                                                 <label class="custom-control-label" for="d{{$tipo->nombre}}">{{$tipo->nombre}}</label>
                                             </div>
                                         </div>
@@ -105,24 +105,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="lblcentro" class=" col-form-label">Centro origen</label>
-                            <div class="">
-                                <select name="origen" id="origen" class="form-control">
-                                    <option value= "0" selected>Tots</option>
-                                    @foreach ($centros as $centro)
-                                        <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <label for="lblcentro" class=" col-form-label">Centro destino</label>
                             <div class="">
-                                <select name="destino" id="destino" class="form-control">
-                                    <option value= "0" selected>Tots</option>
+                                <select name="centro" id="centro" class="form-control">
+                                    <option value= "all" selected>Tots</option>
                                     @foreach ($centros as $centro)
-                                        <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
+                                        <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -131,7 +119,7 @@
                                 <label for="lblanimales" class=" col-form-label">Animales</label>
                                 <div class="">
                                     <select name="animales" id="animales" class="form-control">
-                                        <option value= "0" selected>Tots</option>
+                                        <option value= "all" selected>Tots</option>
                                         @foreach ($animales as $animal)
                                             <option value="{{$animal->id}}">{{$animal->nombre}}</option>
                                         @endforeach
@@ -139,15 +127,14 @@
                                 </div>
                         </div>
                         <div class="form-group">
-                            <label id ="lblvalor"for="valor" class="col-form-label">Valor a mostrar</label>
-                            <div class="">
-                                <select name="valor" id="valor" class="form-control">
-                                    <option value="cash">Diners(€)</option>
-                                    <option value="uu">Unitats</option>
-                                    <option value="donacions">Donacions</option>
-                                </select>
-                            </div>
-                    </div>
+                                <label id ="lblvalor"for="valor" class="col-form-label">Valor a mostrar</label>
+                                <div class="">
+                                    <select name="valor" id="valor" class="form-control">
+                                        <option value="cash">Diners(€)</option>
+                                        <option value="pes">Pes(Kg)</option>
+                                    </select>
+                                </div>
+                        </div>
 
 
                         <div class="form-group">
@@ -164,15 +151,17 @@
                         </div>
 
                         <div class="form-group">
-                                <label for="lblordenar" class="col-form-label">Ordenar per</label>
-                                <div class="">
-                                    <select name="ordenar" id="ordenar" class="form-control" >
-                                        <option value="tipus" selected>Tipus Donació</option>
-                                        <option value="animals">Animal</option>
-                                        <option value="desti">Centre destí</option>
-                                        <option value="origen">Centre recollida</option>
-                                    </select>
-                                </div>
+                            <label for="lblordenar" class="col-form-label">Ordenar per</label>
+                            <div class="">
+                                <select name="ordenar" id="ordenar" class="form-control">
+                                    <option value="tipus">Tipus Donació</option>
+                                    <option value="animal">Animal</option>
+                                    <option value="desti">Centre destí</option>
+                                    <option value="origen">Centre recollida</option>
+                                    <option value="Temps">Temps</option>
+
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -183,7 +172,6 @@
                         </div>
 
                         <div class="form-group float-right">
-                            <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
                     </form>
@@ -218,138 +206,67 @@
                                 <div class="form-group col-6">
                                     <label for="dataInit" class="col-form-label">Data Inicial</label>
                                     <div class="">
-                                        <input type="date" name="dataInit0" id="dataInit" class="form-control">
+                                        <input type="date" name="dataInit" id="dataInit" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group col-6">
                                     <label for="dataFin" class="col-form-label">Data Final</label>
                                     <div class="">
-                                        <input type="date" name="dataFin0" id="dataFin" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id = "data2">
-                                <div class="form-group col-6">
-                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
-                                    <div class="">
-                                        <input type="date" name="dataInit1" id="dataInit1" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="dataFin" class="col-form-label">Data Final</label>
-                                    <div class="">
-                                        <input type="date" name="dataFin1" id="dataFin1" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id = "data3">
-                                <div class="form-group col-6">
-                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
-                                    <div class="">
-                                        <input type="date" name="dataInit2" id="dataInit2" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="dataFin" class="col-form-label">Data Final</label>
-                                    <div class="">
-                                        <input type="date" name="dataFin2" id="dataFin2" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id = "data4">
-                                <div class="form-group col-6">
-                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
-                                    <div class="">
-                                        <input type="date" name="dataInit3" id="dataInit3" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="dataFin" class="col-form-label">Data Final</label>
-                                    <div class="">
-                                        <input type="date" name="dataFin3" id="dataFin3" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" id = "data5">
-                                <div class="form-group col-6">
-                                    <label for="dataInit" class="col-form-label">Data Inicial</label>
-                                    <div class="">
-                                        <input type="date" name="dataInit4" id="dataInit4" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="dataFin" class="col-form-label">Data Final</label>
-                                    <div class="">
-                                        <input type="date" name="dataFin4" id="dataFin4" class="form-control">
+                                        <input type="date" name="dataFin" id="dataFin" class="form-control">
                                     </div>
                                 </div>
                             </div>
 
 
                         </div>
-                        <div class="form-group float-left">
-                                <button type="button" id = btnAfegir class="btn btn-secondary boton-amplada">Afegir interval</button>
-                                <button type="button" name="btnEliminar" value = "2" class="btn btn-secondary boton-amplada">Eliminar interval</button>
+                        <div class="form-group ">
+                                <button type="button" name="afegirData" class="btn btn-secondary boton-amplada">Afegir interval</button>
                         </div>
-
                         <div class="form-group">
                             <label for="lbltipos_donacion" class=" col-form-label">Tipo de donacion</label>
                             <div class="">
                                 @foreach ($tipos as $tipo)
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="c{{$tipo->nombre}}" id="c{{$tipo->nombre}}">
+                                                <input type="checkbox" class="custom-control-input tipo_donacion" name="c{{$tipo->nombre}}" id="c{{$tipo->nombre}}" data-id="{{$tipo->id}}">
                                                 <label class="custom-control-label" for="c{{$tipo->nombre}}">{{$tipo->nombre}}</label>
                                             </div>
                                         </div>
                                 @endforeach
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="lblcentro" class=" col-form-label">Centro origen</label>
+                            <label for="lblcentro_destino" class=" col-form-label">Centro destino</label>
                             <div class="">
-                                <select name="origen" id="origen" class="form-control">
-                                    <option value= "0" selected>Tots</option>
+                                <select name="centro_destino" id="centro_destino" class="form-control">
                                     @foreach ($centros as $centro)
-                                        <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
+                                        <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="lblcentro" class=" col-form-label">Centro destino</label>
-                            <div class="">
-                                <select name="destino" id="destino" class="form-control">
-                                    <option value= "0" selected>Tots</option>
-                                    @foreach ($centros as $centro)
-                                        <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lblanimales" class=" col-form-label">Animales</label>
-                            <div class="">
-                                <select name="animales" id="animales" class="form-control">
-                                    <option value= "0" selected>Tots</option>
-                                    @foreach ($animales as $animal)
-                                        <option value="{{$animal->id}}">{{$animal->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                <label for="lblanimales" class=" col-form-label">Animales</label>
+                                <div class="">
+                                    <select name="animales" id="animales" class="form-control">
+                                        <option value= "all" selected>Tots</option>
+                                        @foreach ($animales as $animal)
+                                            <option value="{{$animal->id}}">{{$animal->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                         </div>
                         <div class="form-group">
-                            <label id ="lblvalor"for="valor" class="col-form-label">Valor a mostrar</label>
-                            <div class="">
-                                <select name="valor" id="valor" class="form-control">
-                                    <option value="cash">Diners(€)</option>
-                                    <option value="uu">Unitats</option>
-                                    <option value="donacions">Donacions</option>
-                                </select>
-                            </div>
-                    </div>
+                                <label id ="lblvalor"for="valor" class="col-form-label">Valor a mostrar</label>
+                                <div class="">
+                                    <select name="valor" id="valor" class="form-control">
+                                        <option value="cash">Diners(€)</option>
+                                        <option value="pes">Pes(Kg)</option>
+                                    </select>
+                                </div>
+                        </div>
 
 
                         <div class="form-group">
@@ -365,17 +282,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lblordenar" class="col-form-label">Ordenar per</label>
-                            <div class="">
-                                <select name="ordenar" id="ordenar" class="form-control" >
-                                    <option value="tipus" selected>Tipus Donació</option>
-                                    {{-- <option value="subtipus" selected>Subtipus Donació</option> --}}
-                                    <option value="animals">Animal</option>
-                                    <option value="desti">Centre destí</option>
-                                    <option value="origen">Centre recollida</option>
-                                </select>
-                            </div>
-                    </div>
+                                <label for="lblordenar" class="col-form-label">Ordenar per</label>
+                                <div class="">
+                                    <select name="ordenar" id="ordenar" class="form-control">
+                                        <option value="tipus">Tipus Donació</option>
+                                        <option value="animal">Animal</option>
+                                        <option value="desti">Centre destí</option>
+                                        <option value="origen">Centre recollida</option>
+                                    </select>
+                                </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-5 custom-control custom-checkbox">
@@ -385,7 +301,6 @@
                         </div>
 
                         <div class="form-group float-right">
-                            <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                             <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                         </div>
                     </form>
@@ -469,7 +384,7 @@
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
 
-                                            <input type="checkbox" class="custom-control-input tipo_donacion" data-tipo="{{$tipo->nombre}}" name="o{{$tipo->nombre}}" id="o{{$tipo->nombre}}">
+                                            <input type="checkbox" class="custom-control-input" name="o{{$tipo->nombre}}" id="o{{$tipo->nombre}}">
                                             <label class="custom-control-label" for="o{{$tipo->nombre}}">{{$tipo->nombre}}</label>
                                         </div>
                                     </div>
@@ -488,31 +403,17 @@
                             <div class="">
                                 <select name="valor" id="valor" class="form-control">
                                     <option value="cash">Diners(€)</option>
-                                    <option value="uu">Unitats</option>
-                                    <option value="donacions">Donacions</option>
+                                    <option value="pes">Pes(Kg)</option>
                                 </select>
                             </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="lblcentro" class=" col-form-label">Centro origen</label>
+                        <label for="lblcentro_destino" class=" col-form-label">Centro destino</label>
                         <div class="">
-                            <select name="origen" id="origen" class="form-control">
-                                <option value= "0" selected>Tots</option>
+                            <select name="centro_destino" id="centro_destino" class="form-control">
                                 @foreach ($centros as $centro)
-                                    <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lblcentro" class=" col-form-label">Centro destino</label>
-                        <div class="">
-                            <select name="destino" id="destino" class="form-control">
-                                <option value= "0" selected>Tots</option>
-                                @foreach ($centros as $centro)
-                                    <option value="{{$centro->id}}" >{{$centro->nombre}}</option>
+                                    <option value="{{$centro->id}}" selected>{{$centro->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -521,7 +422,7 @@
                             <label for="lblanimales" class=" col-form-label">Animales</label>
                             <div class="">
                                 <select name="animales" id="animales" class="form-control">
-                                    <option value= "0" selected>Tots</option>
+                                    <option value= "all" selected>Tots</option>
                                     @foreach ($animales as $animal)
                                         <option value="{{$animal->id}}">{{$animal->nombre}}</option>
                                     @endforeach
@@ -544,15 +445,14 @@
                     <div class="form-group">
                         <label for="lblordenar" class="col-form-label">Ordenar per</label>
                         <div class="">
-                            <select name="ordenar" id="ordenar" class="form-control" >
-                                <option value="tipus" selected>Tipus Donació</option>
-                                {{-- <option value="subtipus" selected>Subtipus Donació</option> --}}
-                                <option value="animals">Animal</option>
+                            <select name="ordenar" id="ordenar" class="form-control">
+                                <option value="tipus">Tipus Donació</option>
+                                <option value="animal">Animal</option>
                                 <option value="desti">Centre destí</option>
                                 <option value="origen">Centre recollida</option>
                             </select>
                         </div>
-                </div>
+                    </div>
 
 
                     <div class="form-group">
@@ -563,7 +463,6 @@
                     </div>
 
                     <div class="form-group float-right">
-                        <button type="button" class="btn btn-secondary boton-amplada mr-1" data-dismiss="modal">Cancelar</button>
                         <button type="submit" name="altaAceptar" class="btn btn-primary boton-amplada">Aceptar</button>
                     </div>
                 </form>
