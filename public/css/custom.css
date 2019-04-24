@@ -20,7 +20,7 @@ body {
 }
 
 .navbar .logo{
-    padding: .5rem 1rem;
+    padding: 1rem 1.5rem;
 }
 
 body {
@@ -78,16 +78,17 @@ body {
 }
 
 .option{
-    border: 1px solid #202020;
     background-color: transparent;
+    border: 1px solid transparent;
     color: black;
     cursor: pointer;
-    transition: color 0.2s , background-color  0.2s;
+    transition: border 0.2s , background-color  0.2s;
 }
 
 .option:hover{
-    background-color: #202020;
-    color: white;
+    border: 1px solid #202020;
+    /* background-color: #202020; */
+    /* color: white; */
 }
 
 /* Footer raro */
@@ -169,7 +170,7 @@ section .section-title {
     font-weight: 700;
 }
 .contenedor{
-    min-height: calc(100vh - 87px);
+    min-height: calc(100vh - 92px);
 }
 
 @media (max-width:767px) {

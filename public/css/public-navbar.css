@@ -24,9 +24,10 @@
 .navbar-dark .navbar-toggler{
     color: grey !important;
     border-color: rgba(128, 128, 128, 0.486) !important;
+    margin-right: 10px;
 }
 .navbar .logo{
-    background: var(--primary-color-dark);
+    background: var(--primary-color);
 }
 
 body{

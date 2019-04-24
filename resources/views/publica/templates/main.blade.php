@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/charts')}}">@lang('home.graphics')</a>
+                    <a class="nav-link px-2" href="{{url('/charts')}}">@lang('home.graphics')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/video')}}">@lang('home.video')</a>
+                    <a class="nav-link px-2" href="{{url('/video')}}">@lang('home.video')</a>
                 </li>
             </ul>
             <div class="dropdown">
