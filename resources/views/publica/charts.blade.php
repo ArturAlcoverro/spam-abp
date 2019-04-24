@@ -13,12 +13,12 @@ ARTIO
     <div class="p-2">
         <div class="row grafics-card" style="height: calc(100vh - 92px);">
 
-            <div class="col-3 py-2 pl-2 pr-0 tabs">
+            <div class="col-2 py-2 pl-2 pr-0 tabs">
                 <div class="nav flex-column nav-pills mt-2" id="llistaOpcions" role="tablist" aria-orientation="vertical"></div>
 
             </div>
 
-            <div class="col-9 p-2 grafics">
+            <div class="col-10 p-2 grafics">
 
                 {{--
                 <form action="" class="mt-2" method="POST">
