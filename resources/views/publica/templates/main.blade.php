@@ -94,17 +94,10 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/artio.abp.1
-                            {{-- https://www.facebook.com/protectoramataro/ --}}
-                            "><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/ARTIOABP
-                            {{-- https://twitter.com/protemataro --}}
-                            "><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="
-                            {{-- https://www.instagram.com/protectoramataro/ --}}
-                            https://www.instagram.com/artio_abp/
-                            "><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="mailto:artioABP@gmail.com?" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/artio.abp.1" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/ARTIOABP" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/artio_abp/" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="mailto:artioABP@gmail.com?" target="_blank" title="Correo"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
 				</hr>
