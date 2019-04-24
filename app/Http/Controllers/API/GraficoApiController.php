@@ -44,5 +44,23 @@ class GraficoApiController extends Controller
         return new GraficoResource($graficos);
     }
 
+    public function destroy($id)
+    {
+        $user = Grafico::find($id);
 
+        try{
+            $user->delete();
+            $respuesta = (new GraficoResource($user))
+                            ->response()
+                            ->setStatusCode(200);
+        }
+        catch(QueryException $e){
+
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                           ->json(['error'=>$mensaje], 400);
+        }
+
+        return $respuesta;
+    }
 }

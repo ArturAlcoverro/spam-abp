@@ -28,5 +28,5 @@ Route::apiResource('/filtro', 'API\FiltroAPIController');
 
 Route::get("/estadisticas/donativos/{dataInici}/{dataFi}/{tipos}/{subtipo}/{ordenar}/{poblacio}/{origen}/{desti}/{animal}/{valor}", 'API\EstadisticasController@DonatiusByData');
 Route::get("/grafico", 'API\GraficoApiController@index');
-
+Route::delete("/grafico/{id}", 'API\GraficoApiController@destroy');
 Route::get("/filtro/{fechaInicio}/{fechaFinal}", 'API\FiltroAPIController@show');

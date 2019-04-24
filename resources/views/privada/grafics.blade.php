@@ -29,7 +29,7 @@
         <button onclick="" title="@lang('master.edit_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/edit.png') }}" alt="">
         </button>
-        <button title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
+        <button onclick="deleteGrafic()" title="@lang('master.delete_crud')" class="btn btn-secondary buttons-html5">
             <img height="0px" src="{{ asset('media/img/delete.png') }}" alt="">
         </button>
         <button title="@lang('master.chart_crud')" class="btn btn-secondary buttons-html5">
