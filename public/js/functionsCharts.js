@@ -84,6 +84,14 @@ function creaLlista(llista){
 
         var grafic = $('<canvas>').attr('id', 'chart' + g.id);
 
+        if (g.tipo_grafico == 'pie' || g.tipo_grafico == 'doughnut'){
+            grafic.css({
+                'max-width':'80vh',
+                'margin': 'auto'
+              });
+        }
+
+
         grafic.appendTo('#tab' + g.id);
 
     });
@@ -228,12 +236,12 @@ function dataSets(dataApi,params){
         data:dataApi['data'],
         //backgroundColor:'green',
         backgroundColor:[
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(123, 31, 255, 0.6)',
-          'rgba(222, 11, 145, 0.6)',
-          'rgba(75, 192, 192, 0.6)'
+          'rgba(255, 99, 132, 0.8)',
+          'rgba(54, 162, 235, 0.8)',
+          'rgba(255, 206, 86, 0.8)',
+          'rgba(123, 31, 255, 0.8)',
+          'rgba(222, 11, 145, 0.8)',
+          'rgba(75, 192, 192, 0.8)'
         ],
         borderWidth:1,
         borderColor:'#777',
@@ -254,12 +262,12 @@ function dataSets(dataApi,params){
             data:objectius,
             //backgroundColor:'green',
             backgroundColor:[
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(123, 31, 255, 0.6)',
-                'rgba(222, 11, 145, 0.6)',
-                'rgba(75, 192, 192, 0.6)'
+                'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+          'rgba(123, 31, 255, 0.5)',
+          'rgba(222, 11, 145, 0.5)',
+          'rgba(75, 192, 192, 0.5)'
             ],
             borderWidth:1,
             borderColor:'#777',
