@@ -24,7 +24,7 @@ function opcions(selectedNav){
       {"optionsChart":{
         title:{
           display: true,
-          text: nav.text()
+          text: nav.data('desc')
         },
         legend:{
           display:true,
@@ -64,6 +64,7 @@ function creaLlista(llista){
                              .data('mostrar_valor',g.mostrar_valor)
                              .data('ordenar',g.ordenar)
                              .data('tema',g.tema)
+                             .data('desc', g.descripcion)
                              .data('objetivos', g.objetivos)
                              .text(g.nombre)
                              .addClass('nav-link')
@@ -157,12 +158,15 @@ function consultarDataApi(options){
                 data: {
                 },
                 beforeSend: function () { },
-                error: function (resp) {
-                alert(resp.responseJSON.error);
-                   toast(resp.responseJSON.message + "line" + resp.responseJSON.line, 5000);
+                error: function (resp, error, errorThrow) {
+                // alert(resp.responseJSON.error);
+                //    toast(resp.responseJSON.message + "line" + resp.responseJSON.line, 5000);
+                console.log(resp);
+                console.log(error);
+                console.log(errorThrow);
                 },
                 success: function (resp) {
-                    data = dataSets(resp['data'], params);
+                    data = dataSets(resp, params);
                     createChart(options.tipo, data, options.optionsChart, options.id);
                 }
             });
