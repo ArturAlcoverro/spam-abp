@@ -223,3 +223,54 @@ function editDonacion() {
 //         }
 //     });
 // }
+
+function deleteGrafic() {
+
+    var rows = $("#table").DataTable().rows('.selected').data();
+    var msg;
+
+    if (rows.length == 0) {
+        toast('Para eliminar tienes que seleccionar UN registro', 2000);
+    }
+    else {
+        if (rows.length > 1) {
+            msg = 'Se eliminaran ' + rows.length + ' registros';
+        } else {
+            msg = 'Se eliminara 1 registro';
+        }
+        alert('Estas seguro?', msg, function () {
+            donacionsEnviades = rows.length;
+            donacionsRebudes = 0;
+            $('.unable').show();
+
+            for (var i = 0; i < rows.length; i++) {
+
+                console.log(rows[i][0]);
+
+                $.ajax({
+                    url: "api/grafico/" + rows[i][0],
+                    type: "DELETE",
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                    },
+                    error: function (resp) {
+
+                        toast(resp.responseJSON.error, 5000);
+
+                        $('.unable').hide();
+
+                    },
+                    beforeSend: function () { },
+                    success: function (resp) {
+
+                            indexGrafics();
+
+                            $('.unable').hide();
+
+                    }
+                });
+            }
+        });
+    }
+}
