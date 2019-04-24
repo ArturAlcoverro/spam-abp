@@ -84,10 +84,10 @@ $(document).ready(function () {
     $('#fechaInicio').val(today2);
     $('#fechaFinal').val(today);
 
-    indexDonaciones();
+    indexGrafics();
 });
 
-function indexDonaciones() {
+function indexGrafics() {
     $.ajax({
         url: "api/grafico",
         type: "GET",
@@ -115,13 +115,13 @@ function indexDonaciones() {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
-                    data['tema'],
+                    data['tema'].charAt(0).toUpperCase() + data['tema'].slice(1),
                     data['tipos_donacion'],
                     data['origen'],
                     data['desti'],
                     data['animales'],
-                    data['ordenar'],
-                    data['publica'],
+                    data['ordenar'].charAt(0).toUpperCase() + data['ordenar'].slice(1),
+                    data['publica'] == 1 ? 'Si' : 'No',
 
                 ]).draw();
             });
