@@ -42,7 +42,13 @@
                         <div class="form-group">
                             <label for="lblnombre" class=" col-form-label">Nom de la gràfica</label>
                             <div class="">
-                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nom" required>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nom" required maxlength="20">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbldesc" class=" col-form-label">Descripció</label>
+                            <div class="">
+                                <input type="text" name="desc" id="desc" class="form-control" placeholder="Descripció" maxlength="200">
                             </div>
                         </div>
 
@@ -210,7 +216,13 @@
                         <div class="form-group">
                             <label for="lblnombre" class=" col-form-label">Nom de la gràfica</label>
                             <div class="">
-                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nom" required>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nom" required maxlength="20">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbldesc" class=" col-form-label">Descripció</label>
+                            <div class="">
+                                <input type="text" name="desc" id="desc" class="form-control" placeholder="Descripció" maxlength="200">
                             </div>
                         </div>
                         <div id = "data">
@@ -412,10 +424,15 @@
                     <div class="form-group">
                         <label for="lblnombre" class=" col-form-label">Nom de la gràfica</label>
                         <div class="">
-                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nom" required>
+                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nom" required maxlength="20">
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="lbldesc" class=" col-form-label">Descripció</label>
+                        <div class="">
+                            <input type="text" name="desc" id="desc" class="form-control" placeholder="Descripció" maxlength="200">
+                        </div>
+                    </div>
                     <div class="form-group">
                             <label id ="lbloTipoData" for="oTipoData" class="col-form-label">Tipus de data</label>
                             <div class="">

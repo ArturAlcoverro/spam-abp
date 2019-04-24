@@ -6,7 +6,7 @@ class Sort{
         $dataSet['data']= [];
 
         foreach($arr['data'] as $key => $value){
-            $executa = $query;
+            $executa = clone $query;
             $executa->where($arr['id'],"=",$key);
             $executa = $executa->get();
             $label = $value;
@@ -37,7 +37,8 @@ class Sort{
         $dataSet['data']= [];
 
         foreach($arr['data'] as $key => $value){
-            $executa = $query;
+
+            $executa = clone $query;
             $executa->join($arr['tabla'], function ($join) use ($arr, $key) {
                 $join->on('donativos.'.$arr['idOrigen'], '=', $arr['tabla'].'.'.$arr['joinId'])
                      ->where($arr['tabla'].'.'.$arr['id'], '=', $key);
@@ -61,6 +62,9 @@ class Sort{
                 }
             }
             array_push($dataSet['labels'], $label);
+
+
+
             array_push($dataSet['data'], $quantitat);
         }
 
