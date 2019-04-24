@@ -5,9 +5,9 @@
 @endsection
 
 @section('body')
-<style>
 
-</style>
+<link rel="stylesheet" href="{{ asset('css/public-navbar.css') }}">
+
 <div id="vcontainer" class="container" style="min-height: 100vh">
     <h2 class="text-center font-weight-light mt-3 delighted-text text-white mb-2">@lang('video.title')</h2>
     <video width="720" height="480" controls class="mx-auto mt-4" style="width: 100%; height: auto">
