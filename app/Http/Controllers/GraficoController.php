@@ -21,13 +21,7 @@ class GraficoController extends Controller
      */
     public function index()
     {
-        $tipos = Tipo::all();
-        $centros = Centro::all();
-        $animales = Animal::all();
-        $data["centros"] = $centros;
-        $data["animales"] = $animales;
-
-        return view('privada.grafics', $data);
+        return view('privada.grafics');
     }
 
     /**
@@ -58,11 +52,10 @@ class GraficoController extends Controller
         $modal = $request->input('modal');
         $tipos = Tipo::all();
         $campos = "";
-        $objetivos = "";
+
         $grafico = new Grafico();
         $grafico->nombre            = $request->input("nombre");
-        $grafico->origen            = $request->input("origen");
-        $grafico->desti             = $request->input("destino");
+        $grafico->centro            = $request->input("centro");
         $grafico->animales          = $request->input("animales");
         $grafico->mostrar_valor     = $request->input("valor");
         $grafico->tipo_grafico      = $request->input("tipus_grafic");
@@ -71,12 +64,12 @@ class GraficoController extends Controller
         if ($modal == "d"){
             $grafico->tema          = 'dades';
         }elseif($modal == "c"){
-            $grafico->tema          = 'comparativa';
+            $grafico->tema                = 'comparativa';
         }else{
-            $grafico->tema          = 'objectiu';
+            $grafico->tema               = 'objectiu';
         }
 
-        if ($request->input($modal . "Public") == "on"){
+        if ($request->input("public") == "on"){
             $grafico->publica       = 1;
         }
         else{
@@ -87,8 +80,7 @@ class GraficoController extends Controller
         if($request->has($modal . "TipoData")){
             $grafico->tipo_data         = $request->input($modal . "TipoData");
             if ( $request->input($modal . "TipoData") == "dinamic"){
-                $grafico->intervalo     = $request->input("cantidad");
-                $grafico->magnitud_intervalo = $request->input("medida");
+                $grafico->intervalo     = $request->input("cantidad") . $request->input("medida");
             }
             else{
                 $grafico->data_init     = $request->input('dataInit');
@@ -104,25 +96,16 @@ class GraficoController extends Controller
             if($request->has($modal . $tipo->nombre)){
                 if($request->input($modal . $tipo->nombre) == "on"){
                     if ($campos == ""){
-                        $campos = $tipo->id;
-                        if($modal == "o"){
-                            $objetivos = $request->input('objectiu' . $tipo->nombre);
-                        }
+                        $campos = $tipo->nombre;
                     }
                     else{
-                        $campos = $campos . "," . $tipo->id;
-                        if($modal == "o"){
-                            $objetivos = $objetivos . "," . $request->input('objectiu' . $tipo->nombre);
-                        }
+                        $campos = $campos . "," . $tipo->nombre;
                     }
                 }
             }
         }
 
         $grafico->tipos_donacion    = $campos;
-        if($objetivos != ""){
-            $grafico->objetivos = $objetivos;
-        }
         try{
             $grafico->save();
         }
