@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Grafico;
+use App\Models\Animal;
+use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\GraficoResource;
@@ -18,8 +20,47 @@ class GraficoApiController extends Controller
     {
         $graficos = Grafico::all();
 
+        foreach ($graficos as $g) {
+            if($g->desti == 0){
+                $g->desti = 'Tots';
+            }else{
+                $g->desti = Centro::find($g->desti)->nombre;
+            }
+
+            if($g->origen == 0){
+                $g->origen = 'Tots';
+            }else{
+                $g->origen = Centro::find($g->origen)->nombre;
+            }
+
+            if($g->animales == 0){
+                $g->animales = 'Tots';
+            }
+            else{
+                $g->animales = Animal::find($g->animales)->nombre;
+            }
+        }
+
         return new GraficoResource($graficos);
     }
 
+    public function destroy($id)
+    {
+        $user = Grafico::find($id);
 
+        try{
+            $user->delete();
+            $respuesta = (new GraficoResource($user))
+                            ->response()
+                            ->setStatusCode(200);
+        }
+        catch(QueryException $e){
+
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                           ->json(['error'=>$mensaje], 400);
+        }
+
+        return $respuesta;
+    }
 }

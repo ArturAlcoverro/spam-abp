@@ -84,10 +84,10 @@ $(document).ready(function () {
     $('#fechaInicio').val(today2);
     $('#fechaFinal').val(today);
 
-    indexDonaciones();
+    indexGrafics();
 });
 
-function indexDonaciones() {
+function indexGrafics() {
     $.ajax({
         url: "api/grafico",
         type: "GET",
@@ -115,13 +115,13 @@ function indexDonaciones() {
                 $("#table").DataTable().row.add([
                     data['id'],
                     data['nombre'],
-                    data['tema'],
+                    data['tema'].charAt(0).toUpperCase() + data['tema'].slice(1),
                     data['tipos_donacion'],
                     data['origen'],
                     data['desti'],
                     data['animales'],
-                    data['ordenar'],
-                    data['publica'],
+                    data['ordenar'].charAt(0).toUpperCase() + data['ordenar'].slice(1),
+                    data['publica'] == 1 ? 'Si' : 'No',
 
                 ]).draw();
             });
@@ -223,3 +223,54 @@ function editDonacion() {
 //         }
 //     });
 // }
+
+function deleteGrafic() {
+
+    var rows = $("#table").DataTable().rows('.selected').data();
+    var msg;
+
+    if (rows.length == 0) {
+        toast('Para eliminar tienes que seleccionar UN registro', 2000);
+    }
+    else {
+        if (rows.length > 1) {
+            msg = 'Se eliminaran ' + rows.length + ' registros';
+        } else {
+            msg = 'Se eliminara 1 registro';
+        }
+        alert('Estas seguro?', msg, function () {
+            donacionsEnviades = rows.length;
+            donacionsRebudes = 0;
+            $('.unable').show();
+
+            for (var i = 0; i < rows.length; i++) {
+
+                console.log(rows[i][0]);
+
+                $.ajax({
+                    url: "api/grafico/" + rows[i][0],
+                    type: "DELETE",
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                    },
+                    error: function (resp) {
+
+                        toast(resp.responseJSON.error, 5000);
+
+                        $('.unable').hide();
+
+                    },
+                    beforeSend: function () { },
+                    success: function (resp) {
+
+                            indexGrafics();
+
+                            $('.unable').hide();
+
+                    }
+                });
+            }
+        });
+    }
+}

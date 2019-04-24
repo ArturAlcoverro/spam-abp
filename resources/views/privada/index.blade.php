@@ -65,10 +65,22 @@
                     <form class="container pt-2" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <label for="dni" class="col-form-label">@lang('index.cif')</label>
                                 <div class="">
                                     <input type="text" name="dni" id="dni" class="form-control" placeholder="@lang('index.cif')">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="name" class="col-form-label">@lang('index.name')</label>
+                                <div class="">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="@lang('index.name')">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="col-form-label">@lang('index.email')</label>
+                                <div class="">
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="@lang('index.email')">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -154,12 +166,13 @@
                     <th>@lang('index.center_rec')</th>
                     <th>IdCentro2</th>
                     <th>@lang('index.center_dest')</th>
-                    <th>@lang('index.donant')</th>
+                    <th>@lang('index.cif')</th>
+                    <th>@lang('index.name')</th>
+                    <th>@lang('index.email')</th>
                     <th>@lang('index.cost')</th>
                     <th>@lang('index.date')</th>
                     <th>Factura</th>
                     <th>RutaFactura</th>
-
                 </tr>
             </thead>
             <tbody>
