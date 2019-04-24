@@ -5,6 +5,7 @@
 @endsection
 
 @section('body')
+<link rel="stylesheet" href="{{ asset('css/public-navbar.css') }}">
 
 <div class="container-fluid" >
     <div class="row" style= "height: 100vh">

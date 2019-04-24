@@ -5,9 +5,7 @@
 @endsection
 
 @section('body')
-<style>
-
-</style>
+<link rel="stylesheet" href="{{ asset('css/public-navbar.css') }}">
 <div id="vcontainer" class="container">
     <video width="720" height="480" controls class="mx-auto mt-4" style="width: 100%; height: auto">
         <source src="{{ asset('media/publica/SPAM_DEFDEF.mp4') }}" type="video/mp4">

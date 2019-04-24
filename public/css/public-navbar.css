@@ -1,0 +1,24 @@
+.navbar{
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.514);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: grey !important;
+}
+
+.dropdown-lenguage
+{
+    color: grey !important;
+}
+.navbar-dark .navbar-toggler{
+    color: grey !important;
+    border-color: grey !important;
+}
+.navbar .logo{
+    background: var(--primary-color-dark);
+}
+
+body{
+    background: #eee;
+}
