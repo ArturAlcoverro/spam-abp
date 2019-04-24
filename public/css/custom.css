@@ -40,9 +40,7 @@ body {
 }
 
 .hidden-video{
-    color: white;
     display: none;
-    text-shadow: 0px 0px 15px var(--background-color);
 }
 
 .badge {
@@ -77,6 +75,19 @@ body {
     display: none;
     color: white;
     text-shadow: 0px 0px 15px var(--background-color);
+}
+
+.option{
+    border: 1px solid #202020;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    transition: color 0.2s , background-color  0.2s;
+}
+
+.option:hover{
+    background-color: #202020;
+    color: white;
 }
 
 /* Footer raro */

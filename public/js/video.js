@@ -27,7 +27,7 @@ function doVideoThings(){
             $(".hidden-video").fadeIn(1500);
 
             $('#vcontainer .col').on("click", function(){
-                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text text-white'>Fallaste! Para adoptar un perro de estas razas, la legislación actual exige: Tener la licencia para tenencia de perros potencialmente peligrosos (renovable cada 5 años), Psicotécnico, Seguro de responsabilitat civil </div>");
+                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text'>Fallaste! Para adoptar un perro de estas razas, la legislación actual exige: Tener la licencia para tenencia de perros potencialmente peligrosos (renovable cada 5 años), Psicotécnico, Seguro de responsabilitat civil </div>");
                 //$(this).children().css('color', 'red');
                 //$('#vcontainer .col:nth-child(4) h5').children().css('color', 'green');
                 $('#vcontainer .col').unbind();
@@ -36,20 +36,13 @@ function doVideoThings(){
             });
             $('#vcontainer .col:nth-child(4)').unbind();
             $('#vcontainer .col:nth-child(4)').on("click", function(){
-                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text text-white'>Acertastes! Para adoptar un perro de estas razas, la legislación actual exige: Tener la licencia para tenencia de perros potencialmente peligrosos (renovable cada 5 años), Psicotécnico, Seguro de responsabilitat civil </div>");
+                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text'>Acertastes! Para adoptar un perro de estas razas, la legislación actual exige: Tener la licencia para tenencia de perros potencialmente peligrosos (renovable cada 5 años), Psicotécnico, Seguro de responsabilitat civil </div>");
                 //$(this).children().css('color', 'green');
                 $('#vcontainer .col').unbind();
                 createReturnToVideo(actualVideo);
                 document.querySelector('#vcontainer .row').scrollIntoView({ behavior: 'smooth' });
             });
-
-            $("#vcontainer .col").css("transition", "all .5s ease-in-out");
-            $('#vcontainer .col').hover(function(){
-                $(this).css("transform", "scale(1.2)");
-            },function(){
-                $(this).css("transform", "scale(1.0)");
-            });
-        } 
+        }
         else if(this.currentTime >= 41 && !done2) {
             disableVideo(this);
 
@@ -66,7 +59,7 @@ function doVideoThings(){
             $(".hidden-video").fadeIn(1500);
 
             $('#vcontainer .col').on("click", function(){
-                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text text-white'>Fallaste! El balance de la gestión en 2018 da estos resultados: Total animales acogidos, 2.088 (842 gatos y 1.206 perros–aproximadamente el 50% de las razas llamadas Potencialmente Peligrosas).</div>");
+                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text'>Fallaste! El balance de la gestión en 2018 da estos resultados: Total animales acogidos, 2.088 (842 gatos y 1.206 perros–aproximadamente el 50% de las razas llamadas Potencialmente Peligrosas).</div>");
                 //$(this).children().css('color', 'red');
                 //$('#vcontainer .col:nth-child(4) h5').children().css('color', 'green');
                 $('#vcontainer .col').unbind();
@@ -75,18 +68,11 @@ function doVideoThings(){
             });
             $('#vcontainer .col:nth-child(3)').unbind();
             $('#vcontainer .col:nth-child(3)').on("click", function(){
-                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text text-white'>Acertastes! El balance de la gestión en 2018 da estos resultados: Total animales acogidos, 2.088 (842 gatos y 1.206 perros–aproximadamente el 50% de las razas llamadas Potencialmente Peligrosas).</div>");
+                $('#vcontainer .row').append("<div class='text-center font-weight-light mt-5 delighted-text'>Acertastes! El balance de la gestión en 2018 da estos resultados: Total animales acogidos, 2.088 (842 gatos y 1.206 perros–aproximadamente el 50% de las razas llamadas Potencialmente Peligrosas).</div>");
                 //$(this).children().css('color', 'green');
                 $('#vcontainer .col').unbind();
                 createReturnToVideo(actualVideo);
                 document.querySelector('#vcontainer .row').scrollIntoView({ behavior: 'smooth' });
-            });
-
-            $("#vcontainer .col").css("transition", "all .5s ease-in-out");
-            $('#vcontainer .col').hover(function(){
-                $(this).css("transform", "scale(1.2)");
-            },function(){
-                $(this).css("transform", "scale(1.0)");
             });
         }
     });
@@ -120,7 +106,7 @@ function enableVideo(obj){
 }
 
 function createOption(option){
-    $('#vcontainer .row').append('<div class="col"><h5 class="hidden-video mx-auto delighted-text text-white">'+option+'</h5></div>');
+    $('#vcontainer .row').append('<div class="col"><h5 class="text-center hidden-video mx-auto delighted-text option">'+option+'</h5></div>');
 }
 
 function createReturnToVideo(video){
