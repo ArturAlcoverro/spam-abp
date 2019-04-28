@@ -176,6 +176,8 @@ body {
     border-radius: 7px;
     background-color: rgba(0, 0, 0, 0.733);
     transform: translate(-50%, -50%);
+    max-width: 100%;
+    min-width: 270px;
 }
 
 .toast p {
