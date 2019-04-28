@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="lblcentro_destino" class=" col-form-label">@lang('editDonacion.cenre_dest')</label>
+                <label for="lblcentro_destino" class=" col-form-label">@lang('editDonacion.centre_dest')</label>
                 <div class="">
                     <select name="centro_destino" id="centro_destino" class="form-control">
                         @foreach ($centros as $centro)

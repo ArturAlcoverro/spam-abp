@@ -85,7 +85,7 @@ class DonativoAPIController extends Controller
                             ->json(['error'=>$mensaje], 400);
         }
 
-        $animales = $request->input('animales');
+        $animales = explode(',', $request->input('animales'));
         $donativo->animales()->attach($animales);
 
         return $respuesta;

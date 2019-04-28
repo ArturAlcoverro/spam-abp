@@ -118,7 +118,7 @@ class DonativoController extends Controller
         $donativo->centros_receptor_id = $request->input('centro_receptor');
         $donativo->coste = $request->input('coste');
         $donativo->subtipos_id = $request->input('subtipo_donacion');
-        $donativo->unidad = $request->input('unidades');
+        $donativo->unidad = $request->input('unidades') == "" ? 1 : $request->input('unidades');
         $donativo->ruta_factura = $request->input('factura');
 
         $request->input('coordinada') == true ?
@@ -137,6 +137,7 @@ class DonativoController extends Controller
             return redirect()->action('DonativoController@edit')->withInput();
         }
 
+        $donativo->animales()->detach();
         $animales = $request->input('animales');
         $donativo->animales()->attach($animales);
 
