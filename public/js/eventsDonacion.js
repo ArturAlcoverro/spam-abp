@@ -149,8 +149,14 @@ function indexDonaciones() {
                 ]).draw();
             });
             $('.unable').hide();
+
+            $("#table").DataTable().columns.adjust();
+            $("#table").DataTable().responsive.recalc();
         }
     });
+
+
+
 }
 
 function deleteDonacion() {

@@ -90,6 +90,8 @@ function indexTipus() {
                 ]).draw();
             });
             $('.unable').hide();
+            $("#table").DataTable().columns.adjust();
+            $("#table").DataTable().responsive.recalc();
         }
     });
 }

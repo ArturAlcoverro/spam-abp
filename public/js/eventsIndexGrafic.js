@@ -105,9 +105,9 @@ function indexGrafics() {
 
             resp['data'].forEach(function (data) {
                 var a;
-                if (data['animales'] === 0){
+                if (data['animales'] === 0) {
                     a = "tots";
-                }else{
+                } else {
 
 
                 }
@@ -125,6 +125,9 @@ function indexGrafics() {
 
                 ]).draw();
             });
+
+            $("#table").DataTable().columns.adjust();
+            $("#table").DataTable().responsive.recalc();
         }
     });
 }
@@ -264,9 +267,9 @@ function deleteGrafic() {
                     beforeSend: function () { },
                     success: function (resp) {
 
-                            indexGrafics();
+                        indexGrafics();
 
-                            $('.unable').hide();
+                        $('.unable').hide();
 
                     }
                 });

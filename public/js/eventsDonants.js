@@ -86,11 +86,11 @@ function indexDonants() {
 
                 var yesno;
 
-                if(data['es_habitual'] == 0){
+                if (data['es_habitual'] == 0) {
 
                     yesno = "No";
                 }
-                else{
+                else {
                     yesno = "Si";
                 }
 
@@ -105,6 +105,8 @@ function indexDonants() {
                 ]).draw();
             });
             $('.unable').hide();
+            $("#table").DataTable().columns.adjust();
+            $("#table").DataTable().responsive.recalc();
         }
     });
 }

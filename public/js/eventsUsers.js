@@ -62,9 +62,6 @@ $(document).ready(function () {
 
     $(".toolbar .btn").prependTo(".dt-buttons");
     // $(".toolbar-append .btn").appendTo(".dt-buttons");
-
-
-
     indexUsers();
 });
 
@@ -94,6 +91,8 @@ function indexUsers() {
                 ]).draw();
             });
             $('.unable').hide();
+            $("#table").DataTable().columns.adjust();
+            $("#table").DataTable().responsive.recalc();
         }
     });
 }

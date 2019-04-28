@@ -92,7 +92,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="{{ url('/donations') }}">
+                    <a href="{{ url('/grafics') }}">
                         <img class="" width="40px" src="{{ asset('media/img/charts.png') }}" alt="">
                         @lang('master.charts_nav')
                     </a>
